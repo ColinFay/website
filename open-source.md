@@ -4,11 +4,6 @@ title: Open Source
 permalink: /open-souce/
 ---
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Développement
 
 ## Packages R
