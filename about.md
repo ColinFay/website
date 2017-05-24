@@ -50,15 +50,8 @@ L'Œil au Carré
 
 - Stratégie éditoriale
 - Community Management
-- Rédaction de contenu
-- Data analytics & Reporting
-
-## Web
-
 - Référencement naturel
-- Rédaction optimisée
 - Audit et analyse SEO
-- Optimisation SEO
 
 ***
 
@@ -98,6 +91,10 @@ Spécialité anglais
 ***
 
 # Conférences et Cours
+
+## 12.03.17
+
+"Atelier Dataviz", La Fabrique de l'Info, organisé par l'Association Bug.
 
 ## 07.07.16
 
