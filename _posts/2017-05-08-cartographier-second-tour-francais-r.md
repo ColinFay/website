@@ -5,11 +5,8 @@ author: colin_fay
 post_date: 2017-05-08 18:08:31
 post_excerpt: ""
 layout: single
-permalink: >
-  http://colinfay.me/cartographier-second-tour-francais-r/
+permalink: /cartographier-second-tour-francais-r/
 published: true
-yst_is_cornerstone:
-  - ""
 ---
 <h2>Aperçu du vote au second tour en France, via des cartes réalisées avec R. <!--more--></h2>
 <h3>Le jeu de données</h3>
