@@ -7,9 +7,6 @@ post_excerpt: ""
 layout: post
 permalink: /mapping-the-french-second-round-results-with-r/
 published: true
-yst_is_cornerstone:
-  - ""
-  - ""
 ---
 <h2><span class="notranslate">Visualising the second round results with maps made with R.</span> <!--more--></h2>
 <h3>The dataset</h3>
