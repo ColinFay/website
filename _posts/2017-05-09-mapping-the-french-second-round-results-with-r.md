@@ -1,26 +1,29 @@
 ---
-ID: 1705
-post_title: 'Cartographier le second tour français avec R'
+ID: 1731
+post_title: 'Mapping the French second round results with R'
 author: colin_fay
-post_date: 2017-05-08 18:08:31
+post_date: 2017-05-09 14:00:31
 post_excerpt: ""
-layout: single
-permalink: /cartographier-second-tour-francais-r/
+layout: post
+permalink: >
+  /mapping-the-french-second-round-results-with-r/
 published: true
+yst_is_cornerstone:
+  - ""
+  - ""
 ---
-<h2>Aperçu du vote au second tour en France, via des cartes réalisées avec R. <!--more--></h2>
-<h3>Le jeu de données</h3>
-Le dataset utilisé ici est disponible sur data.gouv : <a href="https://www.data.gouv.fr/fr/datasets/election-presidentielle-des-23-avril-et-7-mai-2017-resultats-du-2eme-tour-2/" target="_blank" rel="noopener noreferrer">Election présidentielle des 23 avril et 7 mai 2017 - Résultats du 2ème tour</a>. Pour une meilleur compatibilité, j'ai manuellement converti le fichier xls en csv.
-<h3>Charger les librairies et les données</h3>
-Chargeons ce jeu de données, ainsi que la carte de France disponible nativement avec ggplot2.
+<h2><span class="notranslate">Visualising the second round results with maps made with R.</span> <!--more--></h2>
+<h3>The dataset</h3>
+The dataset used here is available on data.gouv: <a href="https://www.data.gouv.fr/fr/datasets/election-presidentielle-des-23-avril-et-7-mai-2017-resultats-du-2eme-tour-2/" target="_blank" rel="noopener noreferrer">Election présidentielle des 23 avril et 7 mai 2017 - Résultats du 2ème tour</a>. In order to make it easier to import, I've manually converted the xls file to csv.
+<h3><span class="notranslate">Load libraries and data</span></h3>
+<span class="notranslate">Let's load this dataset, as well as the map of France available in <em>ggplot2</em>.</span>
 <pre class="r"><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">tidyverse</span><span class="paren">)</span>
 <span class="keyword">library</span><span class="paren">(</span><span class="identifier">stringr</span><span class="paren">)</span>
 <span class="keyword">library</span><span class="paren">(</span><span class="identifier">stringi</span><span class="paren">)</span>
 <span class="identifier">result</span> <span class="operator">&lt;-</span> <span class="identifier">read_csv2</span><span class="paren">(</span><span class="string">"Presidentielle_2017_Resultats_Communes_Tour_2.csv"</span><span class="paren">)</span>
 <span class="identifier">map</span> <span class="operator">&lt;-</span> <span class="identifier">map_data</span><span class="paren">(</span><span class="string">"france"</span><span class="paren">)</span></code></pre>
-### Nettoyage des données
-
-Avant de représenter les résultats sur une carte, nous devons commencer par transformer et nettoyer le data.frame <code>result</code>.
+<h3>Clean data</h3>
+Before mapping the results, we need to transform and clean the data.frame <code>result</code>.
 <pre class="r"><code class="r"><span class="identifier">result</span> <span class="operator">&lt;-</span> <span class="identifier">result</span> <span class="operator">%&gt;%</span>
   <span class="identifier">group_by</span><span class="paren">(</span><span class="identifier">`Libellé du département`</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
   <span class="identifier">summarise</span><span class="paren">(</span><span class="identifier">tot_vot</span> <span class="operator">=</span> <span class="identifier">sum</span><span class="paren">(</span><span class="identifier">Exprim</span>é<span class="identifier">s</span><span class="paren">)</span>, 
@@ -39,10 +42,13 @@ Avant de représenter les résultats sur une carte, nous devons commencer par tr
   <span class="identifier">str_replace_all</span><span class="paren">(</span><span class="string">"Corse-du-Sud"</span>, <span class="string">"Corse du Sud"</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
   <span class="identifier">str_replace_all</span><span class="paren">(</span><span class="string">"Val-d'Oise"</span>, <span class="string">"Val-Doise"</span><span class="paren">)</span> <span class="operator">%&gt;%</span>
   <span class="identifier">str_replace_all</span><span class="paren">(</span><span class="string">"Corse-du-Sud"</span>, <span class="string">"Corse du Sud"</span><span class="paren">)</span></code></pre>
-Nous voici avec un tableau contenant les chiffres clés par département, obtenu à partir des résultats par commune. Le nom de la première colonne a été modifié, afin de coller à l'étiquetage `region` du tableau `map`. La suite de remplacement de caractères est due à la notation anglaise de `map` — une transformation a été indispensable pour effectuer la jointure correctement.
+<span class="notranslate">We now got a table containing the key figures by department.</span> The name of the first column has been modified, in order to match the `region` name of the `map` table. The character replacement sequence is due to the English notation in `map`, and was required in order to join the tables properly.
 <pre class="r"><code class="r"><span class="identifier">result_map</span> <span class="operator">&lt;-</span> <span class="identifier">left_join</span><span class="paren">(</span><span class="identifier">x</span> <span class="operator">=</span> <span class="identifier">map</span><span class="paren">[</span>,<span class="operator">-</span><span class="number">6</span><span class="paren">]</span>, <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">result</span><span class="paren">)</span></code></pre>
 <h3>Visualisation</h3>
-Projetons maintenant nos différentes variables avec R. Ici, c'est l'argument `scale_fill_` qui va gérer l'échelle de couleurs utilisée pour chaque carte.
+Let's now project our variables on maps. You need to play with the <code>scale_fill_</code> argument to manage the color scheme used on each card.
+<p style="text-align: right;"><em>Note : this article was first published in french. </em>
+<em>I've kept the original plot titles.</em></p>
+
 <pre class="r"><code class="r"><span class="identifier">map_theme</span> <span class="operator">&lt;-</span> <span class="identifier">theme</span><span class="paren">(</span><span class="identifier">title</span><span class="operator">=</span><span class="identifier">element_text</span><span class="paren">(</span><span class="paren">)</span>,
                    <span class="identifier">plot.title</span><span class="operator">=</span><span class="identifier">element_text</span><span class="paren">(</span><span class="identifier">margin</span><span class="operator">=</span><span class="identifier">margin</span><span class="paren">(</span><span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span><span class="paren">)</span>, <span class="identifier">size</span><span class="operator">=</span><span class="number">18</span>, <span class="identifier">hjust</span> <span class="operator">=</span> <span class="number">0.5</span><span class="paren">)</span>,
                    <span class="identifier">axis.text.x</span><span class="operator">=</span><span class="identifier">element_blank</span><span class="paren">(</span><span class="paren">)</span>,
