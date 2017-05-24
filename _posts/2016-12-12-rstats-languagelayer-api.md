@@ -4,7 +4,7 @@ post_title: '#RStats — languagelayeR : accéder à l&rsquo;API languagelayer a
 author: colin_fay
 post_date: 2016-12-12 23:07:28
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rstats-languagelayer-api/
 published: true

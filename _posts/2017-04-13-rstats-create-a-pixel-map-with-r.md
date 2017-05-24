@@ -4,7 +4,7 @@ post_title: '#RStats — Create a pixel map with R'
 author: colin_fay
 post_date: 2017-04-13 21:55:01
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rstats-create-a-pixel-map-with-r/
 published: true

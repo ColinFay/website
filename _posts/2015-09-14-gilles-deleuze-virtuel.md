@@ -4,7 +4,7 @@ post_title: 'Gilles Deleuze, morceaux choisis #1 : le virtuel'
 author: colin_fay
 post_date: 2015-09-14 12:00:55
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /gilles-deleuze-virtuel/
 published: true

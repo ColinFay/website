@@ -4,7 +4,7 @@ post_title: '#RStats — API calls et Sys.sleep'
 author: colin_fay
 post_date: 2017-04-14 13:00:53
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rstats-api-calls-sys-sleep/
 published: true

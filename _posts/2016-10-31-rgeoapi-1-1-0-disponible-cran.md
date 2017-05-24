@@ -4,7 +4,7 @@ post_title: rgeoapi 1.1.0 disponible sur le CRAN !
 author: colin_fay
 post_date: 2016-10-31 13:59:43
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rgeoapi-1-1-0-disponible-cran/
 published: true

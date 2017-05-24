@@ -4,7 +4,7 @@ post_title: 'Data &#038; Vinyls — A discogs library exploration with R'
 author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /data-vinyles-discogs-r/
 published: true

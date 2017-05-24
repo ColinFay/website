@@ -4,7 +4,7 @@ post_title: '#RStats — Text mining with R and gutenbergr'
 author: colin_fay
 post_date: 2016-05-24 18:00:32
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rstats-text-mining-r-gutenbergr-2/
 published: true

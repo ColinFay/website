@@ -6,7 +6,7 @@ post_title: >
 author: colin_fay
 post_date: 2016-07-28 13:52:20
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /create-map-ggplot2-rgeoapi-ggmap/
 published: true

@@ -4,7 +4,7 @@ post_title: 'All I want for Christmas is a #Dataviz'
 author: colin_fay
 post_date: 2016-12-23 17:44:55
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /all-i-want-for-christmas-is-a-dataviz-2/
 published: true

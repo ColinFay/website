@@ -7,7 +7,7 @@ post_title: >
 author: colin_fay
 post_date: 2015-10-12 12:33:59
 post_excerpt: ""
-layout: post
+layout: single
 permalink: /snapchat-medialabst/
 published: true
 geo_public:

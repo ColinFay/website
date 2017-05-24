@@ -4,7 +4,7 @@ post_title: '#RStats — languagelayeR : query the languagelayer API with R'
 author: colin_fay
 post_date: 2016-12-12 23:07:28
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /rstats-languagelayer-query-the-languagelayer-api-with-r/
 published: true

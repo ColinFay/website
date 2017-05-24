@@ -4,7 +4,7 @@ post_title: 'Musarderie #DigitalTC — La sérendipité, l&rsquo;homophilie, la 
 author: colin_fay
 post_date: 2015-12-16 14:00:20
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /digitaltc-serendipite-homophilie-personnalisation/
 published: true

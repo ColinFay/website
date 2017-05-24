@@ -4,7 +4,7 @@ post_title: 'Musarderie #DigitalTC — L&rsquo;IA, l&rsquo;homme, la créativit�
 author: colin_fay
 post_date: 2016-12-19 19:38:18
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /musarderie-digitaltc-lia-lhomme-la-creativite/
 published: true

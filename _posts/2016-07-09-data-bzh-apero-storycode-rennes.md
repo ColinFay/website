@@ -4,7 +4,7 @@ post_title: 'Data Bzh à l&rsquo;Apéro StoryCode de Rennes &laquo;&nbsp;Nouvell
 author: colin_fay
 post_date: 2016-07-09 18:39:13
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /data-bzh-apero-storycode-rennes/
 published: true

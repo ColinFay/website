@@ -4,7 +4,7 @@ post_title: 'Musarderie #6 : L&rsquo;instoutenable légèreté du web, volet 2'
 author: colin_fay
 post_date: 2015-08-26 13:26:05
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /musarderie-6-linstoutenable-legerete-du-web-volet-2/
 published: true

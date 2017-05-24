@@ -4,7 +4,7 @@ post_title: 'Data &#038; Vinyles — Exploration d&rsquo;une bibliothèque Disco
 author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /data-vinyles-bibliotheque-discogs-r/
 published: true

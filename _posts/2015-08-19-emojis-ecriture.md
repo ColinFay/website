@@ -4,7 +4,7 @@ post_title: 'Musarderie #5 : les emojis, l&rsquo;écriture, et le reste.'
 author: colin_fay
 post_date: 2015-08-19 12:15:56
 post_excerpt: ""
-layout: post
+layout: single
 permalink: /emojis-ecriture/
 published: true
 geo_public:

@@ -4,7 +4,7 @@ post_title: 'Musarderie #0 — Parce qu&rsquo;il faut un premier'
 author: colin_fay
 post_date: 2015-06-09 20:43:00
 post_excerpt: ""
-layout: post
+layout: single
 permalink:  /musarderie-premier/
 published: true
 geo_public:

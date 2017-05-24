@@ -4,7 +4,7 @@ post_title: 'Musarderie #2 : Les nouvelles machines à écrire'
 author: colin_fay
 post_date: 2015-07-19 16:54:30
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /nouvelles-machines-ecrire/
 published: true

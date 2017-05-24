@@ -5,7 +5,7 @@ post_title: >
 author: colin_fay
 post_date: 2017-03-12 18:00:45
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /1-dataset-10-visualisations/
 published: true

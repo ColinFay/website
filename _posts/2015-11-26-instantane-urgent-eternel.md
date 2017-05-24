@@ -4,7 +4,7 @@ post_title: 'Musarderie #7 : l&rsquo;instantané, l&rsquo;urgent, l&rsquo;étern
 author: colin_fay
 post_date: 2015-11-26 13:21:54
 post_excerpt: ""
-layout: post
+layout: single
 permalink: >
   /instantane-urgent-eternel/
 published: true
