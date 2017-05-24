@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-05-09 14:00:31
 post_excerpt: ""
 layout: post
-permalink: >
-  /mapping-the-french-second-round-results-with-r/
+permalink: /mapping-the-french-second-round-results-with-r/
 published: true
 yst_is_cornerstone:
   - ""
