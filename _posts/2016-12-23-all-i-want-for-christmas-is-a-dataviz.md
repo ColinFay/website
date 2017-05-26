@@ -10,11 +10,12 @@ published: true
 ---
 ## Avant de vous lancer dans le marathon de repas de Noël, deux visualisations de données tirées de l'API lastfm... pour la requête "Christmas" !
 <!--more-->
-<div id="allo-lastfm" class="section level3">
+
 ### Allô LastFM
 La première étape ? Créer un compte sur l’API LastFM, afin d’obtenir une clé d'accès. Une fois cette suite de caractères en poche, direction les requêtes avec R.
 
 Commençons par charger les packages que nous allons utiliser :
+
 ```{r} 
 library(tidyverse)
 library(scales)
@@ -22,6 +23,7 @@ library(data.table)
 library(magrittr)
 ```
 Les trois paramètres de départ sont :
+
 ```{r} 
 #Le terme de recherche
 query <- "christmas"
@@ -30,14 +32,15 @@ apikey <- "XXX"
 #L'index des pages de l'API, qui s'incrémentera au fur et à mesure des requêtes
 x <- 0
 ```
-Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument "```{r} 
-&amp;page="
-```.
+Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument `&page=`.
+
 ```{r} 
 url <- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
               query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
 ```
+
 Création d’une liste pour recevoir les résultats des requêtes, et requête sur la première page (index = 0).
+
 ```{r} 
 dl <- list()
 dl2 <- httr::GET(url)$content %>%
@@ -72,12 +75,11 @@ songs <- lapply(dl, function(x){
   do.call(rbind, .) %>% 
   arrange(listeners)
 ```
-</div>
-<div id="and-now-lets-see" class="section level3">
+
+
 ### And now, let’s see!
-Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :```{r} 
- 
-```
+Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :
+
 ```{r} 
 songs <- as.data.table(songs)
 songs <- songs[, .(listeners = mean(listeners)), by = .(name,artist)]

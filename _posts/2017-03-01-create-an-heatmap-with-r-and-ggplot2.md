@@ -16,40 +16,26 @@ This article is inspired by two articles I've written on databzh. These being:
 - <a href="http://data-bzh.fr/prenoms-bretagne-1900-aujourdhui/">Les prénoms en Bretagne, de 1900 à aujourd'hui</a>
 
 In this short post, I’ll show you how to create a heatmap with ggplot2 and R. We’ll visualise the evolution through time of a specific name in France. The dataset used in this article comes from <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/">data.gouv</a>, and is unzipped outside R.
-<div id="loading" class="section level2">
+
 ## Loading
 ```{r} 
 library(tidyverse)
-```
-<pre>```{r} 
 ## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
 ## Loading tidyverse: tidyr
 ## Loading tidyverse: readr
 ## Loading tidyverse: purrr
 ## Loading tidyverse: dplyr
-```
-<pre>```{r} 
 
-``````{r} 
-
-``````{r} 
 name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
-```
-<pre>```{r} 
-
-``````{r} 
 name$annee <- as.Date(name$annee, "%Y")
 ```
 We now have a clean dataset of all the names in the several french departments, by year.
-<div id="heatmap" class="section level3">
+
 ### Heatmap
-A heatmap is created with the ```{r} 
-geom_tile
-``` geom from ```{r} 
-ggplot
-```. Here how to create it step by step.
+A heatmap is created with the `geom_tile` geom from `ggplot`. Here how to create it step by step.
+
 ```{r} 
 choix <- "COLIN"
 name %>%
@@ -96,7 +82,7 @@ name %>%
   ggplot(aes(annee, dpt, fill = somme)) +
   geom_tile() +
   scale_x_date(limits =  c(lubridate::ymd("1900-01-01"), lubridate::ymd("2015-01-01"))) +
-  #Change the scale colors
+  #Changer l'échelle de couleurs
   scale_fill_gradient(low = "#E18C8C", high = "#973232") +
   xlab("Année") +
   ylab("Département") +
@@ -104,6 +90,8 @@ name %>%
   theme_minimal()
 
 ```
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
+
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
 
 Pretty easy isn't it?
