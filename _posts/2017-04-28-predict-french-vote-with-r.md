@@ -1,14 +1,12 @@
 ---
 ID: 1668
-post_title: "Predict french vote with R"
+title: "Predict french vote with R"
 author: colin_fay
 post_date: 2017-04-28 15:08:22
 post_excerpt: ""
 layout: single
 permalink: /predict-french-vote-with-r/
 published: true
-yst_is_cornerstone:
-  - ""
 ---
 ## Let's try a prediction of the french presidential vote, based on the results from the first round.
 <!--more-->
