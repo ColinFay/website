@@ -52,7 +52,9 @@ result_map <- left_join(x = map[,-6], y = result)
 ```
 ### Visualisation
 Let's now project our variables on maps. You need to play with the `scale_fill` argument to manage the color scheme used on each card.
-_Note : this article was first published in french. _
+
+_Note : this article was first published in french._
+
 _I've kept the original plot titles._
 
 ```{r}
