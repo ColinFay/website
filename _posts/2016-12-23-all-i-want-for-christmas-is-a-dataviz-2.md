@@ -14,29 +14,38 @@ published: true
 First, you need to create an account on <a href="http://www.last.fm/api" target="_blank">lastfm</a>, and get an access key. When you have it, you can start making resquests on the API with R.
 
 Let's load the packages we will need:
-```{r}library(tidyverse)
+```{r} 
+library(tidyverse)
 library(scales)
 library(data.table)
-library(magrittr)```
+library(magrittr)
+```
 Here are the three parameters you will need before starting:
-```{r}#The query
+```{r} 
+#The query
 query &lt;- "christmas"
 #Your API key (masked here)
 apikey &lt;- "XXX"
 #The page index
-x &lt;- 0```
+x &lt;- 0
+```
 Then, the search url. Each request is limited to 1000 answers. The results are divided in pages, and you can access them with the arg "<code>&amp;page="</code>.
-```{r}url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
-              query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)```
+```{r} 
+url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
+              query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
+```
 Let's create a list to concatenate our results, and query the first page (index = 0).
-```{r}dl &lt;- list()
+```{r} 
+dl &lt;- list()
 dl2 &lt;- httr::GET(url)$content %&gt;%
   rawToChar() %&gt;% 
   rjson::fromJSON()
 dl2 &lt;- dl2$results$trackmatches$track
-dl &lt;- c(dl,dl2)```
+dl &lt;- c(dl,dl2)
+```
 Then, we loop over all the pages:
-```{r}repeat{
+```{r} 
+repeat{
   x &lt;- x+1
   url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
                 query,"&amp;api_key=", apikey, "&amp;format=json","&amp;limit=", 1000, "&amp;page=", x)
@@ -48,18 +57,22 @@ Then, we loop over all the pages:
   if(length(dl2) == 0){
     break
   }
-}```
+}
+```
 And now, let's create the dataframe:
-```{r}songs &lt;- lapply(dl, function(x){
+```{r} 
+songs &lt;- lapply(dl, function(x){
   data.frame(name = x$name, 
              artist = x$artist, 
              listeners = as.numeric(x$listeners))
 }) %&gt;%
   do.call(rbind, .) %&gt;% 
-  arrange(listeners)```
+  arrange(listeners)
+```
 ### And now, let’s see!
 The fifteen most popular songs are:<code> </code>
-```{r}songs &lt;- as.data.table(songs)
+```{r} 
+songs &lt;- as.data.table(songs)
 songs &lt;- songs[, .(listeners = mean(listeners)), by = .(name,artist)]
 songs[1:15,] %&gt;%
 ggplot(aes(x = reorder(name, listeners), y = listeners)) +
@@ -81,11 +94,13 @@ ggplot(aes(x = reorder(name, listeners), y = listeners)) +
         legend.text=element_text(size = 12),
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
-        panel.grid.major = element_line(colour = "grey"))```
+        panel.grid.major = element_line(colour = "grey"))
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas.jpeg"><img class="aligncenter size-large wp-image-1186" src="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas-1024x512.jpeg" alt="songs-last-fm-christmas" width="809" height="405" /></a>(click to zoom)
 
 And the most frequent artists:
-```{r}songs$artist %&gt;%
+```{r} 
+songs$artist %&gt;%
   table() %&gt;%
   as.data.frame() %&gt;%
   arrange(desc(Freq)) %&gt;%
@@ -108,7 +123,8 @@ ggplot(aes(x = reorder(., Freq), y = Freq)) +
         legend.text=element_text(size = 12),
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
-        panel.grid.major = element_line(colour = "grey"))```
+        panel.grid.major = element_line(colour = "grey"))
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm.jpeg"><img class="aligncenter size-large wp-image-1184" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm-1024x512.jpeg" alt="artists christmas last fm" width="809" height="405" /></a>(click to zoom)
 
 So now... Merry Christmas!

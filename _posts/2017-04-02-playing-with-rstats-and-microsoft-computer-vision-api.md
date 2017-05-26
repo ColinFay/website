@@ -22,23 +22,29 @@ This <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision
 ### The Faces of #RStats — Automatic labelling
 In this blogpost, I'll describe how to get profil pics from Twitter, and label them with Microsoft Computer Vision.
 #### Collecting data
-```{r}library(tidyverse)
+```{r} 
+library(tidyverse)
 library(rtweet)
 library(httr)
 library(jsonlite)
 token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX</code><span style="font-family: 'Noto Serif', sans-serif;">")```
-```{r}users &lt;- search_users(q= '#rstats',
+```{r} 
+users &lt;- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %&gt;%
-  unique()```
+  unique()
+```
 <p style="text-align: right;">_Note: I've (obviously) hidden the access token to my twitter app._</p>
 From there, I’ll use the <code>profile_image_url</code> column to get the url to the profile picture.
 
 First, this variable will need some cleansing : the urls contain a __normal_ parameter, creating 48x48 images. The Microsoft API needs at least a 50x50 resolution, so we need to get rid of this.
-```{r}users$profile_image_url &lt;- gsub("_normal", "", users$profile_image_url)```
+```{r} 
+users$profile_image_url &lt;- gsub("_normal", "", users$profile_image_url)
+```
 #### Calling on Microsoft API
 First, get a subscritpion on the <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision-api" target="_blank" rel="noopener noreferrer">Microsoft API service</a>, and start a free trial. This free account is limited: you can only make 5,000 calls per month, and 20 per minute. But that’s far from enough for our case (478 images to look at).
-```{r}users_api &lt;- lapply(users[,25],function(i, key = "") {
+```{r} 
+users_api &lt;- lapply(users[,25],function(i, key = "") {
   request_body &lt;- data.frame(url = i)
   request_body_json &lt;- gsub("\\[|\\]", "", toJSON(request_body, auto_unbox = "TRUE"))
   result &lt;- POST("https://api.projectoxford.ai/vision/v1.0/analyze?visualFeatures=Tags,Description,Faces,Categories",
@@ -57,32 +63,38 @@ First, get a subscritpion on the <a href="https://www.microsoft.com/cognitive-se
   Sys.sleep(time = 3)
   return(d)
 })%&gt;%
-  do.call(rbind,.)```
+  do.call(rbind,.)
+```
 <p style="text-align: right;">_Note : I've (again) hidden my API key.
 __Also, this code may take a while to execute, as I've inserted a Sys.sleep function. To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _</p>
 
 #### Creating tibbles
 Now I have a tibble with a column containing lists of captions &amp; confidence, and a column with lists of the tags associated with each picture. Let’s split this.
-```{r}users_cap &lt;- lapply(users_api$cap, unlist) %&gt;%
+```{r} 
+users_cap &lt;- lapply(users_api$cap, unlist) %&gt;%
   do.call(rbind,.) %&gt;%
   as.data.frame() 
 users_cap$confidence &lt;- as.character(users_cap$confidence) %&gt;%
   as.numeric()
 users_tags &lt;- unlist(users_api$tag) %&gt;%
-  data.frame(tag = .)```
+  data.frame(tag = .)
+```
 ### Visualisation
 Each caption is given with a confidence score.
-```{r}ggplot(users_cap, aes(as.numeric(confidence))) +
+```{r} 
+ggplot(users_cap, aes(as.numeric(confidence))) +
   geom_histogram(fill = "#b78d6a", bins = 50) + 
   xlab("Confidence") + 
   ylab("") + 
   labs(title = "Faces of #RStats - Captions confidence", 
        caption="http://colinfay.me") + 
-  theme_light()```
+  theme_light()
+```
 [caption id="attachment_1583" align="aligncenter" width="1000"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> Click to zoom[/caption]
 
 It seems that the confidence scores for the captions are not very strong. Well, let’s nevertheless have a look at the most frequent captions and tags.
-```{r}users %&gt;%
+```{r} 
+users %&gt;%
   group_by(text)%&gt;%
   summarize(somme = sum(n())) %&gt;%
   arrange(desc(somme))%&gt;%
@@ -95,11 +107,13 @@ It seems that the confidence scores for the captions are not very strong. Well, 
   ylab("") + 
   labs(title = "Faces of #RStats - Captions", 
        caption="http://colinfay.me") +   
-  theme_light()```
+  theme_light()
+```
 [caption id="attachment_1580" align="aligncenter" width="800"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> Click to zoom[/caption]
 
 Well... I'm not sure there are so many surf and skate aficionados in the R world, but ok...
-```{r}users_tags %&gt;%
+```{r} 
+users_tags %&gt;%
   group_by(tag)%&gt;%
   summarize(somme = sum(n())) %&gt;%
   arrange(desc(somme))%&gt;%
@@ -112,6 +126,7 @@ Well... I'm not sure there are so many surf and skate aficionados in the R world
   labs(title = "Faces of #RStats - Tags", 
        caption="http://colinfay.me") +   
   theme_light()
+
 
 ```
 ## <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a>

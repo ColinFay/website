@@ -18,21 +18,27 @@ This article is inspired by two articles I've written on databzh. These being:
 In this short post, I’ll show you how to create a heatmap with ggplot2 and R. We’ll visualise the evolution through time of a specific name in France. The dataset used in this article comes from <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/">data.gouv</a>, and is unzipped outside R.
 <div id="loading" class="section level2">
 ## Loading
-```{r}library(tidyverse)```
+```{r} 
+library(tidyverse)
+```
 <pre><code>## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
 ## Loading tidyverse: tidyr
 ## Loading tidyverse: readr
 ## Loading tidyverse: purrr
-## Loading tidyverse: dplyr```
+## Loading tidyverse: dplyr
+```
 <pre><code></code><code></code><code>name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
-  na.omit()```
-<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")```
+  na.omit()
+```
+<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")
+```
 We now have a clean dataset of all the names in the several french departments, by year.
 <div id="heatmap" class="section level3">
 ### Heatmap
 A heatmap is created with the <code>geom_tile</code> geom from <code>ggplot</code>. Here how to create it step by step.
-```{r}choix &lt;- "COLIN"
+```{r} 
+choix &lt;- "COLIN"
 name %&gt;%
   #Filter by name
   filter(prenom == choix) %&gt;%
@@ -59,14 +65,16 @@ name %&gt;%
   xlab("Année") +
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
-  theme_minimal()```
+  theme_minimal()
+```
 </div>
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png"><img class="aligncenter size-full wp-image-1587" src="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png" alt="Colin par département" width="1000" height="500" /></a>
 
 So yeah, it’s that simple. Let’s try with another name.
 
 (And of course, you can specify a different color scale for your plot)
-```{r}choix &lt;- "ELISABETH"
+```{r} 
+choix &lt;- "ELISABETH"
 name %&gt;%
   filter(prenom == choix) %&gt;%
   group_by(annee, dpt) %&gt;%
@@ -81,6 +89,7 @@ name %&gt;%
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
+
 ```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
 

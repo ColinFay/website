@@ -23,7 +23,9 @@ To install :
 </div>
 ### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:
-```{r}villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+```{r} 
+villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+
 ```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
@@ -57,9 +59,13 @@ So, let's imagine you have a dataset with only the names of the cities you want 
 </tbody>
 </table>
 To put these cities on a map, you'll need their coordinates. For that, you can use <code>rgeoapi</code>!
-```{r}library(rgeoapi)```
-```{r}library(plyr)
+```{r} 
+library(rgeoapi)
+```
+```{r} 
+library(plyr)
 geo &lt;- ldply(villes$nom, ComByName)
+
 ```
 <table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
@@ -269,14 +275,22 @@ geo &lt;- ldply(villes$nom, ComByName)
 </tbody>
 </table>
 &nbsp;
-```{r}names(villes)[1] &lt;- "name"
-villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)```
+```{r} 
+names(villes)[1] &lt;- "name"
+villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)
+```
 ### Create a map with ggmap and ggplot2
 The <code>ggmap</code> package has been designed to produce background maps to be used with <code>ggplot2</code>. The "fast" function to create a map is <code>qmap(x,y)</code> - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
-```{r}library(ggmap)```
-```{r}map &lt;- qmap('Bretagne', zoom = 8)```
+```{r} 
+library(ggmap)
+```
+```{r} 
+map &lt;- qmap('Bretagne', zoom = 8)
+```
 Once you have a <code>map</code> object, you can use it as the first argument of your ggplot call, and then combine it with your usual <code>geom</code>:
-```{r}map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))```
+```{r} 
+map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
 
 &nbsp;

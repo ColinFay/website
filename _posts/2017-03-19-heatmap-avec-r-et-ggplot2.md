@@ -18,21 +18,27 @@ L'idée de cet article prend racine dans deux billets sur Data Bzh :
 Dans ce court post, retrouvez le déroulement de la création d'une heatmap d'un prénom par année et par département. Le jeu de données est disponible sur <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/">data.gouv</a>. Il a été téléchargé et unzippé en dehors de R.
 <div id="loading" class="section level2">
 ## Loading
-```{r}library(tidyverse)```
+```{r} 
+library(tidyverse)
+```
 <pre><code>## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
 ## Loading tidyverse: tidyr
 ## Loading tidyverse: readr
 ## Loading tidyverse: purrr
-## Loading tidyverse: dplyr```
+## Loading tidyverse: dplyr
+```
 <pre><code></code><code></code><code>name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
-  na.omit()```
-<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")```
+  na.omit()
+```
+<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")
+```
 Nous avons maintenant un jeu de données propre, avec les noms et les départements.
 <div id="heatmap" class="section level3">
 ### Heatmap
 Une heatmap se crée le geom <code>geom_tile</code> de <code>ggplot2</code>. Voici sa construction étape par étape.
-```{r}choix &lt;- "COLIN"
+```{r} 
+choix &lt;- "COLIN"
 name %&gt;%
   #Filtre par nom
   filter(prenom == choix) %&gt;%
@@ -59,14 +65,16 @@ name %&gt;%
   xlab("Année") +
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
-  theme_minimal()```
+  theme_minimal()
+```
 </div>
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png"><img class="aligncenter size-full wp-image-1587" src="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png" alt="Colin par département" width="1000" height="500" /></a>
 
 Oui, c'est aussi simple que ça. Essayons avec un autre prénom.
 
 (Bien sûr, vous pouvez choisir une autre échelle pour les couleurs.)
-```{r}choix &lt;- "ELISABETH"
+```{r} 
+choix &lt;- "ELISABETH"
 name %&gt;%
   filter(prenom == choix) %&gt;%
   group_by(annee, dpt) %&gt;%
@@ -81,6 +89,7 @@ name %&gt;%
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
+
 ```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
 

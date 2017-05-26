@@ -26,27 +26,38 @@ Pour cette démonstration, j’ai choisi de m’intéresser au célèbre chef-d�
  	<li>Un peu de vraie littérature, ça fait parfois du bien, non ? (Twittos, rassurez-vous : je vous aime)</li>
 </ul>
 Bref, retour à nos moutons. Déposé sur le CRAN le 16 mai 2016, <a href="https://cran.r-project.org/web/packages/gutenbergr/index.html">gutenbergr</a> permet de télécharger des ouvrages du domaine public sur le Projet Gutenberg, une bibliothèque de livres électroniques libres de droits.
-```{r}library(gutenbergr)```
-```{r}aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")```
+```{r} 
+library(gutenbergr)
+```
+```{r} 
+aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")
+```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
 <pre><code>## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
-## [7] "rights"              "has_text"```
+## [7] "rights"              "has_text"
+```
 La première colonne, contenant le 11, vous renvoie la référence de l’ouvrage sur le catalogue du projet : une information qui vous sera indispensable à la requête suivante :
-```{r}library(magrittr)
-alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()```
+```{r} 
+library(magrittr)
+alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()
+```
 Ici, <code>gutenberg_download</code> prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante <code>gutenberg_strip</code> retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
 
 </div>
 <div id="text-mining-de-alices-adventures-in-wonderland" class="section level3">
 ### Text-mining de Alice’s Adventures in Wonderland
-```{r}library(tidytext)```
+```{r} 
+library(tidytext)
+```
 Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package <code>tidytext</code>, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).<code> </code>
-```{r}tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
+```{r} 
+tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
  unnest_tokens(word, text) %&gt;%
  anti_join(stop_words) %&gt;%
  count(word, sort = TRUE)
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
+
 ```
 Alors… _Roulement de tambour_…
 

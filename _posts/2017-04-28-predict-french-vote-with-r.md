@@ -31,7 +31,8 @@ Let’s create the tibble.
   <span class="identifier">VOIX <span class="operator">= <span class="identifier">c<span class="paren">(<span class="number">8654331, <span class="number">7058859, <span class="number">7211121,<span class="number">7678558, <span class="number">2291025, <span class="number">1694898, <span class="number">394510, 
            <span class="number">435367, <span class="number">232439, <span class="number">332592, <span class="number">65671, <span class="number">655404<span class="paren">),
   <span class="identifier">POURC <span class="operator">= <span class="identifier">round<span class="paren">(<span class="identifier">VOIX <span class="operator">/ <span class="number">36704775 <span class="operator">* <span class="number">100, <span class="number">2<span class="paren">)
-<span class="paren">)```
+<span class="paren">)
+```
 Notes: in the APPEL column, the “NSP” factor means that the candidate didn’t give instructions to his/her supporters.
 
 Let’s start by a short visualisation of the results :
@@ -41,7 +42,8 @@ Let’s start by a short visualisation of the results :
   <span class="identifier">labs<span class="paren">(<span class="identifier">title <span class="operator">= <span class="string">"Résultats du premier tour en France", 
        <span class="identifier">x <span class="operator">= <span class="string">"", 
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
-  <span class="identifier">theme_light<span class="paren">(<span class="paren">)```
+  <span class="identifier">theme_light<span class="paren">(<span class="paren">)
+```
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png"><img class="aligncenter size-full wp-image-1673" src="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png" alt="Résultats du premier tour" width="1000" height="500" /></a>
 ### Simulating second round results
 Here are the results if everyone who voted for a candidate on the first round follows the instructions give by this candidate.
@@ -52,7 +54,8 @@ Here are the results if everyone who voted for a candidate on the first round fo
        <span class="identifier">subtitle <span class="operator">= <span class="string">"Suivi des consignes de vote",
        <span class="identifier">x <span class="operator">= <span class="string">"", 
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
-  <span class="identifier">theme_light<span class="paren">(<span class="paren">)```
+  <span class="identifier">theme_light<span class="paren">(<span class="paren">)
+```
 #### <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png"><img class="aligncenter size-full wp-image-1674" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png" alt="Simulation 1" width="1000" height="500" /></a>
 Ok, now what do we do with the candidate who hasn't give any instruction?
 #### Let’s try various scenarios.
@@ -73,7 +76,8 @@ What would happen if the NSP equally vote for each candidate?
        <span class="identifier">subtitle <span class="operator">= <span class="string">"NSP à 50 / 50 Macron - Le Pen",
        <span class="identifier">x <span class="operator">= <span class="string">"", 
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
-  <span class="identifier">theme_light<span class="paren">(<span class="paren">)```
+  <span class="identifier">theme_light<span class="paren">(<span class="paren">)
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png"><img class="aligncenter size-full wp-image-1678" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png" alt="" width="1000" height="500" /></a>
 
 Ok, we're good with that one. What would happen if all the NSP vote for Marine Le Pen?
@@ -87,7 +91,8 @@ Ok, we're good with that one. What would happen if all the NSP vote for Marine L
        <span class="identifier">subtitle <span class="operator">= <span class="string">"NSP 100% Marine Le Pen",
        <span class="identifier">x <span class="operator">= <span class="string">"", 
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
-  <span class="identifier">theme_light<span class="paren">(<span class="paren">)```
+  <span class="identifier">theme_light<span class="paren">(<span class="paren">)
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png"><img class="aligncenter size-full wp-image-1677" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png" alt="" width="1000" height="500" /></a>
 
 Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
@@ -102,6 +107,7 @@ Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
   <span class="identifier">theme_light<span class="paren">(<span class="paren">)
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png"><img class="aligncenter size-full wp-image-1676" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png" alt="" width="1000" height="500" /></a>
+
 ```
 Yeah, that was obvious.
 ### Left vs Right wing
@@ -116,6 +122,7 @@ OK, let’s try something else. What if all voters who chose a right wing candid
        <span class="identifier">x <span class="operator">= <span class="string">"", 
        <span class="identifier">y <span class="operator">= <span class="string">""<span class="paren">)<span class="operator">+ 
   <span class="identifier">theme_light<span class="paren">(<span class="paren">)
+
 ```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png"><img class="aligncenter size-full wp-image-1675" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png" alt="" width="1000" height="500" /></a>
 

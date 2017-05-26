@@ -15,29 +15,38 @@ published: true
 La première étape ? Créer un compte sur l’API LastFM, afin d’obtenir une clé d'accès. Une fois cette suite de caractères en poche, direction les requêtes avec R.
 
 Commençons par charger les packages que nous allons utiliser :
-```{r}library(tidyverse)
+```{r} 
+library(tidyverse)
 library(scales)
 library(data.table)
-library(magrittr)```
+library(magrittr)
+```
 Les trois paramètres de départ sont :
-```{r}#Le terme de recherche
+```{r} 
+#Le terme de recherche
 query &lt;- "christmas"
 #La clé API (cachée ici)
 apikey &lt;- "XXX"
 #L'index des pages de l'API, qui s'incrémentera au fur et à mesure des requêtes
-x &lt;- 0```
+x &lt;- 0
+```
 Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument "<code>&amp;page="</code>.
-```{r}url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
-              query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)```
+```{r} 
+url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
+              query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
+```
 Création d’une liste pour recevoir les résultats des requêtes, et requête sur la première page (index = 0).
-```{r}dl &lt;- list()
+```{r} 
+dl &lt;- list()
 dl2 &lt;- httr::GET(url)$content %&gt;%
   rawToChar() %&gt;% 
   rjson::fromJSON()
 dl2 &lt;- dl2$results$trackmatches$track
-dl &lt;- c(dl,dl2)```
+dl &lt;- c(dl,dl2)
+```
 Bouclons sur toutes les pages qui renvoient des résultats :
-```{r}repeat{
+```{r} 
+repeat{
   x &lt;- x+1
   url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
                 query,"&amp;api_key=", apikey, "&amp;format=json","&amp;limit=", 1000, "&amp;page=", x)
@@ -49,20 +58,24 @@ Bouclons sur toutes les pages qui renvoient des résultats :
   if(length(dl2) == 0){
     break
   }
-}```
+}
+```
 Et enfin, créons le data.frame de résultats :
-```{r}songs &lt;- lapply(dl, function(x){
+```{r} 
+songs &lt;- lapply(dl, function(x){
   data.frame(name = x$name, 
              artist = x$artist, 
              listeners = as.numeric(x$listeners))
 }) %&gt;%
   do.call(rbind, .) %&gt;% 
-  arrange(listeners)```
+  arrange(listeners)
+```
 </div>
 <div id="and-now-lets-see" class="section level3">
 ### And now, let’s see!
 Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :<code> </code>
-```{r}songs &lt;- as.data.table(songs)
+```{r} 
+songs &lt;- as.data.table(songs)
 songs &lt;- songs[, .(listeners = mean(listeners)), by = .(name,artist)]
 songs[1:15,] %&gt;%
 ggplot(aes(x = reorder(name, listeners), y = listeners)) +
@@ -84,11 +97,13 @@ ggplot(aes(x = reorder(name, listeners), y = listeners)) +
         legend.text=element_text(size = 12),
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
-        panel.grid.major = element_line(colour = "grey"))```
+        panel.grid.major = element_line(colour = "grey"))
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas.jpeg"><img class="aligncenter size-large wp-image-1186" src="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas-1024x512.jpeg" alt="songs-last-fm-christmas" width="809" height="405" /></a>(cliquez pour zoomer)
 
 Quant aux artistes les plus présents :
-```{r}songs$artist %&gt;%
+```{r} 
+songs$artist %&gt;%
   table() %&gt;%
   as.data.frame() %&gt;%
   arrange(desc(Freq)) %&gt;%
@@ -111,7 +126,8 @@ ggplot(aes(x = reorder(., Freq), y = Freq)) +
         legend.text=element_text(size = 12),
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
-        panel.grid.major = element_line(colour = "grey"))```
+        panel.grid.major = element_line(colour = "grey"))
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm.jpeg"><img class="aligncenter size-large wp-image-1184" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm-1024x512.jpeg" alt="artists christmas last fm" width="809" height="405" /></a>(cliquez pour zoomer)
 
 Et sur ce… joyeux Noël !

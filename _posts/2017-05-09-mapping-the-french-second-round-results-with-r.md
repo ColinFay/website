@@ -17,7 +17,8 @@ Let's load this dataset, as well as the map of France available in _ggplot2_.
 <span class="keyword">library<span class="paren">(<span class="identifier">stringr<span class="paren">)
 <span class="keyword">library<span class="paren">(<span class="identifier">stringi<span class="paren">)
 <span class="identifier">result <span class="operator">&lt;- <span class="identifier">read_csv2<span class="paren">(<span class="string">"Presidentielle_2017_Resultats_Communes_Tour_2.csv"<span class="paren">)
-<span class="identifier">map <span class="operator">&lt;- <span class="identifier">map_data<span class="paren">(<span class="string">"france"<span class="paren">)```
+<span class="identifier">map <span class="operator">&lt;- <span class="identifier">map_data<span class="paren">(<span class="string">"france"<span class="paren">)
+```
 ### Clean data
 Before mapping the results, we need to transform and clean the data.frame <code>result</code>.
 <pre class="r"><code class="r"><span class="identifier">result <span class="operator">&lt;- <span class="identifier">result <span class="operator">%&gt;%
@@ -37,9 +38,11 @@ Before mapping the results, we need to transform and clean the data.frame <code>
   <span class="identifier">str_replace_all<span class="paren">(<span class="string">"Cotes-d'Armor", <span class="string">"Cotes-Darmor"<span class="paren">) <span class="operator">%&gt;%
   <span class="identifier">str_replace_all<span class="paren">(<span class="string">"Corse-du-Sud", <span class="string">"Corse du Sud"<span class="paren">) <span class="operator">%&gt;%
   <span class="identifier">str_replace_all<span class="paren">(<span class="string">"Val-d'Oise", <span class="string">"Val-Doise"<span class="paren">) <span class="operator">%&gt;%
-  <span class="identifier">str_replace_all<span class="paren">(<span class="string">"Corse-du-Sud", <span class="string">"Corse du Sud"<span class="paren">)```
+  <span class="identifier">str_replace_all<span class="paren">(<span class="string">"Corse-du-Sud", <span class="string">"Corse du Sud"<span class="paren">)
+```
 We now got a table containing the key figures by department. The name of the first column has been modified, in order to match the `region` name of the `map` table. The character replacement sequence is due to the English notation in `map`, and was required in order to join the tables properly.
-<pre class="r"><code class="r"><span class="identifier">result_map <span class="operator">&lt;- <span class="identifier">left_join<span class="paren">(<span class="identifier">x <span class="operator">= <span class="identifier">map<span class="paren">[,<span class="operator">-<span class="number">6<span class="paren">], <span class="identifier">y <span class="operator">= <span class="identifier">result<span class="paren">)```
+<pre class="r"><code class="r"><span class="identifier">result_map <span class="operator">&lt;- <span class="identifier">left_join<span class="paren">(<span class="identifier">x <span class="operator">= <span class="identifier">map<span class="paren">[,<span class="operator">-<span class="number">6<span class="paren">], <span class="identifier">y <span class="operator">= <span class="identifier">result<span class="paren">)
+```
 ### Visualisation
 Let's now project our variables on maps. You need to play with the <code>scale_fill_</code> argument to manage the color scheme used on each card.
 <p style="text-align: right;">_Note : this article was first published in french. _
@@ -65,6 +68,7 @@ _I've kept the original plot titles._</p>
        <span class="identifier">subtitle <span class="operator">= <span class="string">"Données via data.gouv",
        <span class="identifier">caption <span class="operator">= <span class="string">"http://colinfay.me"<span class="paren">) <span class="operator">+
   <span class="identifier">map_theme
+
 ```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png"><img class="aligncenter size-full wp-image-1716" src="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png" alt="blancs du second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">ggplot<span class="paren">(<span class="identifier">result_map, <span class="identifier">aes<span class="paren">(<span class="identifier">long,<span class="identifier">lat, <span class="identifier">group <span class="operator">= <span class="identifier">group, <span class="identifier">fill <span class="operator">= <span class="identifier">pourcentage_abs<span class="paren">)<span class="paren">) <span class="operator">+
@@ -76,7 +80,8 @@ _I've kept the original plot titles._</p>
        <span class="identifier">title <span class="operator">= <span class="string">"Pourcentage d'abstention au second tour des présidentielles 2017", 
        <span class="identifier">subtitle <span class="operator">= <span class="string">"Données via data.gouv",
        <span class="identifier">caption <span class="operator">= <span class="string">"http://colinfay.me"<span class="paren">) <span class="operator">+
-  <span class="identifier">map_theme ```
+  <span class="identifier">map_theme 
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png"><img class="aligncenter size-full wp-image-1717" src="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png" alt="abstention second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">ggplot<span class="paren">(<span class="identifier">result_map, <span class="identifier">aes<span class="paren">(<span class="identifier">long,<span class="identifier">lat, <span class="identifier">group <span class="operator">= <span class="identifier">group, <span class="identifier">fill <span class="operator">= <span class="identifier">pourcentage_macron<span class="paren">)<span class="paren">) <span class="operator">+
   <span class="identifier">geom_polygon<span class="paren">(<span class="paren">) <span class="operator">+
@@ -87,7 +92,8 @@ _I've kept the original plot titles._</p>
        <span class="identifier">title <span class="operator">= <span class="string">"Résultats de E. Macron au second tour des présidentielles 2017", 
        <span class="identifier">subtitle <span class="operator">= <span class="string">"Données via data.gouv",
        <span class="identifier">caption <span class="operator">= <span class="string">"http://colinfay.me"<span class="paren">) <span class="operator">+
-  <span class="identifier">map_theme ```
+  <span class="identifier">map_theme 
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png"><img class="aligncenter size-full wp-image-1725" src="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png" alt="macron second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">
 ggplot<span class="paren">(<span class="identifier">result_map, <span class="identifier">aes<span class="paren">(<span class="identifier">long,<span class="identifier">lat, <span class="identifier">group <span class="operator">= <span class="identifier">group, <span class="identifier">fill <span class="operator">= <span class="identifier">pourcentage_lepen<span class="paren">)<span class="paren">) <span class="operator">+
@@ -99,5 +105,6 @@ ggplot<span class="paren">(<span class="identifier">result_map, <span class="ide
        <span class="identifier">title <span class="operator">= <span class="string">"Résultats de M. Le Pen au second tour des présidentielles 2017", 
        <span class="identifier">subtitle <span class="operator">= <span class="string">"Données via data.gouv",
        <span class="identifier">caption <span class="operator">= <span class="string">"http://colinfay.me"<span class="paren">) <span class="operator">+
-  <span class="identifier">map_theme ```
+  <span class="identifier">map_theme 
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png"><img class="aligncenter size-full wp-image-1724" src="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png" alt="Votes pour Marine Le Pen au second tour" width="1000" height="500" /></a>
