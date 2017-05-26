@@ -1,6 +1,6 @@
 ---
 ID: 1697
-post_title: '#RStats & API Microsoft Computer Vision API'
+post_title: '#RStats et Microsoft Computer Vision'
 author: colin_fay
 post_date: 2017-05-10 14:00:58
 post_excerpt: ""
