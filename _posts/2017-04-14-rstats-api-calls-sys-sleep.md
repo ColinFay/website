@@ -20,8 +20,8 @@ Récemment également, j'ai utilisé l'API _Computer Vision_ de Microsoft - une 
 
 Alors, comment automatiser le requêtage sur une API quand elle limite le nombre de requêtes par minutes / heure / jour (par exemple, si vous avez 282 images à analyser) ?
 ### Première méthode : for loop et Sys.sleep()
-_Remarque : ce blogpost ne contient aucune requête API, j'utiliserais Sys.time () pour montrer comment fonctionne Sys.sleep ().
-_
+
+_Remarque : ce blogpost ne contient aucune requête API, j'utiliserais Sys.time () pour montrer comment fonctionne Sys.sleep ()._
 
 Si vous souhaitez limiter à 20 appels par minute, vous devrez utiliser _Sys.sleep ()_. Cette fonction ne prend qu'un argument, _time_, qui est le nombre de secondes que vous souhaitez arrêter R avant de reprendre.
 
@@ -32,7 +32,7 @@ for(i in 1:3){
   Sys.sleep(time = 10)
 }
 ```
-<pre>```{r} 
+```{r} 
 ## [1] "2017-03-26 11:13:58 CET"
 ## [1] "2017-03-26 11:14:08 CET"
 ## [1] "2017-03-26 11:14:18 CET"
@@ -51,13 +51,13 @@ lapply(1:3, function(x) {
   Sys.sleep(3)
 }) %>% do.call(rbind, .) 
 ```
-<pre>```{r} 
+```{r} 
 ## [1] 1
 ## [1] "2017-03-26 11:20:22 CET"
 ## [1] 2
 ## [1] "2017-03-26 11:20:25 CET"
 ## [1] 3
 ## [1] "2017-03-26 11:20:28 CET"
-
+```
 ```
 _Hope this can help!_
