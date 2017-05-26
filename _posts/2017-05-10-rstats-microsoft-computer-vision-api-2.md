@@ -4,9 +4,9 @@ post_title: '#RStats et Microsoft Computer Vision'
 author: colin_fay
 post_date: 2017-05-10 14:00:58
 post_excerpt: ""
+layout: single
 permalink: /rstats-microsoft-computer-vision-api-2/
 published: true
-
 ---
 
 ## Exploration des photos de profils des twittos #RStats avec l'API Microsoft Computer Vision.
