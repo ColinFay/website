@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-04-14 13:00:53
 post_excerpt: ""
 layout: single
-permalink: >
-  /rstats-api-calls-sys-sleep/
+permalink: /rstats-api-calls-sys-sleep/
 published: true
 ---
 <h2>J'ai récemment reçu un mail concernant mon post sur l'API Discogs, disant que le code ne fonctionnait pas.</h2>
