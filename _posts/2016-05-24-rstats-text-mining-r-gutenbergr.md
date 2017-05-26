@@ -8,17 +8,15 @@ layout: single
 permalink: /rstats-text-mining-r-gutenbergr/
 published: true
 ---
-<div id="a-la-fois-technique-de-data-mining-et-graal-des-temps-modernes-la-fouille-de-texte-permet-de-faire-emerger-des-informations-depuis-une-large-quantite-de-texte.-comment-le-realiser-avec-r" class="section level2">
 ## Technique de data-mining et Graal des temps modernes, la fouille de texte permet de faire émerger des informations depuis un large corpus. Comment le réaliser avec R ?
 <!--more-->
-<div id="le-text-mining-quest-ce-que-cest" class="section level3">
+
 ### Le text-mining, qu’est-ce que c’est
-Au croisement de __la linguistique, de l’informatique et des statistiques__, le text-mining est utilisé pour analyser un corpus de manière automatique. L’objectif (au-delà de faire le malin devant vos collègues) :__ faire émerger des patterns, des tendances et des singularités__ depuis une quantité importante de textes. Par exemple, le text-mining vous permettra de tirer des informations de la description Twitter de vos 1500 followers, ou encore de 5000 statuts Facebook… _Pretty cool, right?_
+Au croisement de __la linguistique, de l’informatique et des statistiques__, le text-mining est utilisé pour analyser un corpus de manière automatique. L’objectif (au-delà de faire le malin devant vos collègues) : __faire émerger des patterns, des tendances et des singularités__ depuis une quantité importante de textes. Par exemple, le text-mining vous permettra de tirer des informations de la description Twitter de vos 1500 followers, ou encore de 5000 statuts Facebook… _Pretty cool, right?_
 
-La première étape du text-mining, et peut-être la plus simple à saisir : l’__analyse de fréquence__. Comme son nom l’indique, cette technique calcule la récurrence des mots dans un corpus — en d’autres termes, leur fréquence d’apparition. En pratique, cela vous permet de __comparer deux corpus__ afin d’en tirer des conclusions… Un exemple ? Imaginez que vous analysiez les 2500 derniers commentaires sous la page Facebook de votre marque/ville/star préférée, et que vous découvriez que parmi les mots les plus fréquents se trouvent “merci”, “magnifique”, “super”. Si vous prenez deux marques/villes/stars concurrentes, vous tombez sur “bif-bof” et “moyen” sur l’une, “dégueu”, “beurk” et “catastrophique” sur l’autre… On peut en déduire quelque chose, n’est-il pas ?
+La première étape du text-mining, et peut-être la plus simple à saisir : __l'analyse de fréquence__. Comme son nom l’indique, cette technique calcule la récurrence des mots dans un corpus — en d’autres termes, leur fréquence d’apparition. En pratique, cela vous permet de __comparer deux corpus__ afin d’en tirer des conclusions… Un exemple ? Imaginez que vous analysiez les 2500 derniers commentaires sous la page Facebook de votre marque/ville/star préférée, et que vous découvriez que parmi les mots les plus fréquents se trouvent “merci”, “magnifique”, “super”. Si vous prenez deux marques/villes/stars concurrentes, vous tombez sur “bif-bof” et “moyen” sur l’une, “dégueu”, “beurk” et “catastrophique” sur l’autre… On peut en déduire quelque chose, n’est-il pas ?
 
-</div>
-<div id="gutenbergr" class="section level3">
+
 ### gutenbergr
 Pour cette démonstration, j’ai choisi de m’intéresser au célèbre chef-d’oeuvre de Lewis Caroll, _Alice’s Adventures in Wonderland_. Pourquoi ce texte ? En effet, j’aurais pu sélectionner les 1500 derniers Tweets contenant le hashtag Rennes… mais :
 <ul>
@@ -33,7 +31,7 @@ library(gutenbergr)
 aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
-<pre>```{r} 
+```{r} 
 ## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
@@ -43,23 +41,15 @@ La première colonne, contenant le 11, vous renvoie la référence de l’ouvrag
 library(magrittr)
 alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
 ```
-Ici, ```{r} 
-gutenberg_download
-``` prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante ```{r} 
-gutenberg_strip
-``` retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
+Ici, `gutenberg_download` prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante `gutenberg_strip` retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
 
-</div>
-<div id="text-mining-de-alices-adventures-in-wonderland" class="section level3">
 ### Text-mining de Alice’s Adventures in Wonderland
+
 ```{r} 
 library(tidytext)
 ```
-Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package ```{r} 
-tidytext
-```, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).```{r} 
- 
-```
+Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package `tidytext`, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).
+
 ```{r} 
 tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
  unnest_tokens(word, text) %>%

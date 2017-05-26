@@ -1,8 +1,6 @@
 ---
 ID: 776
-post_title: >
-  Rennes Social Derby, la compétition de
-  Community Managers 
+post_title: 'Rennes Social Derby, la compétition de Community Managers'
 author: colin_fay
 post_date: 2016-03-08 18:41:11
 post_excerpt: ""

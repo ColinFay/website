@@ -8,16 +8,15 @@ layout: single
 permalink: /rstats-text-mining-r-gutenbergr-2/
 published: true
 ---
-<div id="a-la-fois-technique-de-data-mining-et-graal-des-temps-modernes-la-fouille-de-texte-permet-de-faire-emerger-des-informations-depuis-une-large-quantite-de-texte.-comment-le-realiser-avec-r" class="section level2">
+
 ## Introduction to text-mining with R and gutenbergr.
 <!--more-->
-<div id="le-text-mining-quest-ce-que-cest" class="section level3">
+
 ### What is text-mining ?
 At the crossroads of __linguistics__, __computer science__ and __statistics__, text-mining is a data-mining technic used to analyze a corpus, in order to discover __patterns__, __trends__ and __singularities__ in a large number of texts. For example, you can analyse the Twitter description of your followers, or even get information from 5000 Facebook statuses, etc. Pretty cool, right?
 
 The first "step" is perhaps the simplest to understand : __frequency analysis__. As the name suggests, this technique calculates the recurrence of each word inside a corpus — in other words... their frequency. This allows you to compare several texts. As an example, let's assume you're analysing 2500 comments on the Facebook page of your favorite brand / city / star, and find that among the most frequent words are "thank you", "beautiful", "super". If you take two competing brands / cities / stars, you come across "yeurk" and "hate" on one, and "disgusting" and "catastrophic" on the other... pretty straightforward, isn't it?
 
-</div>
 ### gutenbergr
 I've chosen to analyse Lewis Caroll's famous masterpiece, _Alice's Adventures in Wonderland_. Why? I could have selected the last 1500 Tweets containing #Rennes ... but:
 <ul>
@@ -25,6 +24,7 @@ I've chosen to analyse Lewis Caroll's famous masterpiece, _Alice's Adventures in
  	<li>Good literature has never hurt anyone :)</li>
 </ul>
 <a href="https://cran.r-project.org/web/packages/gutenbergr/index.html">gutenbergr</a> is an R package you can use to dowload books from the <a href="https://www.gutenberg.org/">Gutenberg Project</a>.
+
 ```{r} 
 library(gutenbergr)
 ```
@@ -32,7 +32,7 @@ library(gutenbergr)
 aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 This function gives you a list with the following elements:
-<pre>```{r} 
+```{r} 
 ## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
@@ -42,23 +42,14 @@ The first column contains the reference of the book you're looking for in the Gu
 library(magrittr)
 alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
 ```
-Here, ```{r} 
-gutenberg_download
-``` takes the ID of the book you want to download, and returns you a data.frame with the full text. ```{r} 
-gutenberg_strip
-``` removes all the metadata at the beginning of the book.
+Here, `gutenberg_download` takes the ID of the book you want to download, and returns you a data.frame with the full text. `gutenberg_strip` removes all the metadata at the beginning of the book.
 
-</div>
 ### Alice’s Adventures in Wonderland
 ```{r} 
 library(tidytext)
 ```
-To perform your data analysis, you'll need the ```{r} 
-tidytext
-``` package. Then :
-```{r} 
- 
-```
+To perform your data analysis, you'll need the `tidytext` package. Then :
+
 ```{r} 
 tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
  unnest_tokens(word, text) %>%
@@ -68,6 +59,7 @@ barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots
 
 
 ```
+
 Perfect! So…_drum rolls_…
 
 <a href="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png"><img class="aligncenter size-full wp-image-1663" src="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png" alt="" width="1200" height="600" /></a>

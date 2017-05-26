@@ -1,9 +1,6 @@
 ---
 ID: 722
-post_title: >
-  Utiliser Snapchat pour sa marque ou son
-  média — Retour du Medialab Speed
-  Training
+post_title: 'Utiliser Snapchat pour sa marque ou son média — Retour du Medialab Speed Training'
 author: colin_fay
 post_date: 2015-10-12 12:33:59
 post_excerpt: ""
