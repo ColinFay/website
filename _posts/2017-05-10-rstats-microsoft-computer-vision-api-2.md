@@ -22,7 +22,7 @@ Dans cet article, vous trouverez un tuto sur comment obtenir des photos de profi
 library(rtweet)
 library(httr)
 library(jsonlite)
-token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX</code><span style="font-family: 'Noto Serif', sans-serif;">")</pre>
+token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX</code><span style="font-family: 'Noto Serif', sans-serif;">")```
 ```{r}users &lt;- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %&gt;%

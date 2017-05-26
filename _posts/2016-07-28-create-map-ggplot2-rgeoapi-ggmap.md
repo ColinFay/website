@@ -19,7 +19,7 @@ Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="h
 rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With <code>rgeoapi</code>, you can get any coordinate, size and population of a French city, to be used in your maps.
 
 To install :
-<pre class="r">install.packages("rgeoapi")</pre>
+<pre class="r">install.packages("rgeoapi")```
 </div>
 ### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:

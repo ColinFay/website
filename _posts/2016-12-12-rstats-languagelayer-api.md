@@ -16,9 +16,9 @@ Ce package accède à l'API <a href="https://languagelayer.com/" target="_blank"
 L'API languagelayer est une interface JSON vous permettant de détecter une langue — le package <code>languagelayeR</code> vous offre une connexion a cette interface avec R.
 ### Installer languagelayerR
 Pour installer le package depuis le CRAN :
-<pre class="{r}">install.packages("languagelayeR")</pre>
+<pre class="{r}">install.packages("languagelayeR")```
 Pour installer la version dev depuis <a href="https://github.com/ColinFay" target="_blank">GitHub</a>  :
-<pre class="{r}">devtools::install_github("ColinFay/languagelayeR")</pre>
+<pre class="{r}">devtools::install_github("ColinFay/languagelayeR")```
 ### Comment fonctionne languagelayeR
 La version 1.0.0 comprend 3 fonctions :
 <ul>
@@ -33,9 +33,9 @@ Retrouvez votre clé API sur votre <a href="https://languagelayer.com/dashboard"
 ### Exemples
 #### getLanguage
 Détecter une langue :
-<pre class="{r}">getLanguage(query = "I really really love R and that's a good thing, right?")</pre>
+<pre class="{r}">getLanguage(query = "I really really love R and that's a good thing, right?")```
 #### getSupportedLanguage
 Lister toutes les langues disponibles :
-<pre class="{r}">getSupportedLanguage()</pre>
+<pre class="{r}">getSupportedLanguage()```
 ### Contact
 Questions et feedbacks <a href="mailto:contact@colinfay.me" target="_blank">bienvenus</a> !

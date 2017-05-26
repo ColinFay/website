@@ -14,7 +14,7 @@ published: true
 Accédez à l'API du réseau social Pinterest directement dans R avec <code>rpinterest</code>, package désormais disponible sur le <a href="https://cran.r-project.org/web/packages/rpinterest/index.html" target="_blank">CRAN</a>.
 
 Pour installer le package directement dans R :
-<pre class="{r}">install.packages("rpinterest")</pre>
+<pre class="{r}">install.packages("rpinterest")```
 Le manuel d'utilisation contenant le détail des 7 fonctions est disponible en <a href="https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf" target="_blank">pdf</a> — un tutoriel en français est également disponible <a href="http://colinfay.me/rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/" target="_blank">ici</a>.
 ### rpinterest — version dev
 Pour la version en développement, pour proposer des modifications ou des amélioration, n'hésitez pas à vous rendre sur la <a href="https://github.com/ColinFay/rpinterest" target="_blank">page GitHub</a> de ce package.

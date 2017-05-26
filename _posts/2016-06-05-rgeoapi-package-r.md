@@ -25,7 +25,7 @@ For an optimal compatibility, all the names (especially outputs) used in this pa
 ## <a id="user-content-install-rgeoapi" class="anchor" href="https://github.com/ColinFay/rgeoapi#install-rgeoapi"></a>Install rgeoapi
 Install this package directly in R :
 <div class="highlight highlight-source-r">
-<pre><span class="pl-e">devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/rgeoapi<span class="pl-pds">")</pre>
+<pre><span class="pl-e">devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/rgeoapi<span class="pl-pds">")```
 </div>
 ## How rgeoapi works
 The version 1.0.0 works with eleven functions. Which are :
@@ -52,18 +52,18 @@ In the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a>, you can reques
 ### ComByCoord
 Takes the latitude and longitude of a city, returns a data.frame with name, INSEE code, postal code, INSEE department code, INSEE region code, population (approx), surface (in hectares), lat and long (WGS-84).
 <div class="highlight highlight-source-r">
-<pre>ComByCoord(<span class="pl-v">lat <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"48.11023<span class="pl-pds">", <span class="pl-v">lon <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"-1.678872<span class="pl-pds">")</pre>
+<pre>ComByCoord(<span class="pl-v">lat <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"48.11023<span class="pl-pds">", <span class="pl-v">lon <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"-1.678872<span class="pl-pds">")```
 </div>
 ### DepByName
 This function takes a character string with the name of the department, and returns a data.frame with name, INSEE code, and region code. Partial matches are possible. In that case, pertinence scores are given.
 <div class="highlight highlight-source-r">
 <pre>DepByName(<span class="pl-s"><span class="pl-pds">"morbihan<span class="pl-pds">")
-DepByName(<span class="pl-s"><span class="pl-pds">"Il<span class="pl-pds">")</pre>
+DepByName(<span class="pl-s"><span class="pl-pds">"Il<span class="pl-pds">")```
 </div>
 ### RegByCode
 This function takes an INSEE Code, returns a data.frame with name and region code.
 <div class="highlight highlight-source-r">
-<pre>RegByCode(<span class="pl-c1">53)</pre>
+<pre>RegByCode(<span class="pl-c1">53)```
 </div>
 ### French Tutorial &amp; contact
 A French tutorial on <a href="http://colinfay.me/rgeoapi-v1/">my website</a>. Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !

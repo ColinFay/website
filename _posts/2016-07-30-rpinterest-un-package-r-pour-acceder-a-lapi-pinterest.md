@@ -16,7 +16,7 @@ published: true
 _Update [17/08/16]_
 
 Le package est désormais disponible sur le <a href="https://cran.r-project.org/web/packages/rpinterest/index.html">CRAN</a> !
-<pre class="{r}">install.packages("rpinterest")</pre>
+<pre class="{r}">install.packages("rpinterest")```
 _[/update]_
 
 &nbsp;

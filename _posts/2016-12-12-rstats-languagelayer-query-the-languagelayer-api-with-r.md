@@ -20,7 +20,7 @@ published: true
 ## Install languagelayerR
 <p">Install this package directly in R :</p>
 
-<pre>devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/languagelayerR<span class="pl-pds">")</pre>
+<pre>devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/languagelayerR<span class="pl-pds">")```
 ## How languagelayeR works
 <p class="unchanged rich-diff-level-one">The version 1.0.0 works with three functions. Which are :</p>
 
@@ -43,11 +43,11 @@ published: true
 ### getLanguage
 <p>Detect a language from a character string.</p>
 
-<pre>getLanguage(<span class="pl-v">query <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"I really really love R and that's a good thing, right?<span class="pl-pds">")</pre>
+<pre>getLanguage(<span class="pl-v">query <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"I really really love R and that's a good thing, right?<span class="pl-pds">")```
 <h3 class="unchanged rich-diff-level-one">getSupportedLanguage
 <p class="unchanged rich-diff-level-one">List all the languages available on the languagelayer API.</p>
 
-<pre>getSupportedLanguage()</pre>
+<pre>getSupportedLanguage()```
 ### Contact
 <p>Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !</p>
 &nbsp;
