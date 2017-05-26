@@ -36,7 +36,7 @@ theme_void()
 
 Ok, not really sexy, I'll admit that :)
 
-But here's is the tip for creating a pixel effect : round the <em>long</em> and <em>lat</em>, in order&nbsp;to make the border more squared (now, we'll also fill according to groups).
+But here's is the tip for creating a pixel effect : round the _long_ and _lat_, in order&nbsp;to make the border more squared (now, we'll also fill according to groups).
 
 <code>ggplot(map, aes(round(long, 1),round(lat,1), group=group,fill = as.factor(group))) +
 geom_polygon() +
@@ -60,7 +60,7 @@ theme_void()
 
 Ok, that's not very informative, but this map looks cool, right!&nbsp;
 
-For an even more sexy look, you can put the borders back with a <em>geom_path</em>:
+For an even more sexy look, you can put the borders back with a _geom_path_:
 
 <code>ggplot(map, aes(round(long, 0),round(lat,0), group=group,fill = as.factor(group))) +
 geom_polygon() +
@@ -73,7 +73,7 @@ theme_void()
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png"><img class="aligncenter size-full wp-image-1610" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png" alt="" width="500" height="500"></a>
 
 Tada!
-<h3>US &amp; world map</h3>
+### US &amp; world map
 Here is the code you can use to make a pixel world map.
 
 <code>ggplot(map_data("world"), aes(round(long, 0),round(lat, 0), group=group, fill = as.factor(group))) +

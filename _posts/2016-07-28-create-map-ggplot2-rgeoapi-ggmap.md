@@ -11,9 +11,9 @@ permalink: /create-map-ggplot2-rgeoapi-ggmap/
 published: true
 ---
 <div id="pense-pour-simplifier-les-travaux-de-cartographie-rgeoapi-est-un-package-qui-interroge-la-base-de-donnees-geographique-francaise.-resultat-des-visualisation-sur-carte-easy-peasy.-si-si." class="section level2">
-<h2>Improve your mapping with rgeoapi, a package designed to access the french geographic database.</h2>
+## Improve your mapping with rgeoapi, a package designed to access the french geographic database.
 <!--more-->
-<h3>rgeowhat ?</h3>
+### rgeowhat ?
 Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a> API is a JSON interface designed to make requests on the French geographic database.
 
 rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With <code>rgeoapi</code>, you can get any coordinate, size and population of a French city, to be used in your maps.
@@ -21,10 +21,10 @@ rgeoapi was developped to facilitate your geographic projects by giving you acce
 To install :
 <pre class="r">install.packages("rgeoapi")</pre>
 </div>
-<h3>Get coordinates</h3>
+### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:
-<pre class="r"><code>villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
-</code></pre>
+```{r}villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
@@ -56,12 +56,12 @@ So, let's imagine you have a dataset with only the names of the cities you want 
 </tr>
 </tbody>
 </table>
-To put these cities on a map, you'll need their coordinates. For that, you can use <code>rgeoapi</code>!
-<pre class="r"><code>library(rgeoapi)</code></pre>
-<pre class="r"><code>library(plyr)
+To put these cities on a map, you'll need their coordinates. For that, you can use <code>rgeoapi</code>!
+```{r}library(rgeoapi)```
+```{r}library(plyr)
 geo &lt;- ldply(villes$nom, ComByName)
-</code></pre>
-<table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
+```
+<table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
 <th align="center">name</th>
@@ -269,14 +269,14 @@ geo &lt;- ldply(villes$nom, ComByName)
 </tbody>
 </table>
 &nbsp;
-<pre class="r"><code>names(villes)[1] &lt;- "name"
-villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)</code></pre>
-<h3>Create a map with ggmap and ggplot2</h3>
-The <code>ggmap</code> package has been designed to produce background maps to be used with <code>ggplot2</code>. The "fast" function to create a map is <code>qmap(x,y)</code> - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
-<pre class="r"><code>library(ggmap)</code></pre>
-<pre class="r"><code>map &lt;- qmap('Bretagne', zoom = 8)</code></pre>
-Once you have a <code>map</code> object, you can use it as the first argument of your ggplot call, and then combine it with your usual <code>geom</code>:
-<pre class="r"><code>map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))</code></pre>
+```{r}names(villes)[1] &lt;- "name"
+villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)```
+### Create a map with ggmap and ggplot2
+The <code>ggmap</code> package has been designed to produce background maps to be used with <code>ggplot2</code>. The "fast" function to create a map is <code>qmap(x,y)</code> - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
+```{r}library(ggmap)```
+```{r}map &lt;- qmap('Bretagne', zoom = 8)```
+Once you have a <code>map</code> object, you can use it as the first argument of your ggplot call, and then combine it with your usual <code>geom</code>:
+```{r}map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
 
 &nbsp;

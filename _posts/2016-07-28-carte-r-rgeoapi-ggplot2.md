@@ -11,18 +11,18 @@ permalink: /carte-r-rgeoapi-ggplot2/
 published: true
 ---
 <div id="pense-pour-simplifier-les-travaux-de-cartographie-rgeoapi-est-un-package-qui-interroge-la-base-de-donnees-geographique-francaise.-resultat-des-visualisation-sur-carte-easy-peasy.-si-si." class="section level2">
-<h2>Pensé pour simplifier les travaux de cartographie, rgeoapi est un package qui interroge la base de données géographique française. Résultat : des visualisations de cartes, <em>easy peasy</em>. Si si.</h2>
+## Pensé pour simplifier les travaux de cartographie, rgeoapi est un package qui interroge la base de données géographique française. Résultat : des visualisations de cartes, _easy peasy_. Si si.
 <!--more-->
-<h3>rgeoquoi ?</h3>
-Disponible sur <a href="https://github.com/ColinFay">Github</a>, <code>rgeoapi</code> permet d’effectuer des requêtes sur la base de données cartographique française. Pour quoi faire dites-vous ? Ce package vous permet, entre autres, d’obtenir les coordonnées d’une ville à partir de son nom, de son code INSEE ou encore de son code postal. <em>How cool is that?</em>
+### rgeoquoi ?
+Disponible sur <a href="https://github.com/ColinFay">Github</a>, <code>rgeoapi</code> permet d’effectuer des requêtes sur la base de données cartographique française. Pour quoi faire dites-vous ? Ce package vous permet, entre autres, d’obtenir les coordonnées d’une ville à partir de son nom, de son code INSEE ou encore de son code postal. _How cool is that?_
 
 Pour installer rgeoapi :
-<pre class="r"><code>devtools::install_github("ColinFay/rgeoapi")</code></pre>
+```{r}devtools::install_github("ColinFay/rgeoapi")```
 </div>
-<h3>Récupérer les coordonnées des villes</h3>
+### Récupérer les coordonnées des villes
 Imaginons donc que vous possédiez un jeu de données avec pour unique référent géographique les noms des villes à représenter. Dans l'idées, nous aurions :
-<pre class="r"><code>villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
-</code></pre>
+```{r}villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
@@ -54,14 +54,14 @@ Imaginons donc que vous possédiez un jeu de données avec pour unique référen
 </tr>
 </tbody>
 </table>
-Pour représenter ces données sur une carte de manière précise, vous aurez besoin des coordonnées des villes. C’est à ce moment qu’entre en scène <code>rgeoapi</code>!
+Pour représenter ces données sur une carte de manière précise, vous aurez besoin des coordonnées des villes. C’est à ce moment qu’entre en scène <code>rgeoapi</code>!
 
 Nous lançons donc une requête sur les noms contenus dans notre data.frame.
-<pre class="r"><code>library(rgeoapi)</code></pre>
-<pre class="r"><code>library(plyr)
+```{r}library(rgeoapi)```
+```{r}library(plyr)
 geo &lt;- ldply(villes$nom, ComByName)
-</code></pre>
-<table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
+```
+<table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
 <th align="center">name</th>
@@ -272,18 +272,18 @@ geo &lt;- ldply(villes$nom, ComByName)
 <ul>
  	<li>Plusieurs villes possèdent cette chaine de caractères dans leur nom</li>
  	<li>La commune en question couvre plusieurs codes postaux et le paramètre <code>postal</code> est <code>TRUE</code> (ce dernier est <code>FALSE</code> par défaut)</li>
- 	<li>Votre requête est en <em>partial match</em></li>
+ 	<li>Votre requête est en _partial match_</li>
 </ul>
 Nous avons donc ici un tableau qui nous retourne toutes les coordonnées des villes qui nous intéressent, avec leur surface et leur population. Bien, ne reste plus qu’à effectuer une jointure des deux !
-<pre class="r"><code>names(villes)[1] &lt;- "name"
-villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)</code></pre>
+```{r}names(villes)[1] &lt;- "name"
+villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)```
 Passons maintenant aux choses sérieuses.
-<h3>Créer une carte avec ggmap et ggplot2</h3>
-Le package <code>ggmap </code>a été spécialement pensé pour produire des fonds de cartes à insérer en background de vos <code>ggplot2</code>, autrement dit des cartes qui seront utilisées comme couche de <code>mapping</code> de votre visualisation. La fonction rapide de carte est <code>qmap</code> (une terminologie qui devrait sonner familière aux adeptes des <code>qplot</code> de <code>ggplot</code>) – le premier argument faisant référence à la requête (ville / département / région…) et le second au niveau de zoom de Google map.
-<pre class="r"><code>library(ggmap)</code></pre>
-<pre class="r"><code>map &lt;- qmap('Bretagne', zoom = 8)</code></pre>
+### Créer une carte avec ggmap et ggplot2
+Le package <code>ggmap </code>a été spécialement pensé pour produire des fonds de cartes à insérer en background de vos <code>ggplot2</code>, autrement dit des cartes qui seront utilisées comme couche de <code>mapping</code> de votre visualisation. La fonction rapide de carte est <code>qmap</code> (une terminologie qui devrait sonner familière aux adeptes des <code>qplot</code> de <code>ggplot</code>) – le premier argument faisant référence à la requête (ville / département / région…) et le second au niveau de zoom de Google map.
+```{r}library(ggmap)```
+```{r}map &lt;- qmap('Bretagne', zoom = 8)```
 Une fois l’objet <code>map</code> créé, il ne vous reste qu’à l’utiliser comme première layer de votre fonction <code>ggplot</code>, en utilisant les fonctions <code>geom</code> habituelles :
-<pre class="r"><code>map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))</code></pre>
+```{r}map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
 
 Et voilà, c’est presque trop simple ! N’hésitez pas à me faire vos retours sur rgeoapi directement sur GitHub, ou à m’envoyer vos questions sur le package via <a href="mailto:contact@colinfay.me">mail</a>.

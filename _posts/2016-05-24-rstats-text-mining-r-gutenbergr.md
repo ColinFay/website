@@ -9,46 +9,46 @@ permalink: /rstats-text-mining-r-gutenbergr/
 published: true
 ---
 <div id="a-la-fois-technique-de-data-mining-et-graal-des-temps-modernes-la-fouille-de-texte-permet-de-faire-emerger-des-informations-depuis-une-large-quantite-de-texte.-comment-le-realiser-avec-r" class="section level2">
-<h2>Technique de data-mining et Graal des temps modernes, la fouille de texte permet de faire émerger des informations depuis un large corpus. Comment le réaliser avec R ?</h2>
+## Technique de data-mining et Graal des temps modernes, la fouille de texte permet de faire émerger des informations depuis un large corpus. Comment le réaliser avec R ?
 <!--more-->
 <div id="le-text-mining-quest-ce-que-cest" class="section level3">
-<h3>Le text-mining, qu’est-ce que c’est</h3>
-Au croisement de <strong>la linguistique, de l’informatique et des statistiques</strong>, le text-mining est utilisé pour analyser un corpus de manière automatique. L’objectif (au-delà de faire le malin devant vos collègues) :<strong> faire émerger des patterns, des tendances et des singularités</strong> depuis une quantité importante de textes. Par exemple, le text-mining vous permettra de tirer des informations de la description Twitter de vos 1500 followers, ou encore de 5000 statuts Facebook… <em>Pretty cool, right?</em>
+### Le text-mining, qu’est-ce que c’est
+Au croisement de __la linguistique, de l’informatique et des statistiques__, le text-mining est utilisé pour analyser un corpus de manière automatique. L’objectif (au-delà de faire le malin devant vos collègues) :__ faire émerger des patterns, des tendances et des singularités__ depuis une quantité importante de textes. Par exemple, le text-mining vous permettra de tirer des informations de la description Twitter de vos 1500 followers, ou encore de 5000 statuts Facebook… _Pretty cool, right?_
 
-La première étape du text-mining, et peut-être la plus simple à saisir : l’<strong>analyse de fréquence</strong>. Comme son nom l’indique, cette technique calcule la récurrence des mots dans un corpus — en d’autres termes, leur fréquence d’apparition. En pratique, cela vous permet de <strong>comparer deux corpus</strong> afin d’en tirer des conclusions… Un exemple ? Imaginez que vous analysiez les 2500 derniers commentaires sous la page Facebook de votre marque/ville/star préférée, et que vous découvriez que parmi les mots les plus fréquents se trouvent “merci”, “magnifique”, “super”. Si vous prenez deux marques/villes/stars concurrentes, vous tombez sur “bif-bof” et “moyen” sur l’une, “dégueu”, “beurk” et “catastrophique” sur l’autre… On peut en déduire quelque chose, n’est-il pas ?
+La première étape du text-mining, et peut-être la plus simple à saisir : l’__analyse de fréquence__. Comme son nom l’indique, cette technique calcule la récurrence des mots dans un corpus — en d’autres termes, leur fréquence d’apparition. En pratique, cela vous permet de __comparer deux corpus__ afin d’en tirer des conclusions… Un exemple ? Imaginez que vous analysiez les 2500 derniers commentaires sous la page Facebook de votre marque/ville/star préférée, et que vous découvriez que parmi les mots les plus fréquents se trouvent “merci”, “magnifique”, “super”. Si vous prenez deux marques/villes/stars concurrentes, vous tombez sur “bif-bof” et “moyen” sur l’une, “dégueu”, “beurk” et “catastrophique” sur l’autre… On peut en déduire quelque chose, n’est-il pas ?
 
 </div>
 <div id="gutenbergr" class="section level3">
-<h3>gutenbergr</h3>
-Pour cette démonstration, j’ai choisi de m’intéresser au célèbre chef-d’oeuvre de Lewis Caroll, <em>Alice’s Adventures in Wonderland</em>. Pourquoi ce texte ? En effet, j’aurais pu sélectionner les 1500 derniers Tweets contenant le hashtag Rennes… mais :
+### gutenbergr
+Pour cette démonstration, j’ai choisi de m’intéresser au célèbre chef-d’oeuvre de Lewis Caroll, _Alice’s Adventures in Wonderland_. Pourquoi ce texte ? En effet, j’aurais pu sélectionner les 1500 derniers Tweets contenant le hashtag Rennes… mais :
 <ul>
  	<li>D’autres l’ont fait avant nous</li>
  	<li>Un peu de vraie littérature, ça fait parfois du bien, non ? (Twittos, rassurez-vous : je vous aime)</li>
 </ul>
 Bref, retour à nos moutons. Déposé sur le CRAN le 16 mai 2016, <a href="https://cran.r-project.org/web/packages/gutenbergr/index.html">gutenbergr</a> permet de télécharger des ouvrages du domaine public sur le Projet Gutenberg, une bibliothèque de livres électroniques libres de droits.
-<pre class="r"><code>library(gutenbergr)</code></pre>
-<pre class="r"><code>aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")</code></pre>
+```{r}library(gutenbergr)```
+```{r}aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
 <pre><code>## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
-## [7] "rights"              "has_text"</code></pre>
+## [7] "rights"              "has_text"```
 La première colonne, contenant le 11, vous renvoie la référence de l’ouvrage sur le catalogue du projet : une information qui vous sera indispensable à la requête suivante :
-<pre class="r"><code>library(magrittr)
-alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()</code></pre>
-Ici, <code>gutenberg_download</code> prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante <code>gutenberg_strip</code> retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
+```{r}library(magrittr)
+alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()```
+Ici, <code>gutenberg_download</code> prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante <code>gutenberg_strip</code> retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
 
 </div>
 <div id="text-mining-de-alices-adventures-in-wonderland" class="section level3">
-<h3>Text-mining de Alice’s Adventures in Wonderland</h3>
-<pre class="r"><code>library(tidytext)</code></pre>
-Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package <code>tidytext</code>, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).<code> </code>
-<pre class="r"><code>tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
+### Text-mining de Alice’s Adventures in Wonderland
+```{r}library(tidytext)```
+Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package <code>tidytext</code>, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).<code> </code>
+```{r}tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
  unnest_tokens(word, text) %&gt;%
  anti_join(stop_words) %&gt;%
  count(word, sort = TRUE)
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
-</code></pre>
-Alors… <em>Roulement de tambour</em>…
+```
+Alors… _Roulement de tambour_…
 
 <a href="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png"><img class="aligncenter size-full wp-image-1663" src="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png" alt="" width="1200" height="600" /></a>
 
@@ -57,7 +57,7 @@ Pour aller plus loin :
 <a href="http://data-bzh.fr/text-mining-r-part-2/">Racinisation et lemmatisation avec R</a>
 
 <a href="http://data-bzh.fr/text-mining-r-part-3/">Créer un nuage de mots avec R</a>
-<h3>En lire plus :</h3>
+### En lire plus :
 <a href="https://www.amazon.fr/gp/product/1491981652/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=1491981652&amp;linkCode=as2&amp;tag=dabz-21" rel="nofollow">Text Mining With R: A Tidy Approach</a><img style="border: none !important; margin: 0px !important;" src="http://ir-fr.amazon-adsystem.com/e/ir?t=dabz-21&amp;l=as2&amp;o=8&amp;a=1491981652" alt="" width="1" height="1" border="0" />
 <a href="https://www.amazon.fr/gp/product/148336934X/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=148336934X&amp;linkCode=as2&amp;tag=dabz-21" rel="nofollow">Text Mining: A Guidebook for the Social Sciences</a><img style="border: none !important; margin: 0px !important;" src="http://ir-fr.amazon-adsystem.com/e/ir?t=dabz-21&amp;l=as2&amp;o=8&amp;a=148336934X" alt="" width="1" height="1" border="0" />
 <a href="https://www.amazon.fr/gp/product/1461432227/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=6746&amp;creativeASIN=1461432227&amp;linkCode=as2&amp;tag=dabz-21" rel="nofollow">Mining Text Data</a><img style="border: none !important; margin: 0px !important;" src="http://ir-fr.amazon-adsystem.com/e/ir?t=dabz-21&amp;l=as2&amp;o=8&amp;a=1461432227" alt="" width="1" height="1" border="0" />
