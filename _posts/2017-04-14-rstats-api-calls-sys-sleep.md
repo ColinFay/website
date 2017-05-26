@@ -59,5 +59,5 @@ lapply(1:3, function(x) {
 ## [1] 3
 ## [1] "2017-03-26 11:20:28 CET"
 ```
-```
+
 _Hope this can help!_

@@ -1,3 +1,4 @@
+---
 ID: 1388
 post_title: '1 dataset, 10 visualisations — retour de La Fabrique de l’info'
 author: colin_fay
@@ -8,22 +9,18 @@ permalink: /1-dataset-10-visualisations/
 published: true
 ---
 ## Retour sur l’atelier dataviz de la Fabrique de l’info !<!--more-->
-<div id="la-fabrique-de-linfo" class="section level2">
+
 ## La fabrique de l’info
-<a href="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771.jpg"><img class="size-medium wp-image-1412 alignleft" src="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771-300x225.jpg" alt="" width="300" height="225" /></a>Lors de cette journée d’ateliers et de conférences, j’ai animé un atelier sur la thématique de la dataviz. Le message ? Une visualisation de données, autant qu'un texte, relève d’un choix éditorial — et un dataset peut dire énormément de choses différentes en fonction du message que l'on souhaite passer.
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771.jpg"><img class="size-medium wp-image-1412 alignleft" src="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771-300x225.jpg" alt="" width="300" height="225" /></a>
+
+Lors de cette journée d’ateliers et de conférences, j’ai animé un atelier sur la thématique de la dataviz. Le message ? Une visualisation de données, autant qu'un texte, relève d’un choix éditorial — et un dataset peut dire énormément de choses différentes en fonction du message que l'on souhaite passer.
 <p style="text-align: center;"><a href="https://github.com/ColinFay/conf/blob/master/fabrique-info/La%20fabrique%20de%20l'info.pdf">Retrouvez les slides de la présentation ici !</a></p>
 Pour cela, j’ai notamment pris l’exemple d’un <a href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/">jeu de données</a>, que j'ai décliné en 10 visualisations. Voici comment les réaliser avec R.
 
-</div>
-<div id="jeu-de-donnees-10-visualisations" class="section level2">
 ## 1 jeu de données, 10 visualisations
-_Notes
-_Les dataviz ont été crées avec le support des ```{r} 
-databzhtools
-``` que vous pouvez télécharger ici : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
-Pour reproduire exactement ces visualisations, téléchargez ces outils, et charger les via : ```{r} 
-source("data-bzh-tools-master/main.R")
-```
+_Notes_ Les dataviz ont été crées avec le support des `databzhtools` que vous pouvez télécharger ici : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
+Pour reproduire exactement ces visualisations, téléchargez ces outils, et charger les via : `source("data-bzh-tools-master/main.R")`
+
 ```{r} 
 #Charger les données
 library(tidyverse)
@@ -32,7 +29,6 @@ prim <- read_csv2("https://data.enseignementsup-recherche.gouv.fr/explore/datase
 prim$Année <- paste0("01-01-",prim$Année) %>%
   lubridate::dmy()
 ```
-<div id="visualisation-deffectifs" class="section level3">
 ### Visualisation d’effectifs
 ```{r} 
 prim %>%
@@ -43,9 +39,8 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="proportions-par-secteur" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a>
+ <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Proportions par secteur
 ```{r} 
 prim %>%
@@ -57,9 +52,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="par-secteur-en-valeur-absolue" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Par secteur, en valeur absolue
 ```{r} 
 prim %>%
@@ -72,9 +67,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="carte-de-france" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Carte de France
 ```{r} 
 #states <- map_data("france")
@@ -94,9 +89,9 @@ ggplot(states, aes(long,lat, group=group)) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="boxplot" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20.jpeg"><img class="aligncenter size-large wp-image-1396" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20.jpeg"><img class="aligncenter size-large wp-image-1396" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Boxplot
 ```{r} 
 ggplot(prim, aes(Région, Bénéficiaires)) + 
@@ -105,10 +100,7 @@ ggplot(prim, aes(Région, Bénéficiaires)) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-</div>
-<div id="dotplot" class="section level2">
-## <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a>
 ## Dotplot
 ```{r} 
 prim %>%
@@ -121,8 +113,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-<div id="boxplot-bis" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Dotplot bis
 ```{r} 
 prim %>%
@@ -136,9 +129,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="histogramme" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Histogramme
 ```{r} 
 prim %>%
@@ -152,9 +145,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="ligne" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Ligne
 ```{r} 
 prim %>%
@@ -166,9 +159,9 @@ prim %>%
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
 ```
-</div>
-<div id="barplot" class="section level3">
-### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a>
+
 ### Barplot
 ```{r} 
 prim %>%
@@ -180,10 +173,6 @@ prim %>%
   facet_grid(Sexe~.) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-
-
 ```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09.jpeg"><img class="aligncenter size-large wp-image-1403" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09-1024x512.jpeg" alt="" width="840" height="420" /></a>
 
-</div>
-</div>

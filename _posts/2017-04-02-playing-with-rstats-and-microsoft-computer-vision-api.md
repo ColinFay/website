@@ -36,9 +36,7 @@ users <- search_users(q= '#rstats',
   unique()
 ```
 <p style="text-align: right;">_Note: I've (obviously) hidden the access token to my twitter app._</p>
-From there, I’ll use the ```{r} 
-profile_image_url
-``` column to get the url to the profile picture.
+From there, I’ll use the `profile_image_url` column to get the url to the profile picture.
 
 First, this variable will need some cleansing : the urls contain a __normal_ parameter, creating 48x48 images. The Microsoft API needs at least a 50x50 resolution, so we need to get rid of this.
 ```{r} 
@@ -68,8 +66,8 @@ users_api <- lapply(users[,25],function(i, key = "") {
 })%>%
   do.call(rbind,.)
 ```
-<p style="text-align: right;">_Note : I've (again) hidden my API key.
-__Also, this code may take a while to execute, as I've inserted a Sys.sleep function. To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _</p>
+_Note : I've (again) hidden my API key._
+__Also, this code may take a while to execute, as I've inserted a Sys.sleep function._ To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _</p>
 
 #### Creating tibbles
 Now I have a tibble with a column containing lists of captions &amp; confidence, and a column with lists of the tags associated with each picture. Let’s split this.
@@ -93,7 +91,9 @@ ggplot(users_cap, aes(as.numeric(confidence))) +
        caption="http://colinfay.me") + 
   theme_light()
 ```
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> Click to zoom
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> 
+
+Click to zoom
 
 It seems that the confidence scores for the captions are not very strong. Well, let’s nevertheless have a look at the most frequent captions and tags.
 ```{r} 
@@ -112,7 +112,9 @@ users %>%
        caption="http://colinfay.me") +   
   theme_light()
 ```
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> Click to zoom
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> 
+
+Click to zoom
 
 Well... I'm not sure there are so many surf and skate aficionados in the R world, but ok...
 ```{r} 
@@ -136,26 +138,37 @@ users_tags %>%
 ## Some checking
 Let’s have a look at the picture with the highest confidence score, with the caption the API gave it.
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> A man wearing a suit and tie — 0.92 confidence.
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> 
+
+A man wearing a suit and tie — 0.92 confidence.
 
 He hasn't got a tie, but the APi got it quite right for the rest.
 
 And now, just for fun, let's have a look at the caption with the lowest confidence score :
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> A close up of two giraffes near a tree - 0.02 confidence
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> 
+
+A close up of two giraffes near a tree - 0.02 confidence
 
 This one is fun, so, no hard feeling Microsoft API!
 
 On a more systemic note, let's have a look at a collage of pictures, for the most frequent captions.
-<p style="text-align: right;">_Note: in order to focus on the details of the pictures, and get rid of the genderization of the captions, I've replaced "man/woman/men/womens" by "person/persons" in the dataset, before making these collages. _</p>
+_Note: in order to focus on the details of the pictures, and get rid of the genderization of the captions, I've replaced "man/woman/men/womens" by "person/persons" in the dataset, before making these collages. _
 
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> 
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> A person on a surf board in a skate park
+A person on a surf board in a skate park
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> A person is smiling at the camera - Confidence mean : 0.54
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> 
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> A close up of two giraffes near a tree — Confidence mean : 0.0037
+A person is smiling at the camera - Confidence mean : 0.54
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses.jpg"><img class="size-large wp-image-1557" src="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses-1024x514.jpg" alt="" width="840" height="422" /></a> A person wearing glasses looking at the camera
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> 
+
+A close up of two giraffes near a tree — Confidence mean : 0.0037
+
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses.jpg"><img class="size-large wp-image-1557" src="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses-1024x514.jpg" alt="" width="840" height="422" /></a> 
+
+A person wearing glasses looking at the camera
 
 The first and third collages are clearly wrong about the captions. Yet we can see the confidence score is wery low. The second and fourth, though, seems to be more acurate. Maybe we need to try again with other pictures, just to be sure... Maybe another time ;)
