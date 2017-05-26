@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-04-28 15:08:22
 post_excerpt: ""
 layout: single
-permalink: >
-  /predict-french-vote-with-r/
+permalink: /predict-french-vote-with-r/
 published: true
 yst_is_cornerstone:
   - ""
