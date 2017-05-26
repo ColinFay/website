@@ -1,6 +1,6 @@
 ---
 ID: 1260
-post_title: 'Data &#038; Vinyls — A discogs library exploration with R'
+post_title: "Data & Vinyls — A discogs library exploration with R"
 author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""

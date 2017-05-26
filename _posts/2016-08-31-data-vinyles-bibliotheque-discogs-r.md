@@ -1,6 +1,6 @@
 ---
 ID: 1040
-post_title: 'Data &#038; Vinyles — Exploration d'une bibliothèque Discogs avec R'
+post_title: "Data & Vinyles — Exploration d'une bibliothèque Discogs avec R"
 author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""

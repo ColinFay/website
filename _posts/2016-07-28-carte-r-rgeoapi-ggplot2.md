@@ -1,8 +1,6 @@
 ---
 ID: 1001
-post_title: >
-  Créer une carte avec R — rgeoapi et
-  ggplot2
+post_title: "Créer une carte avec R — rgeoapi et ggplot2"
 author: colin_fay
 post_date: 2016-07-28 13:52:20
 post_excerpt: ""

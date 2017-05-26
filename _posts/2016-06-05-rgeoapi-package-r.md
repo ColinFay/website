@@ -1,8 +1,6 @@
 ---
 ID: 1264
-post_title: >
-  rgeoapi — A package to access the
-  GéoAPI
+post_title: "rgeoapi — A package to access the GéoAPI"
 author: colin_fay
 post_date: 2016-06-05 19:11:29
 post_excerpt: ""

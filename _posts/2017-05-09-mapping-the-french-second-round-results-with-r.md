@@ -1,6 +1,6 @@
 ---
 ID: 1731
-post_title: 'Mapping the French second round results with R'
+post_title: "Mapping the French second round results with R"
 author: colin_fay
 post_date: 2017-05-09 14:00:31
 post_excerpt: ""
@@ -53,9 +53,7 @@ result_map <- left_join(x = map[,-6], y = result)
 ### Visualisation
 Let's now project our variables on maps. You need to play with the `scale_fill` argument to manage the color scheme used on each card.
 
-_Note : this article was first published in french._
-
-_I've kept the original plot titles._
+_Note : this article was first published in french. I've kept the original plot titles._
 
 ```{r}
 map_theme <- theme(title=element_text(),

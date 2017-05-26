@@ -1,6 +1,6 @@
 ---
 ID: 1261
-post_title: rpinterest now on CRAN
+post_title: "rpinterest now on CRAN"
 author: colin_fay
 post_date: 2016-08-17 13:47:34
 post_excerpt: ""

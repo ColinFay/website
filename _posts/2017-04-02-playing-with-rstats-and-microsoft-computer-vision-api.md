@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 'Playing with #RStats and Microsoft Computer Vision API'
+title: "Playing with #RStats and Microsoft Computer Vision API"
 published: true
 author: colin_fay
 comments: false
