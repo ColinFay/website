@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-07-09 18:39:13
 post_excerpt: ""
 layout: single
-permalink: >
-  /data-bzh-apero-storycode-rennes/
+permalink: /data-bzh-apero-storycode-rennes/
 published: true
 ---
 <h2>Le 7 juillet 2016 à la Cordée, je présentais Data Bzh, la plateforme qui raconte la Bretagne par ses données, à l'Apéro StoryCode de Rennes. Retrouvez les slides de mon intervention.</h2>

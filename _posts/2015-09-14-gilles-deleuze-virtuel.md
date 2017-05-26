@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2015-09-14 12:00:55
 post_excerpt: ""
 layout: single
-permalink: >
-  /gilles-deleuze-virtuel/
+permalink: /gilles-deleuze-virtuel/
 published: true
 geo_public:
   - "0"

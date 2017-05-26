@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-03-19 20:28:24
 post_excerpt: ""
 layout: single
-permalink: >
-  /heatmap-avec-r-et-ggplot2/
+permalink: /heatmap-avec-r-et-ggplot2/
 published: true
 ---
 <h2>Un court tutorial sur les heatmaps avec R, inspirés d'articles sur databzh.</h2>

@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2015-12-16 14:00:20
 post_excerpt: ""
 layout: single
-permalink: >
-  /digitaltc-serendipite-homophilie-personnalisation/
+permalink: /digitaltc-serendipite-homophilie-personnalisation/
 published: true
 geo_public:
   - "0"

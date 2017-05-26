@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-08-17 13:47:34
 post_excerpt: ""
 layout: single
-permalink: >
-  /rpinterest-disponible-cran/
+permalink: /rpinterest-disponible-cran/
 published: true
 ---
 <h2>Ce package R destiné à effectuer des requêtes sur  l'API Pinterest est désormais disponible sur le CRAN.</h2>

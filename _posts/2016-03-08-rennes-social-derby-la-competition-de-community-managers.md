@@ -7,8 +7,7 @@ author: colin_fay
 post_date: 2016-03-08 18:41:11
 post_excerpt: ""
 layout: single
-permalink: >
-  /rennes-social-derby-la-competition-de-community-managers/
+permalink: /rennes-social-derby-la-competition-de-community-managers/
 published: true
 geo_public:
   - "0"

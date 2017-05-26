@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""
 layout: single
-permalink: >
-  /data-vinyles-bibliotheque-discogs-r/
+permalink: /data-vinyles-bibliotheque-discogs-r/
 published: true
 ---
 <h2>Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.</h2>

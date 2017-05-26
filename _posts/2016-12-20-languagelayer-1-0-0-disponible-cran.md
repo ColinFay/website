@@ -7,8 +7,7 @@ author: colin_fay
 post_date: 2016-12-20 13:00:30
 post_excerpt: ""
 layout: single
-permalink: >
-  /languagelayer-1-0-0-disponible-cran/
+permalink: /languagelayer-1-0-0-disponible-cran/
 published: true
 ---
 <h2>Cet outil permet de détecter la langue d'une suite de mots, en se connectant à l'API languagelayer. Un package R maintenant disponible sur le CRAN.</h2>

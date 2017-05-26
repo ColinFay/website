@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-10-31 13:59:43
 post_excerpt: ""
 layout: single
-permalink: >
-  /rgeoapi-1-1-0-disponible-cran/
+permalink: /rgeoapi-1-1-0-disponible-cran/
 published: true
 ---
 <h2>Ce&nbsp;package R orienté SIG interroge la base de donnée cartographique française. Il est désormais disponible en version stable sur le CRAN !</h2>

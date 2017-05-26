@@ -7,8 +7,7 @@ author: colin_fay
 post_date: 2016-07-28 13:52:20
 post_excerpt: ""
 layout: single
-permalink: >
-  /carte-r-rgeoapi-ggplot2/
+permalink: /carte-r-rgeoapi-ggplot2/
 published: true
 ---
 <div id="pense-pour-simplifier-les-travaux-de-cartographie-rgeoapi-est-un-package-qui-interroge-la-base-de-donnees-geographique-francaise.-resultat-des-visualisation-sur-carte-easy-peasy.-si-si." class="section level2">

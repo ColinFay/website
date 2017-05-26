@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-12-12 23:07:28
 post_excerpt: ""
 layout: single
-permalink: >
-  /rstats-languagelayer-query-the-languagelayer-api-with-r/
+permalink: /rstats-languagelayer-query-the-languagelayer-api-with-r/
 published: true
 ---
 <h2>Improve your text analysis with this R package designed to access the languagelayer API.<!--more--></h2>

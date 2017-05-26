@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-03-26 14:30:53
 post_excerpt: ""
 layout: single
-permalink: >
-  /rstats-api-calls-and-sys-sleep/
+permalink: /rstats-api-calls-and-sys-sleep/
 published: true
 ---
 <h2>Lately, I received a mail concerning my blogpost on Discogs API, saying the code didn't work. Turned out it was due to new API limitations. Here's how to get along with it. <!--more--></h2>

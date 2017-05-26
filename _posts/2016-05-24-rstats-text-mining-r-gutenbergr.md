@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-05-24 18:00:32
 post_excerpt: ""
 layout: single
-permalink: >
-  /rstats-text-mining-r-gutenbergr/
+permalink: /rstats-text-mining-r-gutenbergr/
 published: true
 ---
 <div id="a-la-fois-technique-de-data-mining-et-graal-des-temps-modernes-la-fouille-de-texte-permet-de-faire-emerger-des-informations-depuis-une-large-quantite-de-texte.-comment-le-realiser-avec-r" class="section level2">

@@ -1,12 +1,11 @@
 ---
 ID: 1026
-post_title: 'rpinterest : un package R pour accéder à l&rsquo;API Pinterest'
+post_title: 'rpinterest : un package R pour accéder à l'API Pinterest'
 author: colin_fay
 post_date: 2016-07-30 20:17:45
 post_excerpt: ""
 layout: single
-permalink: >
-  /rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/
+permalink: /rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/
 published: true
 ---
 <h2>Accéder aux boards, pins et users de Pinterest directement dans R, tel est l'object de rpinterest, un package destiné à faciliter le dialogue entre l'API du réseau social et votre logiciel favori. <!--more--></h2>

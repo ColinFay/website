@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2015-08-26 13:26:05
 post_excerpt: ""
 layout: single
-permalink: >
-  /musarderie-6-linstoutenable-legerete-du-web-volet-2/
+permalink: /musarderie-6-linstoutenable-legerete-du-web-volet-2/
 published: true
 geo_public:
   - "0"

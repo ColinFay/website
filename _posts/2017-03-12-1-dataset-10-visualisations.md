@@ -6,8 +6,7 @@ author: colin_fay
 post_date: 2017-03-12 18:00:45
 post_excerpt: ""
 layout: single
-permalink: >
-  /1-dataset-10-visualisations/
+permalink: /1-dataset-10-visualisations/
 published: true
 ---
 <h2>Retour sur l’atelier dataviz de la Fabrique de l’info !<!--more--></h2>

@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-03-15 21:45:45
 post_excerpt: ""
 layout: single
-permalink: >
-  /1-dataset-10-dataviz-with-r/
+permalink: /1-dataset-10-dataviz-with-r/
 published: true
 ---
 <h2>Creating 10 datavisualisations from 1 dataset with R.

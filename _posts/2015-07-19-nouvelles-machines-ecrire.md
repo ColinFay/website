@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2015-07-19 16:54:30
 post_excerpt: ""
 layout: single
-permalink: >
-  /nouvelles-machines-ecrire/
+permalink: /nouvelles-machines-ecrire/
 published: true
 geo_public:
   - "0"

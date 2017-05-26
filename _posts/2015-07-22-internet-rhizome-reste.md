@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2015-07-22 19:15:46
 post_excerpt: ""
 layout: single
-permalink: >
-  /internet-rhizome-reste/
+permalink: /internet-rhizome-reste/
 published: true
 geo_public:
   - "0"

@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2017-03-05 19:50:54
 post_excerpt: ""
 layout: single
-permalink: >
-  /atelier-dataviz-dimanche-12-mars-fabrique-de-linfo/
+permalink: /atelier-dataviz-dimanche-12-mars-fabrique-de-linfo/
 published: true
 ---
 <h2>Rennes — Rendez-vous dimanche 12 mars 2017 pour un atelier dataviz à la Fabrique de l'info ! <!--more--></h2>

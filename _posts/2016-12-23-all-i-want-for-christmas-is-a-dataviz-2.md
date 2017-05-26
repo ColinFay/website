@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-12-23 17:44:55
 post_excerpt: ""
 layout: single
-permalink: >
-  /all-i-want-for-christmas-is-a-dataviz-2/
+permalink: /all-i-want-for-christmas-is-a-dataviz-2/
 published: true
 ---
 <h2>Just before Christmas, let'senjoy these two visualisations created with data from the lastfm API.</h2>

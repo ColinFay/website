@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-12-19 19:38:18
 post_excerpt: ""
 layout: single
-permalink: >
-  /musarderie-digitaltc-lia-lhomme-la-creativite/
+permalink: /musarderie-digitaltc-lia-lhomme-la-creativite/
 published: true
 ---
 <h2>Courte réflexion sur l'IA, l'homme et la créativité, faisant suite à la Digital Tech Conférence 2016.</h2>

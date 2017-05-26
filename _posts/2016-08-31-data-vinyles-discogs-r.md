@@ -5,8 +5,7 @@ author: colin_fay
 post_date: 2016-08-31 12:00:36
 post_excerpt: ""
 layout: single
-permalink: >
-  /data-vinyles-discogs-r/
+permalink: /data-vinyles-discogs-r/
 published: true
 ---
 <h2>As a vinyl lover and data addict, I had some fun making requests on the Discogs API with R, in order to know better what is inside my library.</h2>
