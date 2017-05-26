@@ -9,53 +9,54 @@ permalink: /rstats-languagelayer-query-the-languagelayer-api-with-r/
 published: true
 ---
 ## Improve your text analysis with this R package designed to access the languagelayer API.<!--more-->
-<p class="unchanged rich-diff-level-one">LanguagelayeR is now on <a href="https://cran.r-project.org/package=languagelayeR">CRAN</a></p>
+LanguagelayeR is now on <a href="https://cran.r-project.org/package=languagelayeR">CRAN</a>
 
 ### languagelayerR
-<p class="unchanged rich-diff-level-one">This package is designed to detect a language from a character string in R by acessing the languagelayer API — <a href="https://languagelayer.com/">https://languagelayer.com/</a></p>
+This package is designed to detect a language from a character string in R by acessing the languagelayer API — <a href="https://languagelayer.com/">https://languagelayer.com/</a>
 
 ## Language layer API
-<p class="unchanged rich-diff-level-one">This package offers a language detection tool by connecting to the languagelayer API, a JSON interface designed to extract language information from a character string.</p>
+This package offers a language detection tool by connecting to the languagelayer API, a JSON interface designed to extract language information from a character string.
 
 ## Install languagelayerR
-<p">Install this package directly in R :</p>
-
-<pre>devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/languagelayerR<span class="pl-pds">")```
+Install this package directly in R : `devtools::install_github"ColinFay/languagelayerR")`
 ## How languagelayeR works
-<p class="unchanged rich-diff-level-one">The version 1.0.0 works with three functions. Which are :</p>
+The version 1.0.0 works with three functions. Which are :
 
-<ul class="unchanged rich-diff-level-one">
- 	<li class="unchanged">
-<p class="unchanged">```{r} 
+```{r} 
 getLanguage
-``` Get language information from a character string</p>
-</li>
- 	<li class="unchanged">
-<p class="unchanged">```{r} 
+``` 
+
+Get language information from a character string
+
+```{r} 
 getSupportedLanguage
-``` Get all current accessible languages on the languagelayer API</p>
-</li>
- 	<li class="unchanged">
-<p class="unchanged">```{r} 
+``` 
+
+Get all current accessible languages on the languagelayer API
+
+```{r} 
 setApiKey
-``` Set your API key to access the languagelayer API</p>
-</li>
-</ul>
+``` 
+Set your API key to access the languagelayer API
+
 ## First of all
-<p class="unchanged rich-diff-level-one">Before any request on the languagelayer, you need to set your API key for your current session. Use the function ```{r} 
-setApiKey(apikey = "yourapikey")
-```.</p>
-<p class="unchanged rich-diff-level-one">You can get your api key on your languagelayer <a href="https://languagelayer.com/dashboard">dashboard</a>.</p>
+Before any request on the languagelayer, you need to set your API key for your current session. Use the function `setApiKey(apikey = "yourapikey")`.
+
+You can get your api key on your languagelayer <a href="https://languagelayer.com/dashboard">dashboard</a>.
 
 ## Examples
 ### getLanguage
-<p>Detect a language from a character string.</p>
+Detect a language from a character string.
 
-<pre>getLanguage(<span class="pl-v">query <span class="pl-k">= <span class="pl-s"><span class="pl-pds">"I really really love R and that's a good thing, right?<span class="pl-pds">")```
-<h3 class="unchanged rich-diff-level-one">getSupportedLanguage
-<p class="unchanged rich-diff-level-one">List all the languages available on the languagelayer API.</p>
+```{r}
+getLanguage("I really really love R and that's a good thing, right?")
+```
 
-<pre>getSupportedLanguage()```
+List all the languages available on the languagelayer API.
+```{r}
+getSupportedLanguage()
+```
 ### Contact
-<p>Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !</p>
+
+Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !
 &nbsp;
