@@ -15,23 +15,23 @@ Every vinyl lover knows about Discogs. But did you know you could easily access 
 
 <span style="text-decoration: underline;">Note : You can download the data used here in <a href="http://colinfay.me/data/collection_complete.json" target="_blank">JSON</a>, or directly in R :
 ```{r} 
-collection_complete &lt;- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
+collection_complete <- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
 Before starting, I'll need these two functions: _```{r} 
-%&gt;% 
+%>% 
 ```_and _```{r} 
 %||%
 ```._
 ```{r} 
-library(magrittr) #for %&gt;%
-`%||%` &lt;- function(a,b) if(is.null(a)) b else a
+library(magrittr) #for %>%
+`%||%` <- function(a,b) if(is.null(a)) b else a
 ```
 Let's first get my Discogs profile:
 ```{r} 
-user &lt;- "_colin"
-content &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders"))
-content &lt;- rjson::fromJSON(rawToChar(content$content))$folders
+user <- "_colin"
+content <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders"))
+content <- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
 <pre>```{r} 
@@ -60,22 +60,22 @@ The Discogs API sends back pages with 100 max results. Here, my collection has 3
 repeat
 ``` loop to query all the data, and store them in a dataframe.
 ```{r} 
-collec_url &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
+collec_url <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
 if (collec_url$status_code == 200){
-  collec &lt;- rjson::fromJSON(rawToChar(collec_url$content))
-  collecdata &lt;- collec$releases
+  collec <- rjson::fromJSON(rawToChar(collec_url$content))
+  collecdata <- collec$releases
     if(!is.null(collec$pagination$urls$`next`)){
       repeat{
-        url &lt;- httr::GET(collec$pagination$urls$`next`)
-        collec &lt;- rjson::fromJSON(rawToChar(url$content))
-        collecdata &lt;- c(collecdata, collec$releases)
+        url <- httr::GET(collec$pagination$urls$`next`)
+        collec <- rjson::fromJSON(rawToChar(url$content))
+        collecdata <- c(collecdata, collec$releases)
         if(is.null(collec$pagination$urls$`next`)){
           break
         }
       }
     }
 }
-  collection &lt;- lapply(collecdata, function(obj){
+  collection <- lapply(collecdata, function(obj){
     data.frame(release_id = obj$basic_information$id %||% NA,
                label = obj$basic_information$labels[[1]]$name %||% NA,
                year = obj$basic_information$year %||% NA,
@@ -85,7 +85,7 @@ if (collec_url$status_code == 200){
                artist_resource_url = obj$basic_information$artists[[1]]$resource_url %||% NA, 
                format = obj$basic_information$formats[[1]]$name %||% NA,
                resource_url = obj$basic_information$resource_url %||% NA)
-  }) %&gt;% do.call(rbind, .) %&gt;% 
+  }) %>% do.call(rbind, .) %>% 
     unique()
 
 ```
@@ -260,9 +260,9 @@ So, can we get more information about this library?
 <div id="major-tom-to-discogs-api" class="section level4">
 #### Hello, it's me again
 ```{r} 
-collection_2 &lt;- lapply(as.list(collection$release_id), function(obj){
-  url &lt;- httr::GET(paste0("https://api.discogs.com/releases/", obj))
-  url &lt;- rjson::fromJSON(rawToChar(url$content))
+collection_2 <- lapply(as.list(collection$release_id), function(obj){
+  url <- httr::GET(paste0("https://api.discogs.com/releases/", obj))
+  url <- rjson::fromJSON(rawToChar(url$content))
   data.frame(release_id = obj, 
              label = url$label[[1]]$name %||% NA,
              year = url$year %||% NA, 
@@ -276,7 +276,7 @@ collection_2 &lt;- lapply(as.list(collection$release_id), function(obj){
              have = url$community$have %||% NA, 
              lowest_price = url$lowest_price %||% NA, 
              country = url$country %||% NA)
-}) %&gt;% do.call(rbind, .) %&gt;% 
+}) %>% do.call(rbind, .) %>% 
   unique()
 ```
 Here, I have used the _release_id_ element to make a request about each vinyl.
@@ -326,11 +326,11 @@ ggplot(collection_2, aes(x = lowest_price)) +
 Ok, I'm not gonna be rich selling my vinyl collection...
 ### Let’s finish!
 ```{r} 
-collection_complete &lt;- merge(collection, collection_2, by = c("release_id","label", "year", "title", "artist_name"))
+collection_complete <- merge(collection, collection_2, by = c("release_id","label", "year", "title", "artist_name"))
 ```
 #### Relationship between price and "want"
 ```{r} 
-lm_want &lt;- lm(formula = lowest_price ~ want, data = collection_complete)
+lm_want <- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
 <pre>```{r} 
@@ -339,7 +339,7 @@ summary(lm_want)
 ##-8.043 -4.628 -2.224  2.179 49.608 
 
 ##Coefficients:
-##            Estimate Std. Error t value Pr(&gt;|t|)    
+##            Estimate Std. Error t value Pr(>|t|)    
 ##(Intercept) 6.715418   0.450582  14.904  &lt; 2e-16 ***
 ##want        0.005004   0.001788   2.799  0.00546 ** 
 ##---
@@ -360,7 +360,7 @@ ggplot(collection_complete, aes(x = lowest_price, y = want)) + geom_point(size =
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
 #### Price and average note
 ```{r} 
-lm_note &lt;- lm(formula = lowest_price ~ average_note, data = collection_complete)
+lm_note <- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
 <pre>```{r} 

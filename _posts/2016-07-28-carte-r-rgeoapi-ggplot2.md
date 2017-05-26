@@ -26,7 +26,7 @@ devtools::install_github("ColinFay/rgeoapi")
 ### Récupérer les coordonnées des villes
 Imaginons donc que vous possédiez un jeu de données avec pour unique référent géographique les noms des villes à représenter. Dans l'idées, nous aurions :
 ```{r} 
-villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
 
 ```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
@@ -70,7 +70,7 @@ library(rgeoapi)
 ```
 ```{r} 
 library(plyr)
-geo &lt;- ldply(villes$nom, ComByName)
+geo <- ldply(villes$nom, ComByName)
 
 ```
 <table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
@@ -294,8 +294,8 @@ FALSE
 </ul>
 Nous avons donc ici un tableau qui nous retourne toutes les coordonnées des villes qui nous intéressent, avec leur surface et leur population. Bien, ne reste plus qu’à effectuer une jointure des deux !
 ```{r} 
-names(villes)[1] &lt;- "name"
-villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)
+names(villes)[1] <- "name"
+villes <- merge(villes, geo, by = "name", all.x = TRUE)
 ```
 Passons maintenant aux choses sérieuses.
 ### Créer une carte avec ggmap et ggplot2
@@ -316,7 +316,7 @@ ggplot
 library(ggmap)
 ```
 ```{r} 
-map &lt;- qmap('Bretagne', zoom = 8)
+map <- qmap('Bretagne', zoom = 8)
 ```
 Une fois l’objet ```{r} 
 map

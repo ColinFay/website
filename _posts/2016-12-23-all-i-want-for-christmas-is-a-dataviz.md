@@ -24,39 +24,39 @@ library(magrittr)
 Les trois paramètres de départ sont :
 ```{r} 
 #Le terme de recherche
-query &lt;- "christmas"
+query <- "christmas"
 #La clé API (cachée ici)
-apikey &lt;- "XXX"
+apikey <- "XXX"
 #L'index des pages de l'API, qui s'incrémentera au fur et à mesure des requêtes
-x &lt;- 0
+x <- 0
 ```
 Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument "```{r} 
 &amp;page="
 ```.
 ```{r} 
-url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
+url <- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
               query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
 ```
 Création d’une liste pour recevoir les résultats des requêtes, et requête sur la première page (index = 0).
 ```{r} 
-dl &lt;- list()
-dl2 &lt;- httr::GET(url)$content %&gt;%
-  rawToChar() %&gt;% 
+dl <- list()
+dl2 <- httr::GET(url)$content %>%
+  rawToChar() %>% 
   rjson::fromJSON()
-dl2 &lt;- dl2$results$trackmatches$track
-dl &lt;- c(dl,dl2)
+dl2 <- dl2$results$trackmatches$track
+dl <- c(dl,dl2)
 ```
 Bouclons sur toutes les pages qui renvoient des résultats :
 ```{r} 
 repeat{
-  x &lt;- x+1
-  url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
+  x <- x+1
+  url <- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
                 query,"&amp;api_key=", apikey, "&amp;format=json","&amp;limit=", 1000, "&amp;page=", x)
-  dl2 &lt;- httr::GET(url)$content %&gt;%
-    rawToChar() %&gt;% 
+  dl2 <- httr::GET(url)$content %>%
+    rawToChar() %>% 
     rjson::fromJSON()
-  dl2 &lt;- dl2$results$trackmatches$track
-  dl &lt;- c(dl, dl2)
+  dl2 <- dl2$results$trackmatches$track
+  dl <- c(dl, dl2)
   if(length(dl2) == 0){
     break
   }
@@ -64,12 +64,12 @@ repeat{
 ```
 Et enfin, créons le data.frame de résultats :
 ```{r} 
-songs &lt;- lapply(dl, function(x){
+songs <- lapply(dl, function(x){
   data.frame(name = x$name, 
              artist = x$artist, 
              listeners = as.numeric(x$listeners))
-}) %&gt;%
-  do.call(rbind, .) %&gt;% 
+}) %>%
+  do.call(rbind, .) %>% 
   arrange(listeners)
 ```
 </div>
@@ -79,9 +79,9 @@ Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :``
  
 ```
 ```{r} 
-songs &lt;- as.data.table(songs)
-songs &lt;- songs[, .(listeners = mean(listeners)), by = .(name,artist)]
-songs[1:15,] %&gt;%
+songs <- as.data.table(songs)
+songs <- songs[, .(listeners = mean(listeners)), by = .(name,artist)]
+songs[1:15,] %>%
 ggplot(aes(x = reorder(name, listeners), y = listeners)) +
   geom_bar(stat = "identity", fill = "#d42426") +
   geom_text(data = songs[1:15,], aes(label= artist), size = 5, nudge_y = -sd(songs$listeners[1:15])/2) + 
@@ -107,11 +107,11 @@ ggplot(aes(x = reorder(name, listeners), y = listeners)) +
 
 Quant aux artistes les plus présents :
 ```{r} 
-songs$artist %&gt;%
-  table() %&gt;%
-  as.data.frame() %&gt;%
-  arrange(desc(Freq)) %&gt;%
-  head(15) %&gt;%
+songs$artist %>%
+  table() %>%
+  as.data.frame() %>%
+  arrange(desc(Freq)) %>%
+  head(15) %>%
 ggplot(aes(x = reorder(., Freq), y = Freq)) +
   geom_bar(stat = "identity", fill = "#d42426") +
   coord_flip() + 

@@ -46,7 +46,7 @@ lapply(1:3, function(x) {
   print(x)
   print(Sys.time()) 
   Sys.sleep(3)
-}) %&gt;% do.call(rbind, .) 
+}) %>% do.call(rbind, .) 
 ```
 <pre>```{r} 
 ## [1] 1

@@ -23,10 +23,10 @@ library(tidyverse)
 library(rtweet)
 library(httr)
 library(jsonlite)
-token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX
-users &lt;- search_users(q= '#rstats',
+token <- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX
+users <- search_users(q= '#rstats',
                       n = 1000,
-                      parse = TRUE) %&gt;%
+                      parse = TRUE) %>%
   unique()
 ```
 <p style="text-align: right;">_Note: J'ai ici anonymisé mes API keys._</p>
@@ -34,30 +34,30 @@ Maintenant, utilisons la colonne `profile_image_url` pour obtenir l'url des phot
 
 D'abord, cette variable a besoin d'être nettoyée : les URL contiennent un paramètre __normal_, créant des images 48x48. L'API Microsoft a besoin d'une résolution minimum de 50x50, nous devons donc nous débarrasser de ce paramètre.
 ```{r} 
-users$profile_image_url &lt;- gsub("_normal", "", users$profile_image_url)
+users$profile_image_url <- gsub("_normal", "", users$profile_image_url)
 ```
 #### Interroger l'API  Microsoft
 D'abord, inscrivez-vous sur <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision-api" target="_blank" rel="noopener noreferrer">Microsoft API service</a>, et lancez un essai gratuit. Ce compte gratuit est limité: vous ne pouvez faire que 5 000 appels par mois et 20 par minute. Mais c'est bien assez pour notre cas (478 images à regarder).
 ```{r} 
-users_api &lt;- lapply(users[,25],function(i, key = "") {
-  request_body &lt;- data.frame(url = i)
-  request_body_json &lt;- gsub("\\[|\\]", "", toJSON(request_body, auto_unbox = "TRUE"))
-  result &lt;- POST("https://api.projectoxford.ai/vision/v1.0/analyze?visualFeatures=Tags,Description,Faces,Categories",
+users_api <- lapply(users[,25],function(i, key = "") {
+  request_body <- data.frame(url = i)
+  request_body_json <- gsub("\\[|\\]", "", toJSON(request_body, auto_unbox = "TRUE"))
+  result <- POST("https://api.projectoxford.ai/vision/v1.0/analyze?visualFeatures=Tags,Description,Faces,Categories",
                  body = request_body_json,
                  add_headers(.headers = c("Content-Type"="application/json","Ocp-Apim-Subscription-Key"="XXX")))
-  Output &lt;- content(result)
+  Output <- content(result)
   if(length(Output$description$tags) != 0){
-    cap &lt;- Output$description$captions
+    cap <- Output$description$captions
   } else {
-    cap &lt;- NA
+    cap <- NA
   }
   if(length(Output$description$tags) !=0){
-    tag &lt;-list(Output$description$tags)
+    tag <-list(Output$description$tags)
   }
-  d &lt;- tibble(cap, tag)
+  d <- tibble(cap, tag)
   Sys.sleep(time = 3)
   return(d)
-})%&gt;%
+})%>%
   do.call(rbind,.)
 ```
 <p style="text-align: right;">_Remarque: J'ai (à nouveau) caché ma clé API.
@@ -66,12 +66,12 @@ Ce code peut prendre un certain temps à exécuter, car il contient un appel à 
 #### Créer des tibbles
 Maintenant, j'ai un tibble avec une colonne contenant les listes de légendes et de score de confiance, et une colonne avec les listes des balises associées à chaque image.
 ```{r} 
-users_cap &lt;- lapply(users_api$cap, unlist) %&gt;%
-  do.call(rbind,.) %&gt;%
+users_cap <- lapply(users_api$cap, unlist) %>%
+  do.call(rbind,.) %>%
   as.data.frame() 
-users_cap$confidence &lt;- as.character(users_cap$confidence) %&gt;%
+users_cap$confidence <- as.character(users_cap$confidence) %>%
   as.numeric()
-users_tags &lt;- unlist(users_api$tag) %&gt;%
+users_tags <- unlist(users_api$tag) %>%
   data.frame(tag = .)
 ```
 ### Visualisation
@@ -91,12 +91,12 @@ Il semble que les scores de confiance pour les légendes ne soient pas très for
 
 Regardons les légendes et les balises les plus fréquentes.
 ```{r} 
-users %&gt;%
-  group_by(text)%&gt;%
-  summarize(somme = sum(n())) %&gt;%
-  arrange(desc(somme))%&gt;%
-  na.omit() %&gt;%
-  .[1:25,] %&gt;%
+users %>%
+  group_by(text)%>%
+  summarize(somme = sum(n())) %>%
+  arrange(desc(somme))%>%
+  na.omit() %>%
+  .[1:25,] %>%
   ggplot(aes(reorder(text, somme), somme)) +
   geom_bar(stat = "identity",fill = "#b78d6a") +
   coord_flip() +
@@ -110,11 +110,11 @@ users %&gt;%
 
 Eh bien ... Je ne suis pas sûr qu'il y ait tant de passionnés de surf et de skate dans notre liste, mais soit...
 ```{r} 
-users_tags %&gt;%
-  group_by(tag)%&gt;%
-  summarize(somme = sum(n())) %&gt;%
-  arrange(desc(somme))%&gt;%
-  .[1:25,] %&gt;%
+users_tags %>%
+  group_by(tag)%>%
+  summarize(somme = sum(n())) %>%
+  arrange(desc(somme))%>%
+  .[1:25,] %>%
   ggplot(aes(reorder(tag, somme), somme)) +
   geom_bar(stat = "identity",fill = "#b78d6a") +
   coord_flip() +

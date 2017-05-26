@@ -26,7 +26,7 @@ To install :
 ### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:
 ```{r} 
-villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
+villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
 
 ```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
@@ -68,7 +68,7 @@ library(rgeoapi)
 ```
 ```{r} 
 library(plyr)
-geo &lt;- ldply(villes$nom, ComByName)
+geo <- ldply(villes$nom, ComByName)
 
 ```
 <table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
@@ -280,8 +280,8 @@ geo &lt;- ldply(villes$nom, ComByName)
 </table>
 &nbsp;
 ```{r} 
-names(villes)[1] &lt;- "name"
-villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)
+names(villes)[1] <- "name"
+villes <- merge(villes, geo, by = "name", all.x = TRUE)
 ```
 ### Create a map with ggmap and ggplot2
 The ```{r} 
@@ -295,7 +295,7 @@ qmap(x,y)
 library(ggmap)
 ```
 ```{r} 
-map &lt;- qmap('Bretagne', zoom = 8)
+map <- qmap('Bretagne', zoom = 8)
 ```
 Once you have a ```{r} 
 map

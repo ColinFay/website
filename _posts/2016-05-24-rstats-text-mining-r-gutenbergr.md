@@ -30,7 +30,7 @@ Bref, retour à nos moutons. Déposé sur le CRAN le 16 mai 2016, <a href="https
 library(gutenbergr)
 ```
 ```{r} 
-aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")
+aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
 <pre>```{r} 
@@ -41,7 +41,7 @@ Cette première fonction vous retourne un objet contenant les informations sur u
 La première colonne, contenant le 11, vous renvoie la référence de l’ouvrage sur le catalogue du projet : une information qui vous sera indispensable à la requête suivante :
 ```{r} 
 library(magrittr)
-alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()
+alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
 ```
 Ici, ```{r} 
 gutenberg_download
@@ -61,9 +61,9 @@ tidytext
  
 ```
 ```{r} 
-tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
- unnest_tokens(word, text) %&gt;%
- anti_join(stop_words) %&gt;%
+tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
+ unnest_tokens(word, text) %>%
+ anti_join(stop_words) %>%
  count(word, sort = TRUE)
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
 

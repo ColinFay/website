@@ -16,7 +16,7 @@ First, you'll need to load the ggplot2 package, and one of the default&nbsp;maps
 
 ```{r} 
 library(ggplot2)
-map &lt;- map_data("france")
+map <- map_data("france")
 
 ```
 

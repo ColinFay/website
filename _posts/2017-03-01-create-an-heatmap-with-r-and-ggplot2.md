@@ -34,13 +34,13 @@ library(tidyverse)
 ``````{r} 
 
 ``````{r} 
-name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
+name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
 ```
 <pre>```{r} 
 
 ``````{r} 
-name$annee &lt;- as.Date(name$annee, "%Y")
+name$annee <- as.Date(name$annee, "%Y")
 ```
 We now have a clean dataset of all the names in the several french departments, by year.
 <div id="heatmap" class="section level3">
@@ -51,19 +51,19 @@ geom_tile
 ggplot
 ```. Here how to create it step by step.
 ```{r} 
-choix &lt;- "COLIN"
-name %&gt;%
+choix <- "COLIN"
+name %>%
   #Filter by name
-  filter(prenom == choix) %&gt;%
+  filter(prenom == choix) %>%
   
   #Group by two variables : year and dep
-  group_by(annee, dpt) %&gt;%
+  group_by(annee, dpt) %>%
   
   #Summarise the sum of each name by year &amp; dep
-  summarise(somme = sum(nombre)) %&gt;%
+  summarise(somme = sum(nombre)) %>%
   
   #Make sure you get rid of NA
-  na.omit() %&gt;% 
+  na.omit() %>% 
   
   #Start your ggplot 
   ggplot(aes(annee, dpt, fill = somme)) +
@@ -87,12 +87,12 @@ So yeah, it’s that simple. Let’s try with another name.
 
 (And of course, you can specify a different color scale for your plot)
 ```{r} 
-choix &lt;- "ELISABETH"
-name %&gt;%
-  filter(prenom == choix) %&gt;%
-  group_by(annee, dpt) %&gt;%
-  summarise(somme = sum(nombre)) %&gt;%
-  na.omit() %&gt;% 
+choix <- "ELISABETH"
+name %>%
+  filter(prenom == choix) %>%
+  group_by(annee, dpt) %>%
+  summarise(somme = sum(nombre)) %>%
+  na.omit() %>% 
   ggplot(aes(annee, dpt, fill = somme)) +
   geom_tile() +
   scale_x_date(limits =  c(lubridate::ymd("1900-01-01"), lubridate::ymd("2015-01-01"))) +

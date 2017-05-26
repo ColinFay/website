@@ -29,7 +29,7 @@ I've chosen to analyse Lewis Caroll's famous masterpiece, _Alice's Adventures in
 library(gutenbergr)
 ```
 ```{r} 
-aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")
+aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 This function gives you a list with the following elements:
 <pre>```{r} 
@@ -40,7 +40,7 @@ This function gives you a list with the following elements:
 The first column contains the reference of the book you're looking for in the Gutenberg catalogue. You need this number to download the book:
 ```{r} 
 library(magrittr)
-alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()
+alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
 ```
 Here, ```{r} 
 gutenberg_download
@@ -60,9 +60,9 @@ tidytext
  
 ```
 ```{r} 
-tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
- unnest_tokens(word, text) %&gt;%
- anti_join(stop_words) %&gt;%
+tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
+ unnest_tokens(word, text) %>%
+ anti_join(stop_words) %>%
  count(word, sort = TRUE)
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
 

@@ -15,23 +15,23 @@ Réseau social incontournable des amateurs du disque microsillon, Discogs offre 
 
 <span style="text-decoration: underline;">Note : pour retrouver les données utilisées dans ce billet, vous pouvez télécharger <a href="http://colinfay.me/data/collection_complete.json" target="_blank">le document JSON ici</a>, ou directement dans R :
 ```{r} 
-collection_complete &lt;- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
+collection_complete <- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
 Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _```{r} 
-%&gt;% 
+%>% 
 ```_et _```{r} 
 %||%
 ```._
 ```{r} 
 library(magrittr)
-`%||%` &lt;- function(a,b) if(is.null(a)) b else a
+`%||%` <- function(a,b) if(is.null(a)) b else a
 ```
 Bien bien, commençons par faire venir le profil Discogs :
 ```{r} 
-user &lt;- "_colin"
-content &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders"))
-content &lt;- rjson::fromJSON(rawToChar(content$content))$folders
+user <- "_colin"
+content <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders"))
+content <- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
 <pre>```{r} 
@@ -60,22 +60,22 @@ L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma col
 repeat
 ``` qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
 ```{r} 
-collec_url &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
+collec_url <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
 if (collec_url$status_code == 200){
-  collec &lt;- rjson::fromJSON(rawToChar(collec_url$content))
-  collecdata &lt;- collec$releases
+  collec <- rjson::fromJSON(rawToChar(collec_url$content))
+  collecdata <- collec$releases
     if(!is.null(collec$pagination$urls$`next`)){
       repeat{
-        url &lt;- httr::GET(collec$pagination$urls$`next`)
-        collec &lt;- rjson::fromJSON(rawToChar(url$content))
-        collecdata &lt;- c(collecdata, collec$releases)
+        url <- httr::GET(collec$pagination$urls$`next`)
+        collec <- rjson::fromJSON(rawToChar(url$content))
+        collecdata <- c(collecdata, collec$releases)
         if(is.null(collec$pagination$urls$`next`)){
           break
         }
       }
     }
 }
-  collection &lt;- lapply(collecdata, function(obj){
+  collection <- lapply(collecdata, function(obj){
     data.frame(release_id = obj$basic_information$id %||% NA,
                label = obj$basic_information$labels[[1]]$name %||% NA,
                year = obj$basic_information$year %||% NA,
@@ -85,7 +85,7 @@ if (collec_url$status_code == 200){
                artist_resource_url = obj$basic_information$artists[[1]]$resource_url %||% NA, 
                format = obj$basic_information$formats[[1]]$name %||% NA,
                resource_url = obj$basic_information$resource_url %||% NA)
-  }) %&gt;% do.call(rbind, .) %&gt;% 
+  }) %>% do.call(rbind, .) %>% 
     unique()
 
 ```
@@ -261,9 +261,9 @@ Bien, ces infos un temps soit peu basiques nous offrent déjà une première vis
 #### Hello, it's me again
 &nbsp;
 ```{r} 
-collection_2 &lt;- lapply(as.list(collection$release_id), function(obj){
-  url &lt;- httr::GET(paste0("https://api.discogs.com/releases/", obj))
-  url &lt;- rjson::fromJSON(rawToChar(url$content))
+collection_2 <- lapply(as.list(collection$release_id), function(obj){
+  url <- httr::GET(paste0("https://api.discogs.com/releases/", obj))
+  url <- rjson::fromJSON(rawToChar(url$content))
   data.frame(release_id = obj, 
              label = url$label[[1]]$name %||% NA,
              year = url$year %||% NA, 
@@ -277,7 +277,7 @@ collection_2 &lt;- lapply(as.list(collection$release_id), function(obj){
              have = url$community$have %||% NA, 
              lowest_price = url$lowest_price %||% NA, 
              country = url$country %||% NA)
-}) %&gt;% do.call(rbind, .) %&gt;% 
+}) %>% do.call(rbind, .) %>% 
   unique()
 ```
 Ici, nous utilisons le release_id pour aller à la pêche aux informations pour toutes les entrées de la base.
@@ -327,11 +327,11 @@ ggplot(collection_2, aes(x = lowest_price)) +
 Bon... Ce n'est visiblement pas en vendant ma collection que je vais faire fortune. Cela dit, je ne comptais pas m'en séparer, cela tombe plutôt bien.
 ### Let’s finish!
 ```{r} 
-collection_complete &lt;- merge(collection, collection_2, by = c("release_id","label", "year", "title", "artist_name"))
+collection_complete <- merge(collection, collection_2, by = c("release_id","label", "year", "title", "artist_name"))
 ```
 #### Prix des vinyles en fonction des “want”
 ```{r} 
-lm_want &lt;- lm(formula = lowest_price ~ want, data = collection_complete)
+lm_want <- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
 <pre>```{r} 
@@ -340,7 +340,7 @@ summary(lm_want)
 ##-8.043 -4.628 -2.224  2.179 49.608 
 
 ##Coefficients:
-##            Estimate Std. Error t value Pr(&gt;|t|)    
+##            Estimate Std. Error t value Pr(>|t|)    
 ##(Intercept) 6.715418   0.450582  14.904  &lt; 2e-16 ***
 ##want        0.005004   0.001788   2.799  0.00546 ** 
 ##---
@@ -366,7 +366,7 @@ ggplot(collection_complete, aes(x = lowest_price, y = want)) +
 En clair : sur Discogs, il est possible d'entrer des vinyles dans une "liste d'envie", labellisée "want" dans notre population. Ici, nous avons dessiné la régression linéaire du prix le plus bas en fonction du nombre de personnes ayant listé cette sortie dans leur liste d'envie. La tendance est légère, avec beaucoup de bruit lorsque nous nous rapprochons des prix les plus élevés.
 #### Prix des vinyles en fonction des notes
 ```{r} 
-lm_note &lt;- lm(formula = lowest_price ~ average_note, data = collection_complete)
+lm_note <- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
 <pre>```{r} 

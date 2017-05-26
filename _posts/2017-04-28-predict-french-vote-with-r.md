@@ -23,7 +23,7 @@ I’ve extracted the info from :
 
 Let’s create the tibble.
 <pre class="r"><code class="r"><span class="keyword">library<span class="paren">(<span class="identifier">tidyverse<span class="paren">)
-<span class="identifier">result <span class="operator">&lt;- <span class="identifier">tibble<span class="paren">(
+<span class="identifier">result <span class="operator"><- <span class="identifier">tibble<span class="paren">(
   <span class="identifier">NOM <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"MACRON",<span class="string">"MÉLENCHON",<span class="string">"FILLON",<span class="string">"LEPEN",<span class="string">"HAMON",<span class="string">"DUPONT-AIGNAN",<span class="string">"POUTOU",<span class="string">"LASSALLE",<span class="string">"ARTHAUD",<span class="string">"ASSELINEAU", <span class="string">"CHEMINADE",<span class="string">"BLANC"<span class="paren">),
   <span class="identifier">SIDE <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"CENTRE", <span class="string">"GAUCHE", <span class="string">"DROITE",<span class="string">"DROITE",<span class="string">"GAUCHE",<span class="string">"DROITE", <span class="string">"GAUCHE", <span class="string">"SANS ETIQUETTE",<span class="string">"GAUCHE",<span class="string">"DROITE",<span class="string">"GAUCHE", <span class="string">"BLANC"<span class="paren">),
   <span class="identifier">APPEL <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"MACRON",<span class="string">"NSP",<span class="string">"MACRON",<span class="string">"LEPEN",<span class="string">"MACRON",<span class="string">"NSP",<span class="string">"NSP",
@@ -61,14 +61,14 @@ Ok, now what do we do with the candidate who hasn't give any instruction?
 #### Let’s try various scenarios.
 What would happen if the NSP equally vote for each candidate?
 <pre class="r"><code class="r"><span class="keyword">library<span class="paren">(<span class="identifier">stringr<span class="paren">)
-<span class="identifier">sim1 <span class="operator">&lt;- <span class="identifier">result <span class="operator">%&gt;%
-  <span class="identifier">group_by<span class="paren">(<span class="identifier">APPEL<span class="paren">) <span class="operator">%&gt;%
+<span class="identifier">sim1 <span class="operator"><- <span class="identifier">result <span class="operator">%>%
+  <span class="identifier">group_by<span class="paren">(<span class="identifier">APPEL<span class="paren">) <span class="operator">%>%
   <span class="identifier">summarise<span class="paren">(<span class="identifier">VOIX <span class="operator">= <span class="identifier">sum<span class="paren">(<span class="identifier">POURC<span class="paren">)<span class="paren">)
-<span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX <span class="operator">&lt;- <span class="identifier">c<span class="paren">(<span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">1<span class="paren">]<span class="paren">], 
+<span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX <span class="operator"><- <span class="identifier">c<span class="paren">(<span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">1<span class="paren">]<span class="paren">], 
                <span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">2<span class="paren">]<span class="paren">] <span class="operator">+ <span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">4<span class="paren">]<span class="paren">]<span class="operator">/<span class="number">2,
                <span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">3<span class="paren">]<span class="paren">]<span class="operator">+ <span class="identifier">sim1<span class="operator">$<span class="identifier">VOIX<span class="paren">[<span class="paren">[<span class="number">4<span class="paren">]<span class="paren">]<span class="operator">/<span class="number">2,
                <span class="literal">NA<span class="paren">)
-<span class="identifier">sim1 <span class="operator">&lt;- <span class="identifier">na.omit<span class="paren">(<span class="identifier">sim1<span class="paren">)
+<span class="identifier">sim1 <span class="operator"><- <span class="identifier">na.omit<span class="paren">(<span class="identifier">sim1<span class="paren">)
 <span class="identifier">ggplot<span class="paren">(<span class="identifier">sim1, <span class="identifier">aes<span class="paren">(<span class="identifier">reorder<span class="paren">(<span class="identifier">APPEL, <span class="identifier">VOIX<span class="paren">), <span class="identifier">VOIX<span class="paren">)<span class="paren">) <span class="operator">+ 
   <span class="identifier">geom_bar<span class="paren">(<span class="identifier">stat <span class="operator">= <span class="string">"identity", , <span class="identifier">fill <span class="operator">= <span class="string">"#b78d6a"<span class="paren">) <span class="operator">+ 
   <span class="identifier">coord_flip<span class="paren">(<span class="paren">) <span class="operator">+ 
@@ -82,8 +82,8 @@ What would happen if the NSP equally vote for each candidate?
 
 Ok, we're good with that one. What would happen if all the NSP vote for Marine Le Pen?
 <pre class="r"><code class="r"><span class="keyword">library<span class="paren">(<span class="identifier">stringr<span class="paren">)
-<span class="identifier">result <span class="operator">%&gt;%
-  <span class="identifier">mutate<span class="paren">(<span class="identifier">APPEL <span class="operator">= <span class="identifier">str_replace_all<span class="paren">(<span class="identifier">result<span class="operator">$<span class="identifier">APPEL, <span class="string">"NSP", <span class="string">"LEPEN"<span class="paren">)<span class="paren">) <span class="operator">%&gt;%
+<span class="identifier">result <span class="operator">%>%
+  <span class="identifier">mutate<span class="paren">(<span class="identifier">APPEL <span class="operator">= <span class="identifier">str_replace_all<span class="paren">(<span class="identifier">result<span class="operator">$<span class="identifier">APPEL, <span class="string">"NSP", <span class="string">"LEPEN"<span class="paren">)<span class="paren">) <span class="operator">%>%
   <span class="identifier">ggplot<span class="paren">(<span class="identifier">aes<span class="paren">(<span class="identifier">reorder<span class="paren">(<span class="identifier">APPEL, <span class="identifier">POURC<span class="paren">), <span class="identifier">POURC<span class="paren">)<span class="paren">) <span class="operator">+ 
   <span class="identifier">geom_bar<span class="paren">(<span class="identifier">stat <span class="operator">= <span class="string">"identity", , <span class="identifier">fill <span class="operator">= <span class="string">"#b78d6a"<span class="paren">) <span class="operator">+ 
   <span class="identifier">coord_flip<span class="paren">(<span class="paren">) <span class="operator">+ 
@@ -96,8 +96,8 @@ Ok, we're good with that one. What would happen if all the NSP vote for Marine L
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png"><img class="aligncenter size-full wp-image-1677" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png" alt="" width="1000" height="500" /></a>
 
 Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
-<pre class="r"><code class="r"><span class="identifier">result <span class="operator">%&gt;%
-  <span class="identifier">mutate<span class="paren">(<span class="identifier">APPEL <span class="operator">= <span class="identifier">str_replace_all<span class="paren">(<span class="identifier">result<span class="operator">$<span class="identifier">APPEL, <span class="string">"NSP", <span class="string">"MACRON"<span class="paren">)<span class="paren">) <span class="operator">%&gt;%
+<pre class="r"><code class="r"><span class="identifier">result <span class="operator">%>%
+  <span class="identifier">mutate<span class="paren">(<span class="identifier">APPEL <span class="operator">= <span class="identifier">str_replace_all<span class="paren">(<span class="identifier">result<span class="operator">$<span class="identifier">APPEL, <span class="string">"NSP", <span class="string">"MACRON"<span class="paren">)<span class="paren">) <span class="operator">%>%
   <span class="identifier">ggplot<span class="paren">(<span class="identifier">aes<span class="paren">(<span class="identifier">reorder<span class="paren">(<span class="identifier">APPEL, <span class="identifier">POURC<span class="paren">), <span class="identifier">POURC<span class="paren">)<span class="paren">) <span class="operator">+ 
   <span class="identifier">geom_bar<span class="paren">(<span class="identifier">stat <span class="operator">= <span class="string">"identity", , <span class="identifier">fill <span class="operator">= <span class="string">"#b78d6a"<span class="paren">) <span class="operator">+ 
   <span class="identifier">coord_flip<span class="paren">(<span class="paren">) <span class="operator">+ 
@@ -112,9 +112,9 @@ Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
 Yeah, that was obvious.
 ### Left vs Right wing
 OK, let’s try something else. What if all voters who chose a right wing candidate vote for Marine Le Pen, and voters for a left wing candidate Emmanuel Macron ?
-<pre class="r"><code class="r"><span class="identifier">result <span class="operator">%&gt;%
+<pre class="r"><code class="r"><span class="identifier">result <span class="operator">%>%
   <span class="identifier">left_join<span class="paren">(<span class="identifier">data.frame<span class="paren">(<span class="identifier">SIDE <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"CENTRE",<span class="string">"GAUCHE",<span class="string">"DROITE", <span class="string">"BLANC", <span class="string">"SANS ETIQUETTE"<span class="paren">), 
-                       <span class="identifier">SIM <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"MACRON",<span class="string">"MACRON",<span class="string">"LEPEN", <span class="string">"BLANC", <span class="string">"BLANC"<span class="paren">)<span class="paren">), <span class="identifier">by <span class="operator">= <span class="string">"SIDE"<span class="paren">) <span class="operator">%&gt;%
+                       <span class="identifier">SIM <span class="operator">= <span class="identifier">c<span class="paren">(<span class="string">"MACRON",<span class="string">"MACRON",<span class="string">"LEPEN", <span class="string">"BLANC", <span class="string">"BLANC"<span class="paren">)<span class="paren">), <span class="identifier">by <span class="operator">= <span class="string">"SIDE"<span class="paren">) <span class="operator">%>%
   <span class="identifier">ggplot<span class="paren">(<span class="identifier">aes<span class="paren">(<span class="identifier">reorder<span class="paren">(<span class="identifier">SIM.y, <span class="identifier">POURC<span class="paren">), <span class="identifier">POURC<span class="paren">)<span class="paren">) <span class="operator">+ 
   <span class="identifier">geom_bar<span class="paren">(<span class="identifier">stat <span class="operator">= <span class="string">"identity", , <span class="identifier">fill <span class="operator">= <span class="string">"#b78d6a"<span class="paren">) <span class="operator">+ 
   <span class="identifier">coord_flip<span class="paren">(<span class="paren">) <span class="operator">+ 

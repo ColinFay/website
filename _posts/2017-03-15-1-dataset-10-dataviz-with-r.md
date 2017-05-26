@@ -28,15 +28,15 @@ source("data-bzh-tools-master/main.R")
 #Charger les données
 library(tidyverse)
 source(file = "data-bzh-tools-master/main.R")
-prim &lt;- read_csv2("https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/download/?format=csv&amp;timezone=Europe/Berlin&amp;use_labels_for_header=true")
-prim$Année &lt;- paste0("01-01-",prim$Année) %&gt;%
+prim <- read_csv2("https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/download/?format=csv&amp;timezone=Europe/Berlin&amp;use_labels_for_header=true")
+prim$Année <- paste0("01-01-",prim$Année) %>%
   lubridate::dmy()
 ```
 #### Frequency distribution
 ```{r} 
-prim %&gt;%
-  group_by(Année) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Année) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(Année, somme)) + 
   geom_bar(stat = "identity", fill = databzh$colour1) + 
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
@@ -45,9 +45,9 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Prop by sector
 ```{r} 
-prim %&gt;%
-  group_by(Année, `Secteur disciplinaire`) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Année, `Secteur disciplinaire`) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(Année, somme, fill = `Secteur disciplinaire`)) + 
   scale_fill_manual(values = databzh$colours) +
   geom_bar(stat = "identity", position = "fill") + 
@@ -57,9 +57,9 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Value by sector
 ```{r} 
-prim %&gt;%
-  group_by(Année, Bénéficiaires, `Secteur disciplinaire`) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Année, Bénéficiaires, `Secteur disciplinaire`) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(Année,somme, group = `Secteur disciplinaire`, col = `Secteur disciplinaire`)) + 
   geom_point() +
   scale_color_manual(values = databzh$colours) +
@@ -70,10 +70,10 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Map
 ```{r} 
-#states &lt;- map_data("france")
-prim2 &lt;- prim %&gt;%
-  separate(`Géo-localisation`, into = c("lon","lat"), sep =',') %&gt;%
-  group_by(lon, lat) %&gt;%
+#states <- map_data("france")
+prim2 <- prim %>%
+  separate(`Géo-localisation`, into = c("lon","lat"), sep =',') %>%
+  group_by(lon, lat) %>%
   summarise(somme = sum(Bénéficiaires))
 ggplot(states, aes(long,lat, group=group)) + 
   geom_polygon(fill = "#e4e4e4") + 
@@ -99,9 +99,9 @@ ggplot(prim, aes(Région, Bénéficiaires)) +
 ## <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Dotplot
 ```{r} 
-prim %&gt;%
-  group_by(Région) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Région) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(reorder(Région, somme), somme)) +
   geom_point(col = databzh$colour1, size=4) + 
   coord_flip() + 
@@ -112,10 +112,10 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Dotplot bis
 ```{r} 
-prim %&gt;%
-  group_by(Établissement) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
-  na.omit() %&gt;%
+prim %>%
+  group_by(Établissement) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
+  na.omit() %>%
   ggplot(aes(reorder(Établissement, somme), somme)) +
   geom_point(col = databzh$colour3, size=4) + 
   coord_flip() + 
@@ -126,10 +126,10 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Histogram
 ```{r} 
-prim %&gt;%
-  group_by(Établissement) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
-  na.omit() %&gt;%
+prim %>%
+  group_by(Établissement) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
+  na.omit() %>%
   ggplot(aes(somme)) +
   geom_histogram(fill = databzh$colour3) + 
   xlab("Bénéficiaire")+
@@ -140,9 +140,9 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Line plot
 ```{r} 
-prim %&gt;%
-  group_by(Année, `Groupe de corps`) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Année, `Groupe de corps`) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(Année, somme, group =`Groupe de corps`, col =`Groupe de corps`)) + 
   geom_line(stat = "identity", size = 3) +
   scale_color_manual(values = databzh$colours) +
@@ -152,9 +152,9 @@ prim %&gt;%
 ### <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Barplot
 ```{r} 
-prim %&gt;%
-  group_by(Année, Bénéficiaires, Sexe) %&gt;%
-  summarise(somme = sum(Bénéficiaires))%&gt;%
+prim %>%
+  group_by(Année, Bénéficiaires, Sexe) %>%
+  summarise(somme = sum(Bénéficiaires))%>%
   ggplot(aes(Année, somme)) + 
   geom_bar(stat = "identity", fill = databzh$colour2) +
   scale_fill_manual(values = databzh$colours) +

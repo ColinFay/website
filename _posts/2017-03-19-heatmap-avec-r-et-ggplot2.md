@@ -34,13 +34,13 @@ library(tidyverse)
 ``````{r} 
 
 ``````{r} 
-name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
+name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
 ```
 <pre>```{r} 
 
 ``````{r} 
-name$annee &lt;- as.Date(name$annee, "%Y")
+name$annee <- as.Date(name$annee, "%Y")
 ```
 Nous avons maintenant un jeu de données propre, avec les noms et les départements.
 <div id="heatmap" class="section level3">
@@ -51,19 +51,19 @@ geom_tile
 ggplot2
 ```. Voici sa construction étape par étape.
 ```{r} 
-choix &lt;- "COLIN"
-name %&gt;%
+choix <- "COLIN"
+name %>%
   #Filtre par nom
-  filter(prenom == choix) %&gt;%
+  filter(prenom == choix) %>%
   
   #Groupe par année et département
-  group_by(annee, dpt) %&gt;%
+  group_by(annee, dpt) %>%
   
   #Résumé de l'effectif par année et département
-  summarise(somme = sum(nombre)) %&gt;%
+  summarise(somme = sum(nombre)) %>%
   
   #Suppression des NA
-  na.omit() %&gt;% 
+  na.omit() %>% 
   
   #Initialisation de ggplot
   ggplot(aes(annee, dpt, fill = somme)) +
@@ -87,12 +87,12 @@ Oui, c'est aussi simple que ça. Essayons avec un autre prénom.
 
 (Bien sûr, vous pouvez choisir une autre échelle pour les couleurs.)
 ```{r} 
-choix &lt;- "ELISABETH"
-name %&gt;%
-  filter(prenom == choix) %&gt;%
-  group_by(annee, dpt) %&gt;%
-  summarise(somme = sum(nombre)) %&gt;%
-  na.omit() %&gt;% 
+choix <- "ELISABETH"
+name %>%
+  filter(prenom == choix) %>%
+  group_by(annee, dpt) %>%
+  summarise(somme = sum(nombre)) %>%
+  na.omit() %>% 
   ggplot(aes(annee, dpt, fill = somme)) +
   geom_tile() +
   scale_x_date(limits =  c(lubridate::ymd("1900-01-01"), lubridate::ymd("2015-01-01"))) +
