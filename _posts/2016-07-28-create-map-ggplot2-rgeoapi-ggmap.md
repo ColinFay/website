@@ -277,7 +277,7 @@ The <code>ggmap</code> package has been designed to produce background maps to b
 <pre class="r"><code>map &lt;- qmap('Bretagne', zoom = 8)</code></pre>
 Once you have a <code>map</code> object, you can use it as the first argument of your ggplot call, and then combine it with your usual <code>geom</code>:
 <pre class="r"><code>map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="http://colinfay.me/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
 
 &nbsp;
 

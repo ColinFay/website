@@ -32,7 +32,7 @@ coord_map() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/void-france-map.png"><img class="aligncenter size-full wp-image-1607" src="http://colinfay.me/wp-content/uploads/2017/04/void-france-map.png" alt="" width="500" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/void-france-map.png"><img class="aligncenter size-full wp-image-1607" src="https://colinfay.github.io/wp-content/uploads/2017/04/void-france-map.png" alt="" width="500" height="500"></a>
 
 Ok, not really sexy, I'll admit that :)
 
@@ -45,7 +45,7 @@ coord_map() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/pixel-france.png"><img class="aligncenter size-full wp-image-1608" src="http://colinfay.me/wp-content/uploads/2017/04/pixel-france.png" alt="" width="500" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france.png"><img class="aligncenter size-full wp-image-1608" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france.png" alt="" width="500" height="500"></a>
 
 Let's try a more hardcore pixelization :
 
@@ -56,7 +56,7 @@ coord_map() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/pixel-france-2.png"><img class="aligncenter size-full wp-image-1609" src="http://colinfay.me/wp-content/uploads/2017/04/pixel-france-2.png" alt="" width="500" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-2.png"><img class="aligncenter size-full wp-image-1609" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-2.png" alt="" width="500" height="500"></a>
 
 Ok, that's not very informative, but this map looks cool, right!&nbsp;
 
@@ -70,7 +70,7 @@ coord_map() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/pixel-france-3.png"><img class="aligncenter size-full wp-image-1610" src="http://colinfay.me/wp-content/uploads/2017/04/pixel-france-3.png" alt="" width="500" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png"><img class="aligncenter size-full wp-image-1610" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png" alt="" width="500" height="500"></a>
 
 Tada!
 <h3>US &amp; world map</h3>
@@ -83,7 +83,7 @@ coord_fixed() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/pixel-world-map.png"><img class="aligncenter size-full wp-image-1611" src="http://colinfay.me/wp-content/uploads/2017/04/pixel-world-map.png" alt="" width="1000" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-world-map.png"><img class="aligncenter size-full wp-image-1611" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-world-map.png" alt="" width="1000" height="500"></a>
 
 And a US map:
 
@@ -94,7 +94,7 @@ coord_map() +
 theme_void()
 </code>
 
-<a href="http://colinfay.me/wp-content/uploads/2017/04/us-pixel-map.png"><img class="aligncenter size-full wp-image-1613" src="http://colinfay.me/wp-content/uploads/2017/04/us-pixel-map.png" alt="" width="1000" height="500"></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/us-pixel-map.png"><img class="aligncenter size-full wp-image-1613" src="https://colinfay.github.io/wp-content/uploads/2017/04/us-pixel-map.png" alt="" width="1000" height="500"></a>
 
 And, of course, you can create your own pixel maps with other shapefiles ;)&nbsp;
 

@@ -75,7 +75,7 @@ users_tags &lt;- unlist(users_api$tag) %&gt;%
   labs(title = "Faces of #RStats - Captions confidence", 
        caption="http://colinfay.me") + 
   theme_light()</code></pre>
-[caption id="attachment_1583" align="aligncenter" width="1000"]<a href="http://colinfay.me/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="http://colinfay.me/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> Cliquez pour zoomer[/caption]
+[caption id="attachment_1583" align="aligncenter" width="1000"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> Cliquez pour zoomer[/caption]
 
 <span class="notranslate">Il semble que les scores de confiance pour les légendes ne soient pas très forts. </span>
 
@@ -94,7 +94,7 @@ users_tags &lt;- unlist(users_api$tag) %&gt;%
   labs(title = "Faces of #RStats - Captions", 
        caption="http://colinfay.me") +   
   theme_light()</code></pre>
-[caption id="attachment_1580" align="aligncenter" width="800"]<a href="http://colinfay.me/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="http://colinfay.me/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> Click to zoom[/caption]
+[caption id="attachment_1580" align="aligncenter" width="800"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> Click to zoom[/caption]
 
 <span class="notranslate">Eh bien ... Je ne suis pas sûr qu'il y ait tant de passionnés de surf et de skate dans notre liste, mais soit...</span>
 <pre class="r"><code>users_tags %&gt;%
@@ -112,17 +112,17 @@ users_tags &lt;- unlist(users_api$tag) %&gt;%
   theme_light()
 
 </code></pre>
-<h2><a href="http://colinfay.me/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="http://colinfay.me/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a></h2>
+<h2><a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a></h2>
 <h2>Quelques vérifications</h2>
 Jetons un coup d’œil à l'image avec le score de confiance le plus élevé, avec la légende que l'API lui a donnée.
 
-[caption id="attachment_1459" align="aligncenter" width="300"]<a href="http://colinfay.me/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="http://colinfay.me/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> A man wearing a suit and tie — 0.92 confidence.[/caption]
+[caption id="attachment_1459" align="aligncenter" width="300"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> A man wearing a suit and tie — 0.92 confidence.[/caption]
 
 <span class="notranslate">Il n'a pas de cravate, mais l'API a bien saisi le reste.</span>
 
 <span class="notranslate">Et maintenant, juste pour le plaisir, la légende avec le score de confiance le plus bas :</span>
 
-[caption id="attachment_1460" align="aligncenter" width="300"]<a href="http://colinfay.me/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="http://colinfay.me/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> A close up of two giraffes near a tree - 0.02 confidence[/caption]
+[caption id="attachment_1460" align="aligncenter" width="300"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> A close up of two giraffes near a tree - 0.02 confidence[/caption]
 
 Bien vu ;)
 
@@ -130,18 +130,18 @@ Bien vu ;)
 <p style="text-align: right;"><em>Remarque: afin de se concentrer sur les détails des images et de se débarrasser du genre des légendes, j'ai remplacé "man / woman / men / womens" par "persoe / persons" dans l'ensemble de données, avant de créer ces collages. </em></p>
 
 
-[caption id="attachment_1533" align="aligncenter" width="840"]<a href="http://colinfay.me/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="http://colinfay.me/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> A person on a surf board in a skate park[/caption]
+[caption id="attachment_1533" align="aligncenter" width="840"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> A person on a surf board in a skate park[/caption]
 
 &nbsp;
 
-[caption id="attachment_1556" align="aligncenter" width="840"]<a href="http://colinfay.me/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="http://colinfay.me/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> A person is smiling at the camera - Confidence mean : 0.54[/caption]
+[caption id="attachment_1556" align="aligncenter" width="840"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> A person is smiling at the camera - Confidence mean : 0.54[/caption]
 
 &nbsp;
 
-[caption id="attachment_1535" align="aligncenter" width="840"]<a href="http://colinfay.me/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="http://colinfay.me/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> A close up of two giraffes near a tree — Confidence mean : 0.0037[/caption]
+[caption id="attachment_1535" align="aligncenter" width="840"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> A close up of two giraffes near a tree — Confidence mean : 0.0037[/caption]
 
 &nbsp;
 
-[caption id="attachment_1557" align="aligncenter" width="840"]<a href="http://colinfay.me/wp-content/uploads/2017/04/mosaic_glasses.jpg"><img class="size-large wp-image-1557" src="http://colinfay.me/wp-content/uploads/2017/04/mosaic_glasses-1024x514.jpg" alt="" width="840" height="422" /></a> A person wearing glasses looking at the camera[/caption]
+[caption id="attachment_1557" align="aligncenter" width="840"]<a href="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses.jpg"><img class="size-large wp-image-1557" src="https://colinfay.github.io/wp-content/uploads/2017/04/mosaic_glasses-1024x514.jpg" alt="" width="840" height="422" /></a> A person wearing glasses looking at the camera[/caption]
 
 <span class="notranslate">Les premier et troisième collages sont clairement erronés sur les légendes.</span> Mais<span class="notranslate">, nous pouvons voir que le score de confiance y est très bas.</span> <span class="notranslate">Le deuxième et le quatrième, cependant, semblent être plus précis.</span> <span class="notranslate">Peut-être que nous devons essayer à nouveau avec d'autres images, juste pour être sûr ... Mais ça sera pour une autre fois 😉</span>

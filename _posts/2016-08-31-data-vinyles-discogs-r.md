@@ -205,7 +205,7 @@ ggplot(as.data.frame(head(sort(table(collection$label), decreasing = TRUE), 10))
   xlab("Label") +
   ylab("Fréquence") +
   ggtitle("Labels les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="http://colinfay.me/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a>
 
 Philips and Polydor, <em>what a surprise!</em>
 <h4>Most frequent artists</h4>
@@ -215,7 +215,7 @@ Philips and Polydor, <em>what a surprise!</em>
   xlab("Artistes") +
   ylab("Fréquence") +
   ggtitle("Artistes les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="http://colinfay.me/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a>
 
 So... here's the big revelation: I love Serge Gainsbourg and Geogres Brassens (guilty pleasure).
 <h4>Release date</h4>
@@ -224,7 +224,7 @@ So... here's the big revelation: I love Serge Gainsbourg and Geogres Brassens (g
   xlab("Année de sortie") +
   ylab("Fréquence") +
   ggtitle("Date de sorties des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="http://colinfay.me/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a>
 
 Looks like I'm not a big 90's fan! My library show a bimodal distribution, with one mode around the 80's, and one around 2005.
 <h3>It’s time to go deeper</h3>
@@ -259,7 +259,7 @@ Here, I have used the <em>release_id</em> element to make a request about each 
   xlab("Genre") +
   ylab("Fréquence") +
   ggtitle("Genres les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="http://colinfay.me/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, what a surprise! Almost half of my collection is made of rock albums (who could have guessed?).
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, what a surprise! Almost half of my collection is made of rock albums (who could have guessed?).
 <h4>Countries</h4>
 <pre class="r"><code>ggplot(as.data.frame(head(sort(table(collection_2$country), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
@@ -267,14 +267,14 @@ Here, I have used the <em>release_id</em> element to make a request about each 
   xlab("Pays d'origine") +
   ylab("Fréquence") +
   ggtitle("Pays les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="http://colinfay.me/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>
 <h4>Average note</h4>
 <pre class="r"><code>ggplot(collection_2, aes(x = average_note)) + 
   geom_histogram(fill = "#B79477") +
   xlab("Note moyenne") +
   ylab("Fréquence") +
   ggtitle("Notes moyennes des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="http://colinfay.me/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a>
 
 Thanks a lot Discogs! It looks like I've got quite good musical tastes (thanks for the ego boost :) !)
 <h4>Prices of vinyls (low range)</h4>
@@ -283,7 +283,7 @@ Thanks a lot Discogs! It looks like I've got quite good musical tastes (thanks f
   xlab("Prix le plus bas") +
   ylab("Fréquence") +
   ggtitle("Prix le plus bas des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="http://colinfay.me/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a>
 
 Ok, I'm not gonna be rich selling my vinyl collection...
 <h3>Let’s finish!</h3>
@@ -311,7 +311,7 @@ Here, we can see a correlation between the price and the number of users that pu
 
 <code>ggplot(collection_complete, aes(x = lowest_price, y = want)) + geom_point(size = 3, color = "#B79477") + geom_smooth(method = "lm") + xlab("Prix le plus bas") + ylab("Nombre de \"want\"") + ggtitle("Prix et \"want\" des vinyles de la collection")</code>
 
-<a href="http://colinfay.me/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="http://colinfay.me/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
 <h4>Price and average note</h4>
 <pre class="r"><code>lm_note &lt;- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients</code></pre>
@@ -324,6 +324,6 @@ Here, no significative correlation.
   ylab("Note moyenne") +
   ylim(c(0,5)) +
   ggtitle("Prix et notes des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="http://colinfay.me/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a>
 <h3>And to conclude...</h3>
 Next step... create a package to access the Discogs API? Why not! Let's put this on my to-do...

@@ -82,7 +82,7 @@ ggplot(aes(x = reorder(name, listeners), y = listeners)) +
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
         panel.grid.major = element_line(colour = "grey"))</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/12/songs-last-fm-christmas.jpeg"><img class="aligncenter size-large wp-image-1186" src="http://colinfay.me/wp-content/uploads/2016/12/songs-last-fm-christmas-1024x512.jpeg" alt="songs-last-fm-christmas" width="809" height="405" /></a>(click to zoom)
+<a href="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas.jpeg"><img class="aligncenter size-large wp-image-1186" src="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas-1024x512.jpeg" alt="songs-last-fm-christmas" width="809" height="405" /></a>(click to zoom)
 
 And the most frequent artists:
 <pre class="r"><code>songs$artist %&gt;%
@@ -109,8 +109,8 @@ ggplot(aes(x = reorder(., Freq), y = Freq)) +
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
         panel.grid.major = element_line(colour = "grey"))</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/12/artist-christmas-lastfm.jpeg"><img class="aligncenter size-large wp-image-1184" title="" src="http://colinfay.me/wp-content/uploads/2016/12/artist-christmas-lastfm-1024x512.jpeg" alt="artists christmas last fm" width="809" height="405" /></a>(click to zoom)
+<a href="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm.jpeg"><img class="aligncenter size-large wp-image-1184" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm-1024x512.jpeg" alt="artists christmas last fm" width="809" height="405" /></a>(click to zoom)
 
 So now... Merry Christmas!
 
-<a title="" href="http://colinfay.me/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif"><img class="aligncenter size-full wp-image-1182" title="" src="http://colinfay.me/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif" alt="Nightmare before christmas" width="500" height="301" /></a>
+<a title="" href="https://colinfay.github.io/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif"><img class="aligncenter size-full wp-image-1182" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif" alt="Nightmare before christmas" width="500" height="301" /></a>

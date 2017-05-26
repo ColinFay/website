@@ -42,7 +42,7 @@ Let’s start by a short visualisation of the results :
        <span class="identifier">x</span> <span class="operator">=</span> <span class="string">""</span>, 
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)</span></code></pre>
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/04/resultats-premier-tour.png"><img class="aligncenter size-full wp-image-1673" src="http://colinfay.me/wp-content/uploads/2017/04/resultats-premier-tour.png" alt="Résultats du premier tour" width="1000" height="500" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png"><img class="aligncenter size-full wp-image-1673" src="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png" alt="Résultats du premier tour" width="1000" height="500" /></a></h3>
 <h3>Simulating second round results</h3>
 Here are the results if everyone who voted for a candidate on the first round follows the instructions give by this candidate.
 <pre class="r"><code class="r"><span class="identifier">ggplot</span><span class="paren">(</span><span class="identifier">result</span>, <span class="identifier">aes</span><span class="paren">(</span><span class="identifier">reorder</span><span class="paren">(</span><span class="identifier">APPEL</span>, <span class="identifier">POURC</span><span class="paren">)</span>, <span class="identifier">POURC</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span> 
@@ -53,7 +53,7 @@ Here are the results if everyone who voted for a candidate on the first round fo
        <span class="identifier">x</span> <span class="operator">=</span> <span class="string">""</span>, 
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)</span></code></pre>
-<h4><a href="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-1.png"><img class="aligncenter size-full wp-image-1674" src="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-1.png" alt="Simulation 1" width="1000" height="500" /></a></h4>
+<h4><a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png"><img class="aligncenter size-full wp-image-1674" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png" alt="Simulation 1" width="1000" height="500" /></a></h4>
 Ok, now what do we do with the candidate who hasn't give any instruction?
 <h4>Let’s try various scenarios.</h4>
 What would happen if the NSP equally vote for each candidate?
@@ -74,7 +74,7 @@ What would happen if the NSP equally vote for each candidate?
        <span class="identifier">x</span> <span class="operator">=</span> <span class="string">""</span>, 
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)</span></code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-2.png"><img class="aligncenter size-full wp-image-1678" src="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-2.png" alt="" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png"><img class="aligncenter size-full wp-image-1678" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png" alt="" width="1000" height="500" /></a>
 
 Ok, we're good with that one. What would happen if all the NSP vote for Marine Le Pen?
 <pre class="r"><code class="r"><span class="keyword">library</span><span class="paren">(</span><span class="identifier">stringr</span><span class="paren">)</span>
@@ -88,7 +88,7 @@ Ok, we're good with that one. What would happen if all the NSP vote for Marine L
        <span class="identifier">x</span> <span class="operator">=</span> <span class="string">""</span>, 
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)</span></code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-3.png"><img class="aligncenter size-full wp-image-1677" src="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-3.png" alt="" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png"><img class="aligncenter size-full wp-image-1677" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png" alt="" width="1000" height="500" /></a>
 
 Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
 <pre class="r"><code class="r"><span class="identifier">result</span> <span class="operator">%&gt;%</span>
@@ -101,7 +101,7 @@ Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
        <span class="identifier">x</span> <span class="operator">=</span> <span class="string">""</span>, 
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)
-<a href="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-4.png"><img class="aligncenter size-full wp-image-1676" src="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-4.png" alt="" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png"><img class="aligncenter size-full wp-image-1676" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png" alt="" width="1000" height="500" /></a>
 </span></code></pre>
 Yeah, that was obvious.
 <h3>Left vs Right wing</h3>
@@ -117,6 +117,6 @@ OK, let’s try something else. What if all voters who chose a right wing candi
        <span class="identifier">y</span> <span class="operator">=</span> <span class="string">""</span><span class="paren">)</span><span class="operator">+</span> 
   <span class="identifier">theme_light</span><span class="paren">(</span><span class="paren">)
 </span></code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-5.png"><img class="aligncenter size-full wp-image-1675" src="http://colinfay.me/wp-content/uploads/2017/04/simulation-second-tour-5.png" alt="" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png"><img class="aligncenter size-full wp-image-1675" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png" alt="" width="1000" height="500" /></a>
 
 Ok, still tight, but Emmanuel Macron still wins

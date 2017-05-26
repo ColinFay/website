@@ -205,7 +205,7 @@ ggplot(as.data.frame(head(sort(table(collection$label), decreasing = TRUE), 10))
   xlab("Label") +
   ylab("Fréquence") +
   ggtitle("Labels les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="http://colinfay.me/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a>
 
 Philips et Polydor, <em>what a surprise!</em>
 <h4>Les artistes les plus représentés</h4>
@@ -215,7 +215,7 @@ Philips et Polydor, <em>what a surprise!</em>
   xlab("Artistes") +
   ylab("Fréquence") +
   ggtitle("Artistes les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="http://colinfay.me/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a>
 
 Bon, voilà, vous le savez... j'aime beaucoup Serge Gainsbourg et Georges Brassens (j'assume). La présence forte de Various était prévisible : il s'agit d'un terme générique faisant référence aux compilations, il est donc plus facile de gonfler ce chiffre que celui d'un artiste "solo".
 <h4>Date de sortie des vinyles de la collection</h4>
@@ -224,7 +224,7 @@ Bon, voilà, vous le savez... j'aime beaucoup Serge Gainsbourg et Georges Brasse
   xlab("Année de sortie") +
   ylab("Fréquence") +
   ggtitle("Date de sorties des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="http://colinfay.me/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a>
 
 Woaw, j'ai comme l'impression que je ne suis pas un super fan des années 90... Pourtant, il y a de <a href="https://www.youtube.com/watch?v=NcKAdFENqig" target="_blank">super titres</a>, non ? Ma collection se concentre sur un gros pic autour des années 80 et 00, avec un mode en 1980.
 <h3>It’s time to go deeper</h3>
@@ -260,7 +260,7 @@ Ici, nous utilisons le release_id pour aller à la pêche aux informations pour 
   xlab("Genre") +
   ylab("Fréquence") +
   ggtitle("Genres les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="http://colinfay.me/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, quelle surprise ! Eh oui, presque la moitié de ma collection contient des vinyles de rock (tous styles confondus). Qui aurait pu s'en douter ?
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, quelle surprise ! Eh oui, presque la moitié de ma collection contient des vinyles de rock (tous styles confondus). Qui aurait pu s'en douter ?
 <h4>Pays d’origine des vinyles</h4>
 <pre class="r"><code>ggplot(as.data.frame(head(sort(table(collection_2$country), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
@@ -268,14 +268,14 @@ Ici, nous utilisons le release_id pour aller à la pêche aux informations pour 
   xlab("Pays d'origine") +
   ylab("Fréquence") +
   ggtitle("Pays les plus fréquents")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="http://colinfay.me/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>Bon, une large partie des vinyles venus de France, ça se tient :)
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>Bon, une large partie des vinyles venus de France, ça se tient :)
 <h4>Notes moyennes des vinyles</h4>
 <pre class="r"><code>ggplot(collection_2, aes(x = average_note)) + 
   geom_histogram(fill = "#B79477") +
   xlab("Note moyenne") +
   ylab("Fréquence") +
   ggtitle("Notes moyennes des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="http://colinfay.me/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a>
 
 D'après la communauté Discogs j'ai plutôt de bons goûts musicaux... Merci pour cet <em>ego boost</em> ! (Oui, je compte ignorer la présence de 10 vinyles notés 0... Après tout, on a tous les droits à ses petits guilty pleasure...)
 <h4>Money Money Money</h4>
@@ -284,7 +284,7 @@ D'après la communauté Discogs j'ai plutôt de bons goûts musicaux... Merci po
   xlab("Prix le plus bas") +
   ylab("Fréquence") +
   ggtitle("Prix le plus bas des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="http://colinfay.me/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a>
 
 Bon... Ce n'est visiblement pas en vendant ma collection que je vais faire fortune. Cela dit, je ne comptais pas m'en séparer, cela tombe plutôt bien.
 <h3>Let’s finish!</h3>
@@ -315,7 +315,7 @@ Ici, nous voyons que le coefficient de <em>want</em> est significatif, avec une 
   xlab("Prix le plus bas") +
   ylab("Nombre de \"want\"") +
   ggtitle("Prix et \"want\" des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="http://colinfay.me/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
 
 En clair : sur Discogs, il est possible d'entrer des vinyles dans une "liste d'envie", labellisée "want" dans notre population. Ici, nous avons dessiné la régression linéaire du prix le plus bas en fonction du nombre de personnes ayant listé cette sortie dans leur liste d'envie. La tendance est légère, avec beaucoup de bruit lorsque nous nous rapprochons des prix les plus élevés.
 <h4>Prix des vinyles en fonction des notes</h4>
@@ -330,6 +330,6 @@ Ici, le coefficient étant de 2.2, nous ne pouvons pas lier la variable note à 
   ylab("Note moyenne") +
   ylim(c(0,5)) +
   ggtitle("Prix et notes des vinyles de la collection")</code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="http://colinfay.me/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a>
 <h3>And to conclude...</h3>
 La prochaine étape ? Faire un package pour accéder à l'API... et pourquoi pas ? Je mets ça sur ma to-do !

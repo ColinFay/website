@@ -12,7 +12,7 @@ published: true
 <h2>Retour sur l’atelier dataviz de la Fabrique de l’info !<!--more--></h2>
 <div id="la-fabrique-de-linfo" class="section level2">
 <h2>La fabrique de l’info</h2>
-<a href="http://colinfay.me/wp-content/uploads/2017/03/IMG_2771.jpg"><img class="size-medium wp-image-1412 alignleft" src="http://colinfay.me/wp-content/uploads/2017/03/IMG_2771-300x225.jpg" alt="" width="300" height="225" /></a>Lors de cette journée d’ateliers et de conférences, j’ai animé un atelier sur la thématique de la dataviz. Le message ? Une visualisation de données, autant qu'un texte, relève d’un choix éditorial — et un dataset peut dire énormément de choses différentes en fonction du message que l'on souhaite passer.
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771.jpg"><img class="size-medium wp-image-1412 alignleft" src="https://colinfay.github.io/wp-content/uploads/2017/03/IMG_2771-300x225.jpg" alt="" width="300" height="225" /></a>Lors de cette journée d’ateliers et de conférences, j’ai animé un atelier sur la thématique de la dataviz. Le message ? Une visualisation de données, autant qu'un texte, relève d’un choix éditorial — et un dataset peut dire énormément de choses différentes en fonction du message que l'on souhaite passer.
 <p style="text-align: center;"><a href="https://github.com/ColinFay/conf/blob/master/fabrique-info/La%20fabrique%20de%20l'info.pdf">Retrouvez les slides de la présentation ici !</a></p>
 Pour cela, j’ai notamment pris l’exemple d’un <a href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/">jeu de données</a>, que j'ai décliné en 10 visualisations. Voici comment les réaliser avec R.
 
@@ -39,7 +39,7 @@ prim$Année &lt;- paste0("01-01-",prim$Année) %&gt;%
   databzhTheme()</code></pre>
 </div>
 <div id="proportions-par-secteur" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Proportions par secteur</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Année, `Secteur disciplinaire`) %&gt;%
@@ -51,7 +51,7 @@ prim$Année &lt;- paste0("01-01-",prim$Année) %&gt;%
   databzhTheme()</code></pre>
 </div>
 <div id="par-secteur-en-valeur-absolue" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Par secteur, en valeur absolue</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Année, Bénéficiaires, `Secteur disciplinaire`) %&gt;%
@@ -64,7 +64,7 @@ prim$Année &lt;- paste0("01-01-",prim$Année) %&gt;%
   databzhTheme()</code></pre>
 </div>
 <div id="carte-de-france" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Carte de France</h3>
 <pre class="r"><code>#states &lt;- map_data("france")
 prim2 &lt;- prim %&gt;%
@@ -84,7 +84,7 @@ ggplot(states, aes(long,lat, group=group)) +
   databzhTheme()</code></pre>
 </div>
 <div id="boxplot" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot20.jpeg"><img class="aligncenter size-large wp-image-1396" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot20-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20.jpeg"><img class="aligncenter size-large wp-image-1396" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Boxplot</h3>
 <pre class="r"><code>ggplot(prim, aes(Région, Bénéficiaires)) + 
   geom_boxplot(col = databzh$colour4) +
@@ -94,7 +94,7 @@ ggplot(states, aes(long,lat, group=group)) +
 </div>
 </div>
 <div id="dotplot" class="section level2">
-<h2><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a></h2>
+<h2><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a></h2>
 <h2>Dotplot</h2>
 <pre class="r"><code>prim %&gt;%
   group_by(Région) %&gt;%
@@ -106,7 +106,7 @@ ggplot(states, aes(long,lat, group=group)) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()</code></pre>
 <div id="boxplot-bis" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Dotplot bis</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Établissement) %&gt;%
@@ -120,7 +120,7 @@ ggplot(states, aes(long,lat, group=group)) +
   databzhTheme()</code></pre>
 </div>
 <div id="histogramme" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Histogramme</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Établissement) %&gt;%
@@ -134,7 +134,7 @@ ggplot(states, aes(long,lat, group=group)) +
   databzhTheme()</code></pre>
 </div>
 <div id="ligne" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Ligne</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Année, `Groupe de corps`) %&gt;%
@@ -146,7 +146,7 @@ ggplot(states, aes(long,lat, group=group)) +
   databzhTheme()</code></pre>
 </div>
 <div id="barplot" class="section level3">
-<h3><a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
+<h3><a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a></h3>
 <h3>Barplot</h3>
 <pre class="r"><code>prim %&gt;%
   group_by(Année, Bénéficiaires, Sexe) %&gt;%
@@ -159,7 +159,7 @@ ggplot(states, aes(long,lat, group=group)) +
   databzhTheme()
 
 </code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/03/Rplot09.jpeg"><img class="aligncenter size-large wp-image-1403" src="http://colinfay.me/wp-content/uploads/2017/03/Rplot09-1024x512.jpeg" alt="" width="840" height="420" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09.jpeg"><img class="aligncenter size-large wp-image-1403" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09-1024x512.jpeg" alt="" width="840" height="420" /></a>
 
 </div>
 </div>

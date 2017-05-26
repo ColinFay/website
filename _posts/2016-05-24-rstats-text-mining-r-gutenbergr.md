@@ -50,7 +50,7 @@ barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots
 </code></pre>
 Alors… <em>Roulement de tambour</em>…
 
-<a href="http://colinfay.me/wp-content/uploads/2016/05/alice-in-wonderland.png"><img class="aligncenter size-full wp-image-1663" src="http://colinfay.me/wp-content/uploads/2016/05/alice-in-wonderland.png" alt="" width="1200" height="600" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png"><img class="aligncenter size-full wp-image-1663" src="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png" alt="" width="1200" height="600" /></a>
 
 Pour aller plus loin :
 

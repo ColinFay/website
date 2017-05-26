@@ -66,7 +66,7 @@ Let's now project our variables on maps. You need to play with the <code>scale_
        <span class="identifier">caption</span> <span class="operator">=</span> <span class="string">"http://colinfay.me"</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">map_theme
 </span></code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/05/second-tour-blanc.png"><img class="aligncenter size-full wp-image-1716" src="http://colinfay.me/wp-content/uploads/2017/05/second-tour-blanc.png" alt="blancs du second tour" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png"><img class="aligncenter size-full wp-image-1716" src="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png" alt="blancs du second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">ggplot</span><span class="paren">(</span><span class="identifier">result_map</span>, <span class="identifier">aes</span><span class="paren">(</span><span class="identifier">long</span>,<span class="identifier">lat</span>, <span class="identifier">group</span> <span class="operator">=</span> <span class="identifier">group</span>, <span class="identifier">fill</span> <span class="operator">=</span> <span class="identifier">pourcentage_abs</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">geom_polygon</span><span class="paren">(</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">coord_map</span><span class="paren">(</span><span class="paren">)</span> <span class="operator">+</span>
@@ -77,7 +77,7 @@ Let's now project our variables on maps. You need to play with the <code>scale_
        <span class="identifier">subtitle</span> <span class="operator">=</span> <span class="string">"Données via data.gouv"</span>,
        <span class="identifier">caption</span> <span class="operator">=</span> <span class="string">"http://colinfay.me"</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">map_theme</span> </code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/05/abstention-second-tour.png"><img class="aligncenter size-full wp-image-1717" src="http://colinfay.me/wp-content/uploads/2017/05/abstention-second-tour.png" alt="abstention second tour" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png"><img class="aligncenter size-full wp-image-1717" src="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png" alt="abstention second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">ggplot</span><span class="paren">(</span><span class="identifier">result_map</span>, <span class="identifier">aes</span><span class="paren">(</span><span class="identifier">long</span>,<span class="identifier">lat</span>, <span class="identifier">group</span> <span class="operator">=</span> <span class="identifier">group</span>, <span class="identifier">fill</span> <span class="operator">=</span> <span class="identifier">pourcentage_macron</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">geom_polygon</span><span class="paren">(</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">coord_map</span><span class="paren">(</span><span class="paren">)</span> <span class="operator">+</span>
@@ -88,7 +88,7 @@ Let's now project our variables on maps. You need to play with the <code>scale_
        <span class="identifier">subtitle</span> <span class="operator">=</span> <span class="string">"Données via data.gouv"</span>,
        <span class="identifier">caption</span> <span class="operator">=</span> <span class="string">"http://colinfay.me"</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">map_theme</span> </code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/05/macron.png"><img class="aligncenter size-full wp-image-1725" src="http://colinfay.me/wp-content/uploads/2017/05/macron.png" alt="macron second tour" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png"><img class="aligncenter size-full wp-image-1725" src="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png" alt="macron second tour" width="1000" height="500" /></a>
 <pre class="r"><code class="r"><span class="identifier">
 ggplot</span><span class="paren">(</span><span class="identifier">result_map</span>, <span class="identifier">aes</span><span class="paren">(</span><span class="identifier">long</span>,<span class="identifier">lat</span>, <span class="identifier">group</span> <span class="operator">=</span> <span class="identifier">group</span>, <span class="identifier">fill</span> <span class="operator">=</span> <span class="identifier">pourcentage_lepen</span><span class="paren">)</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">geom_polygon</span><span class="paren">(</span><span class="paren">)</span> <span class="operator">+</span>
@@ -100,4 +100,4 @@ ggplot</span><span class="paren">(</span><span class="identifier">result_map</sp
        <span class="identifier">subtitle</span> <span class="operator">=</span> <span class="string">"Données via data.gouv"</span>,
        <span class="identifier">caption</span> <span class="operator">=</span> <span class="string">"http://colinfay.me"</span><span class="paren">)</span> <span class="operator">+</span>
   <span class="identifier">map_theme</span> </code></pre>
-<a href="http://colinfay.me/wp-content/uploads/2017/05/mlp.png"><img class="aligncenter size-full wp-image-1724" src="http://colinfay.me/wp-content/uploads/2017/05/mlp.png" alt="Votes pour Marine Le Pen au second tour" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png"><img class="aligncenter size-full wp-image-1724" src="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png" alt="Votes pour Marine Le Pen au second tour" width="1000" height="500" /></a>
