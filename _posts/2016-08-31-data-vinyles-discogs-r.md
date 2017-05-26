@@ -18,11 +18,9 @@ Every vinyl lover knows about Discogs. But did you know you could easily access 
 collection_complete <- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
-Before starting, I'll need these two functions: _```{r} 
-%>% 
-```_and _```{r} 
-%||%
-```._
+Before starting, I'll need these two functions: _
+`%>%` and ` %||%`._
+
 ```{r} 
 library(magrittr) #for %>%
 `%||%` <- function(a,b) if(is.null(a)) b else a
@@ -34,7 +32,7 @@ content <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection
 content <- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
-<pre>```{r} 
+```{r} 
 ## [[1]]
 ## [[1]]$count
 ## [1] 308
@@ -333,7 +331,7 @@ collection_complete <- merge(collection, collection_2, by = c("release_id","labe
 lm_want <- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
-<pre>```{r} 
+```{r} 
 ##Residuals:
 ##   Min     1Q Median     3Q    Max 
 ##-8.043 -4.628 -2.224  2.179 49.608 
@@ -363,7 +361,7 @@ ggplot(collection_complete, aes(x = lowest_price, y = want)) + geom_point(size =
 lm_note <- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
-<pre>```{r} 
+```{r} 
 ##  (Intercept) average_note 
 ##    -1.504767     2.207834
 ```

@@ -1,8 +1,6 @@
 ---
 ID: 1275
-post_title: >
-  Create a map with R — rgeoapi, ggmap
-  and ggplot2
+post_title: 'Create a map with R — rgeoapi, ggmap and ggplot2'
 author: colin_fay
 post_date: 2016-07-28 13:52:20
 post_excerpt: ""
@@ -10,19 +8,19 @@ layout: single
 permalink: /create-map-ggplot2-rgeoapi-ggmap/
 published: true
 ---
-<div id="pense-pour-simplifier-les-travaux-de-cartographie-rgeoapi-est-un-package-qui-interroge-la-base-de-donnees-geographique-francaise.-resultat-des-visualisation-sur-carte-easy-peasy.-si-si." class="section level2">
 ## Improve your mapping with rgeoapi, a package designed to access the french geographic database.
 <!--more-->
+
 ### rgeowhat ?
 Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a> API is a JSON interface designed to make requests on the French geographic database.
 
-rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With ```{r} 
-rgeoapi
-```, you can get any coordinate, size and population of a French city, to be used in your maps.
+rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With `rgeoapi`, you can get any coordinate, size and population of a French city, to be used in your maps.
 
 To install :
-<pre class="r">install.packages("rgeoapi")```
-</div>
+```{r}
+rinstall.packages("rgeoapi")
+```
+
 ### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:
 ```{r} 
@@ -60,9 +58,8 @@ villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 
 </tr>
 </tbody>
 </table>
-To put these cities on a map, you'll need their coordinates. For that, you can use ```{r} 
-rgeoapi
-```!
+To put these cities on a map, you'll need their coordinates. For that, you can use `rgeoapi`!
+
 ```{r} 
 library(rgeoapi)
 ```
@@ -279,29 +276,22 @@ geo <- ldply(villes$nom, ComByName)
 </tbody>
 </table>
 &nbsp;
+
 ```{r} 
 names(villes)[1] <- "name"
 villes <- merge(villes, geo, by = "name", all.x = TRUE)
 ```
 ### Create a map with ggmap and ggplot2
-The ```{r} 
-ggmap
-``` package has been designed to produce background maps to be used with ```{r} 
-ggplot2
-```. The "fast" function to create a map is ```{r} 
-qmap(x,y)
-``` - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
+The `ggmap` package has been designed to produce background maps to be used with `ggplot2`. The "fast" function to create a map is `qmap(x,y)` - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
+
 ```{r} 
 library(ggmap)
 ```
 ```{r} 
 map <- qmap('Bretagne', zoom = 8)
 ```
-Once you have a ```{r} 
-map
-``` object, you can use it as the first argument of your ggplot call, and then combine it with your usual ```{r} 
-geom
-```:
+Once you have a map object, you can use it as the first argument of your ggplot call, and then combine it with your usual `geom`:
+
 ```{r} 
 map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))
 ```

@@ -10,13 +10,10 @@ layout: single
 permalink: /carte-r-rgeoapi-ggplot2/
 published: true
 ---
-<div id="pense-pour-simplifier-les-travaux-de-cartographie-rgeoapi-est-un-package-qui-interroge-la-base-de-donnees-geographique-francaise.-resultat-des-visualisation-sur-carte-easy-peasy.-si-si." class="section level2">
 ## Pensé pour simplifier les travaux de cartographie, rgeoapi est un package qui interroge la base de données géographique française. Résultat : des visualisations de cartes, _easy peasy_. Si si.
 <!--more-->
 ### rgeoquoi ?
-Disponible sur <a href="https://github.com/ColinFay">Github</a>, ```{r} 
-rgeoapi
-``` permet d’effectuer des requêtes sur la base de données cartographique française. Pour quoi faire dites-vous ? Ce package vous permet, entre autres, d’obtenir les coordonnées d’une ville à partir de son nom, de son code INSEE ou encore de son code postal. _How cool is that?_
+Disponible sur <a href="https://github.com/ColinFay">Github</a>, `rgeoapi` permet d’effectuer des requêtes sur la base de données cartographique française. Pour quoi faire dites-vous ? Ce package vous permet, entre autres, d’obtenir les coordonnées d’une ville à partir de son nom, de son code INSEE ou encore de son code postal. _How cool is that?_
 
 Pour installer rgeoapi :
 ```{r} 
@@ -60,9 +57,7 @@ villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 
 </tr>
 </tbody>
 </table>
-Pour représenter ces données sur une carte de manière précise, vous aurez besoin des coordonnées des villes. C’est à ce moment qu’entre en scène ```{r} 
-rgeoapi
-```!
+Pour représenter ces données sur une carte de manière précise, vous aurez besoin des coordonnées des villes. C’est à ce moment qu’entre en scène `rgeoapi`!
 
 Nous lançons donc une requête sur les noms contenus dans notre data.frame.
 ```{r} 
@@ -283,13 +278,7 @@ geo <- ldply(villes$nom, ComByName)
 À noter : à partir d'un nom, il est possible que le package vous retourne plusieurs résultats pour une même requête. Ce pour plusieurs raisons :
 <ul>
  	<li>Plusieurs villes possèdent cette chaine de caractères dans leur nom</li>
- 	<li>La commune en question couvre plusieurs codes postaux et le paramètre ```{r} 
-postal
-``` est ```{r} 
-TRUE
-``` (ce dernier est ```{r} 
-FALSE
-``` par défaut)</li>
+ 	<li>La commune en question couvre plusieurs codes postaux et le paramètre `postal` est `TRUE` (ce dernier est `FALSE` par défaut)</li>
  	<li>Votre requête est en _partial match_</li>
 </ul>
 Nous avons donc ici un tableau qui nous retourne toutes les coordonnées des villes qui nous intéressent, avec leur surface et leur population. Bien, ne reste plus qu’à effectuer une jointure des deux !
@@ -299,32 +288,14 @@ villes <- merge(villes, geo, by = "name", all.x = TRUE)
 ```
 Passons maintenant aux choses sérieuses.
 ### Créer une carte avec ggmap et ggplot2
-Le package ```{r} 
-ggmap 
-```a été spécialement pensé pour produire des fonds de cartes à insérer en background de vos ```{r} 
-ggplot2
-```, autrement dit des cartes qui seront utilisées comme couche de ```{r} 
-mapping
-``` de votre visualisation. La fonction rapide de carte est ```{r} 
-qmap
-``` (une terminologie qui devrait sonner familière aux adeptes des ```{r} 
-qplot
-``` de ```{r} 
-ggplot
-```) – le premier argument faisant référence à la requête (ville / département / région…) et le second au niveau de zoom de Google map.
+Le package `ggmap `a été spécialement pensé pour produire des fonds de cartes à insérer en background de vos `ggplot2`, autrement dit des cartes qui seront utilisées comme couche de `mapping` de votre visualisation. La fonction rapide de carte est `qmap` (une terminologie qui devrait sonner familière aux adeptes des `qplot` de `ggplot`) – le premier argument faisant référence à la requête (ville / département / région…) et le second au niveau de zoom de Google map.
 ```{r} 
 library(ggmap)
 ```
 ```{r} 
 map <- qmap('Bretagne', zoom = 8)
 ```
-Une fois l’objet ```{r} 
-map
-``` créé, il ne vous reste qu’à l’utiliser comme première layer de votre fonction ```{r} 
-ggplot
-```, en utilisant les fonctions ```{r} 
-geom
-``` habituelles :
+Une fois l’objet `map` créé, il ne vous reste qu’à l’utiliser comme première layer de votre fonction `ggplot`, en utilisant les fonctions `geom` habituelles :
 ```{r} 
 map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))
 ```

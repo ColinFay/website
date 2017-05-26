@@ -18,11 +18,8 @@ Réseau social incontournable des amateurs du disque microsillon, Discogs offre 
 collection_complete <- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
-Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _```{r} 
-%>% 
-```_et _```{r} 
-%||%
-```._
+Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _`%>% ` et `%||%`.
+
 ```{r} 
 library(magrittr)
 `%||%` <- function(a,b) if(is.null(a)) b else a
@@ -34,7 +31,7 @@ content <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection
 content <- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
-<pre>```{r} 
+```{r} 
 ## [[1]]
 ## [[1]]$count
 ## [1] 308
@@ -334,7 +331,7 @@ collection_complete <- merge(collection, collection_2, by = c("release_id","labe
 lm_want <- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
-<pre>```{r} 
+```{r} 
 ##Residuals:
 ##   Min     1Q Median     3Q    Max 
 ##-8.043 -4.628 -2.224  2.179 49.608 
@@ -369,7 +366,7 @@ En clair : sur Discogs, il est possible d'entrer des vinyles dans une "liste d'e
 lm_note <- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
-<pre>```{r} 
+```{r} 
 ##  (Intercept) average_note 
 ##    -1.504767     2.207834
 ```
