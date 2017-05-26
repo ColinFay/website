@@ -21,22 +21,35 @@ Dans ce court post, retrouvez le déroulement de la création d'une heatmap d'un
 ```{r} 
 library(tidyverse)
 ```
-<pre><code>## Loading tidyverse: ggplot2
+<pre>```{r} 
+## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
 ## Loading tidyverse: tidyr
 ## Loading tidyverse: readr
 ## Loading tidyverse: purrr
 ## Loading tidyverse: dplyr
 ```
-<pre><code></code><code></code><code>name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
+<pre>```{r} 
+
+``````{r} 
+
+``````{r} 
+name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
   na.omit()
 ```
-<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")
+<pre>```{r} 
+
+``````{r} 
+name$annee &lt;- as.Date(name$annee, "%Y")
 ```
 Nous avons maintenant un jeu de données propre, avec les noms et les départements.
 <div id="heatmap" class="section level3">
 ### Heatmap
-Une heatmap se crée le geom <code>geom_tile</code> de <code>ggplot2</code>. Voici sa construction étape par étape.
+Une heatmap se crée le geom ```{r} 
+geom_tile
+``` de ```{r} 
+ggplot2
+```. Voici sa construction étape par étape.
 ```{r} 
 choix &lt;- "COLIN"
 name %&gt;%

@@ -11,7 +11,9 @@ published: true
 ## This R package allows you to access the Pinterest API. Now on CRAN.
 <!--more-->
 ### rpinterest on CRAN
-Make requests on the Pinterest API with <code>rpinterest</code>, an R package now available on <a href="https://cran.r-project.org/web/packages/rpinterest/index.html" target="_blank">CRAN</a>.
+Make requests on the Pinterest API with ```{r} 
+rpinterest
+```, an R package now available on <a href="https://cran.r-project.org/web/packages/rpinterest/index.html" target="_blank">CRAN</a>.
 
 To install in R :
 <pre class="{r}">install.packages("rpinterest")```

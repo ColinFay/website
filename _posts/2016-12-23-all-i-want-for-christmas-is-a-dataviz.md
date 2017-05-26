@@ -30,7 +30,9 @@ apikey &lt;- "XXX"
 #L'index des pages de l'API, qui s'incrémentera au fur et à mesure des requêtes
 x &lt;- 0
 ```
-Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument "<code>&amp;page="</code>.
+Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument "```{r} 
+&amp;page="
+```.
 ```{r} 
 url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
               query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
@@ -73,7 +75,9 @@ songs &lt;- lapply(dl, function(x){
 </div>
 <div id="and-now-lets-see" class="section level3">
 ### And now, let’s see!
-Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :<code> </code>
+Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :```{r} 
+ 
+```
 ```{r} 
 songs &lt;- as.data.table(songs)
 songs &lt;- songs[, .(listeners = mean(listeners)), by = .(name,artist)]

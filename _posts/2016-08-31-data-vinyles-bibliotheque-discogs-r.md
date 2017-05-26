@@ -18,7 +18,11 @@ Réseau social incontournable des amateurs du disque microsillon, Discogs offre 
 collection_complete &lt;- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
-Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _<code>%&gt;% </code>_et _<code>%||%</code>._
+Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _```{r} 
+%&gt;% 
+```_et _```{r} 
+%||%
+```._
 ```{r} 
 library(magrittr)
 `%||%` &lt;- function(a,b) if(is.null(a)) b else a
@@ -30,7 +34,8 @@ content &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collect
 content &lt;- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
-<pre><code>## [[1]]
+<pre>```{r} 
+## [[1]]
 ## [[1]]$count
 ## [1] 308
 ## 
@@ -45,9 +50,15 @@ content
 ```
 Cette première requête nous permet d’obtenir les informations basiques sur l’utilisateur (en l’occurrence “_colin“, principal intéressé de ce billet de blog).
 
-<code>$count</code> nous apprend notamment que la collection compte 308 entrées. L’élément de la liste <code>$id</code> renvoie le nombre de “folders” Discogs créées par l’utilisateur – ici, 0 correspond à l’ensemble de la collection, sans spécification de liste.
+```{r} 
+$count
+``` nous apprend notamment que la collection compte 308 entrées. L’élément de la liste ```{r} 
+$id
+``` renvoie le nombre de “folders” Discogs créées par l’utilisateur – ici, 0 correspond à l’ensemble de la collection, sans spécification de liste.
 ### Créer un data.frame avec l’ensemble des vinyles présents dans la collection
-L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma collection contenant 308 entrées, nous devons réaliser une boucle <code>repeat</code> qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
+L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma collection contenant 308 entrées, nous devons réaliser une boucle ```{r} 
+repeat
+``` qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
 ```{r} 
 collec_url &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
 if (collec_url$status_code == 200){
@@ -323,7 +334,8 @@ collection_complete &lt;- merge(collection, collection_2, by = c("release_id","l
 lm_want &lt;- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
-<pre><code>##Residuals:
+<pre>```{r} 
+##Residuals:
 ##   Min     1Q Median     3Q    Max 
 ##-8.043 -4.628 -2.224  2.179 49.608 
 
@@ -357,7 +369,8 @@ En clair : sur Discogs, il est possible d'entrer des vinyles dans une "liste d'e
 lm_note &lt;- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
-<pre><code>##  (Intercept) average_note 
+<pre>```{r} 
+##  (Intercept) average_note 
 ##    -1.504767     2.207834
 ```
 Ici, le coefficient étant de 2.2, nous ne pouvons pas lier la variable note à la variable prix. Visualisons les données pour afficher la dispersion.

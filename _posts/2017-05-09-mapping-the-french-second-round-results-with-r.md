@@ -20,7 +20,9 @@ Let's load this dataset, as well as the map of France available in _ggplot2_.
 <span class="identifier">map <span class="operator">&lt;- <span class="identifier">map_data<span class="paren">(<span class="string">"france"<span class="paren">)
 ```
 ### Clean data
-Before mapping the results, we need to transform and clean the data.frame <code>result</code>.
+Before mapping the results, we need to transform and clean the data.frame ```{r} 
+result
+```.
 <pre class="r"><code class="r"><span class="identifier">result <span class="operator">&lt;- <span class="identifier">result <span class="operator">%&gt;%
   <span class="identifier">group_by<span class="paren">(<span class="identifier">`Libellé du département`<span class="paren">) <span class="operator">%&gt;%
   <span class="identifier">summarise<span class="paren">(<span class="identifier">tot_vot <span class="operator">= <span class="identifier">sum<span class="paren">(<span class="identifier">Exprimé<span class="identifier">s<span class="paren">), 
@@ -44,7 +46,9 @@ We now got a table containing the key figures by department. The name of the fir
 <pre class="r"><code class="r"><span class="identifier">result_map <span class="operator">&lt;- <span class="identifier">left_join<span class="paren">(<span class="identifier">x <span class="operator">= <span class="identifier">map<span class="paren">[,<span class="operator">-<span class="number">6<span class="paren">], <span class="identifier">y <span class="operator">= <span class="identifier">result<span class="paren">)
 ```
 ### Visualisation
-Let's now project our variables on maps. You need to play with the <code>scale_fill_</code> argument to manage the color scheme used on each card.
+Let's now project our variables on maps. You need to play with the ```{r} 
+scale_fill_
+``` argument to manage the color scheme used on each card.
 <p style="text-align: right;">_Note : this article was first published in french. _
 _I've kept the original plot titles._</p>
 

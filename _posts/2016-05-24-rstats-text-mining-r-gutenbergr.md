@@ -33,7 +33,8 @@ library(gutenbergr)
 aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
-<pre><code>## [1] "gutenberg_id"        "title"               "author"             
+<pre>```{r} 
+## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
 ```
@@ -42,7 +43,11 @@ La première colonne, contenant le 11, vous renvoie la référence de l’ouvrag
 library(magrittr)
 alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()
 ```
-Ici, <code>gutenberg_download</code> prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante <code>gutenberg_strip</code> retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
+Ici, ```{r} 
+gutenberg_download
+``` prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante ```{r} 
+gutenberg_strip
+``` retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
 
 </div>
 <div id="text-mining-de-alices-adventures-in-wonderland" class="section level3">
@@ -50,7 +55,11 @@ Ici, <code>gutenberg_download</code> prend comme argument l’ID de l’ouvrage 
 ```{r} 
 library(tidytext)
 ```
-Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package <code>tidytext</code>, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).<code> </code>
+Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package ```{r} 
+tidytext
+```, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).```{r} 
+ 
+```
 ```{r} 
 tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
  unnest_tokens(word, text) %&gt;%

@@ -13,7 +13,9 @@ published: true
 ## Cet outil permet de détecter la langue d'une suite de mots, en se connectant à l'API languagelayer. Un package R maintenant disponible sur le CRAN.
 <!--more-->
 ### languagelayeR - sur le CRAN
-Pour améliorer vos analyses de textes, tirez profit de l'API languagelayer, et du package <code>languagelayeR</code>, maintenant disponible sur le <a href="https://CRAN.R-project.org/package=languagelayeR" target="_blank">CRAN</a>.
+Pour améliorer vos analyses de textes, tirez profit de l'API languagelayer, et du package ```{r} 
+languagelayeR
+```, maintenant disponible sur le <a href="https://CRAN.R-project.org/package=languagelayeR" target="_blank">CRAN</a>.
 
 Pour installer le package directement dans R :
 <pre class="{r}">install.packages("languagelayeR")```

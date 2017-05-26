@@ -14,9 +14,11 @@ published: true
 
 First, you'll need to load the ggplot2 package, and one of the default&nbsp;maps — &nbsp;the package includes <i>county</i>, <i>france</i>, <i>italy</i>, <i>nz</i>, <i>state</i>, <i>usa</i>, <i>world</i>, and <i>world2</i>. For more info, see&nbsp;<i>?map_data.</i>
 
-<code>library(ggplot2)
+```{r} 
+library(ggplot2)
 map &lt;- map_data("france")
-</code>
+
+```
 
 You now have a dataframe ready to be plotted. In your ggplot call, set the data argument to <i>map</i>, the x and y of your aesthetic to <i>long</i> and <i>lat</i>, and the group arg to <i>group</i>.&nbsp;
 
@@ -26,11 +28,13 @@ The <i>coord_map </i>function&nbsp;sets the coordinate system for projecting a m
 
 Finally, <i>theme_void</i> allows you to get rid of everything except the geom.&nbsp;
 
-<code>ggplot(map, aes(long,lat, group=group)) +
+```{r} 
+ggplot(map, aes(long,lat, group=group)) +
 geom_polygon() +
 coord_map() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/void-france-map.png"><img class="aligncenter size-full wp-image-1607" src="https://colinfay.github.io/wp-content/uploads/2017/04/void-france-map.png" alt="" width="500" height="500"></a>
 
@@ -38,23 +42,27 @@ Ok, not really sexy, I'll admit that :)
 
 But here's is the tip for creating a pixel effect : round the _long_ and _lat_, in order&nbsp;to make the border more squared (now, we'll also fill according to groups).
 
-<code>ggplot(map, aes(round(long, 1),round(lat,1), group=group,fill = as.factor(group))) +
+```{r} 
+ggplot(map, aes(round(long, 1),round(lat,1), group=group,fill = as.factor(group))) +
 geom_polygon() +
 guides(fill=FALSE) +
 coord_map() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france.png"><img class="aligncenter size-full wp-image-1608" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france.png" alt="" width="500" height="500"></a>
 
 Let's try a more hardcore pixelization :
 
-<code>ggplot(map, aes(round(long, 0),round(lat,0), group=group,fill = as.factor(group))) +
+```{r} 
+ggplot(map, aes(round(long, 0),round(lat,0), group=group,fill = as.factor(group))) +
 geom_polygon() +
 guides(fill=FALSE) +
 coord_map() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-2.png"><img class="aligncenter size-full wp-image-1609" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-2.png" alt="" width="500" height="500"></a>
 
@@ -62,13 +70,15 @@ Ok, that's not very informative, but this map looks cool, right!&nbsp;
 
 For an even more sexy look, you can put the borders back with a _geom_path_:
 
-<code>ggplot(map, aes(round(long, 0),round(lat,0), group=group,fill = as.factor(group))) +
+```{r} 
+ggplot(map, aes(round(long, 0),round(lat,0), group=group,fill = as.factor(group))) +
 geom_polygon() +
 geom_path(data = map, aes(long, lat, group=group)) +
 guides(fill=FALSE) +
 coord_map() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png"><img class="aligncenter size-full wp-image-1610" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-france-3.png" alt="" width="500" height="500"></a>
 
@@ -76,23 +86,27 @@ Tada!
 ### US &amp; world map
 Here is the code you can use to make a pixel world map.
 
-<code>ggplot(map_data("world"), aes(round(long, 0),round(lat, 0), group=group, fill = as.factor(group))) +
+```{r} 
+ggplot(map_data("world"), aes(round(long, 0),round(lat, 0), group=group, fill = as.factor(group))) +
 geom_polygon() +
 guides(fill=FALSE) +
 coord_fixed() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-world-map.png"><img class="aligncenter size-full wp-image-1611" src="https://colinfay.github.io/wp-content/uploads/2017/04/pixel-world-map.png" alt="" width="1000" height="500"></a>
 
 And a US map:
 
-<code>ggplot(map_data("state"), aes(round(long, 0),round(lat, 0), group=group, fill = as.factor(group))) +
+```{r} 
+ggplot(map_data("state"), aes(round(long, 0),round(lat, 0), group=group, fill = as.factor(group))) +
 geom_polygon() +
 guides(fill=FALSE) +
 coord_map() +
 theme_void()
-</code>
+
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/us-pixel-map.png"><img class="aligncenter size-full wp-image-1613" src="https://colinfay.github.io/wp-content/uploads/2017/04/us-pixel-map.png" alt="" width="1000" height="500"></a>
 

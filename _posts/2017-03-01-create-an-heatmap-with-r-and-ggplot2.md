@@ -21,22 +21,35 @@ In this short post, I’ll show you how to create a heatmap with ggplot2 and R. 
 ```{r} 
 library(tidyverse)
 ```
-<pre><code>## Loading tidyverse: ggplot2
+<pre>```{r} 
+## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
 ## Loading tidyverse: tidyr
 ## Loading tidyverse: readr
 ## Loading tidyverse: purrr
 ## Loading tidyverse: dplyr
 ```
-<pre><code></code><code></code><code>name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
+<pre>```{r} 
+
+``````{r} 
+
+``````{r} 
+name &lt;- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %&gt;%
   na.omit()
 ```
-<pre><code></code><code>name$annee &lt;- as.Date(name$annee, "%Y")
+<pre>```{r} 
+
+``````{r} 
+name$annee &lt;- as.Date(name$annee, "%Y")
 ```
 We now have a clean dataset of all the names in the several french departments, by year.
 <div id="heatmap" class="section level3">
 ### Heatmap
-A heatmap is created with the <code>geom_tile</code> geom from <code>ggplot</code>. Here how to create it step by step.
+A heatmap is created with the ```{r} 
+geom_tile
+``` geom from ```{r} 
+ggplot
+```. Here how to create it step by step.
 ```{r} 
 choix &lt;- "COLIN"
 name %&gt;%

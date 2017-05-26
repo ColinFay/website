@@ -19,7 +19,9 @@ This package requests informations from the French GeoAPI inside R — <a href="
 ## <a id="user-content-geoapi" class="anchor" href="https://github.com/ColinFay/rgeoapi#geoapi"></a>GeoAPI
 Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a> API is a JSON interface designed to make requests on the French geographic database.
 
-rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With <code>rgeoapi</code>, you can get any coordinate, size and population of a French city, to be used in your maps.
+rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With ```{r} 
+rgeoapi
+```, you can get any coordinate, size and population of a French city, to be used in your maps.
 
 For an optimal compatibility, all the names (especially outputs) used in this package are the same as the ones used in the GeoAPI. Please note that this package works only with French cities.
 ## <a id="user-content-install-rgeoapi" class="anchor" href="https://github.com/ColinFay/rgeoapi#install-rgeoapi"></a>Install rgeoapi
@@ -30,17 +32,39 @@ Install this package directly in R :
 ## How rgeoapi works
 The version 1.0.0 works with eleven functions. Which are :
 <ul>
- 	<li><code>ComByCode</code> Get City by INSEE Code</li>
- 	<li><code>ComByCoord</code> Get City by Coordinates</li>
- 	<li><code>ComByDep</code> Get Cities by Department</li>
- 	<li><code>ComByName</code> Get City by Name</li>
- 	<li><code>ComByPostal</code> Get City by Postal Code</li>
- 	<li><code>ComByReg</code> Get Cities by Region</li>
- 	<li><code>DepByCode</code> Get Department by INSEE Code</li>
- 	<li><code>DepByName</code> Get Department by Name</li>
- 	<li><code>DepByReg</code> Get Departments by Region</li>
- 	<li><code>RegByCode</code> Get Region by INSEE Code</li>
- 	<li><code>RegByName</code> Get Region by Name</li>
+ 	<li>```{r} 
+ComByCode
+``` Get City by INSEE Code</li>
+ 	<li>```{r} 
+ComByCoord
+``` Get City by Coordinates</li>
+ 	<li>```{r} 
+ComByDep
+``` Get Cities by Department</li>
+ 	<li>```{r} 
+ComByName
+``` Get City by Name</li>
+ 	<li>```{r} 
+ComByPostal
+``` Get City by Postal Code</li>
+ 	<li>```{r} 
+ComByReg
+``` Get Cities by Region</li>
+ 	<li>```{r} 
+DepByCode
+``` Get Department by INSEE Code</li>
+ 	<li>```{r} 
+DepByName
+``` Get Department by Name</li>
+ 	<li>```{r} 
+DepByReg
+``` Get Departments by Region</li>
+ 	<li>```{r} 
+RegByCode
+``` Get Region by INSEE Code</li>
+ 	<li>```{r} 
+RegByName
+``` Get Region by Name</li>
 </ul>
 ## How the functions are constructed
 In the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a>, you can request for "Commune", "Département" or "Région". All the functions are constructed using this terminology : AByB.

@@ -16,7 +16,9 @@ published: true
 ### rgeowhat ?
 Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="https://api.gouv.fr/explorer/geoapi/">GeoAPI</a> API is a JSON interface designed to make requests on the French geographic database.
 
-rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With <code>rgeoapi</code>, you can get any coordinate, size and population of a French city, to be used in your maps.
+rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With ```{r} 
+rgeoapi
+```, you can get any coordinate, size and population of a French city, to be used in your maps.
 
 To install :
 <pre class="r">install.packages("rgeoapi")```
@@ -58,7 +60,9 @@ villes &lt;- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variabl
 </tr>
 </tbody>
 </table>
-To put these cities on a map, you'll need their coordinates. For that, you can use <code>rgeoapi</code>!
+To put these cities on a map, you'll need their coordinates. For that, you can use ```{r} 
+rgeoapi
+```!
 ```{r} 
 library(rgeoapi)
 ```
@@ -280,14 +284,24 @@ names(villes)[1] &lt;- "name"
 villes &lt;- merge(villes, geo, by = "name", all.x = TRUE)
 ```
 ### Create a map with ggmap and ggplot2
-The <code>ggmap</code> package has been designed to produce background maps to be used with <code>ggplot2</code>. The "fast" function to create a map is <code>qmap(x,y)</code> - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
+The ```{r} 
+ggmap
+``` package has been designed to produce background maps to be used with ```{r} 
+ggplot2
+```. The "fast" function to create a map is ```{r} 
+qmap(x,y)
+``` - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
 ```{r} 
 library(ggmap)
 ```
 ```{r} 
 map &lt;- qmap('Bretagne', zoom = 8)
 ```
-Once you have a <code>map</code> object, you can use it as the first argument of your ggplot call, and then combine it with your usual <code>geom</code>:
+Once you have a ```{r} 
+map
+``` object, you can use it as the first argument of your ggplot call, and then combine it with your usual ```{r} 
+geom
+```:
 ```{r} 
 map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))
 ```

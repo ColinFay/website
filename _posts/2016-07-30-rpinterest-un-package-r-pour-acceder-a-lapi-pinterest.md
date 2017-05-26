@@ -22,18 +22,33 @@ _[/update]_
 &nbsp;
 
 Pour installer la version dev depuis <a href="https://github.com/ColinFay/rpinterest" target="_blank">GitHub</a>  :
-<pre class="{r}"><code>devtools::install_github("ColinFay/rpinterest")
+<pre class="{r}">```{r} 
+devtools::install_github("ColinFay/rpinterest")
 ```
 ### Comment fonctionne rgeoapi
 La version actuelle comprend 7 fonctions :
 <ul>
- 	<li><code>BoardPinsByID</code> obtenir les pins d'un board à partir de l'ID d'un board</li>
- 	<li><code>BoardPinsByName</code> obtenir les pins d'un board à partir du nom d'un board</li>
- 	<li><code>BoardSpecByID</code> obtenir les informations sur un board à partir de l'ID d'un board</li>
- 	<li><code>BoardSpecByName</code> obtenir les informations sur un board à partir du nom d'un board</li>
- 	<li><code>PinSpecByID</code> obtenir les informations sur un pin à partir de son ID</li>
- 	<li><code>UserSpecByID</code> obtenir les informations sur un utilisateur à partir de son ID</li>
- 	<li><code>UserSpecNyName</code> obtenir les informations sur un utilisateur à partir de son nom</li>
+ 	<li>```{r} 
+BoardPinsByID
+``` obtenir les pins d'un board à partir de l'ID d'un board</li>
+ 	<li>```{r} 
+BoardPinsByName
+``` obtenir les pins d'un board à partir du nom d'un board</li>
+ 	<li>```{r} 
+BoardSpecByID
+``` obtenir les informations sur un board à partir de l'ID d'un board</li>
+ 	<li>```{r} 
+BoardSpecByName
+``` obtenir les informations sur un board à partir du nom d'un board</li>
+ 	<li>```{r} 
+PinSpecByID
+``` obtenir les informations sur un pin à partir de son ID</li>
+ 	<li>```{r} 
+UserSpecByID
+``` obtenir les informations sur un utilisateur à partir de son ID</li>
+ 	<li>```{r} 
+UserSpecNyName
+``` obtenir les informations sur un utilisateur à partir de son nom</li>
 </ul>
 ### Obtenir un acess token
 Pour utiliser ces fonctions, il est indispensable d'obtenir un _access token_ disponible sur l'<a href="https://developers.pinterest.com/tools/access_token/" target="_blank">interface developpers</a> de Pinterest.
@@ -42,15 +57,18 @@ Pour utiliser ces fonctions, il est indispensable d'obtenir un _access token_ di
 ### Quelques examples
 #### BoardPinsByID
 Cette fonction prend l'ID d'un board et l'access token obtenu dans l'interface developpers de Pinterest, et retourne tous les pins disponibles sur ce board.
-<pre class="{r}"><code><span class="pl-c">BoardPinsByID(boardID = "42080646457333782", token = token)
+<pre class="{r}">```{r} 
+<span class="pl-c">BoardPinsByID(boardID = "42080646457333782", token = token)
 ```
 #### BoardSpecByName
 Cette fonction vous permet d'obtenir les informations sur un board, à partir de son nom et du nom de l'utilisateur qui l'a créé.
-<pre class="{r}"><code><span class="pl-c">BoardSpecByName(user = "colinfay", board = "blanc-mon-amour", token = token)
+<pre class="{r}">```{r} 
+<span class="pl-c">BoardSpecByName(user = "colinfay", board = "blanc-mon-amour", token = token)
 ```
 #### UserSpecByName
 Comme son nom l'indique, cette fonction obtient les informations sur l’utilisateur Pinterest spécifié.
-<pre class="{r}"><code><span class="pl-c">UserSpecByName(user = "colinfay", token = token)
+<pre class="{r}">```{r} 
+<span class="pl-c">UserSpecByName(user = "colinfay", token = token)
 ```
 ### Contact
 Vos questions et feedbacks <a href="mailto:contact@colinfay.me">sont les bienvenus</a> !

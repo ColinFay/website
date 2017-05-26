@@ -29,7 +29,9 @@ apikey &lt;- "XXX"
 #The page index
 x &lt;- 0
 ```
-Then, the search url. Each request is limited to 1000 answers. The results are divided in pages, and you can access them with the arg "<code>&amp;page="</code>.
+Then, the search url. Each request is limited to 1000 answers. The results are divided in pages, and you can access them with the arg "```{r} 
+&amp;page="
+```.
 ```{r} 
 url &lt;- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
               query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
@@ -70,7 +72,9 @@ songs &lt;- lapply(dl, function(x){
   arrange(listeners)
 ```
 ### And now, let’s see!
-The fifteen most popular songs are:<code> </code>
+The fifteen most popular songs are:```{r} 
+ 
+```
 ```{r} 
 songs &lt;- as.data.table(songs)
 songs &lt;- songs[, .(listeners = mean(listeners)), by = .(name,artist)]

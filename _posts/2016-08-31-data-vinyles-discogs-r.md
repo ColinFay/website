@@ -18,7 +18,11 @@ Every vinyl lover knows about Discogs. But did you know you could easily access 
 collection_complete &lt;- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
 ```
 ### Major Tom to Discogs API
-Before starting, I'll need these two functions: _<code>%&gt;% </code>_and _<code>%||%</code>._
+Before starting, I'll need these two functions: _```{r} 
+%&gt;% 
+```_and _```{r} 
+%||%
+```._
 ```{r} 
 library(magrittr) #for %&gt;%
 `%||%` &lt;- function(a,b) if(is.null(a)) b else a
@@ -30,7 +34,8 @@ content &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collect
 content &lt;- rjson::fromJSON(rawToChar(content$content))$folders
 content
 ```
-<pre><code>## [[1]]
+<pre>```{r} 
+## [[1]]
 ## [[1]]$count
 ## [1] 308
 ## 
@@ -45,9 +50,15 @@ content
 ```
 This first request brings in the environment all the information about a profil (here "_colin", aka : me).
 
-<code>$count</code> tells us the number of entries in the library : 308.  The <code>$id</code> element is the number of “folders” created by the user – 0 corresponding to the whole collection, without any list specification.
+```{r} 
+$count
+``` tells us the number of entries in the library : 308.  The ```{r} 
+$id
+``` element is the number of “folders” created by the user – 0 corresponding to the whole collection, without any list specification.
 ### Create a dataframe with all the vinyls
-The Discogs API sends back pages with 100 max results. Here, my collection has 308, so I'll use a <code>repeat</code> loop to query all the data, and store them in a dataframe.
+The Discogs API sends back pages with 100 max results. Here, my collection has 308, so I'll use a ```{r} 
+repeat
+``` loop to query all the data, and store them in a dataframe.
 ```{r} 
 collec_url &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
 if (collec_url$status_code == 200){
@@ -322,7 +333,8 @@ collection_complete &lt;- merge(collection, collection_2, by = c("release_id","l
 lm_want &lt;- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
 ```
-<pre><code>##Residuals:
+<pre>```{r} 
+##Residuals:
 ##   Min     1Q Median     3Q    Max 
 ##-8.043 -4.628 -2.224  2.179 49.608 
 
@@ -341,7 +353,9 @@ summary(lm_want)
 ```
 Here, we can see a correlation between the price and the number of users that put a "want" on a particular vinyl.
 
-<code>ggplot(collection_complete, aes(x = lowest_price, y = want)) + geom_point(size = 3, color = "#B79477") + geom_smooth(method = "lm") + xlab("Prix le plus bas") + ylab("Nombre de \"want\"") + ggtitle("Prix et \"want\" des vinyles de la collection")</code>
+```{r} 
+ggplot(collection_complete, aes(x = lowest_price, y = want)) + geom_point(size = 3, color = "#B79477") + geom_smooth(method = "lm") + xlab("Prix le plus bas") + ylab("Nombre de \"want\"") + ggtitle("Prix et \"want\" des vinyles de la collection")
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
 #### Price and average note
@@ -349,7 +363,8 @@ Here, we can see a correlation between the price and the number of users that pu
 lm_note &lt;- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
 ```
-<pre><code>##  (Intercept) average_note 
+<pre>```{r} 
+##  (Intercept) average_note 
 ##    -1.504767     2.207834
 ```
 Here, no significative correlation.

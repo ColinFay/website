@@ -32,7 +32,8 @@ library(gutenbergr)
 aliceref &lt;- gutenberg_works(title == "Alice's Adventures in Wonderland")
 ```
 This function gives you a list with the following elements:
-<pre><code>## [1] "gutenberg_id"        "title"               "author"             
+<pre>```{r} 
+## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
 ```
@@ -41,15 +42,23 @@ The first column contains the reference of the book you're looking for in the Gu
 library(magrittr)
 alice &lt;- gutenberg_download(aliceref$gutenberg_id) %&gt;% gutenberg_strip()
 ```
-Here, <code>gutenberg_download</code> takes the ID of the book you want to download, and returns you a data.frame with the full text. <code>gutenberg_strip</code> removes all the metadata at the beginning of the book.
+Here, ```{r} 
+gutenberg_download
+``` takes the ID of the book you want to download, and returns you a data.frame with the full text. ```{r} 
+gutenberg_strip
+``` removes all the metadata at the beginning of the book.
 
 </div>
 ### Alice’s Adventures in Wonderland
 ```{r} 
 library(tidytext)
 ```
-To perform your data analysis, you'll need the <code>tidytext</code> package. Then :
-<code> </code>
+To perform your data analysis, you'll need the ```{r} 
+tidytext
+``` package. Then :
+```{r} 
+ 
+```
 ```{r} 
 tidytext &lt;- data_frame(line = 1:nrow(alice), text = alice$text) %&gt;%
  unnest_tokens(word, text) %&gt;%

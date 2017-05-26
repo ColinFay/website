@@ -26,17 +26,25 @@ published: true
 
 <ul class="unchanged rich-diff-level-one">
  	<li class="unchanged">
-<p class="unchanged"><code>getLanguage</code> Get language information from a character string</p>
+<p class="unchanged">```{r} 
+getLanguage
+``` Get language information from a character string</p>
 </li>
  	<li class="unchanged">
-<p class="unchanged"><code>getSupportedLanguage</code> Get all current accessible languages on the languagelayer API</p>
+<p class="unchanged">```{r} 
+getSupportedLanguage
+``` Get all current accessible languages on the languagelayer API</p>
 </li>
  	<li class="unchanged">
-<p class="unchanged"><code>setApiKey</code> Set your API key to access the languagelayer API</p>
+<p class="unchanged">```{r} 
+setApiKey
+``` Set your API key to access the languagelayer API</p>
 </li>
 </ul>
 ## First of all
-<p class="unchanged rich-diff-level-one">Before any request on the languagelayer, you need to set your API key for your current session. Use the function <code>setApiKey(apikey = "yourapikey")</code>.</p>
+<p class="unchanged rich-diff-level-one">Before any request on the languagelayer, you need to set your API key for your current session. Use the function ```{r} 
+setApiKey(apikey = "yourapikey")
+```.</p>
 <p class="unchanged rich-diff-level-one">You can get your api key on your languagelayer <a href="https://languagelayer.com/dashboard">dashboard</a>.</p>
 
 ## Examples

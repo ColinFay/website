@@ -22,13 +22,27 @@ Install this package directly in R :
 ## How rpinterest works
 The version 0.1.0 works with seven functions. Which are :
 <ul>
- 	<li><code>BoardPinsByID</code> Get information about all the pins on a pinterest board using the board ID.</li>
- 	<li><code>BoardPinsByName</code> Get information about all the pins on a pinterest board using the board name.</li>
- 	<li><code>BoardSpecByID</code> Get information about a pinterest board using the board ID.</li>
- 	<li><code>BoardSpecByName</code> Get information about a pinterest board using the board name.</li>
- 	<li><code>PinSpecByID</code> Get information about a pinterest pin using the pin ID.</li>
- 	<li><code>UserSpecByID</code> Get information about a pinterest user using the user ID.</li>
- 	<li><code>UserSpecNyName</code> Get information about a pinterest user using the user name.</li>
+ 	<li>```{r} 
+BoardPinsByID
+``` Get information about all the pins on a pinterest board using the board ID.</li>
+ 	<li>```{r} 
+BoardPinsByName
+``` Get information about all the pins on a pinterest board using the board name.</li>
+ 	<li>```{r} 
+BoardSpecByID
+``` Get information about a pinterest board using the board ID.</li>
+ 	<li>```{r} 
+BoardSpecByName
+``` Get information about a pinterest board using the board name.</li>
+ 	<li>```{r} 
+PinSpecByID
+``` Get information about a pinterest pin using the pin ID.</li>
+ 	<li>```{r} 
+UserSpecByID
+``` Get information about a pinterest user using the user ID.</li>
+ 	<li>```{r} 
+UserSpecNyName
+``` Get information about a pinterest user using the user name.</li>
 </ul>
 ### Contact
 Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !

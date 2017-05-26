@@ -27,7 +27,8 @@ library(tidyverse)
 library(rtweet)
 library(httr)
 library(jsonlite)
-token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX</code><span style="font-family: 'Noto Serif', sans-serif;">")```
+token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX
+```<span style="font-family: 'Noto Serif', sans-serif;">")```
 ```{r} 
 users &lt;- search_users(q= '#rstats',
                       n = 1000,
@@ -35,7 +36,9 @@ users &lt;- search_users(q= '#rstats',
   unique()
 ```
 <p style="text-align: right;">_Note: I've (obviously) hidden the access token to my twitter app._</p>
-From there, I’ll use the <code>profile_image_url</code> column to get the url to the profile picture.
+From there, I’ll use the ```{r} 
+profile_image_url
+``` column to get the url to the profile picture.
 
 First, this variable will need some cleansing : the urls contain a __normal_ parameter, creating 48x48 images. The Microsoft API needs at least a 50x50 resolution, so we need to get rid of this.
 ```{r} 

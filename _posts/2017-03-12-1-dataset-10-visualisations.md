@@ -18,8 +18,12 @@ Pour cela, j’ai notamment pris l’exemple d’un <a href="https://data.enseig
 <div id="jeu-de-donnees-10-visualisations" class="section level2">
 ## 1 jeu de données, 10 visualisations
 _Notes
-_Les dataviz ont été crées avec le support des <code>databzhtools</code> que vous pouvez télécharger ici : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
-Pour reproduire exactement ces visualisations, téléchargez ces outils, et charger les via : <code>source("data-bzh-tools-master/main.R")</code>
+_Les dataviz ont été crées avec le support des ```{r} 
+databzhtools
+``` que vous pouvez télécharger ici : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
+Pour reproduire exactement ces visualisations, téléchargez ces outils, et charger les via : ```{r} 
+source("data-bzh-tools-master/main.R")
+```
 ```{r} 
 #Charger les données
 library(tidyverse)

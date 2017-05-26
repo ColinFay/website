@@ -23,15 +23,14 @@ library(tidyverse)
 library(rtweet)
 library(httr)
 library(jsonlite)
-token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX</code><span style="font-family: 'Noto Serif', sans-serif;">")```
-```{r} 
+token &lt;- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX
 users &lt;- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %&gt;%
   unique()
 ```
 <p style="text-align: right;">_Note: J'ai ici anonymisé mes API keys._</p>
-Maintenant, utilisons la colonne <code>profile_image_url</code> pour obtenir l'url des photos de profil.
+Maintenant, utilisons la colonne `profile_image_url` pour obtenir l'url des photos de profil.
 
 D'abord, cette variable a besoin d'être nettoyée : les URL contiennent un paramètre __normal_, créant des images 48x48. L'API Microsoft a besoin d'une résolution minimum de 50x50, nous devons donc nous débarrasser de ce paramètre.
 ```{r} 

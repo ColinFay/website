@@ -21,7 +21,9 @@ Chargeons ce jeu de données, ainsi que la carte de France disponible nativement
 ```
 ### Nettoyage des données
 
-Avant de représenter les résultats sur une carte, nous devons commencer par transformer et nettoyer le data.frame <code>result</code>.
+Avant de représenter les résultats sur une carte, nous devons commencer par transformer et nettoyer le data.frame ```{r} 
+result
+```.
 <pre class="r"><code class="r"><span class="identifier">result <span class="operator">&lt;- <span class="identifier">result <span class="operator">%&gt;%
   <span class="identifier">group_by<span class="paren">(<span class="identifier">`Libellé du département`<span class="paren">) <span class="operator">%&gt;%
   <span class="identifier">summarise<span class="paren">(<span class="identifier">tot_vot <span class="operator">= <span class="identifier">sum<span class="paren">(<span class="identifier">Exprimé<span class="identifier">s<span class="paren">), 

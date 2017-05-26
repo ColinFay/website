@@ -32,7 +32,8 @@ for(i in 1:3){
   Sys.sleep(time = 10)
 }
 ```
-<pre><code>## [1] "2017-03-26 11:13:58 CET"
+<pre>```{r} 
+## [1] "2017-03-26 11:13:58 CET"
 ## [1] "2017-03-26 11:14:08 CET"
 ## [1] "2017-03-26 11:14:18 CET"
 ```
@@ -41,14 +42,17 @@ Si vous avez accès au cœur de la fonction que vous souhaitez utiliser (par exe
 
 C'est cette méthode que vous devrez utiliser dans le code pour Discogs, et que j'ai utiliser dans le billet sur Computer Vision.
 ```{r} 
-library(tidyverse)</code>
-<code>lapply(1:3, function(x) {
+library(tidyverse)
+```
+```{r} 
+lapply(1:3, function(x) {
   print(x)
   print(Sys.time()) 
   Sys.sleep(3)
 }) %&gt;% do.call(rbind, .) 
 ```
-<pre><code>## [1] 1
+<pre>```{r} 
+## [1] 1
 ## [1] "2017-03-26 11:20:22 CET"
 ## [1] 2
 ## [1] "2017-03-26 11:20:25 CET"

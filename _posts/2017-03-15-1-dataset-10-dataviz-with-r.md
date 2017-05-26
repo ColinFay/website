@@ -18,8 +18,12 @@ During this talk, I presented the audience with a series of dataviz made from on
 For this, I took this <a href="https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/">dataset</a>, and created 10 visualizations, each focusing on specific variable(s). Here's how to make them with R.
 ### 1 dataset, 10 dataviz
 _Notes
-_These plots have been created using tools from the <code>databzhtools</code> you can find here : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
-Download it on your hard drive, and load it in R with : <code>source("data-bzh-tools-master/main.R")</code>
+_These plots have been created using tools from the ```{r} 
+databzhtools
+``` you can find here : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
+Download it on your hard drive, and load it in R with : ```{r} 
+source("data-bzh-tools-master/main.R")
+```
 ```{r} 
 #Charger les données
 library(tidyverse)
