@@ -29,10 +29,11 @@ users <- search_users(q= '#rstats',
                       parse = TRUE) %>%
   unique()
 ```
-<p style="text-align: right;">_Note: J'ai ici anonymisé mes API keys._</p>
+_Note: J'ai ici anonymisé mes API keys._
 Maintenant, utilisons la colonne `profile_image_url` pour obtenir l'url des photos de profil.
 
-D'abord, cette variable a besoin d'être nettoyée : les URL contiennent un paramètre __normal_, créant des images 48x48. L'API Microsoft a besoin d'une résolution minimum de 50x50, nous devons donc nous débarrasser de ce paramètre.
+D'abord, cette variable a besoin d'être nettoyée : les URL contiennent un paramètre _normal_, créant des images 48x48. L'API Microsoft a besoin d'une résolution minimum de 50x50, nous devons donc nous débarrasser de ce paramètre.
+
 ```{r} 
 users$profile_image_url <- gsub("_normal", "", users$profile_image_url)
 ```
@@ -60,8 +61,8 @@ users_api <- lapply(users[,25],function(i, key = "") {
 })%>%
   do.call(rbind,.)
 ```
-<p style="text-align: right;">_Remarque: J'ai (à nouveau) caché ma clé API.
-Ce code peut prendre un certain temps à exécuter, car il contient un appel à la fonction Sys.sleep. Pour en savoir plus, <a href="http://colinfay.me/rstats-api-calls-sys-sleep/" target="_blank" rel="noopener noreferrer">lire ce billet</a>. _</p>
+_Remarque: J'ai (à nouveau) caché ma clé API._
+_Ce code peut prendre un certain temps à exécuter, car il contient un appel à la fonction Sys.sleep._ Pour en savoir plus, <a href="http://colinfay.me/rstats-api-calls-sys-sleep/" target="_blank" rel="noopener noreferrer">lire ce billet</a>.
 
 #### Créer des tibbles
 Maintenant, j'ai un tibble avec une colonne contenant les listes de légendes et de score de confiance, et une colonne avec les listes des balises associées à chaque image.
@@ -126,17 +127,22 @@ users_tags %>%
 
 
 ```
-## <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a>
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a>
+
 ## Quelques vérifications
 Jetons un coup d’œil à l'image avec le score de confiance le plus élevé, avec la légende que l'API lui a donnée.
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> A man wearing a suit and tie — 0.92 confidence.
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg"><img class="size-full wp-image-1459" src="https://colinfay.github.io/wp-content/uploads/2017/04/9mJTF0PO.jpeg" alt="" width="300" height="300" /></a> 
+
+A man wearing a suit and tie — 0.92 confidence.
 
 Il n'a pas de cravate, mais l'API a bien saisi le reste.
 
 Et maintenant, juste pour le plaisir, la légende avec le score de confiance le plus bas :
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> A close up of two giraffes near a tree - 0.02 confidence
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg"><img class="size-full wp-image-1460" src="https://colinfay.github.io/wp-content/uploads/2017/04/czR2-o0M.jpg" alt="" width="300" height="300" /></a> 
+
+A close up of two giraffes near a tree - 0.02 confidence
 
 Bien vu ;)
 
@@ -144,15 +150,21 @@ Pour une vérification plus plus systémique, regardons un collage d'images, ré
 <p style="text-align: right;">_Remarque: afin de se concentrer sur les détails des images et de se débarrasser du genre des légendes, j'ai remplacé "man / woman / men / womens" par "persoe / persons" dans l'ensemble de données, avant de créer ces collages. _</p>
 
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> A person on a surf board in a skate park
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark.jpg"><img class="size-large wp-image-1533" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_man_skatepark-1024x1024.jpg" alt="" width="840" height="840" /></a> 
+
+A person on a surf board in a skate park
 
 &nbsp;
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> A person is smiling at the camera - Confidence mean : 0.54
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera.jpg"><img class="size-large wp-image-1556" src="https://colinfay.github.io/wp-content/uploads/2017/04/smiling_camera-1024x514.jpg" alt="" width="840" height="422" /></a> 
+
+A person is smiling at the camera - Confidence mean : 0.54
 
 &nbsp;
 
-<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> A close up of two giraffes near a tree — Confidence mean : 0.0037
+<a href="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe.jpg"><img class="size-large wp-image-1535" src="https://colinfay.github.io/wp-content/uploads/2017/04/caption_girafe-1024x514.jpg" alt="" width="840" height="422" /></a> 
+
+A close up of two giraffes near a tree — Confidence mean : 0.0037
 
 &nbsp;
 
