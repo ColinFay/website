@@ -78,7 +78,7 @@ analytics:
 # Site Author
 author:
   name             : "Colin FAY"
-  avatar           : "https://i2.wp.com/colinfay.me/wp-content/uploads/2016/03/colin-fay.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Science & Social Media."
   location         : "Rennes"
   email            : "contact@colinfay.me"
