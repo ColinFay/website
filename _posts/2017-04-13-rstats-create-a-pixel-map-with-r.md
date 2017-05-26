@@ -12,7 +12,7 @@ published: true
 
 ### Load map
 
-First, you'll need to load the ggplot2 package, and one of the default&nbsp;maps — &nbsp;the package includes <i>county</i>, <i>france</i>, <i>italy</i>, <i>nz</i>, <i>state</i>, <i>usa</i>, <i>world</i>, and <i>world2</i>. For more info, see&nbsp;<i>?map_data.</i>
+First, you'll need to load the ggplot2 package, and one of the default&nbsp;maps — &nbsp;the package includes _county_, _france_, _italy_, _nz_, _state_, _usa_, _world_, and _world2_. For more info, see&nbsp;_?map_data._
 
 ```{r} 
 library(ggplot2)
@@ -20,13 +20,13 @@ map &lt;- map_data("france")
 
 ```
 
-You now have a dataframe ready to be plotted. In your ggplot call, set the data argument to <i>map</i>, the x and y of your aesthetic to <i>long</i> and <i>lat</i>, and the group arg to <i>group</i>.&nbsp;
+You now have a dataframe ready to be plotted. In your ggplot call, set the data argument to _map_, the x and y of your aesthetic to _long_ and _lat_, and the group arg to _group_.&nbsp;
 
-For this kind of map, you need to use the geom_polygon function, which works pretty much like <i>geom_path</i>, except the polygons are connnected with the&nbsp;<i>group</i> arg, and can be filled.&nbsp;
+For this kind of map, you need to use the geom_polygon function, which works pretty much like _geom_path_, except the polygons are connnected with the&nbsp;_group_ arg, and can be filled.&nbsp;
 
-The <i>coord_map </i>function&nbsp;sets the coordinate system for projecting a map, and allows to keep the proportions fixed, no matter how you change the size of your viewport. Note that you can also use <i>coord_fixed</i> to always keep the x/y ratio to 1.&nbsp;
+The _coord_map _function&nbsp;sets the coordinate system for projecting a map, and allows to keep the proportions fixed, no matter how you change the size of your viewport. Note that you can also use _coord_fixed_ to always keep the x/y ratio to 1.&nbsp;
 
-Finally, <i>theme_void</i> allows you to get rid of everything except the geom.&nbsp;
+Finally, _theme_void_ allows you to get rid of everything except the geom.&nbsp;
 
 ```{r} 
 ggplot(map, aes(long,lat, group=group)) +
