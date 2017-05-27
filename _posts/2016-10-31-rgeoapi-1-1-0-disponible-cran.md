@@ -18,8 +18,9 @@ Pour installer le package directement dans R :
 install.packages("rgeoapi")
 ```
 Le manuel d’utilisation contenant le détail des fonctions est disponible en <a href="https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf" target="_blank">pdf</a> — deux tutoriels en français sont également disponibles sur ce site  :
-- <a href="http://colinfay.me/carte-r-rgeoapi-ggplot2/" target="_blank">Créer une carte avec R — rgeoapi et ggplot2
-</a>- <a href="http://colinfay.me/rgeoapi-v1/" target="_blank">Mise à jour du package R : rgeoapi</a>
+- <a href="http://colinfay.me/carte-r-rgeoapi-ggplot2/" target="_blank">Créer une carte avec R — rgeoapi et ggplot2</a>
+
+- <a href="http://colinfay.me/rgeoapi-v1/" target="_blank">Mise à jour du package R : rgeoapi</a>
 
 Plus d'infos sur la GéoAPI :
 - <a href="https://api.gouv.fr/explorer/geoapi/" target="_blank">site officiel</a>
