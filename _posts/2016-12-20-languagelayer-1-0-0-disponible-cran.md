@@ -1,6 +1,6 @@
 ---
 ID: 1158
-post_title: 'languagelayeR 1.0.0 disponible sur le CRAN'
+title: 'languagelayeR 1.0.0 disponible sur le CRAN'
 author: colin_fay
 post_date: 2016-12-20 13:00:30
 post_excerpt: ""

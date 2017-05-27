@@ -1,6 +1,6 @@
 ---
 ID: 1418
-post_title: '1 dataset, 10 visualisations with R'
+title: '1 dataset, 10 visualisations with R'
 author: colin_fay
 post_date: 2017-03-15 21:45:45
 post_excerpt: ""

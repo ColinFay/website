@@ -1,6 +1,6 @@
 ---
 ID: 1388
-post_title: '1 dataset, 10 visualisations — retour de La Fabrique de l’info'
+title: '1 dataset, 10 visualisations — retour de La Fabrique de l’info'
 author: colin_fay
 post_date: 2017-03-12 18:00:45
 post_excerpt: ""

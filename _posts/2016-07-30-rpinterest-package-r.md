@@ -1,6 +1,6 @@
 ---
 ID: 1262
-post_title: 'rpinterest : acess the Pinterest API with R'
+title: 'rpinterest : acess the Pinterest API with R'
 author: colin_fay
 post_date: 2016-07-30 20:17:45
 post_excerpt: ""

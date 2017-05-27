@@ -1,6 +1,6 @@
 ---
 ID: 573
-post_title: "Musarderie #3 : Internet, le rhizome, et le reste"
+title: "Musarderie #3 : Internet, le rhizome, et le reste"
 author: colin_fay
 post_date: 2015-07-22 19:15:46
 post_excerpt: ""

@@ -1,6 +1,6 @@
 ---
 ID: 1275
-post_title: "Create a map with R — rgeoapi, ggmap and ggplot2"
+title: "Create a map with R — rgeoapi, ggmap and ggplot2"
 author: colin_fay
 post_date: 2016-07-28 13:52:20
 post_excerpt: ""

@@ -1,6 +1,6 @@
 ---
 ID: 1099
-post_title: "rgeoapi 1.1.0 disponible sur le CRAN !"
+title: "rgeoapi 1.1.0 disponible sur le CRAN !"
 author: colin_fay
 post_date: 2016-10-31 13:59:43
 post_excerpt: ""

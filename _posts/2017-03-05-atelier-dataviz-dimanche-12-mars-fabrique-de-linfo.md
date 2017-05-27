@@ -1,6 +1,6 @@
 ---
 ID: 1348
-post_title: 'Atelier Dataviz — Dimanche 12 mars, la Fabrique de l'info'
+title: 'Atelier Dataviz — Dimanche 12 mars, la Fabrique de l'info'
 author: colin_fay
 post_date: 2017-03-05 19:50:54
 post_excerpt: ""

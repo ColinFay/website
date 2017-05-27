@@ -1,6 +1,6 @@
 ---
 ID: 1294
-post_title: Create an heatmap with R and ggplot2
+title: Create an heatmap with R and ggplot2
 author: colin_fay
 post_date: 2017-03-01 20:28:24
 post_excerpt: ""

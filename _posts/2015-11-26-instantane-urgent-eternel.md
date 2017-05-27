@@ -1,6 +1,6 @@
 ---
 ID: 729
-post_title: "Musarderie #7 : l'instantané, l'urgent, l'éternel."
+title: "Musarderie #7 : l'instantané, l'urgent, l'éternel."
 author: colin_fay
 post_date: 2015-11-26 13:21:54
 post_excerpt: ""

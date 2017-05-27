@@ -1,6 +1,6 @@
 ---
 ID: 702
-post_title: "Musarderie #6 : L'instoutenable légèreté du web, volet 2"
+title: "Musarderie #6 : L'instoutenable légèreté du web, volet 2"
 author: colin_fay
 post_date: 2015-08-26 13:26:05
 post_excerpt: ""

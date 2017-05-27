@@ -1,6 +1,6 @@
 ---
 ID: 1604
-post_title: #RStats — Create a pixel map with R"
+title: #RStats — Create a pixel map with R"
 author: colin_fay
 post_date: 2017-04-13 21:55:01
 post_excerpt: ""
