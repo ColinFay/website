@@ -27,15 +27,13 @@ library(tidyverse)
 library(rtweet)
 library(httr)
 library(jsonlite)
-token <- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX
-```<span style="font-family: 'Noto Serif', sans-serif;">")```
-```{r} 
+token <- create_token( app = "XX", consumer_key = "XXX", consumer_secret = "XX")
 users <- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %>%
   unique()
 ```
-<p style="text-align: right;">_Note: I've (obviously) hidden the access token to my twitter app._</p>
+_Note: I've (obviously) hidden the access token to my twitter app._
 From there, I’ll use the `profile_image_url` column to get the url to the profile picture.
 
 First, this variable will need some cleansing : the urls contain a __normal_ parameter, creating 48x48 images. The Microsoft API needs at least a 50x50 resolution, so we need to get rid of this.
@@ -67,7 +65,7 @@ users_api <- lapply(users[,25],function(i, key = "") {
   do.call(rbind,.)
 ```
 _Note : I've (again) hidden my API key._
-__Also, this code may take a while to execute, as I've inserted a Sys.sleep function._ To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _</p>
+__Also, this code may take a while to execute, as I've inserted a Sys.sleep function._ To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _
 
 #### Creating tibbles
 Now I have a tibble with a column containing lists of captions &amp; confidence, and a column with lists of the tags associated with each picture. Let’s split this.
