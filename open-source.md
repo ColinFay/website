@@ -4,9 +4,7 @@ author_profile: true
 title: Open Source
 ---
 
-## Développement
-
-### Packages R
+## Développement R 
 
 _rpinterest_
 
@@ -37,3 +35,11 @@ _webmastR_
 Package en court de développement, destiné à fournir des outils rapidement accessibles pour les webmasters.
 
 [Version dev sur GitHub](https://github.com/ColinFay/webmastR)
+
+## Base de données
+
+_Twitter Corpus_
+
+Base de tweets collectés automatiquement, libre de réutilisation. À télécharger en csv
+
+[Plus d'infos](https://github.com/ColinFay/twitter_corpus)
