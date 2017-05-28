@@ -36,7 +36,7 @@ Package en court de développement, destiné à fournir des outils rapidement ac
 
 [Version dev sur GitHub](https://github.com/ColinFay/webmastR)
 
-## Data Mining 
+## Base de données
 
 _Twitter Corpus_
 
