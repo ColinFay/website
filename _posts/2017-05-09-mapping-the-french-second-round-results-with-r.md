@@ -7,6 +7,8 @@ post_excerpt: ""
 layout: single
 permalink: /mapping-the-french-second-round-results-with-r/
 published: true
+image : 
+  feature : /wp-content/uploads/2017/05/vote-fr.jpg
 ---
 ## Visualising the second round results with maps made with R. <!--more-->
 ### The dataset

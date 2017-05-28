@@ -8,6 +8,7 @@ layout: single
 permalink: /rstats-microsoft-computer-vision-api-2/
 published: true
 categories : rblogen
+image: /wp-content/uploads/2017/05/vote-fr.jpg
 ---
 
 ## Exploration des photos de profils des twittos #RStats avec l'API Microsoft Computer Vision.
