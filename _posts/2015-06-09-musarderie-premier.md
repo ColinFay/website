@@ -1,11 +1,18 @@
 ---
+ID: 456
 title: "Musarderie #0 — Parce qu'il faut un premier"
 author: colin_fay
+<<<<<<< HEAD
 post_date: 2015-06-09 
+=======
+post_date: 2015-06-09 20:43:00
+post_excerpt: ""
+>>>>>>> parent of c5d4008... changes
 layout: single
 permalink:  /musarderie-premier/
 published: true
-categories: random
+geo_public:
+  - "0"
 ---
 Souvent, sur le net, ces voix qui nous disent : "À quoi bon encore écrire ?"
 Partout, des mots, des articles et des billets, qui s'accumulent, et qui s'interrogent. Pourquoi encore prendre la peine d'être un son de cloche dans un immense brouhaha ?
