@@ -3,7 +3,7 @@
 title: 'Une heatmap avec R et ggplot2'
 author: colin_fay
 post_date: 2017-03-19 20:28:24
-
+categories:r-blog-fr
 layout: single
 permalink: /heatmap-avec-r-et-ggplot2/
 published: true

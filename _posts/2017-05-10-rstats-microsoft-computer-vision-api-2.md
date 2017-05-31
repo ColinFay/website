@@ -1,13 +1,11 @@
 ---
-
 title: "#RStats et Microsoft Computer Vision"
 author: colin_fay
 post_date: 2017-05-10 14:00:58
-
 layout: single
 permalink: /rstats-microsoft-computer-vision-api-2/
 published: true
-categories : rblogen
+categories : r-blog-en
 image: /wp-content/uploads/2017/05/vote-fr.jpg
 ---
 

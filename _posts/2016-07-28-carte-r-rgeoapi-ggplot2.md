@@ -3,7 +3,7 @@
 title: "Créer une carte avec R — rgeoapi et ggplot2"
 author: colin_fay
 post_date: 2016-07-28 13:52:20
-
+categories:r-blog-fr
 layout: single
 permalink: /carte-r-rgeoapi-ggplot2/
 published: true

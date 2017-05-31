@@ -3,7 +3,7 @@
 title: "#RStats — languagelayeR : accéder à l'API languagelayer avec R"
 author: colin_fay
 post_date: 2016-12-12 23:07:28
-
+categories:r-blog-fr
 layout: single
 permalink: /rstats-languagelayer-api/
 published: true

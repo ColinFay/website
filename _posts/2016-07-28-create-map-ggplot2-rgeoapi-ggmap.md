@@ -3,7 +3,7 @@
 title: "Create a map with R — rgeoapi, ggmap and ggplot2"
 author: colin_fay
 post_date: 2016-07-28 13:52:20
-
+categories:r-blog-en
 layout: single
 permalink: /create-map-ggplot2-rgeoapi-ggmap/
 published: true

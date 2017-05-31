@@ -3,7 +3,7 @@
 title: '1 dataset, 10 visualisations — retour de La Fabrique de l’info'
 author: colin_fay
 post_date: 2017-03-12 18:00:45
-
+categories:r-blog-fr
 layout: single
 permalink: /1-dataset-10-visualisations/
 published: true

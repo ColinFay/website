@@ -3,7 +3,7 @@
 title: "rpinterest disponible sur le CRAN"
 author: colin_fay
 post_date: 2016-08-17 13:47:34
-
+categories:r-blog-fr
 layout: single
 permalink: /rpinterest-disponible-cran/
 published: true

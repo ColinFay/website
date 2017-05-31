@@ -3,7 +3,7 @@
 title: "Musarderie #DigitalTC — L'IA, l'homme, la créativité"
 author: colin_fay
 post_date: 2016-12-19 19:38:18
-
+categories:random
 layout: single
 permalink: /musarderie-digitaltc-lia-lhomme-la-creativite/
 published: true

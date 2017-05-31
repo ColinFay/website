@@ -3,7 +3,7 @@
 title: 'rpinterest : un package R pour accéder à l'API Pinterest'
 author: colin_fay
 post_date: 2016-07-30 20:17:45
-
+categories:r-blog-fr
 layout: single
 permalink: /rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/
 published: true

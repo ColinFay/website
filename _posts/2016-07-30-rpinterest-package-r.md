@@ -3,7 +3,7 @@
 title: 'rpinterest : acess the Pinterest API with R'
 author: colin_fay
 post_date: 2016-07-30 20:17:45
-
+categories:r-blog-en
 layout: single
 permalink: /rpinterest-package-r/
 published: true

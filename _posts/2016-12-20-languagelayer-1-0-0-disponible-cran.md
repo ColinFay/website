@@ -3,7 +3,7 @@
 title: 'languagelayeR 1.0.0 disponible sur le CRAN'
 author: colin_fay
 post_date: 2016-12-20 13:00:30
-
+categories:r-blog-fr
 layout: single
 permalink: /languagelayer-1-0-0-disponible-cran/
 published: true

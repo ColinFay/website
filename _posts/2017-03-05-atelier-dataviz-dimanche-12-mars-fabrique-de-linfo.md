@@ -3,7 +3,7 @@
 title: 'Atelier Dataviz — Dimanche 12 mars, la Fabrique de l'info'
 author: colin_fay
 post_date: 2017-03-05 19:50:54
-
+categories:random
 layout: single
 permalink: /atelier-dataviz-dimanche-12-mars-fabrique-de-linfo/
 published: true
@@ -13,9 +13,13 @@ published: true
 "_Longtemps réservée aux journaux spécialisés et à la recherche, la dataviz est aujourd'hui de plus en plus populaire auprès du grand public. Un phénomène qui s'explique par la percée combinée des nouveaux formats de médias ainsi que par l'omniprésence des données dans notre environnement actuel. _
 
 _Pourtant, passer des données brutes à des visualisations lisibles n'est pas toujours à portée de tous. C'est pour faire parler ces données, les raconter, qu'a été créée la plateforme Data Bzh, premier site breton de data-blogging. Colin Fay, son créateur, viendra lors de cet atelier vous présenter son projet, et vous donnera quelques clés pour comprendre, voire réaliser des visualisations de données._"
-<h3 class="section-title blog-hero-title animated fadeInUp">La Fabrique de l’info! Réseaux sociaux VS médias
+
+La Fabrique de l’info! Réseaux sociaux VS médias
+
 Programme complet :
+
 #### __Ateliers et présentations :__
+
 – « Le débat radiophonique » atelier participatif animé par <a href="http://www.canalb.fr/">Canal B</a> et <a href="http://www.armada-productions.com/">Armada productions</a> sur <a href="https://docs.google.com/spreadsheets/d/1GCRjBwe2GgLGCz6yrypXDolZJuokaycwW3ptjt2JRjE/edit?usp=sharing">inscription ici</a> pour les enfants à partir de 10 ans _(Durée 50 minutes / Séances à 15H et 17H)_
 – « La fabrique de l’information locale » Comment traite-t-on l’information locale et culturelle sur Canal B et sur les radios associatives ? Ronan Le Mouhaër (journaliste à Canal B) vous invite à découvrir comment se fabrique la Matinale, l’émission d’information locale de Canal B _(Durée : 25 minutes / Séances à 14H et 14H30)_
 – Atelier Dataviz (visualisation de données et représentation graphique de données statistiques) par Colin Fay de <a href="http://data-bzh.fr/">Data Bzh</a>

@@ -3,7 +3,7 @@
 title: Create an heatmap with R and ggplot2
 author: colin_fay
 post_date: 2017-03-01 20:28:24
-
+categories:r-blog-en
 layout: single
 permalink: /create-an-heatmap-with-r-and-ggplot2/
 published: true

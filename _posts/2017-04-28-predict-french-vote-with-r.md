@@ -3,7 +3,7 @@
 title: "Predict french vote with R"
 author: colin_fay
 post_date: 2017-04-28 15:08:22
-
+categories:r-blog-en
 layout: single
 permalink: /predict-french-vote-with-r/
 published: true
