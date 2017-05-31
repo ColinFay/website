@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /all-i-want-for-christmas-is-a-dataviz/
 published: true
+categories : r-blog-fr
 ---
 ## Avant de vous lancer dans le marathon de repas de Noël, deux visualisations de données tirées de l'API lastfm... pour la requête "Christmas" !
 <!--more-->

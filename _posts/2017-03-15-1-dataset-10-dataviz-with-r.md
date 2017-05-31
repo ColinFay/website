@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /1-dataset-10-dataviz-with-r/
 published: true
+categories : r-blog-en
 ---
 ## Creating 10 datavisualisations from 1 dataset with R.
 <!--more-->

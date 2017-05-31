@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-text-mining-r-gutenbergr/
 published: true
+categories : r-blog-fr
 ---
 ## Technique de data-mining et Graal des temps modernes, la fouille de texte permet de faire émerger des informations depuis un large corpus. Comment le réaliser avec R ?
 <!--more-->

@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rpinterest-disponible-cran/
 published: true
+categories : r-blog-fr
 ---
 ## Ce package R destiné à effectuer des requêtes sur  l'API Pinterest est désormais disponible sur le CRAN.
 <!--more-->

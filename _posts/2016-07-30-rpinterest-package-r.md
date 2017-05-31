@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rpinterest-package-r/
 published: true
+categories : r-blog-en
 ---
 ## Access the Pinterest API with R with rpinterest. <!--more-->
 This package requests information from the Pinterest API.

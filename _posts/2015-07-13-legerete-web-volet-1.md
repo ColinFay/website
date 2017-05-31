@@ -11,6 +11,7 @@ geo_public:
   - "0"
 publicize_twitter_user:
   - _ColinFay
+categories : random
 ---
 Réflexions courtes sur la légèreté et l'usage du terme "dématérialisation".
 

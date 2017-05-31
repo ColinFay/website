@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rgeoapi-1-1-0-disponible-cran/
 published: true
+categories : r-blog-fr
 ---
 ## Ce package R orienté SIG interroge la base de donnée cartographique française. Il est désormais disponible en version stable sur le CRAN !
 <!--more-->

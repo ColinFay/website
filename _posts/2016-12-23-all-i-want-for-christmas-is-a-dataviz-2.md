@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /all-i-want-for-christmas-is-a-dataviz-2/
 published: true
+categories : r-blog-en
 ---
 ## Just before Christmas, let's enjoy these two visualisations created with data from the lastfm API.
 <!--more-->

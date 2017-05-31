@@ -11,7 +11,9 @@ geo_public:
   - "0"
 publicize_twitter_user:
   - _ColinFay
+categories : random
 ---
+
 Divagation et commentaires hors contexte sur des morceaux choisis dans l’œuvre de Barthes.<!--more-->
 ## Introduction à l’analyse structurale des récits (1966)
 « _Du point de vue du récit, ce que nous appelons temps n’existe pas, ou du moins n’existe que fonctionnellement, comme élément d’un système sémiotique_ »

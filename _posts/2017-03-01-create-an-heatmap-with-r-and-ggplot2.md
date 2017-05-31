@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /create-an-heatmap-with-r-and-ggplot2/
 published: true
+categories : r-blog-en
 ---
 ## Here a short tutorial for making a heatmap in R with ggplot2, inspired by several articles on databzh.
 <!--more-->

@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rpinterest-cran/
 published: true
+categories : r-blog-en
 ---
 ## This R package allows you to access the Pinterest API. Now on CRAN.
 <!--more-->

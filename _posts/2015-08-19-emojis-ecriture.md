@@ -11,7 +11,9 @@ geo_public:
   - "0"
 publicize_twitter_user:
   - _ColinFay
+categories : random
 ---
+
 Sur l’usage grandissant de l’emoji : l’écriture, les mots, et le reste. <!--more-->
 <p style="text-align: center;">1.</p>
 _De l’emoji_. Selon Wikipédia, l’expression combine deux termes japonais : « e », pour image, et « moji », signifiant lettre. Les emojis sont des symboles, utilisables avec des caractères alphabétiques, au sein de l’écriture. Il s’agit ici bel et bien d’__un avec__ et non pas un « à la place ».

@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-languagelayer-api/
 published: true
+categories : r-blog-fr
 ---
 ## Facilitez vos fouilles de textes avec languagelayeR, un package R qui détecte la langue d'une suite de mots.<!--more-->
 &nbsp;

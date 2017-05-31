@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /carte-r-rgeoapi-ggplot2/
 published: true
+categories : r-blog-fr
 ---
 ## Pensé pour simplifier les travaux de cartographie, rgeoapi est un package qui interroge la base de données géographique française. Résultat : des visualisations de cartes, _easy peasy_. Si si.
 <!--more-->

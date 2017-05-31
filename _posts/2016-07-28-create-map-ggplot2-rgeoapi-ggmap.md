@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /create-map-ggplot2-rgeoapi-ggmap/
 published: true
+categories : r-blog-en
 ---
 ## Improve your mapping with rgeoapi, a package designed to access the french geographic database.
 <!--more-->

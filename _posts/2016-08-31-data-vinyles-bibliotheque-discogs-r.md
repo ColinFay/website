@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /data-vinyles-bibliotheque-discogs-r/
 published: true
+categories : r-blog-fr
 ---
 ## Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.
 <!--more-->

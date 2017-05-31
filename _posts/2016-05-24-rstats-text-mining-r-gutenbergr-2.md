@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-text-mining-r-gutenbergr-2/
 published: true
+categories : r-blog-en
 ---
 
 ## Introduction to text-mining with R and gutenbergr.

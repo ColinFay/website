@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-languagelayer-query-the-languagelayer-api-with-r/
 published: true
+categories : r-blog-en
 ---
 ## Improve your text analysis with this R package designed to access the languagelayer API.<!--more-->
 LanguagelayeR is now on <a href="https://cran.r-project.org/package=languagelayeR">CRAN</a>
