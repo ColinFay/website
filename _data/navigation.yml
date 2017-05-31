@@ -8,7 +8,12 @@ main:
     url: https://colinfay.github.io/open-source/
   - title: "r-blog-en"
     url: http://colinfay.me/categories/#r-blog-en
+<<<<<<< HEAD
   - title: "r-blog-fr"
     url: http://colinfay.me/categories/#r-blog-fr
   - title: "random"
     url: http://colinfay.me/categories/#random
+=======
+  # - title: "Sitemap"
+  #   url: /sitemap/
+>>>>>>> f76f09a76aaf8684f13011f419779ebaf77f15e6
