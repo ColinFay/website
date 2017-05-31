@@ -6,7 +6,7 @@ main:
     url: https://colinfay.github.io/about/
   - title: "Open Source"
     url: https://colinfay.github.io/open-source/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "r-blog-en"
+    url: http://colinfay.me/categories/#r-blog-en
   # - title: "Sitemap"
   #   url: /sitemap/
