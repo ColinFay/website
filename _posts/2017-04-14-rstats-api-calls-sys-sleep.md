@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-api-calls-sys-sleep/
 published: true
+categories : r-blog-fr
 ---
 ## J'ai récemment reçu un mail concernant mon post sur l'API Discogs, disant que le code ne fonctionnait pas.
 ## Il s'est avéré que cela était dû aux nouvelles limitations de l'API. Voici comment contourner ces limites avec R.

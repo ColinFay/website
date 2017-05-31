@@ -4,7 +4,7 @@ author: colin_fay
 post_date: 2017-31-00 21:00:00
 layout: single
 permalink: /rstats-turbonegro/
-categories : rblogen
+categories : r-blog-en
 ---
 
 Because sometime, you just need a little bit of punk with your coding. 

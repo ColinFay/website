@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /predict-french-vote-with-r/
 published: true
+categories : r-blog-en
 ---
 ## Let's try a prediction of the french presidential vote, based on the results from the first round.
 <!--more-->

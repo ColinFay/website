@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-create-a-pixel-map-with-r/
 published: true
+categories : r-blog-en
 ---
 ## The whole webdesign of <a href="http://data-bzh.fr" target="_blank">Data Bzh</a> has recently been updated. With it,&nbsp;a new header containing a pixelized map of Brittany. Here's how you can replicate it&nbsp;in R, with a map of France, US and the world.<!--more-->
 

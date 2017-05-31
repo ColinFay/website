@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-microsoft-computer-vision-api-2/
 published: true
-categories : rblogen
+categories : r-blog-en
 image: /wp-content/uploads/2017/05/vote-fr.jpg
 ---
 

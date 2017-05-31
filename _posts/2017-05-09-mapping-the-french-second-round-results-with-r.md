@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /mapping-the-french-second-round-results-with-r/
 published: true
+categories : r-blog-en
 image : 
   feature : /wp-content/uploads/2017/05/vote-fr.jpg
 ---
