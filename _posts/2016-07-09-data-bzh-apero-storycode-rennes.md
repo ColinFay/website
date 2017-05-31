@@ -1,9 +1,9 @@
 ---
-ID: 988
+
 title: "Data Bzh à l'Apéro StoryCode de Rennes Nouvelles Écritures"
 author: colin_fay
 post_date: 2016-07-09 18:39:13
-post_excerpt: ""
+
 layout: single
 permalink: /data-bzh-apero-storycode-rennes/
 published: true

@@ -11,7 +11,7 @@ Because sometime, you just need a little bit of punk with your coding.
 
 ## tuRbonegro
 
-Spoiler: the tuRbonegro package was created for fun only ;) 
+Spoiler: the tuRbonegro package was created just for fun ;) 
 
 ![tuRbonegro_hex](https://github.com/ColinFay/tuRbonegro/raw/master/hex_turbo.png)
 

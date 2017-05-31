@@ -1,18 +1,14 @@
 ---
-ID: 776
+
 title: "Rennes Social Derby, la compétition de Community Managers"
 author: colin_fay
 post_date: 2016-03-08 18:41:11
-post_excerpt: ""
+categories: random
 layout: single
 permalink: /rennes-social-derby-la-competition-de-community-managers/
 published: true
-geo_public:
-  - "0"
 publicize_twitter_user:
   - _ColinFay
-publicize_linkedin_url:
-  - 'https://www.linkedin.com/updates?discuss=&scope=216604460&stype=M&topic=6120176387073536000&type=U&a=5P6H'
 ---
 __Du 1er au 30 avril, une guerre des gangs se tiendra dans les rues de Rennes. Mais rassurez vous, uniquement sur Twitter.__
 

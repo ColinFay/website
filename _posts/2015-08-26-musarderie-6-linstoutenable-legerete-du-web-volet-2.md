@@ -1,18 +1,14 @@
 ---
-ID: 702
+
 title: "Musarderie #6 : L'instoutenable légèreté du web, volet 2"
 author: colin_fay
 post_date: 2015-08-26 13:26:05
-post_excerpt: ""
+categories: random
 layout: single
 permalink: /musarderie-6-linstoutenable-legerete-du-web-volet-2/
 published: true
-geo_public:
-  - "0"
 publicize_twitter_user:
   - _ColinFay
-publicize_linkedin_url:
-  - 'https://www.linkedin.com/updates?discuss=&scope=216604460&stype=M&topic=6042280657923633152&type=U&a=CM6Q'
 ---
 Réflexions courtes sur la légèreté, la vitesse et l’attention.
 

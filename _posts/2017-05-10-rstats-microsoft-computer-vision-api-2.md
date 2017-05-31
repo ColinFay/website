@@ -1,9 +1,9 @@
 ---
-ID: 1697
+
 title: "#RStats et Microsoft Computer Vision"
 author: colin_fay
 post_date: 2017-05-10 14:00:58
-post_excerpt: ""
+
 layout: single
 permalink: /rstats-microsoft-computer-vision-api-2/
 published: true

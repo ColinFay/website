@@ -1,9 +1,9 @@
 ---
-ID: 1418
+
 title: '1 dataset, 10 visualisations with R'
 author: colin_fay
 post_date: 2017-03-15 21:45:45
-post_excerpt: ""
+
 layout: single
 permalink: /1-dataset-10-dataviz-with-r/
 published: true

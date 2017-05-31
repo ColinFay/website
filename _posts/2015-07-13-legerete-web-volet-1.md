@@ -1,14 +1,11 @@
 ---
-ID: 516
+
 title: "Musarderie #1 : L'insoutenable légèreté du web, Volet 1"
 author: colin_fay
 post_date: 2015-07-13 17:30:58
-post_excerpt: ""
 layout: single
 permalink: /legerete-web-volet-1/
 published: true
-geo_public:
-  - "0"
 publicize_twitter_user:
   - _ColinFay
 ---
