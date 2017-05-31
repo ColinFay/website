@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /cartographier-second-tour-francais-r/
 published: true
+categories: rblogfr
 ---
 ## Aperçu du vote au second tour en France, via des cartes réalisées avec R. <!--more-->
 ### Le jeu de données
