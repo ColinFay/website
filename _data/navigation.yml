@@ -6,9 +6,5 @@ main:
     url: https://colinfay.github.io/about/
   - title: "Open Source"
     url: https://colinfay.github.io/open-source/
-  - title: "r-blog-en"
-    url: http://colinfay.me/categories/#r-blog-en
-  - title: "r-blog-fr"
-    url: http://colinfay.me/categories/#r-blog-fr
-  - title: "random"
-    url: http://colinfay.me/categories/#random
+  - title: "Blog"
+    url: http://colinfay.me/categories/
