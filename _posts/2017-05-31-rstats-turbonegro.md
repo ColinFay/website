@@ -11,11 +11,11 @@ Because sometime, you just need a little bit of punk with your coding.
 
 ## tuRbonegro
 
-Spoiler: this package was designed just for fun ;) 
+Spoiler: the tuRbonegro package was created for fun only ;) 
 
 ![tuRbonegro_hex](https://github.com/ColinFay/tuRbonegro/raw/master/hex_turbo.png)
 
-This packages contains only one function, which launch and plays a random Turbonegro clip in your R Viewer. Because you know, some time you need some deathpunk. 
+This package contains only one function, which launch and plays a random Turbonegro clip in your R Viewer. Because you know, some time you need some deathpunk. 
 
 This function has three parameters:
 
