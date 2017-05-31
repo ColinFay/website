@@ -1,7 +1,7 @@
 ---
 title: "Musarderie #0 — Parce qu'il faut un premier"
 author: colin_fay
-post_date: 2015-06-09 20:43:00
+post_date: 2015-06-09 
 layout: single
 permalink:  /musarderie-premier/
 published: true
