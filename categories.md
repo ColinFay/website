@@ -5,7 +5,7 @@ title: "Posts by Category"
 author_profile: true
 ---
 
-Go to 
+## Go to 
 
 + [r-blog-en](http://colinfay.me/categories/#r-blog-en)
 + [r-blog-fr](http://colinfay.me/categories/#r-blog-fr)
