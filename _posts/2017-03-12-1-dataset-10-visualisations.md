@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /1-dataset-10-visualisations/
 published: true
+categories : r-blog-fr
 ---
 ## Retour sur l’atelier dataviz de la Fabrique de l’info !<!--more-->
 

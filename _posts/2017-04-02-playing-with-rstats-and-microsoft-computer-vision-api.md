@@ -6,11 +6,10 @@ author: colin_fay
 comments: false
 date: 2017-04-02 21:40:58
 tags: [ ]
-categories:
-    - r-blog-en
 permalink: /playing-with-rstats-and-microsoft-computer-vision-api
 image:
     feature: microsoft_api.jpg
+categories : r-blog-en
 ---
 
 ## Playing around with the faces of #RStats and Microsoft Computer Vision API.

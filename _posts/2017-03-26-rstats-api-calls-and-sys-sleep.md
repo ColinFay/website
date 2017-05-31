@@ -7,6 +7,7 @@ post_excerpt: ""
 layout: single
 permalink: /rstats-api-calls-and-sys-sleep/
 published: true
+categories : r-blog-en
 ---
 ## Lately, I received a mail concerning my blogpost on Discogs API, saying the code didn't work. Turned out it was due to new API limitations. Here's how to get along with it. <!--more-->
 ### Discogs calls
