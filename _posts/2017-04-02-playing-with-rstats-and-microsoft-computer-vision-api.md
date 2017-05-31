@@ -1,9 +1,13 @@
 ---
 layout: single
 title: "Playing with #RStats and Microsoft Computer Vision API"
+published: true
 author: colin_fay
-categories:r-blog-en
+comments: false
 date: 2017-04-02 21:40:58
+tags: [ ]
+categories:
+    - rblogen
 permalink: /playing-with-rstats-and-microsoft-computer-vision-api
 image:
     feature: microsoft_api.jpg

@@ -4,14 +4,14 @@ author: colin_fay
 post_date: 2017-31-00 21:00:00
 layout: single
 permalink: /rstats-turbonegro/
-categories : r-blog-en
+categories : rblogen
 ---
 
 Because sometime, you just need a little bit of punk with your coding. 
 
 ## tuRbonegro
 
-Spoiler: the tuRbonegro package was created just for fun ;) 
+Spoiler: the tuRbonegro package was created for fun only ;) 
 
 ![tuRbonegro_hex](https://github.com/ColinFay/tuRbonegro/raw/master/hex_turbo.png)
 

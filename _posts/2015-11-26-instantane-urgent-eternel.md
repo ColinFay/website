@@ -1,14 +1,18 @@
 ---
-
+ID: 729
 title: "Musarderie #7 : l'instantané, l'urgent, l'éternel."
 author: colin_fay
 post_date: 2015-11-26 13:21:54
-categories: random
+post_excerpt: ""
 layout: single
 permalink: /instantane-urgent-eternel/
 published: true
+geo_public:
+  - "0"
 publicize_twitter_user:
   - _ColinFay
+publicize_linkedin_url:
+  - 'https://www.linkedin.com/updates?discuss=&scope=216604460&stype=M&topic=6075630554609393664&type=U&a=BQyV'
 ---
 Courir de plus en plus vite, et pour toujours.
 

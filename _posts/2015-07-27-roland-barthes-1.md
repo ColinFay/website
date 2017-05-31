@@ -1,10 +1,14 @@
 ---
+ID: 597
 title: "Roland Barthes, morceaux choisis #1"
 author: colin_fay
 post_date: 2015-07-27 19:00:48
+post_excerpt: ""
 layout: single
 permalink: /roland-barthes-1/
-categories: random
+published: true
+geo_public:
+  - "0"
 publicize_twitter_user:
   - _ColinFay
 ---

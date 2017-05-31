@@ -2,12 +2,8 @@
 ID: 456
 title: "Musarderie #0 — Parce qu'il faut un premier"
 author: colin_fay
-<<<<<<< HEAD
-post_date: 2015-06-09 
-=======
 post_date: 2015-06-09 20:43:00
 post_excerpt: ""
->>>>>>> parent of c5d4008... changes
 layout: single
 permalink:  /musarderie-premier/
 published: true

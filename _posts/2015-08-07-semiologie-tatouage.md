@@ -1,11 +1,14 @@
 ---
-
+ID: 551
 title: "Musarderie #4 : la sémiologie par les tatouages de prison"
 author: colin_fay
 post_date: 2015-08-07 13:05:58
+post_excerpt: ""
 layout: single
 permalink: /semiologie-tatouage/
-categories: random
+published: true
+geo_public:
+  - "0"
 publicize_twitter_user:
   - _ColinFay
 ---

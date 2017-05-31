@@ -1,9 +1,9 @@
 ---
-
+ID: 1668
 title: "Predict french vote with R"
 author: colin_fay
 post_date: 2017-04-28 15:08:22
-categories:r-blog-en
+post_excerpt: ""
 layout: single
 permalink: /predict-french-vote-with-r/
 published: true

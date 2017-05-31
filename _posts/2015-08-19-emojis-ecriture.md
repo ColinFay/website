@@ -1,10 +1,14 @@
 ---
+ID: 685
 title: "Musarderie #5 : les emojis, l'écriture, et le reste."
 author: colin_fay
 post_date: 2015-08-19 12:15:56
+post_excerpt: ""
 layout: single
 permalink: /emojis-ecriture/
-categories: random
+published: true
+geo_public:
+  - "0"
 publicize_twitter_user:
   - _ColinFay
 ---

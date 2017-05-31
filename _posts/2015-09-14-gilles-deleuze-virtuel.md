@@ -1,14 +1,18 @@
 ---
-
+ID: 641
 title: "Gilles Deleuze, morceaux choisis #1 : le virtuel"
 author: colin_fay
 post_date: 2015-09-14 12:00:55
+post_excerpt: ""
 layout: single
 permalink: /gilles-deleuze-virtuel/
 published: true
-categories: random
+geo_public:
+  - "0"
 publicize_twitter_user:
   - _ColinFay
+publicize_linkedin_url:
+  - 'https://www.linkedin.com/updates?discuss=&scope=216604460&stype=M&topic=6049144595290292224&type=U&a=wFHv'
 ---
 Extraits commentés choisis (presque) aléatoirement dans l’œuvre de Gilles Deleuze.
 

@@ -1,12 +1,16 @@
 ---
-
+ID: 722
 title: "Utiliser Snapchat pour sa marque ou son média — Retour du Medialab Speed Training"
 author: colin_fay
 post_date: 2015-10-12 12:33:59
-categories: random
+post_excerpt: ""
 layout: single
 permalink: /snapchat-medialabst/
 published: true
+geo_public:
+  - "0"
+publicize_linkedin_url:
+  - 'https://www.linkedin.com/updates?discuss=&scope=216604460&stype=M&topic=6059299776145428480&type=U&a=fef4'
 publicize_twitter_user:
   - _ColinFay
 ---

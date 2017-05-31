@@ -1,9 +1,9 @@
 ---
-
+ID: 1604
 title: #RStats — Create a pixel map with R"
 author: colin_fay
 post_date: 2017-04-13 21:55:01
-categories:r-blog-en
+post_excerpt: ""
 layout: single
 permalink: /rstats-create-a-pixel-map-with-r/
 published: true
