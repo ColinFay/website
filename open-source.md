@@ -4,42 +4,51 @@ author_profile: true
 title: Open Source
 ---
 
-## Développement R 
+## R packages
 
 _rpinterest_
 
-Un package R pour effectuer des requêtes sur l'API Pinterest ([Plus d'infos](https://colinfay.github.io/rpinterest-package-r/) & [Documentation officielle](https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf)).
+An R package to access the Pinterest API ([More infos](https://colinfay.me/rpinterest-package-r/) & [Documentation](https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf)).
 
-[Version stable on CRAN](https://cran.r-project.org/web/packages/rpinterest/index.html)
+[Official release on CRAN](https://cran.r-project.org/web/packages/rpinterest/index.html)
 
 [Version dev on GitHub](https://github.com/ColinFay/rpinterest)
 
 _rgeoapi_
 
-Un package orienté SIG qui interroge l'interface JSON de la base de donnée cartographique française ([Plus d'infos](https://colinfay.github.io/rgeoapi-v1/) & [Documentation officielle](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
+This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R ([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
 
-[Version stable sur le CRAN](https://cran.r-project.org/web/packages/rgeoapi/index.html)
+[Official release on CRAN](https://cran.r-project.org/web/packages/rgeoapi/index.html)
 
-[Version dev sur GitHub](https://github.com/ColinFay/rgeoapi)
+[Version dev on GitHub](https://github.com/ColinFay/rgeoapi)
 
 _languagelayeR_
 
-Un package permettant d'accéder à l'API languagelayer, une interface JSON de détection de langue ([Documentation officielle](https://cran.r-project.org/web/packages/languagelayeR/languagelayeR.pdf)).
+Access the languagelayer API with R ([Documentation](https://cran.r-project.org/web/packages/languagelayeR/languagelayeR.pdf)).
 
-[Version stable sur le CRAN](https://cran.r-project.org/web/packages/languagelayeR/index.html)
+[Official release on CRAN](https://cran.r-project.org/web/packages/languagelayeR/index.html)
 
-[Version dev sur GitHub](https://github.com/ColinFay/languagelayeR)
+[Version dev on GitHub](https://github.com/ColinFay/languagelayeR)
 
 _webmastR_
 
-Package en court de développement, destiné à fournir des outils rapidement accessibles pour les webmasters.
+R tools for webmasters. Still under development. 
 
-[Version dev sur GitHub](https://github.com/ColinFay/webmastR)
+[Version dev on GitHub](https://github.com/ColinFay/webmastR)
 
-## Base de données
+## Database
 
 _Twitter Corpus_
 
-Base de tweets collectés automatiquement, libre de réutilisation. À télécharger en csv
+An automatically collected tweets database. Free to use. 
 
-[Plus d'infos](https://github.com/ColinFay/twitter_corpus)
+[More infos & dl](https://github.com/ColinFay/twitter_corpus)
+
+## Just for fun  
+
+_tuRbonegro_
+
+This R package plays a random Turbonegro clip in your R Viewer ([More info](http://colinfay.me/rstats-turbonegro/)).
+
+[Version dev on GitHub](https://github.com/ColinFay/tuRbonegro)
+
