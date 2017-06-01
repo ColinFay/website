@@ -27,38 +27,38 @@ _Remarque : ce blogpost ne contient aucune requête API, j'utiliserais Sys.time 
 Si vous souhaitez limiter à 20 appels par minute, vous devrez utiliser _Sys.sleep ()_. Cette fonction ne prend qu'un argument, _time_, qui est le nombre de secondes que vous souhaitez arrêter R avant de reprendre.
 
 Par exemple, dans un for loop, vous pouvez faire une pause de 10 secondes à chaque itération de la boucle :
-```{r} 
+{% highlight r %} 
 for(i in 1:3){
   print(Sys.time())
   Sys.sleep(time = 10)
 }
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 ## [1] "2017-03-26 11:13:58 CET"
 ## [1] "2017-03-26 11:14:08 CET"
 ## [1] "2017-03-26 11:14:18 CET"
-```
+{% endhighlight %}
 ### Avec un lapply
 Si vous avez accès au cœur de la fonction que vous souhaitez utiliser (par exemple la fonction requêtant l'API), vous pouvez utiliser un _lapply_, et insérer _Sys.sleep ()_ dans cette fonction.
 
 C'est cette méthode que vous devrez utiliser dans le code pour Discogs, et que j'ai utiliser dans le billet sur Computer Vision.
-```{r} 
+{% highlight r %} 
 library(tidyverse)
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 lapply(1:3, function(x) {
   print(x)
   print(Sys.time()) 
   Sys.sleep(3)
 }) %>% do.call(rbind, .) 
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 ## [1] 1
 ## [1] "2017-03-26 11:20:22 CET"
 ## [1] 2
 ## [1] "2017-03-26 11:20:25 CET"
 ## [1] 3
 ## [1] "2017-03-26 11:20:28 CET"
-```
+{% endhighlight %}
 
 _Hope this can help!_
