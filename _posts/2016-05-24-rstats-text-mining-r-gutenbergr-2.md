@@ -1,4 +1,5 @@
 ---
+ID: 1263
 title: "#RStats — Text mining with R and gutenbergr"
 author: colin_fay
 post_date: 2016-05-24 18:00:32
@@ -25,32 +26,32 @@ I've chosen to analyse Lewis Caroll's famous masterpiece, _Alice's Adventures in
 </ul>
 <a href="https://cran.r-project.org/web/packages/gutenbergr/index.html">gutenbergr</a> is an R package you can use to dowload books from the <a href="https://www.gutenberg.org/">Gutenberg Project</a>.
 
-{% highlight r %} 
+```{r} 
 library(gutenbergr)
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
-{% endhighlight %}
+```
 This function gives you a list with the following elements:
-{% highlight r %} 
+```{r} 
 ## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
-{% endhighlight %}
+```
 The first column contains the reference of the book you're looking for in the Gutenberg catalogue. You need this number to download the book:
-{% highlight r %} 
+```{r} 
 library(magrittr)
 alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
-{% endhighlight %}
+```
 Here, `gutenberg_download` takes the ID of the book you want to download, and returns you a data.frame with the full text. `gutenberg_strip` removes all the metadata at the beginning of the book.
 
 ### Alice’s Adventures in Wonderland
-{% highlight r %} 
+```{r} 
 library(tidytext)
-{% endhighlight %}
+```
 To perform your data analysis, you'll need the `tidytext` package. Then :
 
-{% highlight r %} 
+```{r} 
 tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
  unnest_tokens(word, text) %>%
  anti_join(stop_words) %>%
@@ -58,7 +59,7 @@ tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
 
 
-{% endhighlight %}
+```
 
 Perfect! So…_drum rolls_…
 
