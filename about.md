@@ -5,15 +5,154 @@ title : "About me"
 ---
 ___
 
+## Jump to : 
+
++ <a href="#fr">English bio</a>
++ <a href="#fr">French bio</a>
+
+<div id="fr"><h1>English</h1></div>
+
+## Founder and editor in chief
+
+### Data Bzh
+
+Data Bzh is a collaborative data-blogging platform that wants to democratize Brittany & data throught data analysis and visualisition.
+
+In 2016, Data Bzh won the Trophée Open Data 2016 ([More on that](http://data-bzh.fr/data-bzh-trophee-open-data/)).
+
+[Data Bzh](http://data-bzh.fr/)
+
+***
+
+# Work Experience
+
+## Now
+
+Since 04.16_
+
+Data Analyst, R trainee, Content & Community Manager
+
+[ThinkR](www.thinkr.fr)
+
+## Past :
+
+_02.15 - 04.16_
+
+Content & Community Manager
+
+L'Œil au Carré
+
+***
+
+# Skills
+
+## Data
+
+- R programming & development
+- Data mining
+- Data analysis
+- Reporting & Visualisation
+
+## Social Media
+
+- Strategy
+- Community Management
+- SEO
+- Consulting & analysis
+
+***
+
+# Education
+
+
+## Pro
+
+### 2016
+
+- "Data Analyst with R", Datacamp
+- "Python, des fondamentaux à l'utilisation du langage", Inria Labs
+- "Statistique appliquée et langage R", ThinkR
+
+### 2015
+
+- "Créer et administrer un site sous WordPress"
+- "Comprendre et optimiser le référencement naturel"
+
+## University
+
+### 2014
+
+_Master 2 Information et Communication, Université de Rennes 2
+parcours EPIC, mention Bien (15,5)_
+
+### 2012
+
+_Master Langues, Cultures Étrangères et Régionales, Université de Rennes 2
+parcours Aire anglophone mention Bien (15,5)_
+
+### 2009
+
+_Licence Langues, Littératures et Civilisations Étrangères, Université de Caen
+Spécialité anglais_
+
+***
+
+# Talks and class
+
+## 12.03.17
+
+"Atelier Dataviz", La Fabrique de l'Info, with Association Bug.
+
+## 07.07.16
+
+"Data Bzh — Raconter la Bretagne par ses données", Apéro StoryCode de Rennes, La Cordée.
+
+## 24.02.16
+
+"L'envie dans l'expérience utilisateur", UX Deiz #2, with UX Rennes.
+
+## Janvier 16 & Novembre 16
+
+"Introduction au Community Management", Classe Passerelle, Digital Campus (Rennes).
+
+## 22.09.15
+
+"Utiliser Snapchat pour sa marque ou son média". Medialab Speetraining, with Ouest Medialab (Nantes).
+
+## 29.05.13
+
+"Théorie des jeux, un modèle possible pour les sciences du langage ?" 16èmes Rencontres Jeunes Chercheurs, Modèles et modélisation dans les sciences du langage. Université Sorbonne nouvelle, Paris 3
+
+***
+
+## University work
+
+## 09.2014
+
+_Média, support, temporalité : le cas des pure-players de presse._
+
+Master thesis, Rennes 2 University, under the supervision of Jean-Luc Bouillon
+
+18/20, mention très bien, with congratulations from the jury
+
+## 06.2012
+
+_Approche systémique des jeux pragmatiques communicationnels_
+
+Master thesis, Rennes 2 University, under the supervision of Dr Daniel Roulland.
+
+18/20, mention très bien, with congratulations from the jury
+
+
+<div id="fr"><h1>Français</h1></div>
+
 ## Créateur et rédacteur
 
 ### Data Bzh
 
 Data Bzh est une plateforme collaborative de data-blogging qui vise à démocratiser les données bretonnes par analyse et visualisation de données publiques (Open Data) ou récoltées par data mining.
 
-Sur le site, des dossiers, des visualisations, ainsi que des articles d'introduction et d'approfondissement sur les thématiques liées aux données et à leur traitement.
-
-Signe de reconnaissance de la pertinence de ce projet, Data Bzh a été récompensé du Trophée Open Data 2016 ([Plus d'infos](http://data-bzh.fr/data-bzh-trophee-open-data/)).
+En 2016, Data Bzh a été récompensé du Trophée Open Data 2016 ([Plus d'infos](http://data-bzh.fr/data-bzh-trophee-open-data/)).
 
 [Data Bzh](http://data-bzh.fr/)
 
@@ -26,13 +165,15 @@ Signe de reconnaissance de la pertinence de ce projet, Data Bzh a été récompe
 _Depuis 04.16_
 
 Data Analyst, Formateur R, Content & Community Manager
-ThinkR
+
+[ThinkR](www.thinkr.fr)
 
 ## Passées :
 
 _02.15 - 04.16_
 
 Content & Community Manager
+
 L'Œil au Carré
 
 ***
@@ -62,14 +203,14 @@ L'Œil au Carré
 
 ### 2016
 
-- R language course, Datacamp
-- Python, des fondamentaux à l'utilisation du langage, Inria Labs
-- Statistique appliquée et langage R, ThinkR
+- "Data Analyst with R", Datacamp
+- "Python, des fondamentaux à l'utilisation du langage", Inria Labs
+- "Statistique appliquée et langage R", ThinkR
 
 ### 2015
 
-- Créer et administrer un site sous WordPress
-- Comprendre et optimiser le référencement naturel
+- "Créer et administrer un site sous WordPress"
+- "Comprendre et optimiser le référencement naturel"
 
 ## Universitaires
 
@@ -122,14 +263,16 @@ Spécialité anglais
 
 ## 09.2014
 
-Média, support, temporalité : le cas des pure-players de presse.
-Mémoire de Master 2 EPIC, Université de Rennes 2
-Sous la direction de : Jean-Luc Bouillon
+_Média, support, temporalité : le cas des pure-players de presse._
+
+Mémoire de Master 2 EPIC, Université de Rennes 2, sous la direction de : Jean-Luc Bouillon
+
 18/20, mention très bien, avec félicitations du jury
 
 ## 06.2012
 
-Approche systémique des jeux pragmatiques communicationnels
-Mémoire de Master 2 LCER, Université de Rennes 2
-Sous la direction de : Dr Daniel Roulland
+_Approche systémique des jeux pragmatiques communicationnels_
+
+Mémoire de Master 2 LCER, Université de Rennes 2, sous la direction de : Dr Daniel Roulland.
+
 18 / 20, mention très bien, avec félicitations du jury

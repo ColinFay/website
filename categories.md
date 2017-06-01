@@ -5,11 +5,11 @@ title: "Posts by Category"
 author_profile: true
 ---
 
-## Go to : 
+## Jump to : 
 
-+ [r-blog-en](http://colinfay.me/categories/#r-blog-en)
-+ [r-blog-fr](http://colinfay.me/categories/#r-blog-fr)
-+ [random](http://colinfay.me/categories/#random)
++ [R blog (en)](http://colinfay.me/categories/#r-blog-en)
++ [R blog (fr)](http://colinfay.me/categories/#r-blog-fr)
++ [Random](http://colinfay.me/categories/#random)
 
 ___
 
