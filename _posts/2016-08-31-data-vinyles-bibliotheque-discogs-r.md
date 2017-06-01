@@ -280,7 +280,7 @@ collection_2 <- lapply(as.list(collection$release_id), function(obj){
 {% endhighlight %}
 Ici, nous utilisons le release_id pour aller à la pêche aux informations pour toutes les entrées de la base.
 
-</div>
+
 #### Les genres les plus représentés
 {% highlight r %} 
 ggplot(as.data.frame(head(sort(table(collection_2$genre), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 

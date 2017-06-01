@@ -24,5 +24,5 @@ Merci à Anthony Chesnais et à Ouest Medialab pour l'organisation, ainsi qu'à 
 <div align="center">
 
 <iframe style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/oEEkr4dEZbAUB9" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"> </iframe>
-<div style="margin-bottom: 5px;">__ <a title="Data Bzh à l'Apéro StoryCode de Rennes &quot;Nouvelles Écritures&quot;" href="//www.slideshare.net/ColinFay1/data-bzh-lapro-storycode-de-rennes-nouvelles-critures" target="_blank">Data Bzh à l'Apéro StoryCode de Rennes "Nouvelles Écritures"</a> __ de __<a href="//www.slideshare.net/ColinFay1" target="_blank">Colin Fay</a>__</div>
-</div>
+<div style="margin-bottom: 5px;">__ <a title="Data Bzh à l'Apéro StoryCode de Rennes &quot;Nouvelles Écritures&quot;" href="//www.slideshare.net/ColinFay1/data-bzh-lapro-storycode-de-rennes-nouvelles-critures" target="_blank">Data Bzh à l'Apéro StoryCode de Rennes "Nouvelles Écritures"</a> __ de __<a href="//www.slideshare.net/ColinFay1" target="_blank">Colin Fay</a>__
+

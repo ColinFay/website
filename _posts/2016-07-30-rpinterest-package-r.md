@@ -19,7 +19,7 @@ In order to get information from the API, you first need to get an access token 
 Install this package directly in R :
 <div class="highlight highlight-source-r">
 <pre><span class="pl-e">devtools<span class="pl-k">::install_github(<span class="pl-s"><span class="pl-pds">"ColinFay/rpinterest<span class="pl-pds">")```
-</div>
+
 ## How rpinterest works
 The version 0.1.0 works with seven functions. Which are :
 <ul>

@@ -280,7 +280,7 @@ collection_2 <- lapply(as.list(collection$release_id), function(obj){
 {% endhighlight %}
 Here, I have used the _release_id_ element to make a request about each vinyl.
 
-</div>
+
 #### Most frequent genre
 {% highlight r %} 
 ggplot(as.data.frame(head(sort(table(collection_2$genre), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 

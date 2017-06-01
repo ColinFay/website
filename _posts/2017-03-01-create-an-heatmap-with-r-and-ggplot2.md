@@ -67,7 +67,7 @@ name %>%
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
 {% endhighlight %}
-</div>
+
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png"><img class="aligncenter size-full wp-image-1587" src="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png" alt="Colin par département" width="1000" height="500" /></a>
 
 So yeah, it’s that simple. Let’s try with another name.
@@ -97,4 +97,4 @@ name %>%
 
 Pretty easy isn't it?
 
-</div>
+

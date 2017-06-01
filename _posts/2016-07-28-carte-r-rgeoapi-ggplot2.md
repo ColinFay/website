@@ -18,7 +18,7 @@ Pour installer rgeoapi :
 {% highlight r %} 
 devtools::install_github("ColinFay/rgeoapi")
 {% endhighlight %}
-</div>
+
 ### Récupérer les coordonnées des villes
 Imaginons donc que vous possédiez un jeu de données avec pour unique référent géographique les noms des villes à représenter. Dans l'idées, nous aurions :
 {% highlight r %} 

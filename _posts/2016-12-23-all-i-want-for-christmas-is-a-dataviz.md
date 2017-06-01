@@ -141,4 +141,4 @@ Et sur ce… joyeux Noël !
 
 <a title="" href="https://colinfay.github.io/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif"><img class="aligncenter size-full wp-image-1182" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/b546c88a28a7c2423d2a32bc85d1f106.gif" alt="Nightmare before christmas" width="500" height="301" /></a>
 
-</div>
+

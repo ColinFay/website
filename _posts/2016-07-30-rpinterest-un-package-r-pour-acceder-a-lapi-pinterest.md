@@ -74,4 +74,4 @@ Comme son nom l'indique, cette fonction obtient les informations sur l’utilisa
 ### Contact
 Vos questions et feedbacks <a href="mailto:contact@colinfay.me">sont les bienvenus</a> !
 
-</div>
+
