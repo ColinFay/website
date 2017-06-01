@@ -10,46 +10,46 @@ published: true
 categories : r-blog-fr
 ---
 ## Accéder aux boards, pins et users de Pinterest directement dans R, tel est l'object de rpinterest, un package destiné à faciliter le dialogue entre l'API du réseau social et votre logiciel favori. <!--more-->
-<div id="geoapi" class="section level2">
-### 
-&nbsp;
+
 ### Installer rpinterest
 _Update [17/08/16]_
 
 Le package est désormais disponible sur le <a href="https://cran.r-project.org/web/packages/rpinterest/index.html">CRAN</a> !
-<pre class="{r}">install.packages("rpinterest")```
+{% highlight r %}
+install.packages("rpinterest")
+{% endhighlight %}
 _[/update]_
 
-&nbsp;
-
 Pour installer la version dev depuis <a href="https://github.com/ColinFay/rpinterest" target="_blank">GitHub</a>  :
-<pre class="{r}">```{r} 
+
+{% highlight r %} 
 devtools::install_github("ColinFay/rpinterest")
-```
+{% endhighlight %}
+
 ### Comment fonctionne rgeoapi
 La version actuelle comprend 7 fonctions :
 <ul>
- 	<li>```{r} 
+ 	<li>{% highlight r %} 
 BoardPinsByID
-``` obtenir les pins d'un board à partir de l'ID d'un board</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les pins d'un board à partir de l'ID d'un board</li>
+ 	<li>{% highlight r %} 
 BoardPinsByName
-``` obtenir les pins d'un board à partir du nom d'un board</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les pins d'un board à partir du nom d'un board</li>
+ 	<li>{% highlight r %} 
 BoardSpecByID
-``` obtenir les informations sur un board à partir de l'ID d'un board</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les informations sur un board à partir de l'ID d'un board</li>
+ 	<li>{% highlight r %} 
 BoardSpecByName
-``` obtenir les informations sur un board à partir du nom d'un board</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les informations sur un board à partir du nom d'un board</li>
+ 	<li>{% highlight r %} 
 PinSpecByID
-``` obtenir les informations sur un pin à partir de son ID</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les informations sur un pin à partir de son ID</li>
+ 	<li>{% highlight r %} 
 UserSpecByID
-``` obtenir les informations sur un utilisateur à partir de son ID</li>
- 	<li>```{r} 
+{% endhighlight %} obtenir les informations sur un utilisateur à partir de son ID</li>
+ 	<li>{% highlight r %} 
 UserSpecNyName
-``` obtenir les informations sur un utilisateur à partir de son nom</li>
+{% endhighlight %} obtenir les informations sur un utilisateur à partir de son nom</li>
 </ul>
 ### Obtenir un acess token
 Pour utiliser ces fonctions, il est indispensable d'obtenir un _access token_ disponible sur l'<a href="https://developers.pinterest.com/tools/access_token/" target="_blank">interface developpers</a> de Pinterest.
@@ -58,19 +58,20 @@ Pour utiliser ces fonctions, il est indispensable d'obtenir un _access token_ di
 ### Quelques examples
 #### BoardPinsByID
 Cette fonction prend l'ID d'un board et l'access token obtenu dans l'interface developpers de Pinterest, et retourne tous les pins disponibles sur ce board.
-<pre class="{r}">```{r} 
-<span class="pl-c">BoardPinsByID(boardID = "42080646457333782", token = token)
-```
+
+{% highlight r %} 
+BoardPinsByID(boardID = "42080646457333782", token = token)
+{% endhighlight %}
 #### BoardSpecByName
 Cette fonction vous permet d'obtenir les informations sur un board, à partir de son nom et du nom de l'utilisateur qui l'a créé.
-<pre class="{r}">```{r} 
-<span class="pl-c">BoardSpecByName(user = "colinfay", board = "blanc-mon-amour", token = token)
-```
+{% highlight r %} 
+BoardSpecByName(user = "colinfay", board = "blanc-mon-amour", token = token)
+{% endhighlight %}
 #### UserSpecByName
 Comme son nom l'indique, cette fonction obtient les informations sur l’utilisateur Pinterest spécifié.
-<pre class="{r}">```{r} 
+{% highlight r %} 
 <span class="pl-c">UserSpecByName(user = "colinfay", token = token)
-```
+{% endhighlight %}
 ### Contact
 Vos questions et feedbacks <a href="mailto:contact@colinfay.me">sont les bienvenus</a> !
 
