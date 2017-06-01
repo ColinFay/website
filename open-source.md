@@ -16,7 +16,7 @@ An R package to access the Pinterest API ([More infos](https://colinfay.me/rpint
 
 _rgeoapi_
 
-This package requests informations from the french GéoAPI inside R — https://api.gouv.fr/api/geoapi.html([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
+This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R ([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
 
 [Official release on CRAN](https://cran.r-project.org/web/packages/rgeoapi/index.html)
 
