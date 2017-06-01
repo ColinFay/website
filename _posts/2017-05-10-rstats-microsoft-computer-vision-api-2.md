@@ -20,7 +20,7 @@ Cette <a href="https://www.microsoft.com/cognitive-services/en-us/computer-visio
 ### Les visages #RStats — Étiquetage automatique
 Dans cet article, vous trouverez un tuto sur comment obtenir des photos de profil de Twitter et les étiqueter automatiquement avec Microsoft Computer Vision.
 #### Collecter les données
-```{r} 
+{% highlight r %} 
 library(tidyverse)
 library(rtweet)
 library(httr)
@@ -30,18 +30,18 @@ users <- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %>%
   unique()
-```
+{% endhighlight %}
 _Note: J'ai ici anonymisé mes API keys._
 Maintenant, utilisons la colonne `profile_image_url` pour obtenir l'url des photos de profil.
 
 D'abord, cette variable a besoin d'être nettoyée : les URL contiennent un paramètre _normal_, créant des images 48x48. L'API Microsoft a besoin d'une résolution minimum de 50x50, nous devons donc nous débarrasser de ce paramètre.
 
-```{r} 
+{% highlight r %} 
 users$profile_image_url <- gsub("_normal", "", users$profile_image_url)
-```
+{% endhighlight %}
 #### Interroger l'API  Microsoft
 D'abord, inscrivez-vous sur <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision-api" target="_blank" rel="noopener noreferrer">Microsoft API service</a>, et lancez un essai gratuit. Ce compte gratuit est limité: vous ne pouvez faire que 5 000 appels par mois et 20 par minute. Mais c'est bien assez pour notre cas (478 images à regarder).
-```{r} 
+{% highlight r %} 
 users_api <- lapply(users[,25],function(i, key = "") {
   request_body <- data.frame(url = i)
   request_body_json <- gsub("\\[|\\]", "", toJSON(request_body, auto_unbox = "TRUE"))
@@ -62,13 +62,13 @@ users_api <- lapply(users[,25],function(i, key = "") {
   return(d)
 })%>%
   do.call(rbind,.)
-```
+{% endhighlight %}
 _Remarque: J'ai (à nouveau) caché ma clé API._
 _Ce code peut prendre un certain temps à exécuter, car il contient un appel à la fonction Sys.sleep._ Pour en savoir plus, <a href="http://colinfay.me/rstats-api-calls-sys-sleep/" target="_blank" rel="noopener noreferrer">lire ce billet</a>.
 
 #### Créer des tibbles
 Maintenant, j'ai un tibble avec une colonne contenant les listes de légendes et de score de confiance, et une colonne avec les listes des balises associées à chaque image.
-```{r} 
+{% highlight r %} 
 users_cap <- lapply(users_api$cap, unlist) %>%
   do.call(rbind,.) %>%
   as.data.frame() 
@@ -76,10 +76,10 @@ users_cap$confidence <- as.character(users_cap$confidence) %>%
   as.numeric()
 users_tags <- unlist(users_api$tag) %>%
   data.frame(tag = .)
-```
+{% endhighlight %}
 ### Visualisation
 Chaque légende est donnée avec un score de confiance.
-```{r} 
+{% highlight r %} 
 ggplot(users_cap, aes(as.numeric(confidence))) +
   geom_histogram(fill = "#b78d6a", bins = 50) + 
   xlab("Confidence") + 
@@ -87,13 +87,13 @@ ggplot(users_cap, aes(as.numeric(confidence))) +
   labs(title = "Faces of #RStats - Captions confidence", 
        caption="http://colinfay.me") + 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> Cliquez pour zoomer
 
 Il semble que les scores de confiance pour les légendes ne soient pas très forts. 
 
 Regardons les légendes et les balises les plus fréquentes.
-```{r} 
+{% highlight r %} 
 users %>%
   group_by(text)%>%
   summarize(somme = sum(n())) %>%
@@ -108,11 +108,11 @@ users %>%
   labs(title = "Faces of #RStats - Captions", 
        caption="http://colinfay.me") +   
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> Cliquez pour zoomer
 
 Eh bien ... Je ne suis pas sûr qu'il y ait tant de passionnés de surf et de skate dans notre liste, mais soit...
-```{r} 
+{% highlight r %} 
 users_tags %>%
   group_by(tag)%>%
   summarize(somme = sum(n())) %>%
@@ -128,7 +128,7 @@ users_tags %>%
   theme_light()
 
 
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a>
 
 ## Quelques vérifications

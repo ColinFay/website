@@ -18,48 +18,48 @@ L'API languagelayer est une interface JSON vous permettant de détecter une lang
 
 ### Installer languagelayerR
 Pour installer le package depuis le CRAN :
-```{r}
+{% highlight r %}
 install.packages("languagelayeR")
-```
+{% endhighlight %}
 
 Pour installer la version dev depuis <a href="https://github.com/ColinFay" target="_blank">GitHub</a>  :
-```{r}
+{% highlight r %}
 devtools::install_github("ColinFay/languagelayeR")
-```
+{% endhighlight %}
 
 ### Comment fonctionne languagelayeR
 La version 1.0.0 comprend 3 fonctions :
-```{r} 
+{% highlight r %} 
 getLanguage()
-``` 
+{% endhighlight %} 
 Effectuer une requête pour extraire la langue d'une suite de mots
-```{r} 
+{% highlight r %} 
 getSupportedLanguage
-``` 
+{% endhighlight %} 
 Obtenir la liste de toutes les langues disponibles sur l'API</li>
 
-```{r} 
+{% highlight r %} 
 setApiKey()
-``` 
+{% endhighlight %} 
 Définir la clé personnelle
 
 ### Avant de commencer
 La première étape de toute utilisation de ce package est la création d'un compte sur languagelayer, puis la définition de la clé API sur votre session R, via la fonction 
-```{r} 
+{% highlight r %} 
 setApiKey(apikey = "yourapikey")
-```
+{% endhighlight %}
 
 Retrouvez votre clé API sur votre <a href="https://languagelayer.com/dashboard">dashboard</a>.
 
 ### Exemples
 #### getLanguage
 Détecter une langue :
-```{r}
+{% highlight r %}
 getLanguage(query = "I really really love R and that's a good thing, right?")
-```
+{% endhighlight %}
 #### getSupportedLanguage
 Lister toutes les langues disponibles :
-```{r}getSupportedLanguage()```
+{% highlight r %}getSupportedLanguage(){% endhighlight %}
 
 ### Contact
 Questions et feedbacks <a href="mailto:contact@colinfay.me" target="_blank">bienvenus</a> !

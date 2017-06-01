@@ -15,24 +15,24 @@ categories : r-blog-fr
 Réseau social incontournable des amateurs du disque microsillon, Discogs offre une API permettant de jongler entre musique et données en quelques lignes de code.
 
 <span style="text-decoration: underline;">Note : pour retrouver les données utilisées dans ce billet, vous pouvez télécharger <a href="http://colinfay.me/data/collection_complete.json" target="_blank">le document JSON ici</a>, ou directement dans R :
-```{r} 
+{% highlight r %} 
 collection_complete <- jsonlite::fromJSON(txt = "http://colinfay.me/data/collection_complete.json", simplifyDataFrame = TRUE)
-```
+{% endhighlight %}
 ### Major Tom to Discogs API
 Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _`%>% ` et `%||%`.
 
-```{r} 
+{% highlight r %} 
 library(magrittr)
 `%||%` <- function(a,b) if(is.null(a)) b else a
-```
+{% endhighlight %}
 Bien bien, commençons par faire venir le profil Discogs :
-```{r} 
+{% highlight r %} 
 user <- "_colin"
 content <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders"))
 content <- rjson::fromJSON(rawToChar(content$content))$folders
 content
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 ## [[1]]
 ## [[1]]$count
 ## [1] 308
@@ -45,19 +45,19 @@ content
 ## 
 ## [[1]]$name
 ## [1] "All"
-```
+{% endhighlight %}
 Cette première requête nous permet d’obtenir les informations basiques sur l’utilisateur (en l’occurrence “_colin“, principal intéressé de ce billet de blog).
 
-```{r} 
+{% highlight r %} 
 $count
-``` nous apprend notamment que la collection compte 308 entrées. L’élément de la liste ```{r} 
+{% endhighlight %} nous apprend notamment que la collection compte 308 entrées. L’élément de la liste {% highlight r %} 
 $id
-``` renvoie le nombre de “folders” Discogs créées par l’utilisateur – ici, 0 correspond à l’ensemble de la collection, sans spécification de liste.
+{% endhighlight %} renvoie le nombre de “folders” Discogs créées par l’utilisateur – ici, 0 correspond à l’ensemble de la collection, sans spécification de liste.
 ### Créer un data.frame avec l’ensemble des vinyles présents dans la collection
-L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma collection contenant 308 entrées, nous devons réaliser une boucle ```{r} 
+L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma collection contenant 308 entrées, nous devons réaliser une boucle {% highlight r %} 
 repeat
-``` qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
-```{r} 
+{% endhighlight %} qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
+{% highlight r %} 
 collec_url <- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;per_page=100"))
 if (collec_url$status_code == 200){
   collec <- rjson::fromJSON(rawToChar(collec_url$content))
@@ -86,12 +86,12 @@ if (collec_url$status_code == 200){
   }) %>% do.call(rbind, .) %>% 
     unique()
 
-```
+{% endhighlight %}
 Et pour un aperçu du tableau obtenu :
-```{r} 
+{% highlight r %} 
 library(pander)
 pander(head(collection))
-```
+{% endhighlight %}
 <table style="width: 96%;"><caption>Table continues below</caption><colgroup> <col width="18%" /> <col width="29%" /> <col width="9%" /> <col width="38%" /> </colgroup>
 <thead>
 <tr class="header">
@@ -218,7 +218,7 @@ pander(head(collection))
 ### _I can’t see, I can’t see I’m going blind_
 Bon, il est temps de mettre tout cela en forme, non ?
 #### Les labels les plus représentés
-```{r} 
+{% highlight r %} 
 library(ggplot2)
 ggplot(as.data.frame(head(sort(table(collection$label), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
@@ -226,30 +226,30 @@ ggplot(as.data.frame(head(sort(table(collection$label), decreasing = TRUE), 10))
   xlab("Label") +
   ylab("Fréquence") +
   ggtitle("Labels les plus fréquents")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a>
 
 Philips et Polydor, _what a surprise!_
 #### Les artistes les plus représentés
-```{r} 
+{% highlight r %} 
 ggplot(as.data.frame(head(sort(table(collection$artist_name), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
   coord_flip() + 
   xlab("Artistes") +
   ylab("Fréquence") +
   ggtitle("Artistes les plus fréquents")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a>
 
 Bon, voilà, vous le savez... j'aime beaucoup Serge Gainsbourg et Georges Brassens (j'assume). La présence forte de Various était prévisible : il s'agit d'un terme générique faisant référence aux compilations, il est donc plus facile de gonfler ce chiffre que celui d'un artiste "solo".
 #### Date de sortie des vinyles de la collection
-```{r} 
+{% highlight r %} 
 ggplot(dplyr::filter(collection, year != 0), aes(x = year)) + 
   geom_bar(stat = "count", fill = "#B79477") + 
   xlab("Année de sortie") +
   ylab("Fréquence") +
   ggtitle("Date de sorties des vinyles de la collection")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a>
 
 Woaw, j'ai comme l'impression que je ne suis pas un super fan des années 90... Pourtant, il y a de <a href="https://www.youtube.com/watch?v=NcKAdFENqig" target="_blank">super titres</a>, non ? Ma collection se concentre sur un gros pic autour des années 80 et 00, avec un mode en 1980.
@@ -258,7 +258,7 @@ Bien, ces infos un temps soit peu basiques nous offrent déjà une première vis
 <div id="major-tom-to-discogs-api" class="section level4">
 #### Hello, it's me again
 &nbsp;
-```{r} 
+{% highlight r %} 
 collection_2 <- lapply(as.list(collection$release_id), function(obj){
   url <- httr::GET(paste0("https://api.discogs.com/releases/", obj))
   url <- rjson::fromJSON(rawToChar(url$content))
@@ -277,62 +277,62 @@ collection_2 <- lapply(as.list(collection$release_id), function(obj){
              country = url$country %||% NA)
 }) %>% do.call(rbind, .) %>% 
   unique()
-```
+{% endhighlight %}
 Ici, nous utilisons le release_id pour aller à la pêche aux informations pour toutes les entrées de la base.
 
 </div>
 #### Les genres les plus représentés
-```{r} 
+{% highlight r %} 
 ggplot(as.data.frame(head(sort(table(collection_2$genre), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
   coord_flip() + 
   xlab("Genre") +
   ylab("Fréquence") +
   ggtitle("Genres les plus fréquents")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, quelle surprise ! Eh oui, presque la moitié de ma collection contient des vinyles de rock (tous styles confondus). Qui aurait pu s'en douter ?
 #### Pays d’origine des vinyles
-```{r} 
+{% highlight r %} 
 ggplot(as.data.frame(head(sort(table(collection_2$country), decreasing = TRUE), 10)), aes(x = reorder(Var1, Freq), y = Freq)) + 
   geom_bar(stat = "identity", fill = "#B79477") + 
   coord_flip() + 
   xlab("Pays d'origine") +
   ylab("Fréquence") +
   ggtitle("Pays les plus fréquents")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>Bon, une large partie des vinyles venus de France, ça se tient :)
 #### Notes moyennes des vinyles
-```{r} 
+{% highlight r %} 
 ggplot(collection_2, aes(x = average_note)) + 
   geom_histogram(fill = "#B79477") +
   xlab("Note moyenne") +
   ylab("Fréquence") +
   ggtitle("Notes moyennes des vinyles de la collection")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a>
 
 D'après la communauté Discogs j'ai plutôt de bons goûts musicaux... Merci pour cet _ego boost_ ! (Oui, je compte ignorer la présence de 10 vinyles notés 0... Après tout, on a tous les droits à ses petits guilty pleasure...)
 #### Money Money Money
-```{r} 
+{% highlight r %} 
 ggplot(collection_2, aes(x = lowest_price)) + 
   geom_histogram(fill = "#B79477") +
   xlab("Prix le plus bas") +
   ylab("Fréquence") +
   ggtitle("Prix le plus bas des vinyles de la collection")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a>
 
 Bon... Ce n'est visiblement pas en vendant ma collection que je vais faire fortune. Cela dit, je ne comptais pas m'en séparer, cela tombe plutôt bien.
 ### Let’s finish!
-```{r} 
+{% highlight r %} 
 collection_complete <- merge(collection, collection_2, by = c("release_id","label", "year", "title", "artist_name"))
-```
+{% endhighlight %}
 #### Prix des vinyles en fonction des “want”
-```{r} 
+{% highlight r %} 
 lm_want <- lm(formula = lowest_price ~ want, data = collection_complete)
 summary(lm_want)
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 ##Residuals:
 ##   Min     1Q Median     3Q    Max 
 ##-8.043 -4.628 -2.224  2.179 49.608 
@@ -349,37 +349,37 @@ summary(lm_want)
 ##Multiple R-squared:  0.02536,    Adjusted R-squared:  0.02213 
 ##F-statistic: 7.833 on 1 and 301 DF,  p-value: 0.005461
 
-```
+{% endhighlight %}
 Ici, nous voyons que le coefficient de _want_ est significatif, avec une probabilité critique de 0.005. Nous pouvons donc conclure que, pour cette discothèque, le volume de want est significativement lié à la variable prix.
-```{r} 
+{% highlight r %} 
 ggplot(collection_complete, aes(x = lowest_price, y = want)) + 
   geom_point(size = 3, color = "#B79477") +
   geom_smooth(method = "lm") + 
   xlab("Prix le plus bas") +
   ylab("Nombre de \"want\"") +
   ggtitle("Prix et \"want\" des vinyles de la collection")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a>
 
 En clair : sur Discogs, il est possible d'entrer des vinyles dans une "liste d'envie", labellisée "want" dans notre population. Ici, nous avons dessiné la régression linéaire du prix le plus bas en fonction du nombre de personnes ayant listé cette sortie dans leur liste d'envie. La tendance est légère, avec beaucoup de bruit lorsque nous nous rapprochons des prix les plus élevés.
 #### Prix des vinyles en fonction des notes
-```{r} 
+{% highlight r %} 
 lm_note <- lm(formula = lowest_price ~ average_note, data = collection_complete)
 lm_note$coefficients
-```
-```{r} 
+{% endhighlight %}
+{% highlight r %} 
 ##  (Intercept) average_note 
 ##    -1.504767     2.207834
-```
+{% endhighlight %}
 Ici, le coefficient étant de 2.2, nous ne pouvons pas lier la variable note à la variable prix. Visualisons les données pour afficher la dispersion.
-```{r} 
+{% highlight r %} 
 ggplot(collection_complete, aes(x = lowest_price, y = average_note)) + 
   geom_point(size = 3, color = "#B79477") +
   xlab("Prix le plus bas") +
   ylab("Note moyenne") +
   ylim(c(0,5)) +
   ggtitle("Prix et notes des vinyles de la collection")
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a>
 ### And to conclude...
 La prochaine étape ? Faire un package pour accéder à l'API... et pourquoi pas ? Je mets ça sur ma to-do !

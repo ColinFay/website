@@ -21,7 +21,7 @@ I’ve extracted the info from :
 - 1st round results on <a href="https://www.data.gouv.fr/fr/datasets/election-presidentielle-des-23-avril-et-7-mai-2017-resultats-du-1er-tour/">data.gouv</a>
 
 Let’s create the tibble.
-```{r}
+{% highlight r %}
 library(tidyverse)
 result <- tibble(
   NOM = c("MACRON","MÉLENCHON","FILLON","LEPEN","HAMON","DUPONT-AIGNAN","POUTOU","LASSALLE","ARTHAUD","ASSELINEAU", "CHEMINADE","BLANC"),
@@ -32,11 +32,11 @@ result <- tibble(
            435367, 232439, 332592, 65671, 655404),
   POURC = round(VOIX / 36704775 * 100, 2)
 )
-```
+{% endhighlight %}
 Notes: in the APPEL column, the “NSP” factor means that the candidate didn’t give instructions to his/her supporters.
 
 Let’s start by a short visualisation of the results :
-```{r}
+{% highlight r %}
 ggplot(result, aes(reorder(NOM, POURC), POURC)) + 
   geom_bar(stat = "identity", , fill = "#b78d6a") + 
   coord_flip() + 
@@ -44,12 +44,12 @@ ggplot(result, aes(reorder(NOM, POURC), POURC)) +
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png"><img class="aligncenter size-full wp-image-1673" src="https://colinfay.github.io/wp-content/uploads/2017/04/resultats-premier-tour.png" alt="Résultats du premier tour" width="1000" height="500" /></a>
 ### Simulating second round results
 Here are the results if everyone who voted for a candidate on the first round follows the instructions give by this candidate.
 
-```{r}
+{% highlight r %}
 ggplot(result, aes(reorder(APPEL, POURC), POURC)) + 
   geom_bar(stat = "identity", , fill = "#b78d6a") + 
   coord_flip() + 
@@ -58,13 +58,13 @@ ggplot(result, aes(reorder(APPEL, POURC), POURC)) +
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 
  <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png"><img class="aligncenter size-full wp-image-1674" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-1.png" alt="Simulation 1" width="1000" height="500" /></a>
 Ok, now what do we do with the candidate who hasn't give any instruction?
 #### Let’s try various scenarios.
 What would happen if the NSP equally vote for each candidate?
-```{r}
+{% highlight r %}
 library(stringr)
 sim1 <- result %>%
   group_by(APPEL) %>%
@@ -82,11 +82,11 @@ ggplot(sim1, aes(reorder(APPEL, VOIX), VOIX)) +
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png"><img class="aligncenter size-full wp-image-1678" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-2.png" alt="" width="1000" height="500" /></a>
 
 Ok, we're good with that one. What would happen if all the NSP vote for Marine Le Pen?
-```{r}
+{% highlight r %}
 result %>%
   mutate(APPEL = str_replace_all(result$APPEL, "NSP", "LEPEN")) %>%
   ggplot(aes(reorder(APPEL, POURC), POURC)) + 
@@ -97,12 +97,12 @@ result %>%
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png"><img class="aligncenter size-full wp-image-1677" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-3.png" alt="" width="1000" height="500" /></a>
 
 Aaaand that's tight, but Macron still wins. What if all NSP go to Macron?
 
-```{r}
+{% highlight r %}
 result %>%
   mutate(APPEL = str_replace_all(result$APPEL, "NSP", "MACRON")) %>%
   ggplot(aes(reorder(APPEL, POURC), POURC)) + 
@@ -113,7 +113,7 @@ result %>%
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png"><img class="aligncenter size-full wp-image-1676" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-4.png" alt="" width="1000" height="500" /></a>
 
 Yeah, that was obvious.
@@ -121,7 +121,7 @@ Yeah, that was obvious.
 ### Left vs Right wing
 OK, let’s try something else. What if all voters who chose a right wing candidate vote for Marine Le Pen, and voters for a left wing candidate Emmanuel Macron ?
 
-```{r}
+{% highlight r %}
 result %>%
   left_join(data.frame(SIDE = c("CENTRE","GAUCHE","DROITE", "BLANC", "SANS ETIQUETTE"), 
                        SIM = c("MACRON","MACRON","LEPEN", "BLANC", "BLANC")), by = "SIDE") %>%
@@ -132,7 +132,7 @@ result %>%
        x = "", 
        y = "")+ 
   theme_light()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png"><img class="aligncenter size-full wp-image-1675" src="https://colinfay.github.io/wp-content/uploads/2017/04/simulation-second-tour-5.png" alt="" width="1000" height="500" /></a>
 
 Ok, still tight, but Emmanuel Macron still wins

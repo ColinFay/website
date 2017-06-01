@@ -23,16 +23,16 @@ For this, I took this <a href="https://data.enseignementsup-recherche.gouv.fr/ex
 _Notes_ These plots have been created using tools from the `databzhtools` you can find here : <a class="uri" href="https://github.com/DataBzh/data-bzh-tools">https://github.com/DataBzh/Data-bzh-tools</a>
 Download it on your hard drive, and load it in R with : `source("data-bzh-tools-master/main.R")`
 
-```{r} 
+{% highlight r %} 
 #Charger les données
 library(tidyverse)
 source(file = "data-bzh-tools-master/main.R")
 prim <- read_csv2("https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-pes-pedr-beneficiaires/download/?format=csv&amp;timezone=Europe/Berlin&amp;use_labels_for_header=true")
 prim$Année <- paste0("01-01-",prim$Année) %>%
   lubridate::dmy()
-```
+{% endhighlight %}
 #### Frequency distribution
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Année) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -40,10 +40,10 @@ prim %>%
   geom_bar(stat = "identity", fill = databzh$colour1) + 
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06.jpeg"><img class="aligncenter size-large wp-image-1393" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot06-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Prop by sector
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Année, `Secteur disciplinaire`) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -52,10 +52,10 @@ prim %>%
   geom_bar(stat = "identity", position = "fill") + 
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07.jpeg"><img class="aligncenter size-large wp-image-1394" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot07-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Value by sector
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Année, Bénéficiaires, `Secteur disciplinaire`) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -65,10 +65,10 @@ prim %>%
   facet_grid(~`Secteur disciplinaire`) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12.jpeg"><img class="aligncenter size-large wp-image-1395" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot12-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Map
-```{r} 
+{% highlight r %} 
 #states <- map_data("france")
 prim2 <- prim %>%
   separate(`Géo-localisation`, into = c("lon","lat"), sep =',') %>%
@@ -85,19 +85,19 @@ ggplot(states, aes(long,lat, group=group)) +
   ylim(range(range(states$lat))) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20.jpeg"><img class="aligncenter size-large wp-image-1396" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot20-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Boxplot
-```{r} 
+{% highlight r %} 
 ggplot(prim, aes(Région, Bénéficiaires)) + 
   geom_boxplot(col = databzh$colour4) +
   coord_flip() +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 ## <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18.jpeg"><img class="aligncenter size-large wp-image-1397" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot18-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Dotplot
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Région) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -107,10 +107,10 @@ prim %>%
   xlab("")+
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15.jpeg"><img class="aligncenter size-large wp-image-1399" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot15-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Dotplot bis
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Établissement) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -121,10 +121,10 @@ prim %>%
   xlab("")+
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17.jpeg"><img class="aligncenter size-large wp-image-1400" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot17-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Histogram
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Établissement) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -135,10 +135,10 @@ prim %>%
   ylab("Nombre d'établissements dans la tranche") +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19.jpeg"><img class="aligncenter size-large wp-image-1401" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot19-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Line plot
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Année, `Groupe de corps`) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -147,10 +147,10 @@ prim %>%
   scale_color_manual(values = databzh$colours) +
   labs(title = "Les bénéficiaires de la prime d'excellence scientifique") + 
   databzhTheme()
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14.jpeg"><img class="aligncenter size-large wp-image-1402" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot14-1024x512.jpeg" alt="" width="840" height="420" /></a>
 #### Barplot
-```{r} 
+{% highlight r %} 
 prim %>%
   group_by(Année, Bénéficiaires, Sexe) %>%
   summarise(somme = sum(Bénéficiaires))%>%
@@ -162,5 +162,5 @@ prim %>%
   databzhTheme()
 
 
-```
+{% endhighlight %}
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09.jpeg"><img class="aligncenter size-large wp-image-1403" src="https://colinfay.github.io/wp-content/uploads/2017/03/Rplot09-1024x512.jpeg" alt="" width="840" height="420" /></a>
