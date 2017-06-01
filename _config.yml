@@ -11,7 +11,7 @@ title                    : "Colin FAY"
 title_separator          : "-"
 name                     : "Colin FAY"
 description              : "Data Science & Social Media."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "http://colinfay.me" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "colinfay/colinfay.github.io"# GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -79,7 +79,7 @@ analytics:
 author:
   name             : "Colin FAY"
   avatar           : "https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Science & Social Media."
+  bio              : "Data Science & Social Media at ThinkR. Founder of Data Bzh."
   location         : "Rennes"
   email            : "contact@colinfay.me"
   uri              :
@@ -93,7 +93,7 @@ author:
   google_plus      :
   keybase          : 
   instagram        : 
-  lastfm           :
+  lastfm           : "colinfay"
   linkedin         :
   pinterest        : "colinfay"
   soundcloud       :

@@ -21,7 +21,7 @@ This <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision
 ### The Faces of #RStats — Automatic labelling
 In this blogpost, I'll describe how to get profil pics from Twitter, and label them with Microsoft Computer Vision.
 #### Collecting data
-{% highlight r %} 
+```{r} 
 library(tidyverse)
 library(rtweet)
 library(httr)
@@ -31,17 +31,17 @@ users <- search_users(q= '#rstats',
                       n = 1000,
                       parse = TRUE) %>%
   unique()
-{% endhighlight %}
+```
 _Note: I've (obviously) hidden the access token to my twitter app._
 From there, I’ll use the `profile_image_url` column to get the url to the profile picture.
 
 First, this variable will need some cleansing : the urls contain a __normal_ parameter, creating 48x48 images. The Microsoft API needs at least a 50x50 resolution, so we need to get rid of this.
-{% highlight r %} 
+```{r} 
 users$profile_image_url <- gsub("_normal", "", users$profile_image_url)
-{% endhighlight %}
+```
 #### Calling on Microsoft API
 First, get a subscritpion on the <a href="https://www.microsoft.com/cognitive-services/en-us/computer-vision-api" target="_blank" rel="noopener noreferrer">Microsoft API service</a>, and start a free trial. This free account is limited: you can only make 5,000 calls per month, and 20 per minute. But that’s far from enough for our case (478 images to look at).
-{% highlight r %} 
+```{r} 
 users_api <- lapply(users[,25],function(i, key = "") {
   request_body <- data.frame(url = i)
   request_body_json <- gsub("\\[|\\]", "", toJSON(request_body, auto_unbox = "TRUE"))
@@ -62,13 +62,13 @@ users_api <- lapply(users[,25],function(i, key = "") {
   return(d)
 })%>%
   do.call(rbind,.)
-{% endhighlight %}
+```
 _Note : I've (again) hidden my API key._
 __Also, this code may take a while to execute, as I've inserted a Sys.sleep function._ To know more about the reason why, <a href="http://colinfay.me/rstats-api-calls-and-sys-sleep/" target="_blank" rel="noopener noreferrer">read this blogpost</a>. _
 
 #### Creating tibbles
 Now I have a tibble with a column containing lists of captions &amp; confidence, and a column with lists of the tags associated with each picture. Let’s split this.
-{% highlight r %} 
+```{r} 
 users_cap <- lapply(users_api$cap, unlist) %>%
   do.call(rbind,.) %>%
   as.data.frame() 
@@ -76,10 +76,10 @@ users_cap$confidence <- as.character(users_cap$confidence) %>%
   as.numeric()
 users_tags <- unlist(users_api$tag) %>%
   data.frame(tag = .)
-{% endhighlight %}
+```
 ### Visualisation
 Each caption is given with a confidence score.
-{% highlight r %} 
+```{r} 
 ggplot(users_cap, aes(as.numeric(confidence))) +
   geom_histogram(fill = "#b78d6a", bins = 50) + 
   xlab("Confidence") + 
@@ -87,13 +87,13 @@ ggplot(users_cap, aes(as.numeric(confidence))) +
   labs(title = "Faces of #RStats - Captions confidence", 
        caption="http://colinfay.me") + 
   theme_light()
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png"><img class="size-full wp-image-1583" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-caption-confidence.png" alt="" width="1000" height="500" /></a> 
 
 Click to zoom
 
 It seems that the confidence scores for the captions are not very strong. Well, let’s nevertheless have a look at the most frequent captions and tags.
-{% highlight r %} 
+```{r} 
 users %>%
   group_by(text)%>%
   summarize(somme = sum(n())) %>%
@@ -108,13 +108,13 @@ users %>%
   labs(title = "Faces of #RStats - Captions", 
        caption="http://colinfay.me") +   
   theme_light()
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png"><img class="size-full wp-image-1580" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-captions-users.png" alt="" width="800" height="400" /></a> 
 
 Click to zoom
 
 Well... I'm not sure there are so many surf and skate aficionados in the R world, but ok...
-{% highlight r %} 
+```{r} 
 users_tags %>%
   group_by(tag)%>%
   summarize(somme = sum(n())) %>%
@@ -130,7 +130,7 @@ users_tags %>%
   theme_light()
 
 
-{% endhighlight %}
+```
 ## <a href="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png"><img class="aligncenter size-full wp-image-1584" src="https://colinfay.github.io/wp-content/uploads/2017/04/rstats-tags.png" alt="" width="1000" height="500" /></a>
 ## Some checking
 Let’s have a look at the picture with the highest confidence score, with the caption the API gave it.

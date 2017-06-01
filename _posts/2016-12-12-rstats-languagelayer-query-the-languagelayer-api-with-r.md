@@ -23,21 +23,21 @@ Install this package directly in R : `devtools::install_github"ColinFay/language
 ## How languagelayeR works
 The version 1.0.0 works with three functions. Which are :
 
-{% highlight r %} 
+```{r} 
 getLanguage
-{% endhighlight %} 
+``` 
 
 Get language information from a character string
 
-{% highlight r %} 
+```{r} 
 getSupportedLanguage
-{% endhighlight %} 
+``` 
 
 Get all current accessible languages on the languagelayer API
 
-{% highlight r %} 
+```{r} 
 setApiKey
-{% endhighlight %} 
+``` 
 Set your API key to access the languagelayer API
 
 ## First of all
@@ -49,14 +49,14 @@ You can get your api key on your languagelayer <a href="https://languagelayer.co
 ### getLanguage
 Detect a language from a character string.
 
-{% highlight r %}
+```{r}
 getLanguage("I really really love R and that's a good thing, right?")
-{% endhighlight %}
+```
 
 List all the languages available on the languagelayer API.
-{% highlight r %}
+```{r}
 getSupportedLanguage()
-{% endhighlight %}
+```
 ### Contact
 
 Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a> !
