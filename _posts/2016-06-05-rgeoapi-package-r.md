@@ -9,7 +9,6 @@ permalink: /rgeoapi-package-r/
 published: true
 categories : r-blog-en
 ---
-<div id="destine-a-interroger-la-geoapi-detalab.-lobjectif-simplifier-lacces-a-la-reference-geographique-des-communes-francaises." class="section level2">
 ## rgeoapi connects R to the GéoAPI, in order to get information about french geography.
 <!--more-->
 rgeoapi is now on <a href="https://cran.r-project.org/web/packages/rgeoapi/">CRAN</a>
