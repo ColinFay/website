@@ -1,22 +1,23 @@
 ---
-title: "rgeoapi disponible sur le CRAN"
+ID: 1099
+title: "rgeoapi 1.1.0 disponible sur le CRAN !"
 author: colin_fay
 post_date: 2016-10-31 13:59:43
+post_excerpt: ""
 layout: single
 permalink: /rgeoapi-1-1-0-disponible-cran/
 published: true
 categories : r-blog-fr
 ---
-
 ## Ce package R orienté SIG interroge la base de donnée cartographique française. Il est désormais disponible en version stable sur le CRAN !
 <!--more-->
 ### rgeoapi sur le CRAN
 Construisez des cartes plus facilement avec`rgeoapi`, un outil maintenant disponible sur le <a href="https://cran.r-project.org/web/packages/rgeoapi/" target="_blank">CRAN</a>.
 
 Pour installer le package directement dans R :
-{% endhighlight %} {r}
+``` {r}
 install.packages("rgeoapi")
-{% endhighlight %}
+```
 Le manuel d’utilisation contenant le détail des fonctions est disponible en <a href="https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf" target="_blank">pdf</a> — deux tutoriels en français sont également disponibles sur ce site  :
 - <a href="http://colinfay.me/carte-r-rgeoapi-ggplot2/" target="_blank">Créer une carte avec R — rgeoapi et ggplot2</a>
 
