@@ -15,9 +15,9 @@ categories : r-blog-fr
 Construisez des cartes plus facilement avec`rgeoapi`, un outil maintenant disponible sur le <a href="https://cran.r-project.org/web/packages/rgeoapi/" target="_blank">CRAN</a>.
 
 Pour installer le package directement dans R :
-{% endhighlight %} {r}
+``` {r}
 install.packages("rgeoapi")
-{% endhighlight %}
+```
 Le manuel d’utilisation contenant le détail des fonctions est disponible en <a href="https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf" target="_blank">pdf</a> — deux tutoriels en français sont également disponibles sur ce site  :
 - <a href="http://colinfay.me/carte-r-rgeoapi-ggplot2/" target="_blank">Créer une carte avec R — rgeoapi et ggplot2</a>
 

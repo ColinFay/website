@@ -24,9 +24,9 @@ For an optimal compatibility, all the names (especially outputs) used in this pa
 
 ## Install this package directly in R :
 
-{% highlight r %}
+```{r}
 devtools::install_github"ColinFay/rgeoapi")
-{% endhighlight %}
+```
 
 ## How rgeoapi works
 The version 1.0.0 works with eleven functions. Which are :

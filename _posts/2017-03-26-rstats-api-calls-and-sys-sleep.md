@@ -24,38 +24,38 @@ _Note : I won't be making any API calls within this post, I'll use Sys.time() to
 If you're calling _Sys.time_, and want to limit to 20 calls per minute, you'll need to use _Sys.sleep_(). This function only takes one argument, _time_, which is the number of seconds you want R to stop before resuming.
 
 When run, this function pause your session during the number of seconds you've entered. If you use this in a for loop, you can make a pause on every iteration of the loop. Here is an example with 10 seconds :
-{% highlight r %} 
+```{r} 
 for(i in 1:3){
   print(Sys.time())
   Sys.sleep(time = 10)
 }
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 ## [1] "2017-03-26 11:13:58 CET"
 ## [1] "2017-03-26 11:14:08 CET"
 ## [1] "2017-03-26 11:14:18 CET"
-{% endhighlight %}
+```
 ### With a lapply
 If you have access to the core of the function you want to use (i.e. the function calling on the API), you can use a lapply and insert a _Sys.sleep()_ staight inside this function.
 
 This is the method you'll need to use if you're trying to replicate the Discogs API calls.
-{% highlight r %} 
+```{r} 
 library(tidyverse)
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 lapply(1:3, function(x) {
   print(x)
   print(Sys.time()) 
   Sys.sleep(3)
 }) %>% do.call(rbind, .) 
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 ## [1] 1
 ## [1] "2017-03-26 11:20:22 CET"
 ## [1] 2
 ## [1] "2017-03-26 11:20:25 CET"
 ## [1] 3
 ## [1] "2017-03-26 11:20:28 CET"
-{% endhighlight %}
+```
 
 _Hope this can help!_
