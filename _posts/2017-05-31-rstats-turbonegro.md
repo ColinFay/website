@@ -5,9 +5,12 @@ post_date: 2017-31-00 21:00:00
 layout: single
 permalink: /rstats-turbonegro/
 categories : r-blog-en
+excerpt_separator: <!--more-->
 ---
 
 Because sometime, you just need a little bit of punk with your coding. 
+
+<!--more-->
 
 ## tuRbonegro
 

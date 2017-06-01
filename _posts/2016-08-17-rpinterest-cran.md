@@ -15,9 +15,9 @@ categories : r-blog-en
 Make requests on the Pinterest API with `rpinterest`, an R package now available on <a href="https://cran.r-project.org/web/packages/rpinterest/index.html" target="_blank">CRAN</a>.
 
 To install in R :
-{% highlight r %}
+```{r}
 install.packages("rpinterest")
-{% endhighlight %}
+```
 
 You can get the user manual in <a href="https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf" target="_blank">pdf</a>.
 

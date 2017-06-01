@@ -18,16 +18,16 @@ Developped by Etalab, with La Poste, l’INSEE and OpenStreetMap, the <a href="h
 rgeoapi was developped to facilitate your geographic projects by giving you access to these informations straight inside R. With `rgeoapi`, you can get any coordinate, size and population of a French city, to be used in your maps.
 
 To install :
-{% highlight r %}
+```{r}
 rinstall.packages("rgeoapi")
-{% endhighlight %}
+```
 
 ### Get coordinates
 So, let's imagine you have a dataset with only the names of the cities you want to map. Like:
-{% highlight r %} 
+```{r} 
 villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 = c("a", "b", "c", "b"), variable2 = c("Un", "Deux", "Un", "Deux"))
 
-{% endhighlight %}
+```
 <table style="width: 44%;"><colgroup> <col width="11%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
@@ -61,14 +61,14 @@ villes <- data.frame(nom = c("Rennes", "Lorient", "Brest", "Vannes"), variable1 
 </table>
 To put these cities on a map, you'll need their coordinates. For that, you can use `rgeoapi`!
 
-{% highlight r %} 
+```{r} 
 library(rgeoapi)
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 library(plyr)
 geo <- ldply(villes$nom, ComByName)
 
-{% endhighlight %}
+```
 <table><caption> </caption><colgroup> <col width="28%" /> <col width="15%" /> <col width="23%" /> <col width="16%" /> <col width="16%" /> </colgroup>
 <thead>
 <tr class="header">
@@ -278,24 +278,24 @@ geo <- ldply(villes$nom, ComByName)
 </table>
 &nbsp;
 
-{% highlight r %} 
+```{r} 
 names(villes)[1] <- "name"
 villes <- merge(villes, geo, by = "name", all.x = TRUE)
-{% endhighlight %}
+```
 ### Create a map with ggmap and ggplot2
 The `ggmap` package has been designed to produce background maps to be used with `ggplot2`. The "fast" function to create a map is `qmap(x,y)` - the first argument referring to the query (city / department / region ...) and the second to the zoom level of Google map.
 
-{% highlight r %} 
+```{r} 
 library(ggmap)
-{% endhighlight %}
-{% highlight r %} 
+```
+```{r} 
 map <- qmap('Bretagne', zoom = 8)
-{% endhighlight %}
+```
 Once you have a map object, you can use it as the first argument of your ggplot call, and then combine it with your usual `geom`:
 
-{% highlight r %} 
+```{r} 
 map + geom_point(data = villes, aes(x = long, y = lat, color= variable2, size = surface))
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg"><img class="aligncenter size-full wp-image-1017" src="https://colinfay.github.io/wp-content/uploads/2016/07/carte-avec-rgeoapi.jpeg" alt="Réaliser une carte avec R, ggplot2 et rgeoapi" width="600" height="400" /></a>
 
 &nbsp;
