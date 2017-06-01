@@ -1,5 +1,4 @@
 ---
-ID: 1263
 title: "#RStats — Text mining with R and gutenbergr"
 author: colin_fay
 post_date: 2016-05-24 18:00:32
