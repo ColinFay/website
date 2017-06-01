@@ -7,10 +7,12 @@ ___
 
 ## Jump to : 
 
-+ <a href="#fr">English bio</a>
++ <a href="#en">English bio</a>
 + <a href="#fr">French bio</a>
 
-<div id="fr"><h1>English</h1></div>
+___
+
+<div id="en"><h1>English</h1></div>
 
 ## Founder and editor in chief
 
