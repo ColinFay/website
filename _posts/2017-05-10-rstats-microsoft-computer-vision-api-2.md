@@ -1,5 +1,4 @@
 ---
-ID: 1697
 title: "#RStats et Microsoft Computer Vision"
 author: colin_fay
 post_date: 2017-05-10 14:00:58
@@ -12,6 +11,7 @@ image: /wp-content/uploads/2017/05/vote-fr.jpg
 ---
 
 ## Exploration des photos de profils des twittos #RStats avec l'API Microsoft Computer Vision.
+
 <!--more-->
 
 Ce billet de blog s'inspire du travail de Maelle Salmon avec <a href="http://www.masalmon.eu/2017/03/19/facesofr/" target="_blank" rel="noopener noreferrer">Faces of #RStats twitter</a> et d'un article sur Data Bzh utilisant l'API Microsoft Computer Vision pour examiner d'anciennes <a href="http://data-bzh.fr/photographies-fonds-de-la-guerre-14-18-en-bretagne/" target="_blank" rel="noopener noreferrer">photos de Bretagne</a> .
