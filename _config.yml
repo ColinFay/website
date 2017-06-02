@@ -244,3 +244,5 @@ defaults:
       comments: # true
       share: true
       related: true
+      excerpt_separator: <!--more-->
+
