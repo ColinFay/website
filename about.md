@@ -14,6 +14,13 @@ ___
 
 <div id="en"><h1>English</h1></div>
 
+## Data Analyst, R trainee, Content & Community Manager
+
+_Since 04.16__
+
+[ThinkR](www.thinkr.fr)
+
+
 ## Founder and editor in chief
 
 ### Data Bzh
@@ -28,14 +35,6 @@ In 2016, Data Bzh won the Trophée Open Data 2016 ([More on that](http://data-bz
 
 # Work Experience
 
-## Now
-
-Since 04.16_
-
-Data Analyst, R trainee, Content & Community Manager
-
-[ThinkR](www.thinkr.fr)
-
 ## Past :
 
 _02.15 - 04.16_
@@ -47,6 +46,16 @@ L'Œil au Carré
 ***
 
 # Skills
+
+## Programming languages 
+
+### Data Science 
+
+R
+
+### Web 
+
+HTML / CSS 
 
 ## Data
 
@@ -148,6 +157,12 @@ Master thesis, Rennes 2 University, under the supervision of Dr Daniel Roulland.
 
 <div id="fr"><h1>Français</h1></div>
 
+## Data Analyst, Formateur R, Content & Community Manager
+
+_Depuis 04.16_
+
+[ThinkR](www.thinkr.fr)
+
 ## Créateur et rédacteur
 
 ### Data Bzh
@@ -160,15 +175,7 @@ En 2016, Data Bzh a été récompensé du Trophée Open Data 2016 ([Plus d'infos
 
 ***
 
-# Expériences
-
-## Actuelle
-
-_Depuis 04.16_
-
-Data Analyst, Formateur R, Content & Community Manager
-
-[ThinkR](www.thinkr.fr)
+# Expériences 
 
 ## Passées :
 
@@ -181,6 +188,16 @@ L'Œil au Carré
 ***
 
 # Compétences
+
+## Langages de programmation
+
+### Data Science 
+
+R
+
+### Web 
+
+HTML / CSS 
 
 ## Data
 
