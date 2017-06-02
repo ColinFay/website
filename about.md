@@ -16,7 +16,7 @@ ___
 
 ## Data Analyst, R trainee, Content & Community Manager
 
-_Since 04.16__
+_Since 04.16_
 
 [ThinkR](www.thinkr.fr)
 
