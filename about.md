@@ -75,17 +75,17 @@ HTML / CSS
 
 # Education
 
+## Certifications
 
-## Pro
+### Data Science
 
-### 2016
-
-- "Data Analyst with R", Datacamp
+- "Data Analyst with R", Datacamp 
 - "Python, des fondamentaux à l'utilisation du langage", Inria Labs
-- "Statistique appliquée et langage R", ThinkR
+- "Statistique appliquée et langage R", ThinkR 
 
-### 2015
+### Web
 
+- "HTML5 & CSS3" - OpenClassRoom 
 - "Créer et administrer un site sous WordPress"
 - "Comprendre et optimiser le référencement naturel"
 
@@ -220,14 +220,15 @@ HTML / CSS
 
 ## Professionnelles
 
-### 2016
+### Data Science
 
-- "Data Analyst with R", Datacamp
+- "Data Analyst with R", Datacamp 
 - "Python, des fondamentaux à l'utilisation du langage", Inria Labs
-- "Statistique appliquée et langage R", ThinkR
+- "Statistique appliquée et langage R", ThinkR 
 
-### 2015
+### Web
 
+- "HTML5 & CSS3" - OpenClassRoom 
 - "Créer et administrer un site sous WordPress"
 - "Comprendre et optimiser le référencement naturel"
 
