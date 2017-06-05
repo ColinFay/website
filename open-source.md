@@ -6,6 +6,13 @@ title: Open Source
 
 ## R packages
 
+_proustr_
+
+An R Package for Marcel Proust's A La Recherche Du Temps Perdu ([More infos](http://colinfay.me/proustr-package/) 
+
+[Version dev on GitHub](https://github.com/ColinFay/proustr)
+
+
 _rpinterest_
 
 An R package to access the Pinterest API ([More infos](https://colinfay.me/rpinterest-package-r/) & [Documentation](https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf)).
