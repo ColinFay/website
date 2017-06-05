@@ -6,7 +6,7 @@ author_profile: true
 ---
 
 {% for post in site.posts %}
-{% if post.categories contains 'rblogen' %}
+{% if post.categories contains 'r-blog-en' %}
 <entry>
         <title>{{ post.title }}</title>
         <link href="{{ site.production_url }}{{ post.url }}"/>
