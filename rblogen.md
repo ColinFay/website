@@ -5,14 +5,12 @@ title: "Category — R Blog (en)"
 author_profile: true
 ---
 
-{% for post in site.posts %}
+{% for category in group_names %}
 {% if post.categories contains 'r-blog-en' %}
-<entry>
-        <title>{{ post.title }}</title>
-        <link href="{{ site.production_url }}{{ post.url }}"/>
-        <updated>{{ post.date | date_to_xmlschema }}</updated>
-        <id>{{ site.production_url }}{{ post.id }}</id>
-        <content type="html">{{ post.content | xml_escape }}</content>
-    </entry>
-{% endif %}
+  {% assign posts = group_items[forloop.index0] %}
+  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+  {% for post in posts %}
+    {% include archive-single.html %}
+  {% endfor %}
+  {% endif %}
 {% endfor %}
