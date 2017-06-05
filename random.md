@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /rblogen/
+permalink: /random/
 title: "Category — Random"
 author_profile: true
 ---
