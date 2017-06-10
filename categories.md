@@ -8,8 +8,8 @@ author_profile: true
 ## Jump to : 
 
 + [R blog (en)](http://colinfay.me/rblogen/)
-+ [R blog (fr)](http://colinfay.me/rblogfr/)
-+ [Random](http://colinfay.me/random)
++ [R blog (fr)](http://colinfay.me/categories/#r-blog-fr)
++ [Random](http://colinfay.me/categories/#random)
 
 ___
 
