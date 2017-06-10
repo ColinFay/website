@@ -8,6 +8,8 @@ categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
 
+`proustr` is now on [CRAN](https://cran.r-project.org/web/packages/proustr/index.html).
+
 ## An R Package for Marcel Proust's A La Recherche Du Temps Perdu
 
 This package gives you access to all the books from Marcel Proust "À la recherche du temps perdu" collection. This collection is divided in books, which are divided in volumes. Inspired by the package [janeaustenr](https://github.com/juliasilge/janeaustenr) by Julia Silge. 
@@ -29,6 +31,11 @@ Le Temps retrouvé (1927) : 2 volumes `letempretrouve1` and `letempretrouve2`.
 
 Install this package directly in R : 
 
+From CRAN :
+
+{% highlight r %}
+install.packages("proustr")
+{% endhighlight %}
 
 From Github :
 
