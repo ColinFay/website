@@ -51,28 +51,28 @@ library(proustr)
 library(tidytext)
 library(tidyverse)
 library(stopwords)
-books <- proust_books()
-books %>%
+proust_books() %>% 
+  mutate(text = stringr::str_replace_all(.$text, "’", " ")) %>% 
   unnest_tokens(word, text) %>%
-  filter(word %in% stopwords_iso$fr) %>%
+  filter(!word %in% stopwords_iso$fr) %>%
   count(word, sort = TRUE)%>%
   head(10)
 {% endhighlight %}
 
 {% highlight r %}
 # A tibble: 10 x 2
-      word     n
-     <chr> <int>
- 1   qu’il  5409
- 2 qu’elle  4088
- 3   c’est  3533
- 4    d’un  3440
- 5     mme  3106
- 6   d’une  2920
- 7   faire  2869
- 8   qu’on  2560
- 9 j’avais  2089
-10 c’était  1858
+         word     n
+        <chr> <int>
+ 1        mme  3106
+ 2      faire  2869
+ 3  albertine  2389
+ 4      grand  1833
+ 5 guermantes  1807
+ 6        vie  1732
+ 7      temps  1715
+ 8      swann  1682
+ 9     jamais  1639
+10       voir  1568
 {% endhighlight %}
 
 ### Contact
