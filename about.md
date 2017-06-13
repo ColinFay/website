@@ -82,7 +82,8 @@ HTML / CSS
 - "Data Scientist with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/6a1dc89af0e2af71dda77320d79a111a852d888b)
 - "Data Analyst with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/594723297fbece4f9a69f842f6c209181653b5ba)
 - "Statistics with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/76c5ac60c83114db7c5c12b271942b183d34673e)
-- "Python, des fondamentaux à l'utilisation du langage", Inria Labs
+- "R Developer", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/bff07b28de9e258ae8b5d3f1cd8bcd0e88ada6e4)
+- "Python, des fondamentaux à l'utilisation du langage", Inria Labs [Certificate](https://www.fun-mooc.fr/attestations/attestation_suivi_inria_41001S03_session03_7ce5d933c22fa40918bc95f3b99fd413.pdf)
 - "Statistique appliquée et langage R", ThinkR 
 
 ### Web
@@ -227,8 +228,8 @@ HTML / CSS
 - "Data Scientist with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/6a1dc89af0e2af71dda77320d79a111a852d888b)
 - "Data Analyst with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/594723297fbece4f9a69f842f6c209181653b5ba)
 - "Statistics with R", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/76c5ac60c83114db7c5c12b271942b183d34673e)
-- "Python, des fondamentaux à l'utilisation du langage", Inria Labs
-- "Statistique appliquée et langage R", ThinkR 
+- "R Developer", Datacamp — [Certificate](https://www.datacamp.com/statement-of-accomplishment/track/bff07b28de9e258ae8b5d3f1cd8bcd0e88ada6e4)
+- "Python, des fondamentaux à l'utilisation du langage", Inria Labs [Certificate](https://www.fun-mooc.fr/attestations/attestation_suivi_inria_41001S03_session03_7ce5d933c22fa40918bc95f3b99fd413.pdf)- "Statistique appliquée et langage R", ThinkR 
 
 ### Web
 

@@ -8,7 +8,9 @@ title: Open Source
 
 _proustr_
 
-An R Package for Marcel Proust's A La Recherche Du Temps Perdu ([More infos](http://colinfay.me/proustr-package/) 
+An R Package for Marcel Proust's A La Recherche Du Temps Perdu ([More infos](http://colinfay.me/proustr-package/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
+
+[Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
 
 [Version dev on GitHub](https://github.com/ColinFay/proustr)
 
