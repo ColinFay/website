@@ -256,8 +256,10 @@ ggplot(dplyr::filter(collection, year != 0), aes(x = year)) +
 Looks like I'm not a big 90's fan! My library show a bimodal distribution, with one mode around the 80's, and one around 2005.
 ### It’s time to go deeper
 So, can we get more information about this library?
-<div id="major-tom-to-discogs-api" class="section level4">
+
 #### Hello, it's me again
+_Note: between the writing of this blogpost and now, Discogs seems to have put a rate limit on its API. For the creation of `collection_2`, you should consider using `Sys.sleep()`. More on that [here](http://colinfay.me/rstats-api-calls-and-sys-sleep/).
+
 {% highlight r %} 
 collection_2 <- lapply(as.list(collection$release_id), function(obj){
   url <- httr::GET(paste0("https://api.discogs.com/releases/", obj))

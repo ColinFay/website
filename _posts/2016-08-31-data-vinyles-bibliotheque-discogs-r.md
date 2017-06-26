@@ -255,9 +255,10 @@ ggplot(dplyr::filter(collection, year != 0), aes(x = year)) +
 Woaw, j'ai comme l'impression que je ne suis pas un super fan des années 90... Pourtant, il y a de <a href="https://www.youtube.com/watch?v=NcKAdFENqig" target="_blank">super titres</a>, non ? Ma collection se concentre sur un gros pic autour des années 80 et 00, avec un mode en 1980.
 ### It’s time to go deeper
 Bien, ces infos un temps soit peu basiques nous offrent déjà une première vision des vinyles dans ma collection. Et si l’on allait plus loin ?
-<div id="major-tom-to-discogs-api" class="section level4">
+
 #### Hello, it's me again
-&nbsp;
+_Note: depuis l'écriture de cet article, Discogs semble avoir intégré une limitation au volume de calls par minute. Afin de créer `collection_2`, vous devez faire à `Sys.sleep()`. [En savoir plus](http://colinfay.me/rstats-api-calls-sys-sleep/).
+
 {% highlight r %} 
 collection_2 <- lapply(as.list(collection$release_id), function(obj){
   url <- httr::GET(paste0("https://api.discogs.com/releases/", obj))
