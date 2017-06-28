@@ -37,6 +37,7 @@ From CRAN :
 
 {% highlight r %}
 install.packages("proustr")
+`x`
 {% endhighlight %}
 
 From Github :
