@@ -8,13 +8,13 @@ categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
 
-Digging into a not so special type of R function, and make an emoji-pizza-dplyr-slice one.
+Digging into a not so special type of R functions, in order to make an emoji-pizza-dplyr-slice one.
 
 <!--more-->
 
 ## What are infix functions? 
 
-In R, most of the functions are "prefix" - meaning that the function name comes before the arguments, which are put between parentheses -> `fun(a,b)`. But you can also use infix functions, which are functions that come between the arguments. In fact, you use this type on a daily basis with `:`, `+`, and so on. 
+In R, most of the functions are "prefix" - meaning that the function name comes before the arguments, which are put between parentheses : `fun(a,b)`. With infix functions, the name comes between the arguments `a fun b`. In fact, you use this type on a daily basis with `:`, `+`, and so on. 
 
 > So, how can you create your own infix functions? 
 
@@ -22,25 +22,23 @@ As an R user (and even if you come from another language), you're used to write 
 
 {% highlight r %}
 a_function <- function(some_variable, another_one) {
-
   do_some_stuffs(some_variable,another_one)
-
 }
-
+# And write a function call this way:
 a_function(some_variable,another_one)
 {% endhighlight %}
 
-But your function has only two operators, you can also it this way : 
+But if your function has only two operators, you can write it this way : 
 
 {% highlight r %}
 `%some_function%` <- function(some_variable,another_one) {
-
   do_some_stuffs(some_variable,another_one)
-
 }
-# And call it with
+# And use it with:
 some_variable %a_function% another_one
 {% endhighlight %}
+
+![](https://media.giphy.com/media/sOGgevbtBDYKQ/giphy.gif)
 
 At this point, you've noticed two things : 
 
@@ -70,13 +68,13 @@ The two `%` surrounding the function name are necessary if you want to create yo
 `+`(2,3)
 {% endhighlight %}
 
-Good thing (or maybe not) is that you can override these default function, if you want to drive someone mad: 
+Good thing (or maybe not) is that you can override the default functions, if you want to drive someone mad: 
 
 {% highlight r %}
 # Warning : don't try this at home 
 `+` <- function(a,b){a*b}
 2+10
-[1] 3
+[1] 20
 
 `<-` <- .Primitive("+")
 2 <- 3
@@ -87,9 +85,8 @@ Good thing (or maybe not) is that you can override these default function, if yo
 [1] 20
 
 # Restore cosmic ordeR 
-
-`+` = .Primitive("+")
 `<-` = .Primitive("<-")
+`+` <- .Primitive("+")
 `:` <- .Primitive(":")
 {% endhighlight %}
 
@@ -139,6 +136,9 @@ iris %🍕% 2
 
 {% endhighlight %}
 
+So, anybody has some spare time to recode the whole tidyverse in emojis? 😃
+
 More on infix functions : 
 
 + [R language definition](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-operators)
++ [Advanced R - Functions](http://adv-r.had.co.nz/Functions.html)
