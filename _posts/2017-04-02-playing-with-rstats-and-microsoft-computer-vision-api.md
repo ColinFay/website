@@ -6,7 +6,7 @@ author: colin_fay
 comments: false
 date: 2017-04-02 21:40:58
 tags: [ ]
-permalink: /playing-with-rstats-and-microsoft-computer-vision-api
+permalink: /playing-with-rstats-and-microsoft-computer-vision-api/
 image:
     feature: microsoft_api.jpg
 categories : r-blog-en
