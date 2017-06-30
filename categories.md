@@ -7,11 +7,21 @@ author_profile: true
 
 ## Jump to : 
 
-+ [R blog (en)](http://colinfay.me/categories/#r-blog-en)
++ [R blog (en)](http://colinfay.me/categories/#r-blog-en) 
 + [R blog (fr)](http://colinfay.me/categories/#r-blog-fr)
 + [Random](http://colinfay.me/categories/#random)
 
 ___
+
+## Subscribe to the blog feeds
+
++ [Full blog](http://colinfay.me/feed.xml)
++ [R blog (en)](http://colinfay.me/rblog.rss) 
++ [R blog (fr)](http://colinfay.me/rblog.rss)
++ [Random](http://colinfay.me/random.rss)
+
+___
+
 
 {% include group-by-array collection=site.posts field="categories" %}
 
