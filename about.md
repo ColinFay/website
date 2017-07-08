@@ -16,7 +16,7 @@ ___
 
 ## Data Analyst, R trainee, Content & Community Manager
 
-_Since 04.16_
+_Since 2017-05_
 
 [ThinkR](www.thinkr.fr)
 
@@ -37,7 +37,7 @@ In 2016, Data Bzh won the Trophée Open Data 2016 ([More on that](http://data-bz
 
 ## Past :
 
-_02.15 - 04.16_
+_2015-02 - 2017-04_
 
 Content & Community Manager
 
@@ -113,15 +113,19 @@ Spécialité anglais_
 
 # Talks and class
 
-## 12.03.17
+## 2017-06-30
+
+"Les API, un enfeR ?", 6e Rencontres R, Anglet. 
+
+## 2017-03-12
 
 "Atelier Dataviz", La Fabrique de l'Info, with Association Bug.
 
-## 07.07.16
+## 2016-07-07
 
 "Data Bzh — Raconter la Bretagne par ses données", Apéro StoryCode de Rennes, La Cordée.
 
-## 24.02.16
+## 2016-02-24
 
 "L'envie dans l'expérience utilisateur", UX Deiz #2, with UX Rennes.
 
@@ -129,11 +133,11 @@ Spécialité anglais_
 
 "Introduction au Community Management", Classe Passerelle, Digital Campus (Rennes).
 
-## 22.09.15
+## 2015-09-22
 
 "Utiliser Snapchat pour sa marque ou son média". Medialab Speetraining, with Ouest Medialab (Nantes).
 
-## 29.05.13
+## 2013-05-29
 
 "Théorie des jeux, un modèle possible pour les sciences du langage ?" 16èmes Rencontres Jeunes Chercheurs, Modèles et modélisation dans les sciences du langage. Université Sorbonne nouvelle, Paris 3
 
@@ -141,7 +145,7 @@ Spécialité anglais_
 
 ## University work
 
-## 09.2014
+## 2014-09
 
 _Média, support, temporalité : le cas des pure-players de presse._
 
@@ -149,7 +153,7 @@ Master thesis, Rennes 2 University, under the supervision of Jean-Luc Bouillon
 
 18/20, mention très bien, with congratulations from the jury
 
-## 06.2012
+## 2012-06
 
 _Approche systémique des jeux pragmatiques communicationnels_
 
@@ -162,7 +166,7 @@ Master thesis, Rennes 2 University, under the supervision of Dr Daniel Roulland.
 
 ## Data Analyst, Formateur R, Content & Community Manager
 
-_Depuis 04.16_
+_Depuis 2017-05_
 
 [ThinkR](www.thinkr.fr)
 
@@ -182,7 +186,7 @@ En 2016, Data Bzh a été récompensé du Trophée Open Data 2016 ([Plus d'infos
 
 ## Passées :
 
-_02.15 - 04.16_
+_2015-02 - 207-04_
 
 Content & Community Manager
 
@@ -258,15 +262,19 @@ Spécialité anglais
 
 # Conférences et Cours
 
-## 12.03.17
+## 2017-06-30
+
+"Les API, un enfeR ?", 6e Rencontres R, Anglet. 
+
+## 2017-03-12
 
 "Atelier Dataviz", La Fabrique de l'Info, organisé par l'Association Bug.
 
-## 07.07.16
+## 2016-07-07
 
 "Data Bzh — Raconter la Bretagne par ses données", Apéro StoryCode de Rennes, La Cordée.
 
-## 24.02.16
+## 2016-02-24
 
 "L'envie dans l'expérience utilisateur", UX Deiz #2, organisé par UX Rennes.
 
@@ -274,11 +282,11 @@ Spécialité anglais
 
 "Introduction au Community Management", Cours en classe Passerelle à Digital Campus (Rennes).
 
-## 22.09.15
+## 2015-09-22
 
 "Utiliser Snapchat pour sa marque ou son média". Medialab Speetraining de Ouest Medialab (Nantes).
 
-## 29.05.13
+## 2013-05-29
 
 "Théorie des jeux, un modèle possible pour les sciences du langage ?" 16èmes Rencontres Jeunes Chercheurs, Modèles et modélisation dans les sciences du langage. Université Sorbonne nouvelle, Paris 3
 
@@ -286,7 +294,7 @@ Spécialité anglais
 
 ## Travaux Universitaires
 
-## 09.2014
+## 2014-09
 
 _Média, support, temporalité : le cas des pure-players de presse._
 
@@ -294,7 +302,7 @@ Mémoire de Master 2 EPIC, Université de Rennes 2, sous la direction de : Jean-
 
 18/20, mention très bien, avec félicitations du jury
 
-## 06.2012
+## 2012-06
 
 _Approche systémique des jeux pragmatiques communicationnels_
 
