@@ -60,13 +60,15 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/07/hex-cf.png # Open Graph/Twitter default site image
+og_image                 : https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/07/og_image.JPG # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  links: 
+    - "https://twitter.com/_ColinFay"
+    - "https://www.linkedin.com/in/colinfay/"# An array of links to social media profiles
 
 # Analytics
 analytics:
