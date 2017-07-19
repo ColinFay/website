@@ -8,7 +8,7 @@ categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
 
-I took a serious resolution for this summer: update, clean and create better docs for my old packages which are on the CRAN. `languagelayeR` is the first to go! 
+I took a studious resolution for this summer: update, clean and create better docs for my old packages which are on the CRAN. `languagelayeR` is the first to go! 
 
 <!--more-->
 
