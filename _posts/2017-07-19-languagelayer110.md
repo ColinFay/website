@@ -221,6 +221,6 @@ $percentage
 $reliable_result
 [1] TRUE
 
-{% enhighlight %}
+{% endhighlight %}
 
 I'll be glad to have some feedback about this package. Feel free to reach me out on [Twitter](http://www.twitter.com/_colinfay)!
