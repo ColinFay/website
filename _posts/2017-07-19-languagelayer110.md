@@ -49,7 +49,7 @@ api_key <- "XXX"
 sample(1:55080, 1) %>%
   gutenberg_download() %>%
   select(text) %>%
-  slice(sample(1:nrow(.), 1)) %>%
+  sample_n(1) %>%
   get_lang(api_key) %>%
   as.list()
 
@@ -119,7 +119,7 @@ $reliable_result
 
 gutenberg_download("2650") %>%
   select(text) %>%
-  slice(sample(1:nrow(.), 1)) %>%
+  sample_n(1) %>%
   get_lang(api_key) %>%
   as.list()
 
@@ -146,7 +146,7 @@ $reliable_result
 
 gutenberg_download("54873") %>%
   select(text) %>%
-  slice(sample(1:nrow(.), 1)) %>%
+  sample_n(1) %>%
   get_lang(api_key) %>%
   as.list()
 
@@ -173,7 +173,7 @@ $reliable_result
 
 gutenberg_download("38295") %>%
   select(text) %>%
-  slice(sample(1:nrow(.), 1)) %>%
+  sample_n(1) %>%
   get_lang(api_key) %>%
   as.list()
 
@@ -199,7 +199,7 @@ $reliable_result
 
 gutenberg_download("45438") %>%
   select(text) %>%
-  slice(sample(1:nrow(.), 1)) %>%
+  sample_n(1) %>%
   get_lang(api_key) %>%
   as.list()
 
