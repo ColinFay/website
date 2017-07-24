@@ -18,6 +18,7 @@ layout: null
   <link>{{ post.url }}</link>
   <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
   <pubDate>{{ post.date }}</pubDate>
+  <content>{{ post.content }} </content>
  </item>
  {% endfor %}
 
