@@ -6,6 +6,8 @@ title: Open Source
 
 ## R packages
 
+### Author
+
 _proustr_
 
 An R Package for Marcel Proust's A La Recherche Du Temps Perdu ([More infos](http://colinfay.me/proustr-package/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
@@ -44,6 +46,26 @@ _webmastR_
 R tools for webmasters. Still under development. 
 
 [Version dev on GitHub](https://github.com/ColinFay/webmastR)
+
+### Contributor
+
+_naniar_
+
+Tidy data structures, summaries, and visualisations for missing data. 
+
+[Official release on CRAN](https://cran.r-project.org/web/packages/naniar/index.html)
+
+[Version dev on GitHub](https://github.com/njtierney/naniar)
+
+## Julia packages
+
+### Author
+
+_LoremJulia_
+
+A basic lorem ipsum generator made in Julia. 
+
+[Version dev on GitHub](https://github.com/ColinFay/LoremJulia)
 
 ## Database
 
