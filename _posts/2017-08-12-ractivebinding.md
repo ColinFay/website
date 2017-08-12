@@ -1,7 +1,7 @@
 ---
-title: "R and active binding"
+title: "R and active binding (and pizza)"
 author: colin_fay
-post_date: 2017-08-10
+post_date: 2017-08-12
 layout: single
 permalink: /ractivebinfing/
 categories : r-blog-en
@@ -21,11 +21,11 @@ a <- 5
 # You bind the value 5 to the name `a`
 {% endhighlight %}
 
-Yes, this is as simple as that. In other words, you assign the symbol `a` to a memory slot on your computer which contains the value 5. Each time you evaluate the symbol, R go and get this value in memory.
+Yes, this is as simple as that. In other words, you assign the symbol `a` to a memory slot on your computer which contains the value 5. Each time you evaluate the symbol, R goes and gets this value in memory.
 
 ## So, active binding?
 
-A cool feature of {R6} is `active binding`, which is the process of displaying a symbol which looks like a variable but behave as a function. You can create these with the `active` method when defining your class. 
+A cool feature of {R6} is `active binding`, which is the process of using a symbol which looks like a variable but behave as a function. You can create these with the `active` method when defining your class. 
 
 {% highlight r %}
 library(R6)
@@ -46,7 +46,7 @@ classy_object$classy_word <- "Mod"
 Your classy word is Mod
 {% endhighlight %}
 
-Great. As you can see, you can access `classy_word` like a common variable, but it behaves as a function, randomly printing a word or printing the word you assign it. As you can see, the __binding__ is not fixed, i.e. not on a definite value, but __active__, as it runs a function each time you call this symbol. 
+Great. As you can see, you can access `classy_word` like a common variable, but it behaves like a function, randomly printing a word from a list, or printing the word you assign it. As you can see, the __binding__ is not fixed, i.e. not on a definite value, but __active__, as it runs a function each time you call this symbol. 
 
 Well, can we mimick it without {R6}? 
 
@@ -68,7 +68,7 @@ classy_word <- function(value){
 classy_word()
 [1] "Dashing"
 
-# But if you try to call it without the parenthesis : 
+# But if you try to call it without the parentheses : 
 
 classy_word
 function(value){
@@ -81,7 +81,7 @@ function(value){
 #It describes you the function
 {% endhighlight %}
 
-But the good news is... you can make the `classy_word` symbol, alone, behave as the `classy_word` from the {R6} class. For this, we just need the `makeActiveBinding()` function. 
+But the good news is: you can make the `classy_word` symbol, alone, behave as the `classy_word` from the {R6} class. For this, we just need the `makeActiveBinding()` function. 
 
 This function takes three args: 
 
@@ -159,7 +159,7 @@ random_iris %>%
 
 ## Quick aside on environments 
 
-The third arg of `makeActiveBinding` is `env`, the environment the symbol is binded to. That means you can bind the same symbol to different values in different environments. 
+The third arg of `makeActiveBinding` is `env`, the environment the symbol is binded to. That means you can bind the same symbol to different functions in different environments. 
 
 {% highlight r %}
 a <- new.env()
@@ -177,11 +177,11 @@ b$example
 [1] "b"
 {% endhighlight %}
 
-Yes, this is indeed what is happening in {R6} :)
+Yes, this is what is happening in {R6} :)
 
 ## PIZZA TIME 
 
-And now, just to continue the emoji-pizza R work, here is an active binding to the pizza symbol. 
+And now, just to continue the [emoji-pizza](http://colinfay.me/playing-r-infix-functions/) R work, here is an active binding to the pizza symbol. 
 
 {% highlight r %}
 makeActiveBinding(sym = "🍕", 
@@ -195,7 +195,7 @@ makeActiveBinding(sym = "🍕",
                   env = .GlobalEnv
 )
 
-# Pizza is a special character so you have to surround it with backticks
+# Pizza emoji is a special character so you have to surround it with backticks
 
 `🍕`
 [1] "Pizza quattro stagioni"
