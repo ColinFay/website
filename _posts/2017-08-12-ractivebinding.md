@@ -140,6 +140,7 @@ random_iris %>% head
 And of course, it can be used in a larger function call : 
 
 {% highlight r %}
+library(tidyverse)
 random_iris %>%
   ggplot(aes(Sepal.Length, Petal.Length, col = Species)) +
   geom_point() 
