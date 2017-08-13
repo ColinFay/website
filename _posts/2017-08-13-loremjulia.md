@@ -16,6 +16,8 @@ An excursion in the world of Julia.
 
 A basic lorem ipsum generator made in Julia.
 
+![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lorem_ipsum.jpeg)
+
 ## Install
 
 {% highlight julia %}
