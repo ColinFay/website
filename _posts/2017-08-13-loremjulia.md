@@ -22,8 +22,6 @@ A basic lorem ipsum generator made in Julia.
 Pkg.clone("git@github.com:ColinFay/LoremJulia.git")
 {% endhighlight %}
 
-![]("https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lorem_ipsum.jpeg")
-
 ## Launch
 
 In Julia, `using LoremJulia`, then:
