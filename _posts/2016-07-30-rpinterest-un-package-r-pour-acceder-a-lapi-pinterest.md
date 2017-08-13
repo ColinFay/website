@@ -1,5 +1,5 @@
 ---
-title: 'rpinterest : un package R pour accéder à l'API Pinterest'
+title: "rpinterest : un package R pour accéder à l'API Pinterest"
 author: colin_fay
 post_date: 2016-07-30 20:17:45
 layout: single
