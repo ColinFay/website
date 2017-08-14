@@ -1,7 +1,7 @@
 ---
 title: "LoremJulia - A lorem ipsum generator made in Julia"
 author: colin_fay
-post_date: 2017-07-19
+post_date: 2017-08-12
 layout: single
 permalink: /loremjulia/
 categories : julia-blog
@@ -22,11 +22,6 @@ A basic lorem ipsum generator made in Julia.
 Pkg.clone("git@github.com:ColinFay/LoremJulia.git")
 {% endhighlight %}
 
-<<<<<<< HEAD
-=======
-![]("https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lorem_ipsum.jpeg")
-
->>>>>>> dd88a61451a28d46892ab2148e7bcd45201b0843
 ## Launch
 
 In Julia, `using LoremJulia`, then:
