@@ -1,5 +1,5 @@
 ---
-title: "Why Can't I Remember Game of Thrones Characters? an Analysis in R"
+title: "Why Can't I Remember Game of Thrones Characters? An Analysis in R"
 author: colin_fay
 post_date: 2017-08-23
 layout: single
@@ -369,11 +369,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/jaro_string_dist_game_of_thrones.png)
 
-<<<<<<< HEAD
 Well, Jaro is neither corroborating my initial idea... it seems like my short memory and me are not supported by data :)
-=======
-Well, Jaro is neither corroborating my initial idea... it seems like my short memory and me are not supported by data :) 
->>>>>>> d57c55f9360f2ac723f56e2c486a1abdf134b9b5
 
 ![](https://media.giphy.com/media/1iAQLpW2DRW2k/giphy.gif)
 
