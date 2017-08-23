@@ -68,7 +68,7 @@ nrow(GoT_char)
 
 ### List of series 
 
-Ok, but before getting really crazy about 98 characters, let's temperate a little: is this common? To answer that question, we need more DATA. 
+OK, but before getting really crazy about 98 characters, let's temperate a little: is this common? To answer that question, we need more DATA. 
 
 ![](http://awecomm.com/blog/wp-content/uploads/2015/10/hardware-data.jpg)
 
@@ -142,7 +142,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/chr_shows_game_of_thrones.png)
 
-Ok... So there's definitely way more characters in Game of Thrones than in other shows — the second most populated show has "only" 48 characters. 
+OK... So there's definitely way more characters in Game of Thrones than in other shows — the second most populated show has "only" 48 characters. 
 
 But, is there another answer to our original question? ("Why can't I remember their names?")
 
@@ -219,7 +219,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/letter_distrib_game_of_thrones.png)
 
-Nop, still quite the same. Ok, maybe that's because their name are composed of repeated letters (remember... Xaro Xhoan Daxos)? 
+Nop, still quite the same. Ok, maybe that's because their names are composed of repeated letters (remember... Xaro Xhoan Daxos)? 
 
 ### Repeated letters
 
@@ -237,7 +237,7 @@ diff_letters <- function(word){
   moy <- length(unique(li)) / length(li)
   return(moy)
 }
-# Here, a result of 1 means every letters are different. The closer they get to zero, the more repeated they are. 
+# Here, a result of 1 means all letters are different. The closer the result get to zero, the more repeated they are. 
 
 diff_letters("Xaro Xhoan Daxos") 
 [1] 0.5714286
@@ -265,19 +265,19 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/length_char_name.png)
 
-Ok, just a little less difference that the others. Now, let's try some string dist approach.
+Ok, nothing fancy here... Now, let's try some string dist approach.
 
 ## String dist 
 
 ### Chosing a string distance algorithm  
 
-My main point while watching GoT is that "everybody names sound the same". Like, why on earth should you name your character "Bran" and "Bronn", "Tyron and Tywinn", "Tommen" and "Tormund", and there is literally a "Robb", a "Robert" and a "Robin". 
+My main point while watching GoT is that "every names sound the same". Like, why on earth should you name your character "Bran" and "Bronn", "Tyron and Tywinn", "Tommen" and "Tormund"... and there is literally a "Robb", a "Robert" and a "Robin". 
 
-Can we see it with stringdistance? My first intuition is that string distance should be shorter in Game of Thrones than in other shows. Let's try several methods to find out. 
+Can we see it with string distance? My first intuition is that string distances should be shorter in Game of Thrones than in other shows. Let's try several methods to find out. 
 
 ### Levenshtein distance
 
-The Levenshtein distance (method='lv') counts the number of deletions, insertions and substitutions necessary to turn b into a. For example, `stringdist("Colin", "Colis", method = "lv")` returns 1.
+The Levenshtein distance counts the number of deletions, insertions and substitutions necessary to turn b into a. For example, `stringdist("Colin", "Colis", method = "lv")` returns 1.
 
 {% highlight r %}
 library(stringdist)
@@ -313,7 +313,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lv_string_dist_game_of_thrones.png)
 
-Ok, Levenshtein is not on my side. 
+OK, Levenshtein is not on my side. 
 
 ### Longest common substring
 
@@ -369,7 +369,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/jaro_string_dist_game_of_thrones.png)
 
-Well, Jaro is neither corrobarating my initial idea... it seems like my short memory and me are not supported by data :) 
+Well, Jaro is neither corroborating my initial idea... it seems like my short memory and me are not supported by data :) 
 
 ![](https://media.giphy.com/media/1iAQLpW2DRW2k/giphy.gif)
 
