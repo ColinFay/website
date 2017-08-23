@@ -14,7 +14,7 @@ A quick exploration of Game of Thrones characters names, and the beginning of an
 
 ## First, get the data
 
-For this exploration, we first need to the name of all characters from the show. Quick and easy thanks to [the beta serie API](https://www.betaseries.com/api/).
+For this exploration, we first need to get the names of all characters from the show. Quick and easy thanks to [the beta serie API](https://www.betaseries.com/api/).
 
 {% highlight r %}
 library(httr)
