@@ -369,7 +369,7 @@ full_char %>%
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/jaro_string_dist_game_of_thrones.png)
 
-Well, Jaro is neither corroborating my initial idea... it seems like my short memory and me are not supported by data :)
+Well, Jaro is neither corroborating my initial idea... So, I'll stick with my original though: there is sooooooo many characters in this show :) 
 
 ![](https://media.giphy.com/media/1iAQLpW2DRW2k/giphy.gif)
 
