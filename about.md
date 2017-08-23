@@ -14,7 +14,7 @@ ___
 
 <div id="en"><h1>English</h1></div>
 
-## Data Analyst, R trainee, Content & Community Manager
+## Data Analyst, R trainer, Content & Community Manager
 
 _Since 2017-05_
 

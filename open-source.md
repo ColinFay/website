@@ -41,12 +41,6 @@ Access the languagelayer API with R ([Documentation](https://cran.r-project.org/
 
 [Version dev on GitHub](https://github.com/ColinFay/languagelayeR)
 
-_webmastR_
-
-R tools for webmasters. Still under development. 
-
-[Version dev on GitHub](https://github.com/ColinFay/webmastR)
-
 ### Contributor
 
 _naniar_
