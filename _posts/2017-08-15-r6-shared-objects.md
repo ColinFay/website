@@ -7,7 +7,6 @@ permalink: /r6-shared-objects/
 categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 A short tutorial about how to share objects between all instances of an R6 class.
 
