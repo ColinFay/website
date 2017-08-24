@@ -7,6 +7,7 @@ permalink: /r6-shared-objects/
 categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 A short tutorial about how to share objects between all instances of an R6 class.
 
@@ -20,7 +21,7 @@ Well, that was partially true: this is the default behavior of R6 objects, and i
 
 Let's compare a class which doesn't share its object:
 
-```{r}
+<pre class="prettyprint lang-r">
 library(R6)
 GrandParentClassic <- R6Class("GrandParent", 
                    public = list(
@@ -36,7 +37,7 @@ grand_pa_classic$name == grand_ma_classic$name
 grand_pa_classic$name <- "Grand Pa"
 grand_pa_classic$name == grand_ma_classic$name
 [1] FALSE
-```
+</pre>
 
 As you can see, a change in one of the instances is not reflected inside the others — changing the name of the `grand_pa_classic` object does not change the name of `grand_ma_classic`. That's usually the behavior you want your objects to have — but sometime you don't. And for that, you need to create the objects to be shared in an environment inside the `shared` method in your `private` field. You can then access it with active binding. 
 
