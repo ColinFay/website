@@ -9,8 +9,6 @@ permalink: /heatmap-avec-r-et-ggplot2/
 published: true
 categories : r-blog-fr
 ---
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
 
 ## Un court tutorial sur les heatmaps avec R, inspirés d'articles sur databzh.
 <!--more-->
