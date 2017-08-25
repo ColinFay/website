@@ -20,9 +20,9 @@ A basic lorem ipsum generator made in Julia.
 
 ## Install
 
-{% highlight julia %}
+```julia
 Pkg.clone("git@github.com:ColinFay/LoremJulia.git")
-{% endhighlight %}
+```
 
 ## Launch
 
@@ -32,25 +32,25 @@ In Julia, `using LoremJulia`, then:
 
 `lorem_chars(volume)` returns the number of letters given by the `volume` param.
 
-{% highlight julia %}
+```julia
 lorem_char(2)
 "Lo"
-{% endhighlight %}
+```
 
 `lorem_words(volume)` returns the number of letters given by the `volume` param.
 
-{% highlight julia %}
+```julia
 lorem_words(2)
 "Lorem ipsum"
-{% endhighlight %}
+```
 
 `lorem_sentences(volume)` returns the number of letters given by the `volume` param.
 
 
-{% highlight julia %}
+```julia
 lorem_sentences(2)
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat lorem ullamcorper, sagittis massa et, elementum dui"
-{% endhighlight %}
+```
 
 
 `lorem_paragraphs(volume)` returns the number of paragraphs given by the `volume` param.
