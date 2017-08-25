@@ -15,11 +15,11 @@ Active binding, also known as "That cool stuff from {R6}".
 
 First things first: what is binding? You already know the answer to that question: it's the simple act of __assigning a value to a name/symbol__. For example: 
 
-{% highlight r %}
+```r
 # With
 a <- 5
 # You bind the value 5 to the name `a`
-{% endhighlight %}
+```
 
 Yes, this is as simple as that. In other words, you assign the symbol `a` to a memory slot on your computer which contains the value 5. Each time you evaluate the symbol, R goes and gets this value in memory.
 
@@ -27,7 +27,7 @@ Yes, this is as simple as that. In other words, you assign the symbol `a` to a m
 
 A cool feature of {R6} is `active binding`, which is the process of using a symbol which looks like a variable but behave as a function. You can create these with the `active` method when defining your class. 
 
-{% highlight r %}
+```r
 library(R6)
 ClassyClass <- R6Class("ClassyClass", 
                            active = list(
@@ -44,7 +44,7 @@ classy_object$classy_word
 
 classy_object$classy_word <- "Mod"
 Your classy word is Mod
-{% endhighlight %}
+```
 
 Great. As you can see, you can access `classy_word` like a common variable, but it behaves like a function, randomly printing a word from a list, or printing the word you assign it. As you can see, the __binding__ is not fixed, i.e. not on a definite value, but __active__, as it runs a function each time you call this symbol. 
 
@@ -54,7 +54,7 @@ Well, can we mimick it without {R6}?
 
 The naive approach would be to run : 
 
-{% highlight r %}
+```r
 classy_word <- function(value){
   if (missing(value)) {
     sample(c("Classy","Modish", "High-Class","Dashing","Posh"), 1)
@@ -79,7 +79,7 @@ function(value){
     }
 }
 #It describes you the function
-{% endhighlight %}
+```
 
 But the good news is: you can make the `classy_word` symbol, alone, behave as the `classy_word` from the {R6} class. For this, we just need the `makeActiveBinding()` function. 
 
@@ -89,7 +89,7 @@ This function takes three args:
 + `fun`: The function you want to bind the symbol to 
 + `env`: the environement the symbol will be binded to 
 
-{% highlight r %}
+```r
 makeActiveBinding(sym = "classy_word", 
                   fun = function(value){
                     if (missing(value)) {
@@ -106,11 +106,11 @@ classy_word
 [1] "High-Class"
 classy_word <- "Modish"
 Your classy word is Modish
-{% endhighlight %}
+```
 
 Ok, not really useful,I know... But you can think of more useful use, like a random sampler: 
 
-{% highlight r %}
+```r
 makeActiveBinding(sym = "random_iris", 
                   fun = function(value){
                       return(dplyr::sample_n(iris, 30))
@@ -135,26 +135,26 @@ random_iris %>% head
 8            5.0         3.4          1.5         0.2     setosa
 112          6.4         2.7          5.3         1.9  virginica
 
-{% endhighlight %}
+```
 
 And of course, it can be used in a larger function call : 
 
-{% highlight r %}
+```r
 library(tidyverse)
 random_iris %>%
   ggplot(aes(Sepal.Length, Petal.Length, col = Species)) +
   geom_point() 
  
-{% endhighlight %}
+```
 
 ![](../uploads/2017/08/random_iris1.png)
 
-{% highlight r %}
+```r
 random_iris %>%
   ggplot(aes(Sepal.Length, Petal.Length, col = Species)) +
   geom_point() 
  
-{% endhighlight %}
+```
 
 ![](../uploads/2017/08/random_iris2.png)
 
@@ -162,7 +162,7 @@ random_iris %>%
 
 The third arg of `makeActiveBinding` is `env`, the environment the symbol is binded to. That means you can bind the same symbol to different functions in different environments. 
 
-{% highlight r %}
+```r
 a <- new.env()
 b <- new.env()
 makeActiveBinding(sym = "example",
@@ -176,7 +176,7 @@ a$example
 [1] "a"
 b$example
 [1] "b"
-{% endhighlight %}
+```
 
 Yes, this is what is happening in {R6} :)
 
@@ -184,7 +184,7 @@ Yes, this is what is happening in {R6} :)
 
 And now, just to continue the [emoji-pizza](http://colinfay.me/playing-r-infix-functions/) R work, here is an active binding to the pizza symbol. 
 
-{% highlight r %}
+```r
 makeActiveBinding(sym = "🍕", 
                   fun = function(value){
                     if (missing(value)) {
@@ -206,6 +206,6 @@ makeActiveBinding(sym = "🍕",
 [1] "New York-style"
 `🍕` <- "Vegetarian"
 Your special pizza type is Vegetarian
-{% endhighlight %}
+```
 
 And... bon appetit ! 

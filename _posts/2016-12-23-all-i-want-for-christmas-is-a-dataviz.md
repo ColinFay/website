@@ -17,41 +17,41 @@ La première étape ? Créer un compte sur l’API LastFM, afin d’obtenir une 
 
 Commençons par charger les packages que nous allons utiliser :
 
-{% highlight r %} 
+```r 
 library(tidyverse)
 library(scales)
 library(data.table)
 library(magrittr)
-{% endhighlight %}
+```
 Les trois paramètres de départ sont :
 
-{% highlight r %} 
+```r 
 #Le terme de recherche
 query <- "christmas"
 #La clé API (cachée ici)
 apikey <- "XXX"
 #L'index des pages de l'API, qui s'incrémentera au fur et à mesure des requêtes
 x <- 0
-{% endhighlight %}
+```
 Ensuite, nous entrons l’url de recherche. La recherche est limitée à 1000 résultats, et est divisible en pages avec l’argument `&page=`.
 
-{% highlight r %} 
+```r 
 url <- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
               query,"&amp;api_key=", apikey, "&amp;format=json","&amp;page=", x)
-{% endhighlight %}
+```
 
 Création d’une liste pour recevoir les résultats des requêtes, et requête sur la première page (index = 0).
 
-{% highlight r %} 
+```r 
 dl <- list()
 dl2 <- httr::GET(url)$content %>%
   rawToChar() %>% 
   rjson::fromJSON()
 dl2 <- dl2$results$trackmatches$track
 dl <- c(dl,dl2)
-{% endhighlight %}
+```
 Bouclons sur toutes les pages qui renvoient des résultats :
-{% highlight r %} 
+```r 
 repeat{
   x <- x+1
   url <- paste0("http://ws.audioscrobbler.com/2.0/?method=track.search&amp;track=", 
@@ -65,9 +65,9 @@ repeat{
     break
   }
 }
-{% endhighlight %}
+```
 Et enfin, créons le data.frame de résultats :
-{% highlight r %} 
+```r 
 songs <- lapply(dl, function(x){
   data.frame(name = x$name, 
              artist = x$artist, 
@@ -75,13 +75,13 @@ songs <- lapply(dl, function(x){
 }) %>%
   do.call(rbind, .) %>% 
   arrange(listeners)
-{% endhighlight %}
+```
 
 
 ### And now, let’s see!
 Commençons par afficher les 5 titres écoutés par le plus d’utilisateurs :
 
-{% highlight r %} 
+```r 
 songs <- as.data.table(songs)
 songs <- songs[, .(listeners = mean(listeners)), by = .(name,artist)]
 songs[1:15,] %>%
@@ -105,11 +105,11 @@ ggplot(aes(x = reorder(name, listeners), y = listeners)) +
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
         panel.grid.major = element_line(colour = "grey"))
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas.jpeg"><img class="aligncenter size-large wp-image-1186" src="https://colinfay.github.io/wp-content/uploads/2016/12/songs-last-fm-christmas-1024x512.jpeg" alt="songs-last-fm-christmas" width="809" height="405" /></a>(cliquez pour zoomer)
 
 Quant aux artistes les plus présents :
-{% highlight r %} 
+```r 
 songs$artist %>%
   table() %>%
   as.data.frame() %>%
@@ -134,7 +134,7 @@ ggplot(aes(x = reorder(., Freq), y = Freq)) +
         plot.margin=margin(20,20,20,20), 
         panel.background = element_rect(fill = "white"), 
         panel.grid.major = element_line(colour = "grey"))
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm.jpeg"><img class="aligncenter size-large wp-image-1184" title="" src="https://colinfay.github.io/wp-content/uploads/2016/12/artist-christmas-lastfm-1024x512.jpeg" alt="artists christmas last fm" width="809" height="405" /></a>(cliquez pour zoomer)
 
 Et sur ce… joyeux Noël !

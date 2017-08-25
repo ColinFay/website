@@ -19,7 +19,7 @@ This article is inspired by two articles I've written on databzh. These being:
 In this short post, I’ll show you how to create a heatmap with ggplot2 and R. We’ll visualise the evolution through time of a specific name in France. The dataset used in this article comes from <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-edition-2016/">data.gouv</a>, and is unzipped outside R.
 
 ## Loading
-{% highlight r %} 
+```r 
 library(tidyverse)
 ## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
@@ -31,13 +31,13 @@ library(tidyverse)
 name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
 name$annee <- as.Date(name$annee, "%Y")
-{% endhighlight %}
+```
 We now have a clean dataset of all the names in the several french departments, by year.
 
 ### Heatmap
 A heatmap is created with the `geom_tile` geom from `ggplot`. Here how to create it step by step.
 
-{% highlight r %} 
+```r 
 choix <- "COLIN"
 name %>%
   #Filter by name
@@ -66,14 +66,14 @@ name %>%
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
-{% endhighlight %}
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png"><img class="aligncenter size-full wp-image-1587" src="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png" alt="Colin par département" width="1000" height="500" /></a>
 
 So yeah, it’s that simple. Let’s try with another name.
 
 (And of course, you can specify a different color scale for your plot)
-{% highlight r %} 
+```r 
 choix <- "ELISABETH"
 name %>%
   filter(prenom == choix) %>%
@@ -90,7 +90,7 @@ name %>%
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
 
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>

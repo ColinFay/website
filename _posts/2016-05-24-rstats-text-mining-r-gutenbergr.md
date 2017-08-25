@@ -25,40 +25,40 @@ Pour cette démonstration, j’ai choisi de m’intéresser au célèbre chef-d�
  	<li>Un peu de vraie littérature, ça fait parfois du bien, non ? (Twittos, rassurez-vous : je vous aime)</li>
 </ul>
 Bref, retour à nos moutons. Déposé sur le CRAN le 16 mai 2016, <a href="https://cran.r-project.org/web/packages/gutenbergr/index.html">gutenbergr</a> permet de télécharger des ouvrages du domaine public sur le Projet Gutenberg, une bibliothèque de livres électroniques libres de droits.
-{% highlight r %} 
+```r 
 library(gutenbergr)
-{% endhighlight %}
-{% highlight r %} 
+```
+```r 
 aliceref <- gutenberg_works(title == "Alice's Adventures in Wonderland")
-{% endhighlight %}
+```
 Cette première fonction vous retourne un objet contenant les informations sur une oeuvre déposée sur le projet Gutenberg, avec les données suivantes :
-{% highlight r %} 
+```r 
 ## [1] "gutenberg_id"        "title"               "author"             
 ## [4] "gutenberg_author_id" "language"            "gutenberg_bookshelf"
 ## [7] "rights"              "has_text"
-{% endhighlight %}
+```
 La première colonne, contenant le 11, vous renvoie la référence de l’ouvrage sur le catalogue du projet : une information qui vous sera indispensable à la requête suivante :
-{% highlight r %} 
+```r 
 library(magrittr)
 alice <- gutenberg_download(aliceref$gutenberg_id) %>% gutenberg_strip()
-{% endhighlight %}
+```
 Ici, `gutenberg_download` prend comme argument l’ID de l’ouvrage que vous souhaitez télécharger, vous renvoyant un data.frame avec le texte complet. La commande suivante `gutenberg_strip` retire les informations en haut et en bas de chaque éléments du projet : les métadonnées de l’ouvrage, que nous n'utiliserons pas pour l'analyse de fréquence.
 
 ### Text-mining de Alice’s Adventures in Wonderland
 
-{% highlight r %} 
+```r 
 library(tidytext)
-{% endhighlight %}
+```
 Bon, passons maintenant aux choses sérieuses. Pour réaliser un text-mining, vous aurez besoin du package `tidytext`, intitulé ainsi pour son usage au text mining via la philosphie "tidy data"(pas bête, non ?).
 
-{% highlight r %} 
+```r 
 tidytext <- data_frame(line = 1:nrow(alice), text = alice$text) %>%
  unnest_tokens(word, text) %>%
  anti_join(stop_words) %>%
  count(word, sort = TRUE)
 barplot(height=head(tidytext,10)$n, names.arg=head(tidytext,10)$word, xlab="Mots", ylab="Fréquence", col="#973232", main="Alice in Wonderland")
 
-{% endhighlight %}
+```
 Alors… _Roulement de tambour_…
 
 <a href="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png"><img class="aligncenter size-full wp-image-1663" src="https://colinfay.github.io/wp-content/uploads/2016/05/alice-in-wonderland.png" alt="" width="1200" height="600" /></a>

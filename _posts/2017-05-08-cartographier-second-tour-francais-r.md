@@ -14,19 +14,19 @@ categories: r-blog-fr
 Le dataset utilisé ici est disponible sur data.gouv : <a href="https://www.data.gouv.fr/fr/datasets/election-presidentielle-des-23-avril-et-7-mai-2017-resultats-du-2eme-tour-2/" target="_blank" rel="noopener noreferrer">Election présidentielle des 23 avril et 7 mai 2017 - Résultats du 2ème tour</a>. Pour une meilleur compatibilité, j'ai manuellement converti le fichier xls en csv.
 ### Charger les librairies et les données
 Chargeons ce jeu de données, ainsi que la carte de France disponible nativement avec ggplot2.
-{% highlight r %}
+```r
 library(tidyverse)
 library(stringr)
 library(stringi)
 result <- read_csv2("Presidentielle_2017_Resultats_Communes_Tour_2.csv")
 map <- map_data("france")
-{% endhighlight %}
+```
 
 ### Nettoyage des données
 
 Avant de représenter les résultats sur une carte, nous devons commencer par transformer et nettoyer le data.frame.
 
-{% highlight r %}
+```r
 result <- result %>%
   group_by(`Libellé du département`) %>%
   summarise(tot_vot = sum(Exprimés), 
@@ -45,17 +45,17 @@ result$region <- stri_trans_general(result$region, "Latin-ASCII") %>%
   str_replace_all("Corse-du-Sud", "Corse du Sud") %>%
   str_replace_all("Val-d'Oise", "Val-Doise") %>%
   str_replace_all("Corse-du-Sud", "Corse du Sud")
-{% endhighlight %}
+```
 Nous voici avec un tableau contenant les chiffres clés par département, obtenu à partir des résultats par commune. Le nom de la première colonne a été modifié, afin de coller à l'étiquetage `region` du tableau `map`. La suite de remplacement de caractères est due à la notation anglaise de `map` — une transformation a été indispensable pour effectuer la jointure correctement.
 
-{% highlight r %}
+```r
 result_map <- left_join(x = map[,-6], y = result)
-{% endhighlight %}
+```
 ### Visualisation
 
 Projetons maintenant nos différentes variables avec R. Ici, c'est l'argument `scale_fill_` qui va gérer l'échelle de couleurs utilisée pour chaque carte.
 
-{% highlight r %}
+```r
 map_theme <- theme(title=element_text(),
                    plot.title=element_text(margin=margin(20,20,20,20), size=18, hjust = 0.5),
                    axis.text.x=element_blank(),
@@ -76,10 +76,10 @@ ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_blanc)) +
        subtitle = "Données via data.gouv",
        caption = "http://colinfay.me") +
   map_theme
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png"><img class="aligncenter size-full wp-image-1716" src="https://colinfay.github.io/wp-content/uploads/2017/05/second-tour-blanc.png" alt="blancs du second tour" width="1000" height="500" /></a>
 
-{% highlight r %}
+```r
 ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_abs)) +
   geom_polygon() +
   coord_map() +
@@ -90,10 +90,10 @@ ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_abs)) +
        subtitle = "Données via data.gouv",
        caption = "http://colinfay.me") +
   map_theme 
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png"><img class="aligncenter size-full wp-image-1717" src="https://colinfay.github.io/wp-content/uploads/2017/05/abstention-second-tour.png" alt="abstention second tour" width="1000" height="500" /></a>
 
-{% highlight r %}
+```r
 ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_macron)) +
   geom_polygon() +
   coord_map() +
@@ -104,10 +104,10 @@ ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_macron)) +
        subtitle = "Données via data.gouv",
        caption = "http://colinfay.me") +
   map_theme 
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png"><img class="aligncenter size-full wp-image-1725" src="https://colinfay.github.io/wp-content/uploads/2017/05/macron.png" alt="macron second tour" width="1000" height="500" /></a>
 
-{% highlight r %}
+```r
 ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_lepen)) +
   geom_polygon() +
   coord_map() +
@@ -118,5 +118,5 @@ ggplot(result_map, aes(long,lat, group = group, fill = pourcentage_lepen)) +
        subtitle = "Données via data.gouv",
        caption = "http://colinfay.me") +
   map_theme
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png"><img class="aligncenter size-full wp-image-1724" src="https://colinfay.github.io/wp-content/uploads/2017/05/mlp.png" alt="Votes pour Marine Le Pen au second tour" width="1000" height="500" /></a>

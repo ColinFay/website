@@ -20,7 +20,7 @@ Dans ce court post, retrouvez le déroulement de la création d'une heatmap d'un
 
 ## Loading
 
-{% highlight r %} 
+```r 
 library(tidyverse)
 ## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
@@ -32,13 +32,13 @@ library(tidyverse)
 name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
 name$annee <- as.Date(name$annee, "%Y")
-{% endhighlight %}
+```
 Nous avons maintenant un jeu de données propre, avec les noms et les départements.
 
 ### Heatmap
 Une heatmap se crée le geom `geom_tile` de `ggplot2`. Voici sa construction étape par étape.
 
-{% highlight r %} 
+```r 
 choix <- "COLIN"
 name %>%
   #Filtre par nom
@@ -67,14 +67,14 @@ name %>%
   ylab("Département") +
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
-{% endhighlight %}
+```
 
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png"><img class="aligncenter size-full wp-image-1587" src="https://colinfay.github.io/wp-content/uploads/2017/03/names-colin.png" alt="Colin par département" width="1000" height="500" /></a>
 
 Oui, c'est aussi simple que ça. Essayons avec un autre prénom.
 
 (Bien sûr, vous pouvez choisir une autre échelle pour les couleurs.)
-{% highlight r %} 
+```r 
 choix <- "ELISABETH"
 name %>%
   filter(prenom == choix) %>%
@@ -91,7 +91,7 @@ name %>%
   labs(title = paste0("Apparition du prénom ", tolower(choix)," par département, 1900-2015")) + 
   theme_minimal()
 
-{% endhighlight %}
+```
 <a href="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png"><img class="aligncenter size-full wp-image-1589" src="https://colinfay.github.io/wp-content/uploads/2017/03/prenom-elisabeth-rstats.png" alt="Elisabeth prénom" width="1000" height="500" /></a>
 
 Simple, n'est-ce pas !

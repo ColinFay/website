@@ -35,19 +35,19 @@ Install this package directly in R :
 
 From CRAN :
 
-{% highlight r %}
+```r
 install.packages("proustr")
-{% endhighlight %}
+```
 
 From Github :
 
-{% highlight r %}
+```r
 devtools::install_github("ColinFay/proustr")
-{% endhighlight %}
+```
 
 ## Examples 
 
-{% highlight r %}
+```r
 devtools::install_github("ThinkRstat/stopwords")
 library(proustr)
 library(tidytext)
@@ -59,9 +59,9 @@ proust_books() %>%
   filter(!word %in% stopwords_iso$fr) %>%
   count(word, sort = TRUE)%>%
   head(10)
-{% endhighlight %}
+```
 
-{% highlight r %}
+```r
 # A tibble: 10 x 2
          word     n
         <chr> <int>
@@ -75,7 +75,7 @@ proust_books() %>%
  8      swann  1682
  9     jamais  1639
 10       voir  1568
-{% endhighlight %}
+```
 
 ### Contact
 

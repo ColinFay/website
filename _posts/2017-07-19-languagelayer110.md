@@ -35,7 +35,7 @@ The version 1.1.0 works with two functions. Which are :
 
 Here are some example of how to use languagelayeR. Let's start with random Gutenberg project books, and try with french, german and spanish books.
 
-{% highlight r %}
+```r
 library(languagelayeR)
 library(gutenbergr)
 library(magrittr)
@@ -221,6 +221,6 @@ $percentage
 $reliable_result
 [1] TRUE
 
-{% endhighlight %}
+```
 
 I'll be glad to have some feedback about this package. Feel free to reach me out on [Twitter](http://www.twitter.com/_colinfay)! You can also send some PR or open issue on the [GitHub repo](https://github.com/ColinFay/languagelayeR). 

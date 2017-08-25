@@ -30,17 +30,17 @@ This function has three parameters:
 
 To install on your machine : 
 
-{% highlight r %}
+```r
 devtools::install_github("ColinFay/tuRbonegro")
-{% endhighlight %}
+```
 
 ## Play a random clip 
 
-{% highlight r %}
+```r
 
 library(tuRbonegro)
 tuRbonegro()
-{% endhighlight %}
+```
 
 ![tuRbonegro_pic](https://github.com/ColinFay/tuRbonegro/raw/master/tuRbonegro.png)
 

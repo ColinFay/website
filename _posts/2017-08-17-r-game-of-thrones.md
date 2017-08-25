@@ -16,18 +16,18 @@ A quick exploration of Game of Thrones characters names, and the beginning of an
 
 For this exploration, we first need to get the names of all characters from the show. Quick and easy thanks to [the beta serie API](https://www.betaseries.com/api/).
 
-{% highlight r %}
+```r
 library(httr)
 library(jsonlite)
 library(tidyverse)
 library(magrittr)
 # Add your API key here
 api_key <- "XXXX"
-{% endhighlight %}
+```
 
 Let's build the API request. 
 
-{% highlight r %}
+```r
 # You need id of the serie to request more info
 
 get_beta_serie <- function(show, api_key){
@@ -60,7 +60,7 @@ get_bet_char <- function(id){
 GoT_char <- get_bet_char(GoT_id)
 nrow(GoT_char)
 [1] 98
-{% endhighlight %}
+```
 
 98 characters... there's 98 CHARACTERS! 
 
@@ -76,7 +76,7 @@ Here, I just have to thank Betaseries again for their cool API :
 + which doesn't limit the number of call you can make 
 + which can return a random serie from their list
 
-{% highlight r %}
+```r
 # Random serie
 get_random_beta <- function(){
     res <- GET(url = "https://api.betaseries.com/shows/random?=",
@@ -88,13 +88,13 @@ get_random_beta <- function(){
 get_random_beta()
 [1] 5321
 
-{% endhighlight %}
+```
 
 Cool. How about getting mooooooore data.
 
 ### Get 1000 random series id, and their characters
 
-{% highlight r %}
+```r
 # 1000 random series
 list_id_beta <- replicate(1000, get_random_beta())
 
@@ -108,7 +108,7 @@ random_char <- map_df(.x = list_id_beta, get_bet_char)
 
 nrow(unique(random_char))
 [1] 3811
-{% endhighlight %}
+```
 
 So, here are 3811 characters from 970 random series picked on the API. Let's compare!
 
@@ -116,7 +116,7 @@ So, here are 3811 characters from 970 random series picked on the API. Let's com
 
 ### Are there too many characters in Game of Thrones?
 
-{% highlight r %}
+```r
 # Make a full dataframe
 random_char$show_name <- "Not_GoT"
 GoT_char$show_name <- "GoT"
@@ -138,7 +138,7 @@ full_char %>%
        x = "", 
        y = "Number of characters in the show") +
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/chr_shows_game_of_thrones.png)
 
@@ -152,7 +152,7 @@ But, is there another answer to our original question? ("Why can't I remember th
 
 Let's formulate some hypotheses. First: maybe their names are too long? I mean, "Melisandre of Asshai" is quite a long name, as is "Xaro Xhoan Daxos". 
 
-{% highlight r %}
+```r
 full_char %>%
   group_by(show_id, show_name) %>%
   mutate(char_name_length = nchar(name))%>%
@@ -166,7 +166,7 @@ full_char %>%
        y = "", 
        guide = "Show") +
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/length_char_name.png)
 
@@ -176,7 +176,7 @@ Nop, that's not it either. Let's try something else.
 
 Are the letters similarly distributed in Game of Thrones and in the other shows? 
 
-{% highlight r %}
+```r
 library(stringr)
 
 #Let's clean up a little bit
@@ -215,7 +215,7 @@ full_char %>%
        guide = "Show") +
   custom_theme
   
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/letter_distrib_game_of_thrones.png)
 
@@ -223,7 +223,7 @@ Nop, still quite the same. Ok, maybe that's because their names are composed of 
 
 ### Repeated letters
 
-{% highlight r %}
+```r
 # Diff letters function 
 
 diff_letters <- function(word){
@@ -243,11 +243,11 @@ diff_letters("Xaro Xhoan Daxos")
 [1] 0.5714286
 diff_letters("Colin Fay")
 [1] 1
-{% endhighlight %}
+```
 
 Cool. Let's visualize that. 
 
-{% highlight r %}
+```r
 full_char %>%
   group_by(id) %>%
   mutate(diff_in_letters = diff_letters(name)) %>%
@@ -261,7 +261,7 @@ full_char %>%
        y = "", 
        guide = "Show") +
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/length_char_name.png)
 
@@ -279,7 +279,7 @@ Can we see it with string distance? My first intuition is that string distances 
 
 The Levenshtein distance counts the number of deletions, insertions and substitutions necessary to turn b into a. For example, `stringdist("Colin", "Colis", method = "lv")` returns 1.
 
-{% highlight r %}
+```r
 library(stringdist)
 
 # Just cleaning the names
@@ -309,7 +309,7 @@ full_char %>%
   labs(title = "String distance between the names of the characters \nin Game of Thrones and in 970 random series", 
        subtitle = "computed using the Levenshtein distance") + 
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lv_string_dist_game_of_thrones.png)
 
@@ -321,7 +321,7 @@ This method finds the longest string that can be obtained by pairing characters 
 
 For example, `stringdist("Colin", "Colis", method = "lcs")` returns 2, because you need to remove the n and the s — the longest common substring being "Coli". `stringdist("Brann", "Bron", method = "lcs")` returns 3, as you have to remove a, n and n. The lcs is "Brn". The closer the result is to 0, the closer the strings are. 
 
-{% highlight r %}
+```r
 string_dist_lcs <- function(vec){
   stringdistmatrix(vec, method = "lcs") %>% as.vector()
 }
@@ -338,7 +338,7 @@ full_char %>%
   labs(title = "String distance between the names of the characters \nin Game of Thrones (red line) and in 970 random series", 
        subtitle = "computed using the longest common substring method") + 
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/lcs_string_dist_game_of_thrones.png)
 
@@ -348,7 +348,7 @@ Neither on my side...
 
 Jaro distance returns a number between 0 and 1, 0 being exact match, 1 complete dissimilarity. `stringdist("Colin", "Colis", method='jw', p=0)` returns 0.1333333. `stringdist("Brann", "Bron", method='jw', p=0)` returns 0.2166667. Let's try this last one. 
 
-{% highlight r %}
+```r
 string_dist_jac <- function(vec){
   stringdistmatrix(vec, method='jw', p=0) %>% as.vector()
 }
@@ -365,7 +365,7 @@ full_char %>%
   labs(title = "String distance between the names of the characters \nin Game of Thrones and in 970 random series", 
        subtitle = "computed using the Jaro distance") + 
   custom_theme
-{% endhighlight %}
+```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/jaro_string_dist_game_of_thrones.png)
 
