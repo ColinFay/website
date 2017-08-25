@@ -9,6 +9,9 @@ permalink: /heatmap-avec-r-et-ggplot2/
 published: true
 categories : r-blog-fr
 ---
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
 ## Un court tutorial sur les heatmaps avec R, inspirés d'articles sur databzh.
 <!--more-->
 
@@ -20,7 +23,7 @@ Dans ce court post, retrouvez le déroulement de la création d'une heatmap d'un
 
 ## Loading
 
-{% highlight r %} 
+```{r}
 library(tidyverse)
 ## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
@@ -32,7 +35,7 @@ library(tidyverse)
 name <- read.table("/home/colin/Téléchargements/dpt2015.txt", stringsAsFactors = FALSE, sep = "\t", encoding = "latin1", header = TRUE, col.names = c("sexe","prenom","annee","dpt","nombre")) %>%
   na.omit()
 name$annee <- as.Date(name$annee, "%Y")
-{% endhighlight %}
+```
 Nous avons maintenant un jeu de données propre, avec les noms et les départements.
 
 ### Heatmap
