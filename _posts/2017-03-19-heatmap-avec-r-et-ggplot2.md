@@ -23,7 +23,7 @@ Dans ce court post, retrouvez le déroulement de la création d'une heatmap d'un
 
 ## Loading
 
-```{r}
+```r
 library(tidyverse)
 ## Loading tidyverse: ggplot2
 ## Loading tidyverse: tibble
