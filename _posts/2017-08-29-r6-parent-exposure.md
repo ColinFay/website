@@ -16,7 +16,7 @@ About R6 and parent exposure.
 
 By default, R6 objects can only herit from their direct parent. But you may need to create an inheritance which goes along the family tree. 
 
-For example, we need to create a grand-child class `PersonGrandChild`, which inherits from a child class `PersonChild`, which inherits from the parent `Person`. The idea is to have a grand-child class with predifined and fixed `first_name`, `last_name`, `age` and `job`, and use with `initialize` the method from its grand-parent. The naive approach would be to use `$super$super`
+For example, we need to create a grand-child class `PersonGrandChild`, which inherits from a child class `PersonChild`, which inherits from the parent `Person`. The idea is to have a grand-child class with predifined and fixed `first_name`, `last_name`, and use with `initialize` the method from its grand-parent. The naive approach would be to use `$super$super`
 
 ```{r}
 library(R6)
