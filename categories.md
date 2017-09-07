@@ -6,7 +6,7 @@ author_profile: true
 ---
 
 ## Jump to : 
-
+<class = "list">
 + [R blog (en)](http://colinfay.me/categories/#r-blog-en) 
 + [R blog (fr)](http://colinfay.me/categories/#r-blog-fr)
 + [Random](http://colinfay.me/categories/#random)
@@ -19,7 +19,7 @@ ___
 + [R blog (en)](http://colinfay.me/rblog.rss) 
 + [R blog (fr)](http://colinfay.me/rblog.rss)
 + [Random](http://colinfay.me/random.rss)
-
+</class>
 ___
 
 
