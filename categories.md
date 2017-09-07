@@ -19,6 +19,7 @@ ___
 + {:.list}[R blog (en)](http://colinfay.me/rblog.rss) 
 + {:.list}[R blog (fr)](http://colinfay.me/rblog.rss)
 + {:.list}[Random](http://colinfay.me/random.rss)
+
 ___
 
 
