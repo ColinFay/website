@@ -12,17 +12,18 @@ Compute string distance the tidy way. A package built on top of the {stringdist}
 
 ## Why tidystringdist 
 
-I've lately been playing with string distance for my blog post about[Game of Thrones Characters](http://colinfay.me/game-of-thrones-characters-r/). The {stringdist} package is dope, yet its outputs do not follow the [tidy data](http://vita.had.co.nz/papers/tidy-data.html) philosophy. Something that demands some tweaking when you need to work with tidyverse tools. That's one of the motives behind {tidystringdist}. 
+I've lately been playing with string distance for my blog post about [Game of Thrones Characters](http://colinfay.me/game-of-thrones-characters-r/). The {stringdist} package is dope, yet its I/O do not follow the [tidy data](http://vita.had.co.nz/papers/tidy-data.html) philosophy. Something that demands some tweaking when you need to work with tidyverse tools. That's one of the motives behind {tidystringdist}. 
 
 ## Install tidystringdist
 
-For now, the package is only on GitHub, but I plan on releasing it to the CRAN soon. As this page may not be updated in time, you should check the GitHub page for more info about the CRAN release. 
+For now, the package is only on GitHub, but I plan on releasing it to the CRAN soon. As this blogpost might not be updated in time, you should check the GitHub page for more info about the CRAN release. 
 
 Install from GitHub
 
 ``` r
 devtools::install_github("ColinFay/tidystringdist")
 ```
+
 
 ## tidystringdist basic workflow
 
@@ -154,3 +155,7 @@ starwars %>%
 ### Contact
 
 I'll be glad to have some feedback about this package. Feel free to reach me out on [Twitter](http://www.twitter.com/_colinfay)! You can also send some PR or open an issue on the [GitHub repo](https://github.com/ColinFay/tidystringdist). 
+
+### To do 
+
+For an up-to-date to-do list about this package, please read the issue section on [GitHub](https://github.com/ColinFay/tidystringdist/issues)!
