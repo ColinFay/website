@@ -54,7 +54,7 @@ tidy_comb_all(LETTERS[1:3])
 ```
 
 ``` r
-# Compare "Paris" (the base) with the three first elements of `state.name`. 
+# Combine "Paris" (the base) with the three first elements of `state.name`. 
 
 tidy_comb("Paris", state.name[1:3])
 
