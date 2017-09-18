@@ -18,7 +18,7 @@ ___
 
 ### Author
 
-#### _proustr_
+ _proustr_
 
 Tools for Doing Natural Language Processing with Proust's Novels ([More infos](http://colinfay.me/proustr-package/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
 
@@ -26,20 +26,20 @@ Tools for Doing Natural Language Processing with Proust's Novels ([More infos](h
 
 [Version dev on GitHub](https://github.com/ColinFay/proustr)
 
-#### _tidytrycatch_
+ _tidytrycatch_
 
 Making trycatch the tidy way.
 
 [Version dev on GitHub](https://github.com/ColinFay/tidytrycatch)
 
-#### _tidystringdist_
+ _tidystringdist_
 
 String distance calculation the tidy way.
 
 [Version dev on GitHub](https://github.com/ColinFay/tidystringdist)
 
 
-#### _rpinterest_
+ _rpinterest_
 
 An R package to access the Pinterest API ([More infos](https://colinfay.me/rpinterest-package-r/) & [Documentation](https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf)).
 
@@ -47,7 +47,7 @@ An R package to access the Pinterest API ([More infos](https://colinfay.me/rpint
 
 [Version dev on GitHub](https://github.com/ColinFay/rpinterest)
 
-#### _rgeoapi_
+ _rgeoapi_
 
 This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R ([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
 
@@ -55,7 +55,7 @@ This package requests informations from the french [GéoAPI](https://api.gouv.fr
 
 [Version dev on GitHub](https://github.com/ColinFay/rgeoapi)
 
-#### _languagelayeR_
+ _languagelayeR_
 
 Access the languagelayer API with R ([Documentation](https://cran.r-project.org/web/packages/languagelayeR/languagelayeR.pdf)).
 
@@ -65,7 +65,7 @@ Access the languagelayer API with R ([Documentation](https://cran.r-project.org/
 
 ### Contributor
 
-#### _naniar_
+ _naniar_
 
 Tidy data structures, summaries, and visualisations for missing data. 
 
@@ -77,7 +77,7 @@ Tidy data structures, summaries, and visualisations for missing data.
 
 ### Author 
 
-#### _talkR_
+ _talkR_
 
 Bots retweeting language specific R hashtags. 
 
@@ -89,7 +89,7 @@ Bots retweeting language specific R hashtags.
 
 ### Author
 
-#### _LoremJulia_
+ _LoremJulia_
 
 A basic lorem ipsum generator made in Julia. 
 
@@ -97,13 +97,13 @@ A basic lorem ipsum generator made in Julia.
 
 <div id="database"><h2>Database</h2></div>
 
-#### _Twitter Corpus_
+ _Twitter Corpus_
 
 An automatically collected tweets database. Free to use. 
 
 [More infos & dl](https://github.com/ColinFay/twitter_corpus)
 
-#### _Data Bzh Open Data_
+ _Data Bzh Open Data_
 
 Various open data datasets. 
 
@@ -111,7 +111,7 @@ Various open data datasets.
 
 <div id="fun"><h2>Just for fun </h2></div>
 
-#### _tuRbonegro_
+ _tuRbonegro_
 
 This R package plays a random Turbonegro clip in your R Viewer ([More info](http://colinfay.me/rstats-turbonegro/)).
 
