@@ -10,6 +10,9 @@ p, pre, blockquote, ul, ol, dl, figure, table, fieldset {
     font-size: 0.8em;
 }
 
+.page__content p, .page__content li, .page__content dl {
+    /* font-size: 1em; */
+}
 
 /* Variables */
 @import "minimal-mistakes/variables";
