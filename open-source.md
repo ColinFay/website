@@ -4,20 +4,42 @@ author_profile: true
 title: Open Source
 ---
 
-## R packages
+## Jump to : 
+
++ <a href="#rpackage">R Packages</a>
++ <a href="#bots">Bots</a>
++ <a href="#julia">Julia Packages</a>
++ <a href="#database">Database</a>
++ <a href="#fun">Just for fun</a>
+
+___
+
+<div id="rpackage"><h2>R packages</h2></div>
 
 ### Author
 
-_proustr_
+#### _proustr_
 
-An R Package for Marcel Proust's A La Recherche Du Temps Perdu ([More infos](http://colinfay.me/proustr-package/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
+Tools for Doing Natural Language Processing with Proust's Novels ([More infos](http://colinfay.me/proustr-package/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
 
 [Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
 
 [Version dev on GitHub](https://github.com/ColinFay/proustr)
 
+#### _tidytrycatch_
 
-_rpinterest_
+Making trycatch the tidy way.
+
+[Version dev on GitHub](https://github.com/ColinFay/tidytrycatch)
+
+#### _tidystringdist_
+
+String distance calculation the tidy way.
+
+[Version dev on GitHub](https://github.com/ColinFay/tidystringdist)
+
+
+#### _rpinterest_
 
 An R package to access the Pinterest API ([More infos](https://colinfay.me/rpinterest-package-r/) & [Documentation](https://cran.r-project.org/web/packages/rpinterest/rpinterest.pdf)).
 
@@ -25,7 +47,7 @@ An R package to access the Pinterest API ([More infos](https://colinfay.me/rpint
 
 [Version dev on GitHub](https://github.com/ColinFay/rpinterest)
 
-_rgeoapi_
+#### _rgeoapi_
 
 This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R ([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
 
@@ -33,7 +55,7 @@ This package requests informations from the french [GéoAPI](https://api.gouv.fr
 
 [Version dev on GitHub](https://github.com/ColinFay/rgeoapi)
 
-_languagelayeR_
+#### _languagelayeR_
 
 Access the languagelayer API with R ([Documentation](https://cran.r-project.org/web/packages/languagelayeR/languagelayeR.pdf)).
 
@@ -43,7 +65,7 @@ Access the languagelayer API with R ([Documentation](https://cran.r-project.org/
 
 ### Contributor
 
-_naniar_
+#### _naniar_
 
 Tidy data structures, summaries, and visualisations for missing data. 
 
@@ -51,27 +73,45 @@ Tidy data structures, summaries, and visualisations for missing data.
 
 [Version dev on GitHub](https://github.com/njtierney/naniar)
 
-## Julia packages
+<div id="bots"><h2>Bots</h2></div>
+
+### Author 
+
+#### _talkR_
+
+Bots retweeting language specific R hashtags. 
+
+[More infos on the GitHub Repo](https://github.com/ColinFay/talkR)
+
+[Follow TalkR_Fr](https://twitter.com/talkR_FR)
+
+<div id="julia"><h2>Julia packages</h2></div>
 
 ### Author
 
-_LoremJulia_
+#### _LoremJulia_
 
 A basic lorem ipsum generator made in Julia. 
 
 [Version dev on GitHub](https://github.com/ColinFay/LoremJulia)
 
-## Database
+<div id="database"><h2>Database</h2></div>
 
-_Twitter Corpus_
+#### _Twitter Corpus_
 
 An automatically collected tweets database. Free to use. 
 
 [More infos & dl](https://github.com/ColinFay/twitter_corpus)
 
-## Just for fun  
+#### _Data Bzh Open Data_
 
-_tuRbonegro_
+Various open data datasets. 
+
+[More infos & dl](http://data-bzh.fr/open-data/)
+
+<div id="fun"><h2>Just for fun </h2></div>
+
+#### _tuRbonegro_
 
 This R package plays a random Turbonegro clip in your R Viewer ([More info](http://colinfay.me/rstats-turbonegro/)).
 
