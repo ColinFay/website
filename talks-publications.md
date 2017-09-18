@@ -9,15 +9,19 @@ ___
 
 ## 2017-06-30
 
-"Les API, un enfeR ?", 6e Rencontres R, Anglet. 
+["Les API, un enfeR ?"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/api_enfer_colin_fay_thinkr.pdf), 6e Rencontres R, Anglet. 
+
+["1 datasets, 10 dataviz"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/1_dataset_10_dataviz_colin_fay.pdf), 6e Rencontres R, Anglet. 
+
+
 
 ## 2017-03-12
 
-"Atelier Dataviz", La Fabrique de l'Info, with Association Bug.
+["Atelier Dataviz"](https://github.com/ColinFay/conf/blob/master/2017-03-12-fabrique-info/La%20fabrique%20de%20l'info.pdf), La Fabrique de l'Info, with Association Bug.
 
 ## 2016-07-07
 
-"Data Bzh — Raconter la Bretagne par ses données", Apéro StoryCode de Rennes, La Cordée.
+["Data Bzh — Raconter la Bretagne par ses données"](https://github.com/ColinFay/conf/blob/master/2016-07-7-storycode/data-bzh-storycode.pdf), Apéro StoryCode de Rennes, La Cordée.
 
 ## 2016-02-24
 
@@ -49,7 +53,7 @@ _Advanced R - R6_, Wickham H. [https://adv-r.hadley.nz/r6](https://adv-r.hadley.
 
 ## 2014-09
 
-_Média, support, temporalité : le cas des pure-players de presse._
+[_Média, support, temporalité : le cas des pure-players de presse._](https://dumas.ccsd.cnrs.fr/dumas-01130211)
 
 Master thesis, Rennes 2 University, under the supervision of Jean-Luc Bouillon
 
@@ -57,7 +61,7 @@ Master thesis, Rennes 2 University, under the supervision of Jean-Luc Bouillon
 
 ## 2012-06
 
-_Approche systémique des jeux pragmatiques communicationnels_
+[_Approche systémique des jeux pragmatiques communicationnels_](http://www.memoireonline.com/12/12/6569/m_Approche-systemique-des-jeux-pragmatiques-communicationnels0.html)
 
 Master thesis, Rennes 2 University, under the supervision of Dr Daniel Roulland.
 
