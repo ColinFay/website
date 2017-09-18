@@ -37,6 +37,14 @@ ___
 
 ***
 
+## Publications 
+
+### As a contributor 
+
+_Advanced R - R6_, Wickham H. [https://adv-r.hadley.nz/r6](https://adv-r.hadley.nz/r6)
+
+***
+
 ## University work
 
 ## 2014-09
