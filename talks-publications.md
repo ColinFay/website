@@ -9,7 +9,7 @@ ___
 
 ## 2017-09-20
 
-["Dataviz et éthique"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Dataviz%20et%20%C3%A9thique.pdf), Datarala, Nantes. 
+["Dataviz et éthique"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Dataviz%20et%20%C3%A9thique.pdf), Datarama, Nantes. 
 
 ## 2017-09-19
 
