@@ -4,6 +4,16 @@
  * Licensed under MIT (https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt)
 */
 
+p, pre, blockquote, ul, ol, dl, figure, table, fieldset {
+    orphans: 3;
+    widows: 3;
+    font-size: 0.8em;
+}
+
+.page__content p, .page__content li, .page__content dl {
+    font-size: 1em;
+}
+
 /* Variables */
 @import "minimal-mistakes/variables";
 
@@ -38,3 +48,4 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+

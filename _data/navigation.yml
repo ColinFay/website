@@ -4,6 +4,8 @@ main:
     url: https://colinfay.github.io/
   - title: "About"
     url: https://colinfay.github.io/about/
+  - title: "Talks & Publications"
+    url: https://colinfay.github.io/talks-publications/
   - title: "Open Source"
     url: https://colinfay.github.io/open-source/
   - title: "Blog"
