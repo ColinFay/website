@@ -8,7 +8,7 @@ title: R Manuals
 
 You'll find here a list of the R manuals converted to bookdown. 
 
-Notes: As written in the bookdowns, I do not own any of the content written here — I just turned the epub into a better format!
+Notes: I do not own any of the content written in these manuals — I just turned the epub into a bookdown format!
 
 [https://cran.r-project.org/manuals.html](https://cran.r-project.org/manuals.html)
 
