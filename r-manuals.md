@@ -19,3 +19,7 @@ Notes: I do not own any of the content written in these manuals — I just turne
 + [R Installation and Administration](http://colinfay.me/r-installation-administration/)
 
 + [Writing R extensions](http://colinfay.me/writing-r-extensions/)
+
++ [The R language definition](http://colinfay.me/r-language-definition/)
+
++ [R Internals](http://colinfay.me/r-internals/)
