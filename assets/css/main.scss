@@ -37,3 +37,9 @@ h2 {
 .page__content p, .page__content li, .page__content dl {
     font-size: 1em; 
 }
+
+@media (min-width: 64em)
+main.css:8
+.page {
+    padding-right: 0;
+}
