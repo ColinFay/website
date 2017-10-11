@@ -5,60 +5,37 @@ title : "Talks and publications"
 ---
 ___
 
-# Talks and class
+## Talks
 
-## 2017-09-20
+__2017-09-20__ — ["Dataviz et éthique"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Dataviz%20et%20%C3%A9thique.pdf), Datarama, Nantes. 
 
-["Dataviz et éthique"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Dataviz%20et%20%C3%A9thique.pdf), Datarama, Nantes. 
-
-## 2017-09-19
-
-["De la donnée brutes à la dataviz"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Des%20donne%CC%81es%20brutes%20a%CC%80%20la%20dataviz.pdf), Medialab Speedtraining, Nantes. 
-
-## 2017-06-30
-
-["Les API, un enfeR ?"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/api_enfer_colin_fay_thinkr.pdf), 6e Rencontres R, Anglet. 
-
-["1 datasets, 10 dataviz"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/1_dataset_10_dataviz_colin_fay.pdf), 6e Rencontres R, Anglet. 
+__2017-09-19__ — ["De la donnée brutes à la dataviz"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Des%20donne%CC%81es%20brutes%20a%CC%80%20la%20dataviz.pdf), Medialab Speedtraining, Nantes. 
 
 
-## 2017-03-12
+__2017-06-30__ — ["Les API, un enfeR ?"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/api_enfer_colin_fay_thinkr.pdf), 6e Rencontres R, Anglet. 
 
-["Atelier Dataviz"](https://github.com/ColinFay/conf/blob/master/2017-03-12-fabrique-info/La%20fabrique%20de%20l'info.pdf), La Fabrique de l'Info, with Association Bug.
+__2017-06-29__ — ["1 datasets, 10 dataviz"](https://github.com/ColinFay/conf/blob/master/2017-06-Anglet/1_dataset_10_dataviz_colin_fay.pdf), 6e Rencontres R, Anglet. 
 
-## 2016-07-07
 
-["Data Bzh — Raconter la Bretagne par ses données"](https://github.com/ColinFay/conf/blob/master/2016-07-7-storycode/data-bzh-storycode.pdf), Apéro StoryCode de Rennes, La Cordée.
+__2017-03-12__ — ["Atelier Dataviz"](https://github.com/ColinFay/conf/blob/master/2017-03-12-fabrique-info/La%20fabrique%20de%20l'info.pdf), La Fabrique de l'Info, with Association Bug.
 
-## 2016-02-24
+__2016-07-07__ — ["Data Bzh — Raconter la Bretagne par ses données"](https://github.com/ColinFay/conf/blob/master/2016-07-7-storycode/data-bzh-storycode.pdf), Apéro StoryCode de Rennes, La Cordée.
 
-"L'envie dans l'expérience utilisateur", UX Deiz #2, with UX Rennes.
-
-## 2016-01 & 2016-11
-
-"Introduction au Community Management", Classe Passerelle, Digital Campus, Rennes.
-
-## 2015-09-22
-
-"Utiliser Snapchat pour sa marque ou son média". Medialab Speetraining, Ouest Medialab, Nantes.
-
-## 2013-05-29
-
-"Théorie des jeux, un modèle possible pour les sciences du langage ?" 16èmes Rencontres Jeunes Chercheurs, Modèles et modélisation dans les sciences du langage. Université Sorbonne nouvelle, Paris 3.
+__2013-05-29__ — "Théorie des jeux, un modèle possible pour les sciences du langage ?" [16èmes Rencontres Jeunes Chercheurs, Modèles et modélisation dans les sciences du langage](http://calenda.org/250256). Université Sorbonne nouvelle, Paris 3.
 
 ***
 
-## Publications 
+# Publications 
 
-#### As a contributor
+## As a contributor
 
-_Advanced R - R6_, Wickham H. [https://adv-r.hadley.nz/r6](https://adv-r.hadley.nz/r6)
+__Forthcoming__ — [Advanced R - R6](https://adv-r.hadley.nz/r6) — Wickham H. 
 
 ***
 
-## University work
+# University work
 
-### 2014-09
+## 2014-09
 
 [_Média, support, temporalité : le cas des pure-players de presse._](https://dumas.ccsd.cnrs.fr/dumas-01130211)
 
