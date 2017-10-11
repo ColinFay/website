@@ -25,17 +25,21 @@ __2013-05-29__ — "Théorie des jeux, un modèle possible pour les sciences du 
 
 ***
 
-## Publications 
+# Publications 
 
+<<<<<<< HEAD
 ### As a contributor
+=======
+## As a contributor
+>>>>>>> 1cd118b6424811416c2cafaf37e7eab30b14fdd7
 
 __Forthcoming__ — [Advanced R - R6](https://adv-r.hadley.nz/r6) — Wickham H. 
 
 ***
 
-## University work
+# University work
 
-### 2014-09
+## 2014-09
 
 [_Média, support, temporalité : le cas des pure-players de presse._](https://dumas.ccsd.cnrs.fr/dumas-01130211)
 
