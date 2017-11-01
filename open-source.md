@@ -17,14 +17,10 @@ ___
 <div id="rpackage"><h2>R packages</h2></div>
 
 ### Author
-
 _proustr_
-
-Tools for Doing Natural Language Processing with Proust's Novels ([http://proustr.colinfay.me/](http://proustr.colinfay.me/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
-
-[Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
-
-[Dev version on GitHub](https://github.com/ColinFay/proustr)
+<br>Tools for Doing Natural Language Processing with Proust's Novels <br>([http://proustr.colinfay.me/](http://proustr.colinfay.me/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
+<br>[Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
+<br>[Dev version on GitHub](https://github.com/ColinFay/proustr)
 
 _lexiquer_
 
