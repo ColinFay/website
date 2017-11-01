@@ -13,6 +13,11 @@ p, pre, blockquote, ul, ol, dl, figure, table, fieldset {
     font-size: 1em;
 }
 
+h4 {
+    font-size: 1em;
+}
+
+
 :hov
 
 .cls
@@ -69,4 +74,3 @@ i, cite, em, var, address, dfn {
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
-
