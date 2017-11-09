@@ -1,0 +1,35 @@
+---
+title: "Budapest Here I Come"
+author: colin_fay
+post_date: 2017-11-09
+layout: single
+permalink: /comineg-budapest/
+categories : r-blog-en
+excerpt_separator: <!--more-->
+---
+
+See you next week in Budapest! 
+
+<!--more-->
+
+Next week, I have the pleasure to travel to Budapest to talk about R at the Budapest BI conference 2018 and at the Budapest Users of R Network. 
+
+## 2017-11-15
+
+### Visualising text data with ggplot2
+
+> Budapest R Meetup
+
+From raw text data to ggplot visualisations. 
+
+More info : [https://www.meetup.com/Budapest-Users-of-R-Network/events/244319651/](https://www.meetup.com/Budapest-Users-of-R-Network/events/244319651/)
+
+## 2017-11-16 : 
+
+### A Gentle Introduction to Network Visualisation
+
+> Budapest BI 2018
+
+A brief reminder of what is graph theory, a methodology to create your first network visualisation, and some packages developed for network visualisation in R — first of all packages built on top of ggplot2, but also other packages especially designed for representing this special type of data.
+
+More about that: [http://budapestbiforum.hu/2017/hu/eloadasok/a-gentle-introduction-to-network-visualisation-colin-fay-thinkr/](http://budapestbiforum.hu/2017/hu/eloadasok/a-gentle-introduction-to-network-visualisation-colin-fay-thinkr/)
