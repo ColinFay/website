@@ -7,6 +7,10 @@ ___
 
 ## Talks
 
+__2017-11-16__ — ["A Gentle Introduction to Network Visualisation"](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_visualise_network.pdf), BudapestBI. 
+
+__2017-11-15__ — ["Visualising text data with ggplot2"](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_text_data_ggplot2.pdf), Budapest Users of R Network meetup. 
+
 __2017-09-20__ — ["Dataviz et éthique"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Dataviz%20et%20%C3%A9thique.pdf), Datarama, Nantes. 
 
 __2017-09-19__ — ["De la donnée brutes à la dataviz"](https://github.com/ColinFay/conf/blob/master/2017-09-Nantes-Digital-Week/Des%20donne%CC%81es%20brutes%20a%CC%80%20la%20dataviz.pdf), Medialab Speedtraining, Nantes. 
