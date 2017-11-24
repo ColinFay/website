@@ -41,4 +41,4 @@ More about that: [http://budapestbiforum.hu/2017/hu/eloadasok/a-gentle-introduct
 
 Special thanks to the team of BudapestBI for inviting me, and to the local meetup team for inviting me to me talk there. 
 
-Thanks also to everybody there for letting me have such a good time. Hope to see you guys again soon. 
+Thanks also to everybody there, we had such a good time. Hope to see you guys again soon. 
