@@ -7,6 +7,8 @@ ___
 
 ## Talks
 
+__2017-11-23__ — ["Le Text-Mining expliqué à ma grand-mère"](https://github.com/ColinFay/conf/blob/master/2017-11-breizh-data-club/fay_colin_tm_explique_grand_mere.pdf), Breizh Data Club Meetup. 
+
 __2017-11-16__ — ["A Gentle Introduction to Network Visualisation"](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_visualise_network.pdf), BudapestBI. 
 
 __2017-11-15__ — ["Visualising text data with ggplot2"](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_text_data_ggplot2.pdf), Budapest Users of R Network meetup. 
