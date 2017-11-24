@@ -80,6 +80,13 @@ Tidy data structures, summaries, and visualisations for missing data.
 + [Official release on CRAN](https://cran.r-project.org/web/packages/naniar/index.html)
 + [Dev version on GitHub](https://github.com/njtierney/naniar)
 
+#### _XKCDdata_
+
+Download data from individual XKCD comic. 
+
++ [Official release on CRAN](https://cran.r-project.org/web/packages/XKCDdata/index.html)
++ [Dev version on GitHub](https://github.com/RobertMyles/XKCDdata)
+
 ___
 
 <div id="bots"><h2>Bots</h2></div>
