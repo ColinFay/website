@@ -115,7 +115,7 @@ This part is more interesting (in my humble opinion) and quite relevant for web 
 
 So the point is that __this function always works__ 🎉. If you've been doing some bulk web scraping, you know how frustrating it can be when your iteration stops because one out of your 500 urls is a 404. So, safely is here to help you prevent that: even if you iterate over 500 urls which are 404, your process won't stop: you'll always get an answer. 
 
-That's what I'm doing here with `safe_lyr`. Once I get the results, I `map("result")` in order to keep only the result elements of the lists, and `compact()` to remove the `NULL` elements (i.e the url that returned a 404). As all my result elements are tibbles, I end with a `reduce(bind_rows)`, which iterates over the list binding two elements at a time. 
+That's what I'm doing here with `safe_lyr`. Once I get the results, I `map("result")` in order to keep only the result elements of the lists, and `compact()` to remove the `NULL` elements (i.e the url that returned a 404). As all my result elements are tibbles, I end with a `reduce(bind_rows)` [*], which iterates over the list binding two elements at a time. 
 
 So here we are, let's join everyting up in a big dataframe ! 
 
@@ -125,3 +125,5 @@ albums_infos <- albums_infos %>%
 ```
 
 ![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/11/sardou.gif)
+
+[*] As stated in the comment section, `bind_rows()` can take a list of data.frames as argument: I chose here to use `reduce` as an example of how this function works, yet this will not be, in practice, the best way to bind a list of data.frames. 
