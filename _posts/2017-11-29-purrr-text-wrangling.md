@@ -109,9 +109,53 @@ So let's be this xkcd guy :
 
 ![](https://imgs.xkcd.com/comics/regular_expressions.png)
 
-Here's the regex put at the beginning and the end of the pattern : `(\\barticlexyz(\\b)`, as `\b` which will match either the beginning or a blank & the end or a blank. 
+Here's the regex put at the beginning and the end of the pattern : `\\barticlexyz\\b`, as `\b` which will match either the beginning or a blank & the end or a blank. 
 
-But hey, let's do something with less regex and more map: string split, map, reduce.
+```r
+regex_build <- function(list){
+  # Make sure only the words are matched
+  map(list, ~ paste0("\\b", .x, "\\b")) %>%
+    # Reduce everything
+    reduce(~ paste(.x, .y, sep = "|"))
+}
+```
+So we've got our simple regex with:
+
+```r
+concat_commons(df, Keywords, 2) %>%
+  regex_build()
+[1] "\\barticlexyz\\b|\\bamazon\\b"
+```
+Let's bulk replace
+
+```r
+bulk_replace <- function(regex, vec){
+    map(vec, ~ stringr::str_replace_all(string = .x, pattern = regex, replacement = "") ) %>%
+    # Prevent the "too many spaces" to come
+    map(~ stringr::str_replace_all(string = .x, pattern = " {2,}", replacement = " "))
+}
+
+reg <- concat_commons(df, Keywords, 2) %>%
+  regex_build() 
+bulk_replace(reg, df$Keywords)
+
+[[1]]
+[1] " for sale"
+
+[[2]]
+[1] "cheap for sale"
+
+[[3]]
+[1] " "
+
+[[4]]
+[1] " walmart cheap"
+
+....
+
+```
+
+But hey, if you're not that into regex (nobody's perfect), let's do something with less regex and more purrr: string split, map, reduce. 
 
 ```r
 regex_build <- function(list){
@@ -126,7 +170,11 @@ concat_commons(df, Keywords, 2) %>%
 [1] "articlexyz|amazon""
 ```
 
-Let's bulk replace
+### Bulk replace this with stringsplit
+
+Here the trick to forget this "beginning end whitespace" nightmare (not a nightmare, really) is to split and test every element against the regex.
+
+As the result is a list of depth one, we need to `modify_depth`:
 
 ```r
 bulk_replace <- function(regex, vec){
@@ -157,6 +205,10 @@ bulk_replace(reg, df$Keywords)
 ....
 
 ```
+
+Yes. The very same result.
+
+### Remove commons
 
 Ok let's wrap this up in a function : 
 
@@ -209,7 +261,9 @@ remove_commons(df, Keywords, group, 1) %>%
 6   walmart     1
 ```
 
-So now, maybe we want to assign each observation to its "most common label but not the n first", that is to say, I want "articlexyz for sale on amazon" to be assigned a label "sale" if this is the most common after the n, or amazon, etc. 
+S### Label this thing
+
+o now, maybe we want to assign each observation to its "most common label but not the n first", that is to say, I want "articlexyz for sale on amazon" to be assigned a label "sale" if this is the most common after the n, or amazon, etc. 
 
 So here comes `detect()` : 
 
