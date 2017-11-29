@@ -109,7 +109,7 @@ So let's be this xkcd guy :
 
 ![](https://imgs.xkcd.com/comics/regular_expressions.png)
 
-Here's the regex put at the beginning and the end of the pattern : `\\barticlexyz\\b`, as `\b` which will match either the beginning or a blank & the end or a blank. 
+Here's the regex put at the beginning and the end of the pattern : `\\barticlexyz\\b`, as `\b`  will match a word bundary. 
 
 ```r
 regex_build <- function(list){
@@ -119,7 +119,7 @@ regex_build <- function(list){
     reduce(~ paste(.x, .y, sep = "|"))
 }
 ```
-So we've got our simple regex with:
+So we've got our regex with:
 
 ```r
 concat_commons(df, Keywords, 2) %>%
@@ -155,14 +155,16 @@ bulk_replace(reg, df$Keywords)
 
 ```
 
-But hey, if you're not that into regex (nobody's perfect), let's do something with less regex and more purrr: string split, map, reduce. 
+### The not-so-regex solution
+
+If you're not that into regex (nobody's perfect), let's do something with less regex and more {purrr}: string split, map, reduce. 
 
 ```r
 regex_build <- function(list){
     reduce(list, ~ paste(.x, .y, sep = "|"))
 }
 ```
-So we've got our simple regex with:
+Simple regex here:
 
 ```r
 concat_commons(df, Keywords, 2) %>%
@@ -172,9 +174,9 @@ concat_commons(df, Keywords, 2) %>%
 
 ### Bulk replace this with stringsplit
 
-Here the trick to forget this "beginning end whitespace" nightmare (not a nightmare, really) is to split and test every element against the regex.
+Here the trick to forget this "beginning end whitespace" nightmare (not a nightmare, really) is to split and test every element against the regex, so split, replace, unsplit. 
 
-As the result is a list of depth one, we need to `modify_depth`:
+To do the "unsplit", as the result is a list of depth one, we need to `modify_depth`:
 
 ```r
 bulk_replace <- function(regex, vec){
@@ -210,13 +212,13 @@ Yes. The very same result.
 
 ### Remove commons
 
-Ok let's wrap this up in a function : 
+Ok let's wrap this in a function : 
 
 ```r
 remove_commons <- function(df, input, output, levels){
   input <- enquo(input)
   output <- quo_name(enquo(output))
-  most_common <- concat_commons(df, !! enquo(input), levels)
+  most_common <- concat_commons(df, !! input, levels)
   df %>%
     mutate(!! output := bulk_replace( regex_build(most_common), !! input )) %>%
     unnest()
@@ -243,8 +245,8 @@ remove_commons(df, Keywords, group, 2)
 
 🎉 !!
 
-Of course we've got some blank here, as two observations are composed of the most common words
-
+Of course we've got some blank shere, as two observations are composed of the most common words
+. Let's count: 
 ```r
 remove_commons(df, Keywords, group, 1) %>%
   unnest_tokens(word, group) %>%
@@ -261,9 +263,8 @@ remove_commons(df, Keywords, group, 1) %>%
 6   walmart     1
 ```
 
-S### Label this thing
-
-o now, maybe we want to assign each observation to its "most common label but not the n first", that is to say, I want "articlexyz for sale on amazon" to be assigned a label "sale" if this is the most common after the n, or amazon, etc. 
+###Label s
+So now, maybe we want to assign each observation to its "most common label but not the n first", that is to say, I want "articlexyz for sale on amazon" to be assigned a label "sale" if this is the most common after the n, or amazon, etc. 
 
 So here comes `detect()` : 
 
@@ -292,6 +293,6 @@ df %>%
 9          articlexyz for sale cheap     cheap
 ```
 
-And now, let's sell some Google Ads! 
+ANw, let's sell some Google Ads! 
 
 ![](https://i.giphy.com/media/VTxmwaCEwSlZm/200.gif)
