@@ -1,7 +1,7 @@
 ---
 title: "A Crazy Little Thing Called {purrr} - Part 2 : Text Wrangling"
 author: colin_fay
-post_date: 2017-11-24
+post_date: 2017-11-29
 layout: single
 permalink: /purrr-text-wrangling/
 categories : r-blog-en
