@@ -109,7 +109,7 @@ So let's be this xkcd guy :
 
 ![](https://imgs.xkcd.com/comics/regular_expressions.png)
 
-Here's the regex put at the beginning and the end of the pattern : `(^|\\h)articlexyz($|\\h)`, which will match either the beginning or a blanl & the end or a blank. 
+Here's the regex put at the beginning and the end of the pattern : `(\barticlexyz(\b)`, as `\b` which will match either the beginning or a blank & the end or a blank. 
 
 But hey, let's do something with less regex and more map: string split, map, reduce.
 
