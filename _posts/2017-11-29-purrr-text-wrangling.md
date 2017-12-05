@@ -263,7 +263,8 @@ remove_commons(df, Keywords, group, 1) %>%
 6   walmart     1
 ```
 
-###Label s
+### Labels
+
 So now, maybe we want to assign each observation to its "most common label but not the n first", that is to say, I want "articlexyz for sale on amazon" to be assigned a label "sale" if this is the most common after the n, or amazon, etc. 
 
 So here comes `detect()` : 
@@ -293,6 +294,6 @@ df %>%
 9          articlexyz for sale cheap     cheap
 ```
 
-ANw, let's sell some Google Ads! 
+And now, let's sell some Google Ads! 
 
 ![](https://i.giphy.com/media/VTxmwaCEwSlZm/200.gif)
