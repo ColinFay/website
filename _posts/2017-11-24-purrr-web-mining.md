@@ -91,7 +91,7 @@ get_lyrics <- function(url, name){
     html_nodes("div") %>%
     html_text() %>%
     stringr::str_replace_all("[\t+\r+\n+]", " ") %>%
-    stringr::str_replace_all(g"[ ]{2}", " ") %>%
+    stringr::str_replace_all("[ ]{2}", " ") %>%
     stringr::str_replace_all("googletag.cmd.push\\(function\\(\\) \\{ googletag.display\\('container-middle-lyrics'\\)\\; \\}\\)\\;", "") %>% 
     stringr::str_replace_all("\\/\\* ringtone - Below Lyrics \\*\\/.*", "") %>%
     discard( ~ grepl("Corriger les paroles", .x)) %>%
