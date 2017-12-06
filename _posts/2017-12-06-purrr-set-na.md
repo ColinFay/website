@@ -83,7 +83,7 @@ So here it is:
 
 ```r
 create_mapper_na <- function(.p){
-  glue::glue("~ {f_text(.p)} & !is.na(.)") %>% 
+  glue::glue("~ ({f_text(.p)}) & !is.na(.)") %>% 
     as.formula() %>%
     as_mapper()
 }
@@ -91,7 +91,7 @@ create_mapper_na <- function(.p){
 create_mapper_na(~ .x < 20)
 
 function (..., .x = ..1, .y = ..2, . = ..1) 
-.x < 20 & !is.na(.)
+(.x < 20) & !is.na(.)
 
 class(create_mapper_na(~ .x < 20))
 [1] "function"
@@ -186,25 +186,21 @@ small %>%
 10    NA     194    NA    69    NA     10
 ```
 
-Cool stuff is you can build complexe predicate for replacing to NA : 
+Cool stuff is you can build complexe predicates for replacing to NA : 
 
 ```r
-replace_to_na_when(small, ~ sqrt(.x) < 5)
+replace_to_na_when(small, ~ sqrt(.x) > 5 | .x == 2)
 # A tibble: 10 x 6
    Ozone Solar.R  Wind  Temp Month   Day
-   <int>   <int> <lgl> <int> <lgl> <lgl>
- 1    41     190    NA    67    NA    NA
- 2    36     118    NA    72    NA    NA
- 3    NA     149    NA    74    NA    NA
- 4    NA     313    NA    62    NA    NA
- 5    NA      NA    NA    56    NA    NA
- 6    28      NA    NA    66    NA    NA
- 7    NA     299    NA    65    NA    NA
- 8    NA      99    NA    59    NA    NA
- 9    NA      NA    NA    61    NA    NA
-10    NA     194    NA    69    NA    NA
+   <int>   <int> <dbl> <lgl> <int> <int>
+ 1    NA      NA   7.4    NA     5     1
+ 2    NA      NA   8.0    NA     5    NA
+ 3    12      NA  12.6    NA     5     3
+ 4    18      NA  11.5    NA     5     4
+ 5    NA      NA  14.3    NA     5     5
+ 6    NA      NA  14.9    NA     5     6
+ 7    23      NA   8.6    NA     5     7
+ 8    19      NA  13.8    NA     5     8
+ 9     8      19  20.1    NA     5     9
+10    NA      NA   8.6    NA     5    10
 ```
-
-
-
-![](https://raw.githubusercontent.com/ColinFay/colinfay.github.io/7905e7e3d6cc70cb09509df6b8e0176a019109dd/wp-content/uploads/2017/12/nana.jpg)
