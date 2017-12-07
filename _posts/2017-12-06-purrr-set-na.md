@@ -54,7 +54,7 @@ Yes, we should. But we've said we just want to change a value if a condition is 
 So, with `modify_if()`:
 
 ```r
-modify_if(a, ~ .x == "a", ~ NA ) %>% reduce(c)
+c(modify_if(a, ~ .x == "a", ~ NA), recursive = TRUE)
 [1] NA  "b" "c" "d" "e"
 ```
 
@@ -62,7 +62,7 @@ Ok, seems to be good. But as you may be thinking, this can't be that easy. If yo
 
 ```r
 b <- c(NA, letters[1:5])
-modify_if(b, ~ .x == "a", ~ NA ) %>% reduce(c)
+c(modify_if(b, ~ .x == "a", ~ NA), recursive = TRUE)
 Error in .x[sel] <- map(.x[sel], .f, ...) : 
   NAs forbidden in indexed affectations
 ```
@@ -115,7 +115,10 @@ na_set(small$Ozone, ~ .x < 20)
 [1] 41 36 NA NA NA 28 23 NA NA NA
 ```
 
-Ok, so now that's quite easy: `replace_to_na_where` map over all the columns from a data.frame, and sets values to `NA` globally. 
+O> Notes bis: here's another (cleaner) version proposed by Romain for na_set: [napalm](https://gist.github.com/romainfrancois/c9406cc7b9776706dd1c11269c0d1965)
+
+
+k, so now that's quite easy: `replace_to_na_where` map over all the columns from a data.frame, and sets values to `NA` globally. 
 
 ```r
 replace_to_na_when <- function(tbl, .p) {
@@ -204,3 +207,4 @@ replace_to_na_when(small, ~ sqrt(.x) > 5 | .x == 2)
  9     8      19  20.1    NA     5     9
 10    NA      NA   8.6    NA     5    10
 ```
+> Note bter as noted by Romain on [twitter](https://twitter.com/romain_francois/status/938764972003414021), replacing to NA in a data.frame is more of a {dplyr} than a {purrr} job. Yet, the solution with {purrr} is more general, and can be used for lall kinds of ists  
