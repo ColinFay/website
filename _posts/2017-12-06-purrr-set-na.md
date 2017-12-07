@@ -16,7 +16,7 @@ I think I've never been that assiduous on my blog.
 
 > Note: this blogpost is inspired by a recent discussion on the {naniar} Github repo
 
-Here's the one million dollar question: how can we replace some values with an NA in a data.frame? And of course, how can we do that with a "tidyverse" mindset: that is to say with something like "replace_to_na_at" or "replace_to_na_if"?
+Here's the one million dollar question: how can we replace some values with NAs in a data.frame? And of course, how can we do that with a "tidyverse" mindset: that is to say with something like "replace_to_na_at" or "replace_to_na_if"?
 
 In this blog post, I'll show you how to create these functions with {purrr} : 
 
