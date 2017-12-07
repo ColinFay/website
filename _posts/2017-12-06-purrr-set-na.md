@@ -207,4 +207,4 @@ replace_to_na_when(small, ~ sqrt(.x) > 5 | .x == 2)
  9     8      19  20.1    NA     5     9
 10    NA      NA   8.6    NA     5    10
 ```
-> Note ter: as said by Romain on [twitter](https://twitter.com/romain_francois/status/938764972003414021), replacing to NA in a data.frame is more of a {dplyr} than a {purrr} job. Yet, the solution with {purrr} is more general, and can be used for all kinds of lists  
+> Notes ter: as said by Romain on [twitter](https://twitter.com/romain_francois/status/938764972003414021), replacing to NA in a data.frame is more of a {dplyr} than a {purrr} job. Yet, the solution with {purrr} is more general, and can be used for all kinds of lists  
