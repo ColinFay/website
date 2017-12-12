@@ -137,7 +137,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7fb095307d20>
+    ## <environment: 0x7fc121622cd8>
 
 ``` r
 as_mapper("this")
@@ -145,7 +145,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7fb0970deb78>
+    ## <environment: 0x7fc11fbf59b8>
 
 or even another lambda function :
 

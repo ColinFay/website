@@ -8,14 +8,13 @@ categories : r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
+I won't talk about the Queen reference anymore. 
+
+<!--more-->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, error = TRUE)
 ```
-
-I won't talk about the Queen reference anymore. 
-
-<!--more-->
 
 I've been working lately on a new package called {trycatchthis}, which is an attempt at making try catch and condition handling in R a little bit friendlier. If you have some time to spare, I'll be glad if you can give me some feedbacks about it: positive, negative, PR, improvement suggestions [https://github.com/ColinFay/trycatchthis](https://github.com/ColinFay/trycatchthis)... Feel free! 
 
