@@ -33,24 +33,24 @@ lot. These are the one sided formulas which are created as such :
 
 ``` r
 library(purrr)
-map_int(1:3, ~ .x * 10)
+map_dbl(1:3, ~ .x * 10)
 ```
 
-    ## Error: Can't coerce element 1 from a double to a integer
+    ## [1] 10 20 30
 
 ``` r
 # or 
-map_int(1:3, ~ . * 10)
+map_dbl(1:3, ~ . * 10)
 ```
 
-    ## Error: Can't coerce element 1 from a double to a integer
+    ## [1] 10 20 30
 
 ``` r
 # or 
-map2_int(1:3, 3:5, ~ .x + .y)
+map_dbl(1:3, 3:5, ~ .x + .y)
 ```
 
-    ## [1] 4 6 8
+    ## Error: Result 1 is not a length 1 atomic vector
 
 Here, you’re creating a lambda function on the fly: the first and second
 multiplying each element by 10, and the third adding each `x` and `y`
@@ -137,7 +137,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7f7f6cf1f7c8>
+    ## <environment: 0x7ff2de2ca8d0>
 
 ``` r
 as_mapper("this")
@@ -145,7 +145,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7f7f6bb949f0>
+    ## <environment: 0x7ff2df3e2800>
 
 or even another lambda function :
 
