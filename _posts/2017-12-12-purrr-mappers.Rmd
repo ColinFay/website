@@ -31,7 +31,7 @@ map_dbl(1:3, ~ .x * 10)
 # or 
 map_dbl(1:3, ~ . * 10)
 # or 
-map_dbl(1:3, 3:5, ~ .x + .y)
+map2_dbl(1:3, 3:5, ~ .x + .y)
 ```
 
 Here, you're creating a lambda function on the fly: the first and second multiplying each element by 10, and the third adding each `x` and `y` together. 

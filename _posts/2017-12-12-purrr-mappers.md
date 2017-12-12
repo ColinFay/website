@@ -47,10 +47,10 @@ map_dbl(1:3, ~ . * 10)
 
 ``` r
 # or 
-map_dbl(1:3, 3:5, ~ .x + .y)
+map2_dbl(1:3, 3:5, ~ .x + .y)
 ```
 
-    ## Error: Result 1 is not a length 1 atomic vector
+    ## [1] 4 6 8
 
 Here, you’re creating a lambda function on the fly: the first and second
 multiplying each element by 10, and the third adding each `x` and `y`
@@ -137,7 +137,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7ff2de2ca8d0>
+    ## <environment: 0x7fb095307d20>
 
 ``` r
 as_mapper("this")
@@ -145,7 +145,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7ff2df3e2800>
+    ## <environment: 0x7fb0970deb78>
 
 or even another lambda function :
 
