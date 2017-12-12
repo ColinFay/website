@@ -59,7 +59,7 @@ together.
 ## What’s happening behind?
 
 The first thing that `map` (and other map\_\*) do is turning a the `~ .x
-* 10` into a mapper with `as_mapper`.
+\* 10` into a mapper with `as_mapper`.
 
 ``` r
 map
@@ -137,7 +137,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7f9e07d8fdc8>
+    ## <environment: 0x7f7f6cf1f7c8>
 
 ``` r
 as_mapper("this")
@@ -145,7 +145,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7f9e07e66bf0>
+    ## <environment: 0x7f7f6bb949f0>
 
 or even another lambda function :
 
