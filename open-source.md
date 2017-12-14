@@ -41,11 +41,17 @@ String distance calculation the tidy way.
 + [Official release on CRAN](https://cran.r-project.org/package=tidystringdist)
 + [Dev version on GitHub](https://github.com/ColinFay/tidystringdist)
 
-#### _tidytrycatch_
+#### _trycatchthis_
 
-Making trycatch the tidy way.
+ A friendlier error, warning and message handler for R, based on {purrr} mappers and {rlang} 
 
-+ [Dev version on GitHub](https://github.com/ColinFay/tidytrycatch)
++ [Dev version on GitHub](https://github.com/ColinFay/trycatchthis)
+
+#### _wtfismyip_
+
+ A simple, dependency free wrapper around wtfismyip.
+ 
++ [Dev version on GitHub](https://github.com/ColinFay/wtfismyip)
 
 #### _rpinterest_
 
@@ -59,7 +65,7 @@ An R package to access the Pinterest API
 
 This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R 
 
-+([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
++ ([More infos](https://colinfay.me/rgeoapi-v1/) & [Documentation](https://cran.r-project.org/web/packages/rgeoapi/rgeoapi.pdf)).
 + [Official release on CRAN](https://cran.r-project.org/web/packages/rgeoapi/index.html)
 + [Dev version on GitHub](https://github.com/ColinFay/rgeoapi)
 
@@ -111,6 +117,7 @@ ___
 A basic lorem ipsum generator made in Julia. 
 
 + [Version dev on GitHub](https://github.com/ColinFay/LoremJulia)
+
 ___
 
 <div id="database"><h2>Database</h2></div>
