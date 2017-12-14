@@ -76,12 +76,7 @@ Mappers are what allow {purrr} flexibility with mapping, as it alows you to use 
 as_mapper(is.numeric)
 ```
 
-or characters and numbers that creates calls to `pluck`:
-
-```{r}
-as_mapper(1)
-```
-
+or characters that creates calls to `pluck`:
 
 ```{r}
 as_mapper("this")
