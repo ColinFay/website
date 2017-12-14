@@ -129,7 +129,15 @@ as_mapper(is.numeric)
     ## is.numeric(x = x)
     ## <environment: base>
 
-or characters that creates calls to `pluck`:
+or characters and numbers that creates calls to `pluck`:
+
+``` r
+as_mapper(1)
+```
+
+    ## function (x, ...) 
+    ## pluck(x, list(1), .default = NULL)
+    ## <environment: 0x7ff3b352af20>
 
 ``` r
 as_mapper("this")
@@ -137,7 +145,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7fd53077c390>
+    ## <environment: 0x7ff3b36d5f78>
 
 or even another lambda function :
 
