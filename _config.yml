@@ -116,6 +116,7 @@ include:
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
+  - "*.Rmd"
   - vendor
   - .asset-cache
   - .bundle
