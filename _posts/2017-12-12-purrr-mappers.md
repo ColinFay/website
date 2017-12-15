@@ -65,9 +65,10 @@ The first thing that `map` (and other map\_\*) do is turning a the `~ .x
 map
 ```
 
-    ## function(.x, .f, ...) {
-    ##   .f <- as_mapper(.f, ...)
-    ##   .Call(map_impl, environment(), ".x", ".f", "list")
+    ## function (.x, .f, ...) 
+    ## {
+    ##     .f <- as_mapper(.f, ...)
+    ##     .Call(map_impl, environment(), ".x", ".f", "list")
     ## }
     ## <environment: namespace:purrr>
 
@@ -137,7 +138,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7ff3b352af20>
+    ## <environment: 0x7ffa4f0b3e60>
 
 ``` r
 as_mapper("this")
@@ -145,7 +146,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7ff3b36d5f78>
+    ## <environment: 0x7ffa4ea89d50>
 
 or even another lambda function :
 
@@ -154,6 +155,20 @@ as_mapper(function(x, y) {x+y} )
 ```
 
     ## function(x, y) {x+y}
+
+### mappers with more than two arguments
+
+So, here’s the trick if you want to create mappers with more than two
+arguments: use `..1`, `..2`, `..3`, etc. Here’s an example with `pmap`.
+
+``` r
+l <- list(rnorm(10),
+          rnorm(100), 
+          rnorm(1000))
+pmap_dbl(list(l, 20, TRUE), ~ mean(..1, ..2, ..3)) 
+```
+
+    ## [1]  0.39731113 -0.02075159 -0.05206698
 
 ## Using mapper inside {trycatchthis}
 

@@ -93,6 +93,17 @@ or even another lambda function :
 as_mapper(function(x, y) {x+y} )
 ```
 
+### mappers with more than two arguments 
+
+So, here's the trick if you want to create mappers with more than two arguments: use `..1`, `..2`, `..3`, etc. Here's an example with `pmap`.
+
+```{r}
+l <- list(rnorm(10),
+          rnorm(100), 
+          rnorm(1000))
+pmap_dbl(list(l, 20, TRUE), ~ mean(..1, ..2, ..3)) 
+
+```
 
 ## Using mapper inside {trycatchthis}
 
