@@ -20,7 +20,7 @@ There's a general saying in programming that you should try to write as less cod
 
 As you know, I love {purrr}. Most tutorials on the web focus on the iteration part (don't make me say what I didn't say: the iteration tools are incredibly poweful), yet forgetting the "programming" part of {purrr} would make you miss a lot of cool features from this package. I hope my series of posts has convince you to dive into this "programming with {purrr}" world :) 
 
-So, today, we're gonna have another look at what you can do with {purrr} to write more efficient R. 
+So, today, we're gonna have a look at what you can do with {purrr} to write more efficient R. 
 
 ## Repeat after me: don't repeat yourself
 
@@ -30,11 +30,13 @@ It has been said countless time: if you copy and paste a piece of code more than
 
 ## Functions returning functions 
 
-R is an amazingly flexible language. Everything that exists in R is an object, and everything that happens is due to a function. So yes, functions are objects. And if a function can take objects and return an object, there's no reason these objects can't be functions. That's exactly what `safely` (seen in the first part of this series) and friends do. But today I'm here to talk about some other functions, `compose` and `partial`. 
+R is an amazingly flexible language. Everything that exists in R is an object, and everything that happens is due to a function. So yes, functions are objects that can turn objects into other objects. 
+
+And if a function can take objects and return an object, there's no reason these objects can't be functions. That's exactly what `safely` (seen in the first part of this series) and friends do. But today I'm here to talk about some other functions, `compose` and `partial`. 
 
 ### Compose 
 
-```{r}
+```{r warning = FALSE, message = FALSE}
 library(tidyverse)
 library(broom)
 ```
@@ -67,7 +69,7 @@ tidy_lm(Sepal.Length ~ Species, data = iris)
 
 So yes, this is a small improvement you could say. But the thing is, on this kind of code : 
 
-```{r}
+```{r eval = FALSE}
 tidy_fancy_calculus <- compose(tidy, lm)
 tidy_fancy_calculus(Sepal.Length ~ Species, data = iris)
 tidy_fancy_calculus(Petal.Length ~ Species, data = iris)
@@ -75,9 +77,9 @@ tidy_fancy_calculus(Sepal.Width ~ Species, data = iris)
 tidy_fancy_calculus(Petal.Width ~ Species, data = iris)
 ```
 
-I'll just have to change at one place if I need to use another `lm`-like function. 
+I'll just have to make a change at one spot if I need to use another `lm`-like function. 
 
-Note that the order of the function is not the a magrittr order, but a "classic" order, i.e. functions passed to `compose` are executed from right to left. 
+_Note that the order of the function is not the a magrittr order, but a "classic" order, i.e. functions passed to `compose` are executed from right to left. _
 
 And of course, you can always pass mappers in a `compose` :
 
@@ -116,7 +118,7 @@ Ok, that's not that usefull on that example, but you get the idea :)
 
 ### Let's wrap up
 
-To sum up, we need a function that will do a lm on iris, broom::tidy the result, filter the p.value, and arrange following the p.value column. So : 
+To sum up, we need a function that will do a lm on iris, broom::tidy the result, filter the p.value, and arrange following the p.value column. So, here it is! 
 
 ```{r}
 clean_lm_iris <- compose(as_mapper(~ arrange(.x, desc(p.value))), 
