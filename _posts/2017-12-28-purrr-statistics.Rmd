@@ -136,7 +136,7 @@ map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% every(~ .x > 0.8)
 
 ### keep_index
 
-Let's modify `keep` a little bit we can extract the model we need: 
+Let's modify `keep` a little bit so we can extract the models we need: 
 
 ```{r}
 # Here's the keep source code
@@ -144,7 +144,7 @@ keep
 ```
 
 ```{r}
-# Let's twek it a little bit
+# Let's tweak it a little bit
 keep_index <- function(.x, .p, ...) {
   sel <- purrr:::probe(.x, .p, ...)
   which(sel)
@@ -171,6 +171,6 @@ spec <- map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.
 keep(sens, map_lgl(sens, ~ .x %in% spec))
 ```
 
-So, I guess we'll go for model number `r keep(sens, map_lgl(sens, ~ .x %in% spec))`!
+So, I guess we'll go for model(s) number `r keep(sens, map_lgl(sens, ~ .x %in% spec))`!
 
 ![](https://media.giphy.com/media/ohdY5OaQmUmVW/giphy.gif)

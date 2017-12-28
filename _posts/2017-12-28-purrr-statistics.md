@@ -49,7 +49,7 @@ map(l, shapiro.test) %>% keep(~ .x$p.value > 0.05)
     ##  Shapiro-Wilk normality test
     ## 
     ## data:  .x[[i]]
-    ## W = 0.9259, p-value = 0.4088
+    ## W = 0.91541, p-value = 0.3203
 
 Also, `map_if` allows you to map only on numeric variables in your
 data.frame:
@@ -245,7 +245,7 @@ Is the “Sensivity” for all models above 0.8?
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% every(~ .x > 0.8)
 ```
 
-    ## [1] TRUE
+    ## [1] FALSE
 
 Is the “Specificity” for all models above 0.8?
 
@@ -257,7 +257,7 @@ map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% every(~ .x > 0.8)
 
 ### keep\_index
 
-Let’s modify `keep` a little bit we can extract the model we need:
+Let’s modify `keep` a little bit so we can extract the models we need:
 
 ``` r
 # Here's the keep source code
@@ -271,7 +271,7 @@ keep
     ## <environment: namespace:purrr>
 
 ``` r
-# Let's twek it a little bit
+# Let's tweak it a little bit
 keep_index <- function(.x, .p, ...) {
   sel <- purrr:::probe(.x, .p, ...)
   which(sel)
@@ -285,7 +285,7 @@ So, which are the models with a sensitivity superior to
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% keep_index(~ .x > 0.85)
 ```
 
-    ## [1]  2  5  7 10 11 14 16 19
+    ## [1]  4  5  7  9 12 14 16 17
 
 And the models with a specificity superior to
 0.7?
@@ -294,7 +294,7 @@ And the models with a specificity superior to
 map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.7)
 ```
 
-    ## [1]  1  2  4 10 11 12 15 16
+    ## [1]  1  7 16
 
 Which models are in
 both?
@@ -305,8 +305,8 @@ spec <- map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.
 keep(sens, map_lgl(sens, ~ .x %in% spec))
 ```
 
-    ## [1]  2 10 11 16
+    ## [1]  7 16
 
-So, I guess we’ll go for model number 2, 10, 11, 16\!
+So, I guess we’ll go for model(s) number 7, 16\!
 
 ![](https://media.giphy.com/media/ohdY5OaQmUmVW/giphy.gif)
