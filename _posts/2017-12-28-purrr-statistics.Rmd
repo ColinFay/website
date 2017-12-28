@@ -117,7 +117,7 @@ w_prediction <- map2(validation, prediction, ~ mutate(.x, prediction = .y))
 
 Now let's map a conf matrix on all these results:
 
-```{r}
+```{r message= FALSE, warning=FALSE}
 library(caret)
 conf_mats <- map(w_prediction, ~ confusionMatrix(.x$prediction, .x$survived))
 ```
@@ -151,7 +151,7 @@ keep_index <- function(.x, .p, ...) {
 }
 ```
 
-So, which are the model with a sensitivity superior to 0.85? 
+So, which are the models with a sensitivity superior to 0.85? 
 
 ```{r}
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% keep_index(~ .x > 0.85)

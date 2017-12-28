@@ -49,7 +49,7 @@ map(l, shapiro.test) %>% keep(~ .x$p.value > 0.05)
     ##  Shapiro-Wilk normality test
     ## 
     ## data:  .x[[i]]
-    ## W = 0.9603, p-value = 0.7893
+    ## W = 0.9259, p-value = 0.4088
 
 Also, `map_if` allows you to map only on numeric variables in your
 data.frame:
@@ -236,20 +236,6 @@ Now let’s map a conf matrix on all these results:
 
 ``` r
 library(caret)
-```
-
-    ## Loading required package: lattice
-
-    ## Loading required package: ggplot2
-
-    ## 
-    ## Attaching package: 'caret'
-
-    ## The following object is masked from 'package:purrr':
-    ## 
-    ##     lift
-
-``` r
 conf_mats <- map(w_prediction, ~ confusionMatrix(.x$prediction, .x$survived))
 ```
 
@@ -292,14 +278,14 @@ keep_index <- function(.x, .p, ...) {
 }
 ```
 
-So, which are the model with a sensitivity superior to
+So, which are the models with a sensitivity superior to
 0.85?
 
 ``` r
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% keep_index(~ .x > 0.85)
 ```
 
-    ## [1]  1  4  8 20
+    ## [1]  2  5  7 10 11 14 16 19
 
 And the models with a specificity superior to
 0.7?
@@ -308,7 +294,7 @@ And the models with a specificity superior to
 map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.7)
 ```
 
-    ## [1]  3  8  9 10 12 13
+    ## [1]  1  2  4 10 11 12 15 16
 
 Which models are in
 both?
@@ -319,8 +305,8 @@ spec <- map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.
 keep(sens, map_lgl(sens, ~ .x %in% spec))
 ```
 
-    ## [1] 8
+    ## [1]  2 10 11 16
 
-So, I guess we’ll go for model number 8\!
+So, I guess we’ll go for model number 2, 10, 11, 16\!
 
 ![](https://media.giphy.com/media/ohdY5OaQmUmVW/giphy.gif)
