@@ -18,11 +18,19 @@ ___
 
 ### Author
 
+#### _attempt_
+
+ A friendlier error, warning and message handler for R, based on {purrr} mappers and {rlang} 
+
++ [Documentation](https://cran.r-project.org/web/packages/attempt/attempt.pdf).
++ [Official release on CRAN](https://CRAN.R-project.org/package=attempt)
++ [Dev version on GitHub](https://github.com/ColinFay/attempt)
+
 #### _proustr_
 
 Tools for Doing Natural Language Processing with Proust's Novels 
 
-+ ([http://proustr.colinfay.me/](http://proustr.colinfay.me/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf)).
++ [http://proustr.colinfay.me/](http://proustr.colinfay.me/) & [Documentation](https://cran.r-project.org/web/packages/proustr/proustr.pdf).
 + [Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
 + [Dev version on GitHub](https://github.com/ColinFay/proustr)
 
@@ -40,12 +48,6 @@ String distance calculation the tidy way.
 + [Documentation](https://cran.r-project.org/web/packages/tidystringdist/vignettes/Getting_started.html)).
 + [Official release on CRAN](https://cran.r-project.org/package=tidystringdist)
 + [Dev version on GitHub](https://github.com/ColinFay/tidystringdist)
-
-#### _trycatchthis_
-
- A friendlier error, warning and message handler for R, based on {purrr} mappers and {rlang} 
-
-+ [Dev version on GitHub](https://github.com/ColinFay/trycatchthis)
 
 #### _wtfismyip_
 
