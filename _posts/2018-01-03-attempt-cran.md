@@ -9,10 +9,11 @@ output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
 
-New year resolution: [writing one package a
-month](https://twitter.com/_ColinFay/status/945916988433543168). Let’s
-launch this with {attempt}, a package which extends and facilitates
-condition handling.
+2018 ew year resolution: [writing one package a
+month](https://twitter.com/_ColinFay/status/945916988433543168) 🎉
+
+Let’s launch this with {attempt}, a package which extends and
+facilitates condition handling.
 
 <!--more-->
 
