@@ -42,14 +42,14 @@ map_if(iris, is.numeric, shapiro.test)
 As said on Twitter, this might be [p.hacking](https://twitter.com/HBossier/status/943480783288889344), but here's how you can do a `cor.test` for all columns in a data.frame, with a little help from `tidystringdist` and `broom` : 
 
 ```{r}
-library(tidystringdist)
-comb <- tidy_comb_all(names(iris))
+library(tidystringdist) # Works since v0.1.2 
+comb <- tidy_comb_all(names(airquality))
 knitr::kable(comb)
 ```
 
 
 ```{r}
-bulk_cor <- pmap(comb, ~ cor.test(iris[[.x]], iris[[.y]])) %>% 
+bulk_cor <- pmap(comb, ~ cor.test(airquality[[.x]], airquality[[.y]])) %>% 
   map_df(broom::tidy) %>% 
   cbind(comb, .)
 
@@ -63,7 +63,7 @@ knitr::kable(bulk_cor, digits = 3)
 Let's build a linear model of all possible iris combinations: 
 
 ```{r warning = FALSE, message = FALSE}
-res <- pmap(comb, ~ lm(iris[[.x]] ~ iris[[.y]]))
+res <- pmap(comb, ~ lm(airquality[[.x]] ~ airquality[[.y]]))
 get_rsquared <- compose(as_mapper(~ .x$r.squared), summary)
 map_dbl(res, get_rsquared)
 ```

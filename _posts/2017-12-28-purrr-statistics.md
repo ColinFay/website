@@ -49,7 +49,7 @@ map(l, shapiro.test) %>% keep(~ .x$p.value > 0.05)
     ##  Shapiro-Wilk normality test
     ## 
     ## data:  .x[[i]]
-    ## W = 0.91541, p-value = 0.3203
+    ## W = 0.95162, p-value = 0.6877
 
 Also, `map_if` allows you to map only on numeric variables in your
 data.frame:
@@ -126,44 +126,54 @@ here’s how you can do a `cor.test` for all columns in a data.frame, with
 a little help from `tidystringdist` and `broom` :
 
 ``` r
-library(tidystringdist)
-comb <- tidy_comb_all(names(iris))
+library(tidystringdist) # Works since v0.1.2 
+comb <- tidy_comb_all(names(airquality))
 knitr::kable(comb)
 ```
 
-| V1           | V2           |
-| :----------- | :----------- |
-| Sepal.Length | Sepal.Width  |
-| Sepal.Length | Petal.Length |
-| Sepal.Length | Petal.Width  |
-| Sepal.Length | Species      |
-| Sepal.Width  | Petal.Length |
-| Sepal.Width  | Petal.Width  |
-| Sepal.Width  | Species      |
-| Petal.Length | Petal.Width  |
-| Petal.Length | Species      |
-| Petal.Width  | Species      |
+| V1      | V2      |
+| :------ | :------ |
+| Ozone   | Solar.R |
+| Ozone   | Wind    |
+| Ozone   | Temp    |
+| Ozone   | Month   |
+| Ozone   | Day     |
+| Solar.R | Wind    |
+| Solar.R | Temp    |
+| Solar.R | Month   |
+| Solar.R | Day     |
+| Wind    | Temp    |
+| Wind    | Month   |
+| Wind    | Day     |
+| Temp    | Month   |
+| Temp    | Day     |
+| Month   | Day     |
 
 ``` r
-bulk_cor <- pmap(comb, ~ cor.test(iris[[.x]], iris[[.y]])) %>% 
+bulk_cor <- pmap(comb, ~ cor.test(airquality[[.x]], airquality[[.y]])) %>% 
   map_df(broom::tidy) %>% 
   cbind(comb, .)
 
 knitr::kable(bulk_cor, digits = 3)
 ```
 
-| V1           | V2           | estimate |     statistic | p.value | parameter | conf.low | conf.high | method                               | alternative |
-| :----------- | :----------- | -------: | ------------: | ------: | --------: | -------: | --------: | :----------------------------------- | :---------- |
-| Sepal.Length | Sepal.Width  |    1.000 | 816414566.780 |   0.000 |       148 |    1.000 |     1.000 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Length | Petal.Length |    0.872 |        21.646 |   0.000 |       148 |    0.827 |     0.906 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Length | Petal.Width  |  \-0.428 |       \-5.768 |   0.000 |       148 |  \-0.551 |   \-0.288 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Length | Species      |    0.963 |        43.387 |   0.000 |       148 |    0.949 |     0.973 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Width  | Petal.Length |    0.818 |        17.296 |   0.000 |       148 |    0.757 |     0.865 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Width  | Petal.Width  |  \-0.366 |       \-4.786 |   0.000 |       148 |  \-0.497 |   \-0.219 | Pearson’s product-moment correlation | two.sided   |
-| Sepal.Width  | Species      |    1.000 | 577292276.430 |   0.000 |       148 |    1.000 |     1.000 | Pearson’s product-moment correlation | two.sided   |
-| Petal.Length | Petal.Width  |  \-0.118 |       \-1.440 |   0.152 |       148 |  \-0.273 |     0.044 | Pearson’s product-moment correlation | two.sided   |
-| Petal.Length | Species      |    0.818 |        17.296 |   0.000 |       148 |    0.757 |     0.865 | Pearson’s product-moment correlation | two.sided   |
-| Petal.Width  | Species      |  \-0.366 |       \-4.786 |   0.000 |       148 |  \-0.497 |   \-0.219 | Pearson’s product-moment correlation | two.sided   |
+| V1      | V2      | estimate | statistic | p.value | parameter | conf.low | conf.high | method                               | alternative |
+| :------ | :------ | -------: | --------: | ------: | --------: | -------: | --------: | :----------------------------------- | :---------- |
+| Ozone   | Solar.R |    0.348 |     3.880 |   0.000 |       109 |    0.173 |     0.502 | Pearson’s product-moment correlation | two.sided   |
+| Ozone   | Wind    |  \-0.602 |   \-8.040 |   0.000 |       114 |  \-0.706 |   \-0.471 | Pearson’s product-moment correlation | two.sided   |
+| Ozone   | Temp    |    0.698 |    10.418 |   0.000 |       114 |    0.591 |     0.781 | Pearson’s product-moment correlation | two.sided   |
+| Ozone   | Month   |    0.165 |     1.781 |   0.078 |       114 |  \-0.018 |     0.337 | Pearson’s product-moment correlation | two.sided   |
+| Ozone   | Day     |  \-0.013 |   \-0.141 |   0.888 |       114 |  \-0.195 |     0.169 | Pearson’s product-moment correlation | two.sided   |
+| Solar.R | Wind    |  \-0.057 |   \-0.683 |   0.496 |       144 |  \-0.217 |     0.107 | Pearson’s product-moment correlation | two.sided   |
+| Solar.R | Temp    |    0.276 |     3.444 |   0.001 |       144 |    0.119 |     0.419 | Pearson’s product-moment correlation | two.sided   |
+| Solar.R | Month   |  \-0.075 |   \-0.906 |   0.366 |       144 |  \-0.235 |     0.088 | Pearson’s product-moment correlation | two.sided   |
+| Solar.R | Day     |  \-0.150 |   \-1.824 |   0.070 |       144 |  \-0.305 |     0.012 | Pearson’s product-moment correlation | two.sided   |
+| Wind    | Temp    |  \-0.458 |   \-6.331 |   0.000 |       151 |  \-0.575 |   \-0.323 | Pearson’s product-moment correlation | two.sided   |
+| Wind    | Month   |  \-0.178 |   \-2.227 |   0.027 |       151 |  \-0.328 |   \-0.020 | Pearson’s product-moment correlation | two.sided   |
+| Wind    | Day     |    0.027 |     0.334 |   0.739 |       151 |  \-0.132 |     0.185 | Pearson’s product-moment correlation | two.sided   |
+| Temp    | Month   |    0.421 |     5.703 |   0.000 |       151 |    0.281 |     0.543 | Pearson’s product-moment correlation | two.sided   |
+| Temp    | Day     |  \-0.131 |   \-1.619 |   0.108 |       151 |  \-0.283 |     0.029 | Pearson’s product-moment correlation | two.sided   |
+| Month   | Day     |  \-0.008 |   \-0.098 |   0.922 |       151 |  \-0.166 |     0.151 | Pearson’s product-moment correlation | two.sided   |
 
 ## Some Machine Learning
 
@@ -172,13 +182,14 @@ knitr::kable(bulk_cor, digits = 3)
 Let’s build a linear model of all possible iris combinations:
 
 ``` r
-res <- pmap(comb, ~ lm(iris[[.x]] ~ iris[[.y]]))
+res <- pmap(comb, ~ lm(airquality[[.x]] ~ airquality[[.y]]))
 get_rsquared <- compose(as_mapper(~ .x$r.squared), summary)
 map_dbl(res, get_rsquared)
 ```
 
-    ##  [1] 1.00000000 0.75995465 0.18356092 0.92710984 0.66902769 0.13404820
-    ##  [7] 1.00000000 0.01382265 0.66902769 0.13404820
+    ##  [1] 1.213419e-01 3.618582e-01 4.877072e-01 2.706660e-02 1.749177e-04
+    ##  [6] 3.225293e-03 7.608786e-02 5.670205e-03 2.258257e-02 2.097529e-01
+    ## [11] 3.178824e-02 7.388015e-04 1.771966e-01 1.705458e-02 6.338966e-05
 
 Any chance there’s a r.squared above 0.5 ?
 
@@ -186,7 +197,7 @@ Any chance there’s a r.squared above 0.5 ?
 map(res, get_rsquared) %>% some(~ .x > 0.5)
 ```
 
-    ## [1] TRUE
+    ## [1] FALSE
 
 ### rpart
 
@@ -285,7 +296,7 @@ So, which are the models with a sensitivity superior to
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% keep_index(~ .x > 0.85)
 ```
 
-    ## [1]  4  5  7  9 12 14 16 17
+    ##  [1]  1  2  3  4  8 11 12 15 16 17 18 20
 
 And the models with a specificity superior to
 0.7?
@@ -294,7 +305,7 @@ And the models with a specificity superior to
 map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.7)
 ```
 
-    ## [1]  1  7 16
+    ## [1]  1  4 11 13 14
 
 Which models are in
 both?
@@ -305,8 +316,8 @@ spec <- map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.
 keep(sens, map_lgl(sens, ~ .x %in% spec))
 ```
 
-    ## [1]  7 16
+    ## [1]  1  4 11
 
-So, I guess we’ll go for model(s) number 7, 16\!
+So, I guess we’ll go for model(s) number 1, 4, 11\!
 
 ![](https://media.giphy.com/media/ohdY5OaQmUmVW/giphy.gif)
