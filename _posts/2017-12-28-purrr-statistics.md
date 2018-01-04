@@ -4,7 +4,7 @@ author: colin_fay
 post_date: 2017-12-28
 layout: single
 permalink: /purrr-statistics/
-categories: cat
+categories: r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
@@ -49,7 +49,7 @@ map(l, shapiro.test) %>% keep(~ .x$p.value > 0.05)
     ##  Shapiro-Wilk normality test
     ## 
     ## data:  .x[[i]]
-    ## W = 0.95162, p-value = 0.6877
+    ## W = 0.92489, p-value = 0.3996
 
 Also, `map_if` allows you to map only on numeric variables in your
 data.frame:
@@ -296,7 +296,7 @@ So, which are the models with a sensitivity superior to
 map_dbl(conf_mats, ~ .x$byClass["Sensitivity"]) %>% keep_index(~ .x > 0.85)
 ```
 
-    ##  [1]  1  2  3  4  8 11 12 15 16 17 18 20
+    ## [1]  4  7 10 11 12 15 18 20
 
 And the models with a specificity superior to
 0.7?
@@ -305,7 +305,7 @@ And the models with a specificity superior to
 map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.7)
 ```
 
-    ## [1]  1  4 11 13 14
+    ## [1]  1  4  8 13 18
 
 Which models are in
 both?
@@ -316,8 +316,8 @@ spec <- map_dbl(conf_mats, ~ .x$byClass["Specificity"]) %>% keep_index(~ .x > 0.
 keep(sens, map_lgl(sens, ~ .x %in% spec))
 ```
 
-    ## [1]  1  4 11
+    ## [1]  4 18
 
-So, I guess we’ll go for model(s) number 1, 4, 11\!
+So, I guess we’ll go for model(s) number 4, 18\!
 
 ![](https://media.giphy.com/media/ohdY5OaQmUmVW/giphy.gif)

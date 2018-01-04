@@ -4,7 +4,7 @@ author: colin_fay
 post_date: 2017-12-28
 layout: single
 permalink: /purrr-statistics/
-categories: cat
+categories: r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
