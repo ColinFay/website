@@ -31,6 +31,14 @@ In 2016, Data Bzh won the Trophée Open Data 2016 ([More on that](http://data-bz
 
 [Data Bzh](http://data-bzh.fr/)
 
+## Cofounder
+
+### Breizh Data Club
+
+The Breizh Data Club is a professionnal association that aims at gathering data lovers from Brittany and beyond. 
+
+[Breizh Data Club](http://breizhdataclub.org/)
+
 ***
 
 # Work Experience

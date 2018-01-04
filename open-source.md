@@ -18,15 +18,19 @@ ___
 
 ### Author
 
-#### _attempt_
+#### Development and code helpers
 
- A friendlier error, warning and message handler for R, based on {purrr} mappers and {rlang} 
++ _attempt_
+
+A friendlier condition handler, inspired by 'purrr' mappers and based on 'rlang'.
 
 + [Documentation](https://cran.r-project.org/web/packages/attempt/attempt.pdf).
 + [Official release on CRAN](https://CRAN.R-project.org/package=attempt)
 + [Dev version on GitHub](https://github.com/ColinFay/attempt)
 
-#### _proustr_
+#### Natural Language Processing
+
++ _proustr_
 
 Tools for Doing Natural Language Processing with Proust's Novels 
 
@@ -34,28 +38,30 @@ Tools for Doing Natural Language Processing with Proust's Novels
 + [Official release on CRAN](https://cran.r-project.org/web/packages/proustr/index.html)
 + [Dev version on GitHub](https://github.com/ColinFay/proustr)
 
-#### _lexiquer_
++ _lexiquer_
 
 A wrapper around Lexique3.81, a Natural Language Processing Database for French. 
 
 + [More info on the Lexique project](http://www.lexique.org)
 + [Dev version on GitHub](https://github.com/ColinFay/lexiquer)
 
-#### _tidystringdist_
++ _tidystringdist_
 
 String distance calculation the tidy way.
 
-+ [Documentation](https://cran.r-project.org/web/packages/tidystringdist/vignettes/Getting_started.html)).
++ [Documentation](https://cran.r-project.org/web/packages/tidystringdist/vignettes/Getting_started.html))
 + [Official release on CRAN](https://cran.r-project.org/package=tidystringdist)
 + [Dev version on GitHub](https://github.com/ColinFay/tidystringdist)
 
-#### _wtfismyip_
+#### Web and API
+
++ _wtfismyip_
 
  A simple, dependency free wrapper around wtfismyip.
  
 + [Dev version on GitHub](https://github.com/ColinFay/wtfismyip)
 
-#### _rpinterest_
++ _rpinterest_
 
 An R package to access the Pinterest API 
 
@@ -63,7 +69,7 @@ An R package to access the Pinterest API
 + [Official release on CRAN](https://cran.r-project.org/web/packages/rpinterest/index.html)
 + [Dev version on GitHub](https://github.com/ColinFay/rpinterest)
 
-#### _rgeoapi_
++ _rgeoapi_
 
 This package requests informations from the french [GéoAPI](https://api.gouv.fr/api/geoapi.html) inside R 
 
@@ -71,7 +77,7 @@ This package requests informations from the french [GéoAPI](https://api.gouv.fr
 + [Official release on CRAN](https://cran.r-project.org/web/packages/rgeoapi/index.html)
 + [Dev version on GitHub](https://github.com/ColinFay/rgeoapi)
 
-#### _languagelayeR_
++ _languagelayeR_
 
 Access the languagelayer API with R 
 
@@ -81,14 +87,14 @@ Access the languagelayer API with R
 
 ### Contributor
 
-#### _naniar_
++ _naniar_
 
 Tidy data structures, summaries, and visualisations for missing data. 
 
 + [Official release on CRAN](https://cran.r-project.org/web/packages/naniar/index.html)
 + [Dev version on GitHub](https://github.com/njtierney/naniar)
 
-#### _XKCDdata_
++ _XKCDdata_
 
 Download data from individual XKCD comic. 
 
@@ -101,7 +107,7 @@ ___
 
 ### Author 
 
-#### _talkR_
++ _talkR_
 
 Bots retweeting language specific R hashtags. 
 
@@ -114,7 +120,7 @@ ___
 
 ### Author
 
-#### _LoremJulia_
++ _LoremJulia_
 
 A basic lorem ipsum generator made in Julia. 
 
@@ -124,7 +130,7 @@ ___
 
 <div id="database"><h2>Database</h2></div>
 
-#### _Twitter Corpus_
++ _Twitter Corpus_
 
 An automatically collected tweets database. Free to use. 
 
@@ -139,7 +145,7 @@ Various open data datasets.
 ___
 <div id="fun"><h2>Just for fun </h2></div>
 
-#### _tuRbonegro_
++ _tuRbonegro_
 
 This R package plays a random Turbonegro clip in your R Viewer ([More info](http://colinfay.me/rstats-turbonegro/)).
 
