@@ -1,0 +1,735 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>R and active binding (and pizza) - Colin FAY</title>
+
+
+
+
+<meta name="description" content="Active binding, also known as “That cool stuff from {R6}”.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="R and active binding (and pizza)">
+
+
+  <link rel="canonical" href="http://localhost:4000/ractivebinfing/">
+  <meta property="og:url" content="http://localhost:4000/ractivebinfing/">
+
+
+
+  <meta property="og:description" content="Active binding, also known as “That cool stuff from {R6}”.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="R and active binding (and pizza)">
+  <meta name="twitter:description" content="Active binding, also known as “That cool stuff from {R6}”.">
+  <meta name="twitter:url" content="http://localhost:4000/ractivebinfing/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-08-12T00:00:00+02:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">R and active binding (and pizza)</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="R and active binding (and pizza)">
+    <meta itemprop="description" content="Active binding, also known as “That cool stuff from {R6}”.">
+    <meta itemprop="datePublished" content="August 12, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">R and active binding (and pizza)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Active binding, also known as “That cool stuff from {R6}”.</p>
+
+<!--more-->
+
+<h2 id="what-on-earth-is-binding">What on earth is binding?</h2>
+
+<p>First things first: what is binding? You already know the answer to that question: it’s the simple act of <strong>assigning a value to a name/symbol</strong>. For example:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># With</span><span class="w">
+</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="c1"># You bind the value 5 to the name `a`</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Yes, this is as simple as that. In other words, you assign the symbol <code class="highlighter-rouge">a</code> to a memory slot on your computer which contains the value 5. Each time you evaluate the symbol, R goes and gets this value in memory.</p>
+
+<h2 id="so-active-binding">So, active binding?</h2>
+
+<p>A cool feature of {R6} is <code class="highlighter-rouge">active binding</code>, which is the process of using a symbol which looks like a variable but behave as a function. You can create these with the <code class="highlighter-rouge">active</code> method when defining your class.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">R</span><span class="m">6</span><span class="p">)</span><span class="w">
+</span><span class="n">ClassyClass</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">R</span><span class="m">6</span><span class="n">Class</span><span class="p">(</span><span class="s2">"ClassyClass"</span><span class="p">,</span><span class="w"> 
+                           </span><span class="n">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+                             </span><span class="n">classy_word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+                               </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Classy"</span><span class="p">,</span><span class="s2">"Modish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"High-Class"</span><span class="p">,</span><span class="s2">"Dashing"</span><span class="p">,</span><span class="s2">"Posh"</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+                               </span><span class="k">else</span><span class="w"> </span><span class="n">cat</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Your classy word is"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w">
+                             </span><span class="p">}</span><span class="w">
+                           </span><span class="p">))</span><span class="w">
+</span><span class="n">classy_object</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ClassyClass</span><span class="o">$</span><span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="n">classy_object</span><span class="o">$</span><span class="n">classy_word</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Dashing"</span><span class="w">
+</span><span class="n">classy_object</span><span class="o">$</span><span class="n">classy_word</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Classy"</span><span class="w">
+
+</span><span class="n">classy_object</span><span class="o">$</span><span class="n">classy_word</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"Mod"</span><span class="w">
+</span><span class="n">Your</span><span class="w"> </span><span class="n">classy</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">Mod</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Great. As you can see, you can access <code class="highlighter-rouge">classy_word</code> like a common variable, but it behaves like a function, randomly printing a word from a list, or printing the word you assign it. As you can see, the <strong>binding</strong> is not fixed, i.e. not on a definite value, but <strong>active</strong>, as it runs a function each time you call this symbol.</p>
+
+<p>Well, can we mimick it without {R6}?</p>
+
+<h2 id="creating-active-binding-in-r">Creating active binding in R</h2>
+
+<p>The naive approach would be to run :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classy_word</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Classy"</span><span class="p">,</span><span class="s2">"Modish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"High-Class"</span><span class="p">,</span><span class="s2">"Dashing"</span><span class="p">,</span><span class="s2">"Posh"</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">cat</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Your classy word is"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># It works as a regular function </span><span class="w">
+
+</span><span class="n">classy_word</span><span class="p">()</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Dashing"</span><span class="w">
+
+</span><span class="c1"># But if you try to call it without the parentheses : </span><span class="w">
+
+</span><span class="n">classy_word</span><span class="w">
+</span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Classy"</span><span class="p">,</span><span class="s2">"Modish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"High-Class"</span><span class="p">,</span><span class="s2">"Dashing"</span><span class="p">,</span><span class="s2">"Posh"</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">cat</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Your classy word is"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="c1">#It describes you the function</span><span class="w">
+</span></code></pre></div></div>
+
+<p>But the good news is: you can make the <code class="highlighter-rouge">classy_word</code> symbol, alone, behave as the <code class="highlighter-rouge">classy_word</code> from the {R6} class. For this, we just need the <code class="highlighter-rouge">makeActiveBinding()</code> function.</p>
+
+<p>This function takes three args:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">sym</code>: the symbol you want to bind the function to</li>
+  <li><code class="highlighter-rouge">fun</code>: The function you want to bind the symbol to</li>
+  <li><code class="highlighter-rouge">env</code>: the environement the symbol will be binded to</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">makeActiveBinding</span><span class="p">(</span><span class="n">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"classy_word"</span><span class="p">,</span><span class="w"> 
+                  </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Classy"</span><span class="p">,</span><span class="s2">"Modish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"High-Class"</span><span class="p">,</span><span class="s2">"Dashing"</span><span class="p">,</span><span class="s2">"Posh"</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="n">cat</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Your classy word is"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">},</span><span class="w"> 
+                  </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.GlobalEnv</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">classy_word</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Modish"</span><span class="w">
+</span><span class="n">classy_word</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"High-Class"</span><span class="w">
+</span><span class="n">classy_word</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"Modish"</span><span class="w">
+</span><span class="n">Your</span><span class="w"> </span><span class="n">classy</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">Modish</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Ok, not really useful,I know… But you can think of more useful use, like a random sampler:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">makeActiveBinding</span><span class="p">(</span><span class="n">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"random_iris"</span><span class="p">,</span><span class="w"> 
+                  </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+                      </span><span class="nf">return</span><span class="p">(</span><span class="n">dplyr</span><span class="o">::</span><span class="n">sample_n</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">))</span><span class="w">
+                  </span><span class="p">},</span><span class="w"> 
+                  </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.GlobalEnv</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">random_iris</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">head</span><span class="w">
+    </span><span class="n">Sepal.Length</span><span class="w"> </span><span class="n">Sepal.Width</span><span class="w"> </span><span class="n">Petal.Length</span><span class="w"> </span><span class="n">Petal.Width</span><span class="w">    </span><span class="n">Species</span><span class="w">
+</span><span class="m">36</span><span class="w">           </span><span class="m">5.0</span><span class="w">         </span><span class="m">3.2</span><span class="w">          </span><span class="m">1.2</span><span class="w">         </span><span class="m">0.2</span><span class="w">     </span><span class="n">setosa</span><span class="w">
+</span><span class="m">105</span><span class="w">          </span><span class="m">6.5</span><span class="w">         </span><span class="m">3.0</span><span class="w">          </span><span class="m">5.8</span><span class="w">         </span><span class="m">2.2</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+</span><span class="m">83</span><span class="w">           </span><span class="m">5.8</span><span class="w">         </span><span class="m">2.7</span><span class="w">          </span><span class="m">3.9</span><span class="w">         </span><span class="m">1.2</span><span class="w"> </span><span class="n">versicolor</span><span class="w">
+</span><span class="m">102</span><span class="w">          </span><span class="m">5.8</span><span class="w">         </span><span class="m">2.7</span><span class="w">          </span><span class="m">5.1</span><span class="w">         </span><span class="m">1.9</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+</span><span class="m">28</span><span class="w">           </span><span class="m">5.2</span><span class="w">         </span><span class="m">3.5</span><span class="w">          </span><span class="m">1.5</span><span class="w">         </span><span class="m">0.2</span><span class="w">     </span><span class="n">setosa</span><span class="w">
+</span><span class="m">106</span><span class="w">          </span><span class="m">7.6</span><span class="w">         </span><span class="m">3.0</span><span class="w">          </span><span class="m">6.6</span><span class="w">         </span><span class="m">2.1</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+
+</span><span class="n">random_iris</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">head</span><span class="w">
+    </span><span class="n">Sepal.Length</span><span class="w"> </span><span class="n">Sepal.Width</span><span class="w"> </span><span class="n">Petal.Length</span><span class="w"> </span><span class="n">Petal.Width</span><span class="w">    </span><span class="n">Species</span><span class="w">
+</span><span class="m">61</span><span class="w">           </span><span class="m">5.0</span><span class="w">         </span><span class="m">2.0</span><span class="w">          </span><span class="m">3.5</span><span class="w">         </span><span class="m">1.0</span><span class="w"> </span><span class="n">versicolor</span><span class="w">
+</span><span class="m">140</span><span class="w">          </span><span class="m">6.9</span><span class="w">         </span><span class="m">3.1</span><span class="w">          </span><span class="m">5.4</span><span class="w">         </span><span class="m">2.1</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+</span><span class="m">95</span><span class="w">           </span><span class="m">5.6</span><span class="w">         </span><span class="m">2.7</span><span class="w">          </span><span class="m">4.2</span><span class="w">         </span><span class="m">1.3</span><span class="w"> </span><span class="n">versicolor</span><span class="w">
+</span><span class="m">107</span><span class="w">          </span><span class="m">4.9</span><span class="w">         </span><span class="m">2.5</span><span class="w">          </span><span class="m">4.5</span><span class="w">         </span><span class="m">1.7</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+</span><span class="m">8</span><span class="w">            </span><span class="m">5.0</span><span class="w">         </span><span class="m">3.4</span><span class="w">          </span><span class="m">1.5</span><span class="w">         </span><span class="m">0.2</span><span class="w">     </span><span class="n">setosa</span><span class="w">
+</span><span class="m">112</span><span class="w">          </span><span class="m">6.4</span><span class="w">         </span><span class="m">2.7</span><span class="w">          </span><span class="m">5.3</span><span class="w">         </span><span class="m">1.9</span><span class="w">  </span><span class="n">virginica</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>And of course, it can be used in a larger function call :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">random_iris</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> 
+ 
+</span></code></pre></div></div>
+
+<p><img src="../uploads/2017/08/random_iris1.png" alt="" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">random_iris</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> 
+ 
+</span></code></pre></div></div>
+
+<p><img src="../uploads/2017/08/random_iris2.png" alt="" /></p>
+
+<h2 id="quick-aside-on-environments">Quick aside on environments</h2>
+
+<p>The third arg of <code class="highlighter-rouge">makeActiveBinding</code> is <code class="highlighter-rouge">env</code>, the environment the symbol is binded to. That means you can bind the same symbol to different functions in different environments.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">new.env</span><span class="p">()</span><span class="w">
+</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">new.env</span><span class="p">()</span><span class="w">
+</span><span class="n">makeActiveBinding</span><span class="p">(</span><span class="n">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example"</span><span class="p">,</span><span class="w">
+                  </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">  
+                  </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w">
+</span><span class="n">makeActiveBinding</span><span class="p">(</span><span class="n">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example"</span><span class="p">,</span><span class="w">
+                  </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w">  
+                  </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">
+
+</span><span class="n">a</span><span class="o">$</span><span class="n">example</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"a"</span><span class="w">
+</span><span class="n">b</span><span class="o">$</span><span class="n">example</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"b"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Yes, this is what is happening in {R6} :)</p>
+
+<h2 id="pizza-time">PIZZA TIME</h2>
+
+<p>And now, just to continue the <a href="http://colinfay.me/playing-r-infix-functions/">emoji-pizza</a> R work, here is an active binding to the pizza symbol.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">makeActiveBinding</span><span class="p">(</span><span class="n">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"🍕"</span><span class="p">,</span><span class="w"> 
+                  </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">value</span><span class="p">){</span><span class="w">
+                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="n">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"California-style pizza"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Chicago-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Chocolate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Detroit-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Focaccia al rosmarino Iranian"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Greek"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hawaiian"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Lazio Matzah"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Meatball"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Mexican"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Neapolitan"</span><span class="p">,</span><span class="w"> </span><span class="s2">"New Haven-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"New York-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Pictou County"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Pizza quattro stagioni"</span><span class="p">,</span><span class="w"> </span><span class="s2">"al taglio"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cake"</span><span class="p">,</span><span class="w"> </span><span class="s2">"capricciosa"</span><span class="p">,</span><span class="w"> </span><span class="s2">"marinara"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pugliese Pizzetta Quad City-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sardenara Seafood"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sicilian"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sushi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"St. Louis-style"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Tomato pie White clam pie"</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+                      </span><span class="n">cat</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s2">"Your special pizza type is"</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">))</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                  </span><span class="p">},</span><span class="w"> 
+                  </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.GlobalEnv</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Pizza emoji is a special character so you have to surround it with backticks</span><span class="w">
+
+</span><span class="n">`🍕`</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Pizza quattro stagioni"</span><span class="w">
+</span><span class="n">`🍕`</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"St. Louis-style"</span><span class="w">
+</span><span class="n">`🍕`</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"New York-style"</span><span class="w">
+</span><span class="n">`🍕`</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"Vegetarian"</span><span class="w">
+</span><span class="n">Your</span><span class="w"> </span><span class="n">special</span><span class="w"> </span><span class="n">pizza</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">Vegetarian</span><span class="w">
+</span></code></pre></div></div>
+
+<p>And… bon appetit !</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-en" class="page__taxonomy-item" rel="tag">r-blog-en</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-08-12T00:00:00+02:00">August 12, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text=R and active binding (and pizza) http://localhost:4000/ractivebinfing/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/ractivebinfing/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/ractivebinfing/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/ractivebinfing/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/languagelayer110/" class="pagination--pager" title="languagelayeR 1.1.0 is now on CRAN
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/loremjulia/" class="pagination--pager" title="LoremJulia - A lorem ipsum generator made in Julia
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>

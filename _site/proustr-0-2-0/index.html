@@ -1,0 +1,828 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>{proustr} 0.2.0 is on CRAN - Colin FAY</title>
+
+
+
+
+<meta name="description" content="{proustr} 0.2.0 just hit the CRAN yesterday. Here’s the new stuffs just waiting for you.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="{proustr} 0.2.0 is on CRAN">
+
+
+  <link rel="canonical" href="http://localhost:4000/proustr-0-2-0/">
+  <meta property="og:url" content="http://localhost:4000/proustr-0-2-0/">
+
+
+
+  <meta property="og:description" content="{proustr} 0.2.0 just hit the CRAN yesterday. Here’s the new stuffs just waiting for you.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="{proustr} 0.2.0 is on CRAN">
+  <meta name="twitter:description" content="{proustr} 0.2.0 just hit the CRAN yesterday. Here’s the new stuffs just waiting for you.">
+  <meta name="twitter:url" content="http://localhost:4000/proustr-0-2-0/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-09-27T00:00:00+02:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">{proustr} 0.2.0 is on CRAN</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="{proustr} 0.2.0 is on CRAN">
+    <meta itemprop="description" content="{proustr} 0.2.0 just hit the CRAN yesterday. Here’s the new stuffs just waiting for you.">
+    <meta itemprop="datePublished" content="September 27, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">{proustr} 0.2.0 is on CRAN
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>{proustr} 0.2.0 just hit the CRAN yesterday. Here’s the new stuffs just waiting for you.</p>
+
+<!--more-->
+
+<p align="center"><img src="https://github.com/ColinFay/proustr/blob/master/proustr_hex.png?raw=true" width="250" /></p>
+
+<h2 id="about-proustr">About {proustr}</h2>
+
+<p>This package is designed to give you access to tools for Natural Language Processing in French, and (most importantly) to texts from Marcel Proust’s collection “A La Recherche Du Temps Perdu”. The idea behing {proustr} is to create an environmnet for doing text-mining in French, inside the tidyverse.</p>
+
+<p>Here are the books in the package :</p>
+
+<ul>
+  <li>Du côté de chez Swann (1913): <code class="highlighter-rouge">ducotedechezswann</code>.</li>
+  <li>À l’ombre des jeunes filles en fleurs (1919): <code class="highlighter-rouge">alombredesjeunesfillesenfleurs</code>.</li>
+  <li>Le Côté de Guermantes (1921): <code class="highlighter-rouge">lecotedeguermantes</code>.</li>
+  <li>Sodome et Gomorrhe (1922) : <code class="highlighter-rouge">sodomeetgomorrhe</code>.</li>
+  <li>La Prisonnière (1923) :<code class="highlighter-rouge">laprisonniere</code>.</li>
+  <li>Albertine disparue (1925, also know as : La Fugitive) : <code class="highlighter-rouge">albertinedisparue</code>.</li>
+  <li>Le Temps retrouvé (1927) : <code class="highlighter-rouge">letempretrouve</code>.</li>
+</ul>
+
+<h2 id="find-your-way-into-proustr">Find your way into {proustr}</h2>
+
+<p>{proustr} is divided into two type of functions :</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">proust_*()</code> functions return data objects (books, characters, stop words, random Proust extracts…)</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">pr_*()</code> functions perform actions on the data. <code class="highlighter-rouge">pr</code> is short for p(roust)r, pr(oust), p(rocessing f)r(ench), or anything you can think of :). This shortcode refers to functions like <code class="highlighter-rouge">pr_clean_punc()</code>.</p>
+  </li>
+</ul>
+
+<h2 id="proust_-functions"><code class="highlighter-rouge">proust_*()</code> functions</h2>
+
+<h3 id="proust_books"><code class="highlighter-rouge">proust_books()</code></h3>
+
+<p>Get the tibble with all the books :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">proustr</span><span class="p">)</span><span class="w">
+</span><span class="n">proust_books</span><span class="p">()</span><span class="w">
+</span><span class="c1"># A tibble: 4,690 x 4</span><span class="w">
+                                                                                         </span><span class="n">text</span><span class="w">
+ </span><span class="o">*</span><span class="w">                                                                                      </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w"> </span><span class="s2">"Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux
+ 2 J'appuyais tendrement mes joues contre les belles joues de l'oreiller qui, pleines et fraî
+ 3 Je me rendormais, et parfois je n'avais plus que de courts réveils d'un instant, le temps 
+ 4 Quelquefois, comme Ève naquit d'une côte d'Adam, une femme naissait pendant mon sommeil d'
+ 5 Un homme qui dort tient en cercle autour de lui le fil des heures, l'ordre des années et d
+ 6 "</span><span class="n">Peut</span><span class="o">-</span><span class="err">ê</span><span class="n">tre</span><span class="w"> </span><span class="n">l</span><span class="s1">'immobilité des choses autour de nous leur est-elle imposée par notre certitud
+ 7 Puis renaissait le souvenir d'</span><span class="n">une</span><span class="w"> </span><span class="n">nouvelle</span><span class="w"> </span><span class="n">attitude</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">mur</span><span class="w"> </span><span class="n">filait</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">une</span><span class="w"> </span><span class="n">autre</span><span class="w"> </span><span class="n">directi</span><span class="w">
+ </span><span class="m">8</span><span class="w"> </span><span class="n">Ces</span><span class="w"> </span><span class="err">é</span><span class="n">vocations</span><span class="w"> </span><span class="n">tournoyantes</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">confuses</span><span class="w"> </span><span class="n">ne</span><span class="w"> </span><span class="n">duraient</span><span class="w"> </span><span class="n">jamais</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">quelques</span><span class="w"> </span><span class="n">secondes</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">souvent</span><span class="w">
+ </span><span class="m">9</span><span class="w"> </span><span class="n">Certes</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="s1">'étais bien éveillé maintenant : mon corps avait viré une dernière fois et le bon
+10 "À Combray, tous les jours dès la fin de l'</span><span class="n">apr</span><span class="err">è</span><span class="n">s</span><span class="o">-</span><span class="n">midi</span><span class="p">,</span><span class="w"> </span><span class="n">longtemps</span><span class="w"> </span><span class="n">avant</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">moment</span><span class="w"> </span><span class="n">o</span><span class="err">ù</span><span class="w"> </span><span class="n">il</span><span class="w"> </span><span class="n">fau</span><span class="w">
+</span><span class="c1"># ... with 4,680 more rows, and 3 more variables: book &lt;chr&gt;, volume &lt;chr&gt;, year &lt;dbl&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="proust_characters"><code class="highlighter-rouge">proust_characters()</code></h3>
+
+<p><code class="highlighter-rouge">proust_characters</code> returns a tibble with each characters from the books.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proust_characters</span><span class="p">()</span><span class="w">
+</span><span class="c1"># A tibble: 461 x 1</span><span class="w">
+             </span><span class="n">perso</span><span class="w">
+ </span><span class="o">*</span><span class="w">           </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">            </span><span class="n">A.J.</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="n">Acad</span><span class="err">é</span><span class="n">micien</span><span class="w"> 
+ </span><span class="m">3</span><span class="w">        </span><span class="n">Adolphe</span><span class="w"> 
+ </span><span class="m">4</span><span class="w">      </span><span class="n">Agrigente</span><span class="w"> 
+ </span><span class="m">5</span><span class="w">      </span><span class="n">Agrigente</span><span class="w"> 
+ </span><span class="m">6</span><span class="w">            </span><span class="n">Aim</span><span class="err">é</span><span class="w">
+ </span><span class="m">7</span><span class="w"> </span><span class="n">Albaret</span><span class="w"> </span><span class="n">C</span><span class="err">é</span><span class="n">leste</span><span class="w">
+ </span><span class="m">8</span><span class="w">          </span><span class="n">Albert</span><span class="w">
+ </span><span class="m">9</span><span class="w">       </span><span class="n">Albertine</span><span class="w">
+</span><span class="m">10</span><span class="w">           </span><span class="n">Albon</span><span class="w">
+</span><span class="c1"># ... with 451 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="proust_random"><code class="highlighter-rouge">proust_random()</code></h3>
+
+<p>If you need to create a quick example for your text-mining exercise, you can get your own Proust text with the <code class="highlighter-rouge">proust_random()</code> function. The number of lines you want to extract is controlled by the <code class="highlighter-rouge">count</code> argument. <code class="highlighter-rouge">collaspe</code> control wether or not you want a tibble back (default is FALSE).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proust_random</span><span class="p">()</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"M. de Norpois sourit avec un léger clignement d'œil, comme s'il s'agissait d'une concupiscence si naturelle qu'on ne pouvait en vouloir à celui qui l'éprouvait, presque d'un commencement de roman qu'il était prêt à absoudre, voire à encourager, avec une indulgence perverse à la Voisenon ou à la Crébillon fils. — Bien des mains de jeunes femmes seraient incapables de faire ce que j'ai vu là, dit le prince en montrant les aquarelles commencées de Mme de Villeparisis."</span><span class="w">
+
+</span><span class="n">proust_random</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"\" Et elle, quand ce même soir elle avait regardé autour d'elle : \" Dire que je ne verrai plus cette chambre, ces livres, ce pianola, toute cette maison, je ne peux pas le croire, et pourtant c'est vrai. J'ai à causer avec lui \", ajouta-t-elle en me montrant d'un air soumis."</span><span class="w">
+
+</span><span class="n">proust_random</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"D'autre part, les gens qui rient si fort de ce qu'ils disent, et qui n'est pas drôle, nous dispensent par là, en prenant à leur charge l'hilarité, d'y participer. — D'autres assurent qu'il est froissé que je ne l'invite pas. C'est de grand cœur."</span><span class="w">
+
+</span><span class="n">proust_random</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"À vrai dire, cette erreur des parents de M. Nous marcherons jusqu'à ce que j'aie trouvé un fiacre qui me convienne. — Vous vouliez me parler de quelque chose, Monsieur ? — Ah ! J'en eus presque le pressentiment en la voyant se hâter d'employer, en parlant, des images si écrites et qui me semblaient réservées pour un autre usage plus sacré et que j'ignorais encore. Cela me fait grand plaisir. dis-je à Andrée. — Oh ! Or, bien qu'il ne fût pas tourné de mon côté, j'étais persuadé qu'il m'avait vu ; tandis qu'il débitait quelque histoire à Mme Swann dont flottait jusque sur un genou du baron le magnifique manteau couleur pensée, les yeux errants de M. de Charlus, pareils à ceux d'un marchand en plein vent qui craint l'arrivée de la Rousse, avaient certainement exploré chaque partie du salon et découvert toutes les personnes qui s'y trouvaient. Mais aussi j'avais vu que ces cellules morales qui composent un être sont plus durables que lui. Je le sais par quelqu'un qui les a vues et qui m'a dit : \" Vous vous trouveriez mal si vous voyiez cela. Le grand plaisir d'être servi par des êtres rachitiques, portant binocle, dont le cas d'exemption se lit sur le visage ! Lucienne et Germaine sont dans le wagon et il y a justement encore de la place ; viens, on ira ensemble au skating \", et s'apprêtaient à lui présenter deux \" calicots \", leurs amants, qui les accompagnaient, quand, devant l'air légèrement gêné de Rachel, elles levèrent curieusement les yeux un peu plus loin, nous aperçurent et s'excusant lui dirent adieu en recevant d'elle un adieu aussi, un peu embarrassé mais amical."</span><span class="w">
+
+</span></code></pre></div></div>
+
+<h3 id="proust_stopwords"><code class="highlighter-rouge">proust_stopwords()</code></h3>
+
+<p>This function returns you a list of stopwords:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proust_stopwords</span><span class="p">()</span><span class="w">
+</span><span class="c1"># A tibble: 783 x 1</span><span class="w">
+        </span><span class="n">words</span><span class="w">
+ </span><span class="o">*</span><span class="w">     </span><span class="o">&lt;</span><span class="n">fctr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">          </span><span class="n">a</span><span class="w">
+ </span><span class="m">2</span><span class="w">      </span><span class="n">abord</span><span class="w">
+ </span><span class="m">3</span><span class="w"> </span><span class="n">absolument</span><span class="w">
+ </span><span class="m">4</span><span class="w">       </span><span class="n">afin</span><span class="w">
+ </span><span class="m">5</span><span class="w">         </span><span class="n">ah</span><span class="w">
+ </span><span class="m">6</span><span class="w">         </span><span class="n">ai</span><span class="w">
+ </span><span class="m">7</span><span class="w">        </span><span class="n">aie</span><span class="w">
+ </span><span class="m">8</span><span class="w">      </span><span class="n">aient</span><span class="w">
+ </span><span class="m">9</span><span class="w">       </span><span class="n">aies</span><span class="w">
+</span><span class="m">10</span><span class="w">   </span><span class="n">ailleurs</span><span class="w">
+</span><span class="c1"># ... with 773 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="proust_sentiments"><code class="highlighter-rouge">proust_sentiments()</code></h3>
+
+<p>Sentiment lexicon is launched with:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">proust_sentiments</span><span class="p">()</span><span class="w">
+</span><span class="c1"># A tibble: 14,127 x 2</span><span class="w">
+              </span><span class="n">word</span><span class="w"> </span><span class="n">polarity</span><span class="w">
+ </span><span class="o">*</span><span class="w">           </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">    </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="n">endroit</span><span class="w"> </span><span class="n">l</span><span class="err">à</span><span class="w"> </span><span class="n">positive</span><span class="w">
+ </span><span class="m">2</span><span class="w">       </span><span class="err">à</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">h</span><span class="err">â</span><span class="n">te</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">3</span><span class="w">          </span><span class="err">à</span><span class="w"> </span><span class="n">part</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">4</span><span class="w">           </span><span class="err">à</span><span class="w"> </span><span class="n">pic</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">5</span><span class="w">      </span><span class="err">à</span><span class="w"> </span><span class="n">rallonge</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">6</span><span class="w">      </span><span class="n">abasourdir</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">7</span><span class="w">        </span><span class="n">ablation</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">8</span><span class="w">      </span><span class="n">abominable</span><span class="w"> </span><span class="n">negative</span><span class="w">
+ </span><span class="m">9</span><span class="w">          </span><span class="n">abrupt</span><span class="w"> </span><span class="n">negative</span><span class="w">
+</span><span class="m">10</span><span class="w">          </span><span class="n">absent</span><span class="w"> </span><span class="n">negative</span><span class="w">
+</span><span class="c1"># ... with 14,117 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can chose between polarity (positive or negative, which is the default behavior), or a score on six sentiments (joy, fear, sadness, anger, surprise, disgust) with <code class="highlighter-rouge">type = "score"</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># A tibble: 11,530 x 3</span><span class="w">
+          </span><span class="n">word</span><span class="w"> </span><span class="n">sentiment</span><span class="w"> </span><span class="n">score</span><span class="w">
+ </span><span class="o">*</span><span class="w">       </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">     </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w"> </span><span class="n">abaissement</span><span class="w">   </span><span class="n">sadness</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="n">abaisser</span><span class="w">   </span><span class="n">sadness</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">3</span><span class="w">     </span><span class="n">abandon</span><span class="w">      </span><span class="n">fear</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">4</span><span class="w">     </span><span class="n">abandon</span><span class="w">   </span><span class="n">sadness</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">5</span><span class="w">     </span><span class="n">abandon</span><span class="w">     </span><span class="n">anger</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">6</span><span class="w">     </span><span class="n">abandon</span><span class="w">  </span><span class="n">surprise</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">7</span><span class="w">  </span><span class="n">abandonner</span><span class="w">      </span><span class="n">fear</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">8</span><span class="w">  </span><span class="n">abandonner</span><span class="w">   </span><span class="n">sadness</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">9</span><span class="w">  </span><span class="n">abandonner</span><span class="w">     </span><span class="n">anger</span><span class="w">     </span><span class="m">1</span><span class="w">
+</span><span class="m">10</span><span class="w">  </span><span class="n">abandonner</span><span class="w">   </span><span class="n">disgust</span><span class="w">     </span><span class="m">1</span><span class="w">
+</span><span class="c1"># ... with 11,520 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="pr_-functions"><code class="highlighter-rouge">pr_*()</code> functions</h2>
+
+<p>Please bear in mind that all these functions are designed to work with a data.frame. Here’s an example with a book downloaded from the gutenberg project with {gutenbergr}</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(dplyr)
+library(gutenbergr)
+condillac &lt;- gutenberg_download(gutenberg_id = "55483")
+</code></pre></div></div>
+
+<h3 id="pr_detect_days"><code class="highlighter-rouge">pr_detect_days()</code></h3>
+
+<p>Detects the days from a data.frame (in French).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pr_detect_days</span><span class="p">(</span><span class="n">condillac</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">n_days</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="c1"># A tibble: 3 x 4</span><span class="w">
+  </span><span class="n">gutenberg_id</span><span class="w">                                                                     </span><span class="n">text</span><span class="w">      </span><span class="n">days</span><span class="w">
+         </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">                                                                    </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">    </span><span class="o">&lt;</span><span class="n">list</span><span class="o">&gt;</span><span class="w">
+</span><span class="m">1</span><span class="w">        </span><span class="m">55483</span><span class="w"> </span><span class="n">jeudi</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="n">d</span><span class="err">é</span><span class="n">cembre</span><span class="w"> </span><span class="m">1768</span><span class="n">.</span><span class="w"> </span><span class="n">Mais</span><span class="w"> </span><span class="n">il</span><span class="w"> </span><span class="n">n</span><span class="s1">'assistait guère aux séances et prenait &lt;chr [1]&gt;
+2        55483    chapelle du château, il faisait célébrer l'</span><span class="n">office</span><span class="w"> </span><span class="n">divin</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">dimanches</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+</span><span class="m">3</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="err">«</span><span class="n">L</span><span class="s1">'abbé de Condillac partira lundi, écrivait Élisabeth à l'</span><span class="n">Infant</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+</span><span class="c1"># ... with 1 more variables: n_days &lt;int&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="pr_detect_months"><code class="highlighter-rouge">pr_detect_months()</code></h3>
+
+<p>Detects the months from a data.frame (in French).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pr_detect_months</span><span class="p">(</span><span class="n">condillac</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">n_months</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="c1"># A tibble: 57 x 4</span><span class="w">
+   </span><span class="n">gutenberg_id</span><span class="w">                                                                     </span><span class="n">text</span><span class="w">    </span><span class="n">months</span><span class="w">
+          </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">                                                                    </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">    </span><span class="o">&lt;</span><span class="n">list</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">        </span><span class="m">55483</span><span class="w">                                  </span><span class="err">_</span><span class="n">morte</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">Puchesse</span><span class="p">,</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="n">octobre</span><span class="w"> </span><span class="m">1896</span><span class="n">._</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">2</span><span class="w">        </span><span class="m">55483</span><span class="w">      </span><span class="n">juillet</span><span class="w"> </span><span class="m">1701</span><span class="p">;</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="n">sont</span><span class="w"> </span><span class="n">Gabriel</span><span class="w"> </span><span class="n">Bonnot</span><span class="p">,</span><span class="w"> </span><span class="n">capitaine</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">ch</span><span class="err">â</span><span class="n">teau</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">3</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">1680</span><span class="n">.</span><span class="w"> </span><span class="n">Il</span><span class="w"> </span><span class="n">acquit</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="n">septembre</span><span class="w"> </span><span class="m">1720</span><span class="p">,</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">prix</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="m">120</span><span class="w"> </span><span class="m">000</span><span class="w"> </span><span class="n">livres</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">4</span><span class="w">        </span><span class="m">55483</span><span class="w"> </span><span class="n">septembre</span><span class="w"> </span><span class="m">1714</span><span class="n">.</span><span class="w"> </span><span class="n">Son</span><span class="w"> </span><span class="n">enfance</span><span class="w"> </span><span class="n">fut</span><span class="w"> </span><span class="n">tr</span><span class="err">è</span><span class="n">s</span><span class="w"> </span><span class="n">maladive.</span><span class="w"> </span><span class="n">Il</span><span class="w"> </span><span class="n">avait</span><span class="w"> </span><span class="n">atteint</span><span class="w"> </span><span class="n">l</span><span class="s1">'âge de &lt;chr [1]&gt;
+ 5        55483          de Rousseau, l'</span><span class="n">une</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">mars</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">avril</span><span class="w"> </span><span class="m">1740</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">M.</span><span class="w"> </span><span class="n">d</span><span class="s1">'Eybens, l'</span><span class="n">autre</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">6</span><span class="w">        </span><span class="m">55483</span><span class="w">                  </span><span class="n">du</span><span class="w"> </span><span class="m">1</span><span class="n">er</span><span class="w"> </span><span class="n">mai</span><span class="w"> </span><span class="m">1740</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">Mme</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">baronne</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Warens</span><span class="p">,</span><span class="w"> </span><span class="n">donnent</span><span class="w"> </span><span class="n">ses</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">7</span><span class="w">        </span><span class="m">55483</span><span class="w">  </span><span class="n">Paris</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">janvier</span><span class="w"> </span><span class="m">1767</span><span class="n">.</span><span class="w"> </span><span class="n">L</span><span class="s1">'année suivante, l'</span><span class="n">abb</span><span class="err">é</span><span class="w"> </span><span class="n">d</span><span class="s1">'Olivet étant mort, il &lt;chr [1]&gt;
+ 8        55483 jeudi 27 décembre 1768. Mais il n'</span><span class="n">assistait</span><span class="w"> </span><span class="n">gu</span><span class="err">è</span><span class="n">re</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="n">s</span><span class="err">é</span><span class="n">ances</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">prenait</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">9</span><span class="w">        </span><span class="m">55483</span><span class="w">   </span><span class="m">1771</span><span class="n">.</span><span class="w"> </span><span class="n">Le</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="n">avril</span><span class="w"> </span><span class="m">1773</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="s1">'abbé de Condillac lui fit don d'</span><span class="n">une</span><span class="w"> </span><span class="n">somme</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+</span><span class="m">10</span><span class="w">        </span><span class="m">55483</span><span class="w">        </span><span class="n">le</span><span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="n">juillet</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="n">voyant</span><span class="w"> </span><span class="n">perdu</span><span class="p">,</span><span class="w"> </span><span class="n">il</span><span class="w"> </span><span class="n">demanda</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">pr</span><span class="err">ê</span><span class="n">tre.</span><span class="w"> </span><span class="n">Ce</span><span class="w"> </span><span class="n">fut</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="o">&lt;</span><span class="n">chr</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&gt;</span><span class="w">
+</span><span class="c1"># ... with 47 more rows, and 1 more variables: n_months &lt;int&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="pr_detect_pro"><code class="highlighter-rouge">pr_detect_pro()</code></h3>
+
+<p>Detects the pronouns from a data.frame (in French). The shortcuts in the pronoun col stand for :</p>
+<ul>
+  <li>pps: first person singular (première personne du singulier)</li>
+  <li>dps: second person singular (deuxième personne du singulier)</li>
+  <li>tps: third person singular (troisième personne du singulier)</li>
+  <li>ppp: first person plural (première personne du pluriel)</li>
+  <li>dpp: second person singular (deuxième personne du pluriel)</li>
+  <li>tpp: third person singular (troisième personne du pluriel)</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">condillac</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_number</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">pr_detect_pro</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">arrange</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w">
+  
+</span><span class="c1"># A tibble: 2,248 x 4</span><span class="w">
+   </span><span class="n">gutenberg_id</span><span class="w">  </span><span class="n">line</span><span class="w"> </span><span class="n">pronoun</span><span class="w"> </span><span class="n">count</span><span class="w">
+          </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">   </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">46</span><span class="w">     </span><span class="n">pps</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">61</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">3</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">62</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">4</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">63</span><span class="w">     </span><span class="n">ppp</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">5</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">64</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">2</span><span class="w">
+ </span><span class="m">6</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">65</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">2</span><span class="w">
+ </span><span class="m">7</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">66</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">8</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">70</span><span class="w">     </span><span class="n">pps</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">9</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">72</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">1</span><span class="w">
+</span><span class="m">10</span><span class="w">        </span><span class="m">55483</span><span class="w">    </span><span class="m">75</span><span class="w">     </span><span class="n">tps</span><span class="w">     </span><span class="m">2</span><span class="w">
+</span><span class="c1"># ... with 2,238 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="pr_normalize_punc"><code class="highlighter-rouge">pr_normalize_punc()</code></h3>
+
+<p>French has a weird punctuation use. For example, quotes are <code class="highlighter-rouge">«</code> and <code class="highlighter-rouge">»</code>, instead of <code class="highlighter-rouge">"</code>. Other strange characters may include <code class="highlighter-rouge">՚</code>,<code class="highlighter-rouge">︐</code> or <code class="highlighter-rouge">’</code> for apostrophe. This function removes most of the punctuation idiosyncracy you can find in a french text.</p>
+
+<p>Why bother? Some text-mining tools perform a split with <code class="highlighter-rouge">'</code>, not with <code class="highlighter-rouge">՚</code>, a behavior which can lead to some error when tokenizing a text.</p>
+
+<h3 id="pr_stem"><code class="highlighter-rouge">pr_stem()</code></h3>
+
+<p>Turn your text into stems. This is an implementation of the {SnowballC} package in {proustr}.Please keep in mind that punctuation and capital letters are removed by this function.</p>
+
+<p>You can stem a data.frame with a column containing sentences with <code class="highlighter-rouge">pr_stem_sentences</code> :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pr_stem_sentences</span><span class="p">(</span><span class="n">condillac</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">nchar</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="c1"># A tibble: 3,767 x 2</span><span class="w">
+   </span><span class="n">gutenberg_id</span><span class="w">                                                        </span><span class="n">text</span><span class="w">
+          </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">                                                       </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">        </span><span class="m">55483</span><span class="w">      </span><span class="n">not</span><span class="w"> </span><span class="n">sur</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">transcript</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">erreur</span><span class="w"> </span><span class="n">clair</span><span class="w"> </span><span class="n">introduit</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="n">le</span><span class="w">
+ </span><span class="m">2</span><span class="w">        </span><span class="m">55483</span><span class="w">                                    </span><span class="n">typograph</span><span class="w"> </span><span class="n">ont</span><span class="w"> </span><span class="err">é</span><span class="n">t</span><span class="err">é</span><span class="w"> </span><span class="n">corrig</span><span class="w">
+ </span><span class="m">3</span><span class="w">        </span><span class="m">55483</span><span class="w"> </span><span class="n">l</span><span class="s1">'orthograph d'</span><span class="n">origin</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="err">é</span><span class="n">t</span><span class="err">é</span><span class="w"> </span><span class="n">conserv</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">n</span><span class="err">'</span><span class="n">a</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="err">é</span><span class="n">t</span><span class="err">é</span><span class="w"> </span><span class="n">harmonis</span><span class="w">
+ </span><span class="m">4</span><span class="w">        </span><span class="m">55483</span><span class="w">                                                   </span><span class="n">condillac</span><span class="w">
+ </span><span class="m">5</span><span class="w">        </span><span class="m">55483</span><span class="w">                                                     </span><span class="n">illustr</span><span class="w">
+ </span><span class="m">6</span><span class="w">        </span><span class="m">55483</span><span class="w">                                                   </span><span class="n">condillac</span><span class="w">
+ </span><span class="m">7</span><span class="w">        </span><span class="m">55483</span><span class="w">                                         </span><span class="err">_</span><span class="n">sa</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="n">sa</span><span class="w"> </span><span class="n">philosoph</span><span class="w">
+ </span><span class="m">8</span><span class="w">        </span><span class="m">55483</span><span class="w">                                              </span><span class="n">son</span><span class="w"> </span><span class="n">influence_</span><span class="w">
+ </span><span class="m">9</span><span class="w">        </span><span class="m">55483</span><span class="w">                                                         </span><span class="n">par</span><span class="w">
+</span><span class="m">10</span><span class="w">        </span><span class="m">55483</span><span class="w">                               </span><span class="n">le</span><span class="w"> </span><span class="n">comt</span><span class="w"> </span><span class="n">baguenault</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">puchess</span><span class="w">
+</span><span class="c1"># ... with 3,757 more rows</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can also stem a data.frame containing a column of words with <code class="highlighter-rouge">pr_stem_words</code>.</p>
+
+<h2 id="install-proustr">Install proustr</h2>
+
+<p>Install this package directly in R :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"proustr"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>From Github :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"ColinFay/proustr"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="contact">Contact</h3>
+
+<p>Questions and feedbacks <a href="mailto:contact@colinfay.me">welcome</a>!</p>
+
+<p>You want to contribute ? Open a <a href="https://github.com/ColinFay/proustr/pulls">PR</a> :) If you encounter a bug or want to suggest an enhancement, please <a href="https://github.com/ColinFay/proustr/issues">open an issue</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-en" class="page__taxonomy-item" rel="tag">r-blog-en</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-09-27T00:00:00+02:00">September 27, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text={proustr} 0.2.0 is on CRAN http://localhost:4000/proustr-0-2-0/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/proustr-0-2-0/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/proustr-0-2-0/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/proustr-0-2-0/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/nantes-digital-week/" class="pagination--pager" title="De passage à la Nantes Digital Week
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/collect-rtweet/" class="pagination--pager" title="Collecting tweets with R and {rtweet}
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>

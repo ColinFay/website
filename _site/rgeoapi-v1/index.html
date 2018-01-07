@@ -1,0 +1,592 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Mise à jour du package R : rgeoapi - Colin FAY</title>
+
+
+
+
+<meta name="description" content="L’API GéoAPI a subi des modifications récentes, qui ont nécessité une mise à jour du package R permettant d’interroger cette ressource.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="Mise à jour du package R : rgeoapi">
+
+
+  <link rel="canonical" href="http://localhost:4000/rgeoapi-v1/">
+  <meta property="og:url" content="http://localhost:4000/rgeoapi-v1/">
+
+
+
+  <meta property="og:description" content="L’API GéoAPI a subi des modifications récentes, qui ont nécessité une mise à jour du package R permettant d’interroger cette ressource.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="Mise à jour du package R : rgeoapi">
+  <meta name="twitter:description" content="L’API GéoAPI a subi des modifications récentes, qui ont nécessité une mise à jour du package R permettant d’interroger cette ressource.">
+  <meta name="twitter:url" content="http://localhost:4000/rgeoapi-v1/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-07-20T00:00:00+02:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Mise à jour du package R : rgeoapi</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Mise à jour du package R : rgeoapi">
+    <meta itemprop="description" content="L’API GéoAPI a subi des modifications récentes, qui ont nécessité une mise à jour du package R permettant d’interroger cette ressource.">
+    <meta itemprop="datePublished" content="July 20, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Mise à jour du package R : rgeoapi
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h2 id="lapi-géoapi-a-subi-des-modifications-récentes-qui-ont-nécessité-une-mise-à-jour-du-package-r-permettant-dinterroger-cette-ressource-">L’API GéoAPI a subi des modifications récentes, qui ont nécessité une mise à jour du package R permettant d’interroger cette ressource. <!--more--></h2>
+
+<h3 id="mise-à-jour-de-la-géoapi">Mise à jour de la GéoAPI</h3>
+<p>L’API <a href="https://api.gouv.fr/api/geoapi.html">GéoAPI</a> est une interface JSON qui permet d’interroger la base de données géographiques française. <code class="highlighter-rouge">rgeoapi</code> a été développé afin de faciliter le travail de cartographie avec R — avec ce package, vous pouvez obtenir toutes les informations nécessaires sur les communes françaises.</p>
+
+<p>À noter : le format des fonctions a été modifié par rapport à la version précédente du package, développée pour la version beta de la GéoAPI. La nouvelle version incluant des requêtes par département et région (pas seulement par ville), le format getBy de la version précédente n’était plus pertinent. De plus, une terminologie dans le contenu JSON ayant changé, certains paramètres renvoyaient du NA. Si vous avez l’ancienne version, il est conseillé d’effectuer la mise à jour.</p>
+
+<h3 id="installer-rgeoapi">Installer rgeoapi</h3>
+<p>Pour installer le package dans R depuis <a href="https://github.com/ColinFay/rgeoapi" target="_blank">GitHub</a>  :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"ColinFay/rgeoapi"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="comment-fonctionne-rgeoapi">Comment fonctionne rgeoapi</h3>
+<p>Cette version 1.0.0 comprend 11 fonctions :</p>
+<ul>
+ 	<li>`ComByCode` obtenir une commune par son code INSEE</li>
+ 	<li>`ComByCoord` obtenir une commune par ses coordonnées géographiques (WGS-84)</li>
+ 	<li>`ComByDep` obtenir toutes les communes d'un département</li>
+ 	<li>`ComByName` obtenir une ou plusieurs commune(s) par un nom</li>
+ 	<li>`ComByPostal` obtenir une commune par son code postal</li>
+ 	<li>`ComByReg` obtenir toutes les communes d'une région</li>
+ 	<li>`DepByCode` obtenir un département par son code INSEE</li>
+ 	<li>`DepByName` obtenir un ou plusieurs département(s) par un nom</li>
+ 	<li>`DepByReg` obtenir tous les départements d'une région</li>
+ 	<li>`RegByCode` obtenir une région par son code INSEE</li>
+ 	<li>`RegByName` obtenir une région par son nom</li>
+</ul>
+<h3 id="comment-sont-construites-les-fonctions">Comment sont construites les fonctions</h3>
+<p>Dans la <a href="https://api.gouv.fr/api/geoapi.html">GéoAPI</a>, vous pouvez effectuer des requêtes pour :  “Commune”, “Département” ou “Région”. Pour une compatibilité maximale, les termes utilisés dans ce package respecte celle de l’API, notamment pour les outputs.</p>
+
+<p>Toutes les fonctions de ce package suivent la structure : AByB.</p>
+<ul>
+ 	<li>A étant vos données de sorties souhaitées – Com pour “Commune”, Dep pour "Département" et Reg pour "Région".</li>
+ 	<li>B étant le paramètre de la requête – Code pour un code INSEE, Coord pour les coordonées (WGS-84), Dep pour le département, Name pour le nom, Postal pour le code postal et Reg pour la région.</li>
+</ul>
+<h3 id="quelques-examples">Quelques examples</h3>
+<h4 id="combycoord">ComByCoord</h4>
+<p>Cette fonction prend la latitude et la longitude d’une ville, et retourne un data.frame avec : nom, code INSEE (ville / département / région), code postal, population approximative, surface en hectares, et coordonnées.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ComByCoord</span><span class="p">(</span><span class="n">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"48.11023"</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1.678872"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+<h4 id="depbyname">DepByName</h4>
+<p>Cette fonction prend un nom et retourne un data.frame avec le ou les nom(s), les codes INSEE, et le score de pertinence typographique de chaque réponse. Des requêtes partielles peuvent être effectuées.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DepByName</span><span class="p">(</span><span class="s2">"morbihan"</span><span class="p">)</span><span class="w">
+</span><span class="n">DepByName</span><span class="p">(</span><span class="s2">"Il"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<h4 id="regbycode">RegByCode</h4>
+<p>Cette fonction prend un code INSEE de région, et renvoie un data.frame avec le nom et le code de la région.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">RegByCode</span><span class="p">(</span><span class="m">53</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<h3 id="contact">Contact</h3>
+<p>Vos questions et feedbacks <a href="mailto:contact@colinfay.me">sont les bienvenus</a> !</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-fr" class="page__taxonomy-item" rel="tag">r-blog-fr</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-07-20T00:00:00+02:00">July 20, 2016</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text=Mise à jour du package R : rgeoapi http://localhost:4000/rgeoapi-v1/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/rgeoapi-v1/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/rgeoapi-v1/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/rgeoapi-v1/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/data-bzh-apero-storycode-rennes/" class="pagination--pager" title="Data Bzh à l’Apéro StoryCode de Rennes Nouvelles Écritures
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/carte-r-rgeoapi-ggplot2/" class="pagination--pager" title="Créer une carte avec R — rgeoapi et ggplot2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>

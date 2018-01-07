@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+ <title>R Blog FR RSS</title>
+ <description>RSS feed</description>
+ <link>http://colinfay.me/categories/#r-blog-fr</link>
+ <lastBuildDate>Mon, 06 Sep 2010 00:01:00 +0000 </lastBuildDate>
+ <pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
+ <ttl>1800</ttl>
+
+ 
+ <item>
+  <title>Cartographier le second tour français avec R</title>
+  <description></description>
+  <link>/cartographier-second-tour-francais-r/</link>
+  <guid isPermaLink="true">http://localhost:4000/cartographier-second-tour-francais-r/</guid>
+  <pubDate>2017-05-08 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>#RStats — API calls et Sys.sleep</title>
+  <description></description>
+  <link>/rstats-api-calls-sys-sleep/</link>
+  <guid isPermaLink="true">http://localhost:4000/rstats-api-calls-sys-sleep/</guid>
+  <pubDate>2017-04-14 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>Une heatmap avec R et ggplot2</title>
+  <description></description>
+  <link>/heatmap-avec-r-et-ggplot2/</link>
+  <guid isPermaLink="true">http://localhost:4000/heatmap-avec-r-et-ggplot2/</guid>
+  <pubDate>2017-03-19 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>1 dataset, 10 visualisations — retour de La Fabrique de l’info</title>
+  <description></description>
+  <link>/1-dataset-10-visualisations/</link>
+  <guid isPermaLink="true">http://localhost:4000/1-dataset-10-visualisations/</guid>
+  <pubDate>2017-03-12 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>All I want for Christmas is a #Dataviz</title>
+  <description></description>
+  <link>/all-i-want-for-christmas-is-a-dataviz/</link>
+  <guid isPermaLink="true">http://localhost:4000/all-i-want-for-christmas-is-a-dataviz/</guid>
+  <pubDate>2016-12-23 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>languagelayeR 1.0.0 disponible sur le CRAN</title>
+  <description></description>
+  <link>/languagelayer-1-0-0-disponible-cran/</link>
+  <guid isPermaLink="true">http://localhost:4000/languagelayer-1-0-0-disponible-cran/</guid>
+  <pubDate>2016-12-20 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>#RStats — languagelayeR : accéder à l'API languagelayer avec R</title>
+  <description></description>
+  <link>/rstats-languagelayer-api/</link>
+  <guid isPermaLink="true">http://localhost:4000/rstats-languagelayer-api/</guid>
+  <pubDate>2016-12-12 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>rgeoapi 1.1.0 disponible sur le CRAN !</title>
+  <description></description>
+  <link>/rgeoapi-1-1-0-disponible-cran/</link>
+  <guid isPermaLink="true">http://localhost:4000/rgeoapi-1-1-0-disponible-cran/</guid>
+  <pubDate>2016-10-31 00:00:00 +0100</pubDate>
+ </item>
+ 
+ <item>
+  <title>Data & Vinyles — Exploration d'une bibliothèque Discogs avec R</title>
+  <description></description>
+  <link>/data-vinyles-bibliotheque-discogs-r/</link>
+  <guid isPermaLink="true">http://localhost:4000/data-vinyles-bibliotheque-discogs-r/</guid>
+  <pubDate>2016-08-31 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>rpinterest disponible sur le CRAN</title>
+  <description></description>
+  <link>/rpinterest-disponible-cran/</link>
+  <guid isPermaLink="true">http://localhost:4000/rpinterest-disponible-cran/</guid>
+  <pubDate>2016-08-17 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>rpinterest : un package R pour accéder à l'API Pinterest</title>
+  <description></description>
+  <link>/rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/</link>
+  <guid isPermaLink="true">http://localhost:4000/rpinterest-un-package-r-pour-acceder-a-lapi-pinterest/</guid>
+  <pubDate>2016-07-30 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>Créer une carte avec R — rgeoapi et ggplot2</title>
+  <description></description>
+  <link>/carte-r-rgeoapi-ggplot2/</link>
+  <guid isPermaLink="true">http://localhost:4000/carte-r-rgeoapi-ggplot2/</guid>
+  <pubDate>2016-07-28 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>Mise à jour du package R : rgeoapi</title>
+  <description></description>
+  <link>/rgeoapi-v1/</link>
+  <guid isPermaLink="true">http://localhost:4000/rgeoapi-v1/</guid>
+  <pubDate>2016-07-20 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>rgeoapi — Un package R pour accéder à la GéoAPI</title>
+  <description></description>
+  <link>/rgeoapi/</link>
+  <guid isPermaLink="true">http://localhost:4000/rgeoapi/</guid>
+  <pubDate>2016-06-05 00:00:00 +0200</pubDate>
+ </item>
+ 
+ <item>
+  <title>#RStats — Text mining avec R et gutenbergr</title>
+  <description></description>
+  <link>/rstats-text-mining-r-gutenbergr/</link>
+  <guid isPermaLink="true">http://localhost:4000/rstats-text-mining-r-gutenbergr/</guid>
+  <pubDate>2016-05-24 00:00:00 +0200</pubDate>
+ </item>
+ 
+
+</channel>
+</rss>

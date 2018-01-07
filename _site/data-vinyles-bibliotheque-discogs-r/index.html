@@ -1,0 +1,893 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Data &amp; Vinyles — Exploration d’une bibliothèque Discogs avec R - Colin FAY</title>
+
+
+
+
+<meta name="description" content="Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="Data &amp; Vinyles — Exploration d’une bibliothèque Discogs avec R">
+
+
+  <link rel="canonical" href="http://localhost:4000/data-vinyles-bibliotheque-discogs-r/">
+  <meta property="og:url" content="http://localhost:4000/data-vinyles-bibliotheque-discogs-r/">
+
+
+
+  <meta property="og:description" content="Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="Data &amp; Vinyles — Exploration d’une bibliothèque Discogs avec R">
+  <meta name="twitter:description" content="Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.">
+  <meta name="twitter:url" content="http://localhost:4000/data-vinyles-bibliotheque-discogs-r/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-08-31T00:00:00+02:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Data & Vinyles — Exploration d'une bibliothèque Discogs avec R</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Data &amp; Vinyles — Exploration d’une bibliothèque Discogs avec R">
+    <meta itemprop="description" content="Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.">
+    <meta itemprop="datePublished" content="August 31, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Data &amp; Vinyles — Exploration d’une bibliothèque Discogs avec R
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h2 id="amoureux-de-données-et-de-vinyles-je-me-suis-amusé-à-envoyer-quelques-requêtes-sur-lapi-discogs-avec-r-pour-en-savoir-un-peu-plus-sur-ma-collection">Amoureux de données et de vinyles, je me suis amusé à envoyer quelques requêtes sur l’API Discogs avec R, pour en savoir un peu plus sur ma collection.</h2>
+<!--more-->
+
+<p>Réseau social incontournable des amateurs du disque microsillon, Discogs offre une API permettant de jongler entre musique et données en quelques lignes de code.</p>
+
+<p><span style="text-decoration: underline;">Note : pour retrouver les données utilisées dans ce billet, vous pouvez télécharger <a href="http://colinfay.me/data/collection_complete.json" target="_blank">le document JSON ici</a>, ou directement dans R :</span></p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collection_complete</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">jsonlite</span><span class="o">::</span><span class="n">fromJSON</span><span class="p">(</span><span class="n">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://colinfay.me/data/collection_complete.json"</span><span class="p">,</span><span class="w"> </span><span class="n">simplifyDataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<h3 id="major-tom-to-discogs-api">Major Tom to Discogs API</h3>
+<p>Avant de se lancer, chargeons dans l’environnement deux fonctions qui me seront indispensables : _<code class="highlighter-rouge">%&gt;% </code> et <code class="highlighter-rouge">%||%</code>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">magrittr</span><span class="p">)</span><span class="w">
+</span><span class="n">`%||%`</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span></code></pre></div></div>
+<p>Bien bien, commençons par faire venir le profil Discogs :</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"_colin"</span><span class="w">
+</span><span class="n">content</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">httr</span><span class="o">::</span><span class="n">GET</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"https://api.discogs.com/users/"</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="s2">"/collection/folders"</span><span class="p">))</span><span class="w">
+</span><span class="n">content</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rjson</span><span class="o">::</span><span class="n">fromJSON</span><span class="p">(</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">content</span><span class="o">$</span><span class="n">content</span><span class="p">))</span><span class="o">$</span><span class="n">folders</span><span class="w">
+</span><span class="n">content</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## [[1]]</span><span class="w">
+</span><span class="c1">## [[1]]$count</span><span class="w">
+</span><span class="c1">## [1] 308</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## [[1]]$resource_url</span><span class="w">
+</span><span class="c1">## [1] "https://api.discogs.com/users/_colin/collection/folders/0"</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## [[1]]$id</span><span class="w">
+</span><span class="c1">## [1] 0</span><span class="w">
+</span><span class="c1">## </span><span class="w">
+</span><span class="c1">## [[1]]$name</span><span class="w">
+</span><span class="c1">## [1] "All"</span><span class="w">
+</span></code></pre></div></div>
+<p>Cette première requête nous permet d’obtenir les informations basiques sur l’utilisateur (en l’occurrence “_colin“, principal intéressé de ce billet de blog).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">$</span><span class="n">count</span><span class="w">
+</span><span class="err">``</span><span class="n">` nous apprend notamment que la collection compte 308 entrées. L’élément de la liste `</span><span class="err">`</span><span class="n">`r 
+$id
+`</span><span class="err">`</span><span class="n">` renvoie le nombre de “folders” Discogs créées par l’utilisateur – ici, 0 correspond à l’ensemble de la collection, sans spécification de liste.
+### Créer un data.frame avec l’ensemble des vinyles présents dans la collection
+L’API Discogs permet d'accéder à des pages de 100 résultats maximum. Ma collection contenant 308 entrées, nous devons réaliser une boucle `</span><span class="err">`</span><span class="n">`r 
+repeat
+`</span><span class="err">`</span><span class="n">` qui collectera l’ensemble des données, avant de créer un tableau final contenant l’ensemble de la collection.
+`</span><span class="err">`</span><span class="n">`r 
+collec_url &lt;- httr::GET(paste0("https://api.discogs.com/users/", user, "/collection/folders/", content[[1]]$id, "/releases?page=1&amp;amp;per_page=100"))
+if (collec_url$status_code == 200){
+  collec &lt;- rjson::fromJSON(rawToChar(collec_url$content))
+  collecdata &lt;- collec$releases
+    if(!is.null(collec$pagination$urls$`</span><span class="k">next</span><span class="n">`)){
+      repeat{
+        url &lt;- httr::GET(collec$pagination$urls$`</span><span class="k">next</span><span class="n">`)
+        collec &lt;- rjson::fromJSON(rawToChar(url$content))
+        collecdata &lt;- c(collecdata, collec$releases)
+        if(is.null(collec$pagination$urls$`</span><span class="k">next</span><span class="err">`</span><span class="p">)){</span><span class="w">
+          </span><span class="k">break</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+  </span><span class="n">collection</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">collecdata</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">){</span><span class="w">
+    </span><span class="n">data.frame</span><span class="p">(</span><span class="n">release_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">labels</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">name</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">title</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+               </span><span class="n">artist_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">artists</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">name</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">artist_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">artists</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">id</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">artist_resource_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">artists</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">resource_url</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+               </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">formats</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">name</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+               </span><span class="n">resource_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">basic_information</span><span class="o">$</span><span class="n">resource_url</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span><span class="w">
+  </span><span class="p">})</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">unique</span><span class="p">()</span><span class="w">
+
+</span></code></pre></div></div>
+<p>Et pour un aperçu du tableau obtenu :</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">pander</span><span class="p">)</span><span class="w">
+</span><span class="n">pander</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">collection</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+<table style="width: 96%;"><caption>Table continues below</caption><colgroup> <col width="18%" /> <col width="29%" /> <col width="9%" /> <col width="38%" /> </colgroup>
+<thead>
+<tr class="header">
+<th align="center">release_id</th>
+<th align="center">label</th>
+<th align="center">year</th>
+<th align="center">title</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">5181773</td>
+<td align="center">A&amp;M Records</td>
+<td align="center">1982</td>
+<td align="center">Night And Day</td>
+</tr>
+<tr class="even">
+<td align="center">3690646</td>
+<td align="center">A&amp;M Records (2)</td>
+<td align="center">2012</td>
+<td align="center">God Save The Queen</td>
+</tr>
+<tr class="odd">
+<td align="center">944917</td>
+<td align="center">Alexi Delano Limited</td>
+<td align="center">2007</td>
+<td align="center">The Acid Sessions Vol. 4</td>
+</tr>
+<tr class="even">
+<td align="center">906983</td>
+<td align="center">Alphabet City</td>
+<td align="center">2007</td>
+<td align="center">Urban Minds / Skattered</td>
+</tr>
+<tr class="odd">
+<td align="center">8112758</td>
+<td align="center">Amerilys</td>
+<td align="center">1986</td>
+<td align="center">Follement Vôtre</td>
+</tr>
+<tr class="even">
+<td align="center">5800664</td>
+<td align="center">Anette Records</td>
+<td align="center">2014</td>
+<td align="center">And The Dead Shall Lie There</td>
+</tr>
+</tbody>
+</table>
+<table><caption>Table continues below</caption><colgroup> <col width="20%" /> <col width="16%" /> <col width="52%" /> <col width="10%" /> </colgroup>
+<thead>
+<tr class="header">
+<th align="center">artist_name</th>
+<th align="center">artist_id</th>
+<th align="center">artist_resource_url</th>
+<th align="center">format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Joe Jackson</td>
+<td align="center">75280</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/75280">https://api.discogs.com/artists/75280</a></td>
+<td align="center">Vinyl</td>
+</tr>
+<tr class="even">
+<td align="center">Sex Pistols</td>
+<td align="center">31753</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/31753">https://api.discogs.com/artists/31753</a></td>
+<td align="center">Vinyl</td>
+</tr>
+<tr class="odd">
+<td align="center">Alexi Delano</td>
+<td align="center">26</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/26">https://api.discogs.com/artists/26</a></td>
+<td align="center">Vinyl</td>
+</tr>
+<tr class="even">
+<td align="center">Pacjam</td>
+<td align="center">488187</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/488187">https://api.discogs.com/artists/488187</a></td>
+<td align="center">Vinyl</td>
+</tr>
+<tr class="odd">
+<td align="center">Diane Dufresne</td>
+<td align="center">647100</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/647100">https://api.discogs.com/artists/647100</a></td>
+<td align="center">Vinyl</td>
+</tr>
+<tr class="even">
+<td align="center">Ancient Mith</td>
+<td align="center">302464</td>
+<td align="center"><a class="uri" href="https://api.discogs.com/artists/302464">https://api.discogs.com/artists/302464</a></td>
+<td align="center">Vinyl</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 56%;"><colgroup> <col width="55%" /> </colgroup>
+<thead>
+<tr class="header">
+<th align="center">resource_url</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/5181773">https://api.discogs.com/releases/5181773</a></td>
+</tr>
+<tr class="even">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/3690646">https://api.discogs.com/releases/3690646</a></td>
+</tr>
+<tr class="odd">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/944917">https://api.discogs.com/releases/944917</a></td>
+</tr>
+<tr class="even">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/906983">https://api.discogs.com/releases/906983</a></td>
+</tr>
+<tr class="odd">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/8112758">https://api.discogs.com/releases/8112758</a></td>
+</tr>
+<tr class="even">
+<td align="center"><a class="uri" href="https://api.discogs.com/releases/5800664">https://api.discogs.com/releases/5800664</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="i-cant-see-i-cant-see-im-going-blind"><em>I can’t see, I can’t see I’m going blind</em></h3>
+<p>Bon, il est temps de mettre tout cela en forme, non ?</p>
+<h4 id="les-labels-les-plus-représentés">Les labels les plus représentés</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">collection</span><span class="o">$</span><span class="n">label</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">Var1</span><span class="p">,</span><span class="w"> </span><span class="n">Freq</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Freq</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Label"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Labels les plus fréquents"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg"><img class="aligncenter size-full wp-image-1058" src="https://colinfay.github.io/wp-content/uploads/2016/08/labels.jpeg" alt="labels les plus représentés dans la collection discogs" width="800" height="400" /></a></p>
+
+<p>Philips et Polydor, <em>what a surprise!</em></p>
+<h4 id="les-artistes-les-plus-représentés">Les artistes les plus représentés</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">collection</span><span class="o">$</span><span class="n">artist_name</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">Var1</span><span class="p">,</span><span class="w"> </span><span class="n">Freq</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Freq</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Artistes"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Artistes les plus fréquents"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg"><img class="aligncenter size-full wp-image-1059" src="https://colinfay.github.io/wp-content/uploads/2016/08/artistes.jpeg" alt="Artistes les plus représentés" width="800" height="400" /></a></p>
+
+<p>Bon, voilà, vous le savez… j’aime beaucoup Serge Gainsbourg et Georges Brassens (j’assume). La présence forte de Various était prévisible : il s’agit d’un terme générique faisant référence aux compilations, il est donc plus facile de gonfler ce chiffre que celui d’un artiste “solo”.</p>
+<h4 id="date-de-sortie-des-vinyles-de-la-collection">Date de sortie des vinyles de la collection</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"count"</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Année de sortie"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Date de sorties des vinyles de la collection"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg"><img class="aligncenter size-full wp-image-1060" src="https://colinfay.github.io/wp-content/uploads/2016/08/date-sortie.jpeg" alt="Dates de sorties" width="800" height="400" /></a></p>
+
+<p>Woaw, j’ai comme l’impression que je ne suis pas un super fan des années 90… Pourtant, il y a de <a href="https://www.youtube.com/watch?v=NcKAdFENqig" target="_blank">super titres</a>, non ? Ma collection se concentre sur un gros pic autour des années 80 et 00, avec un mode en 1980.</p>
+<h3 id="its-time-to-go-deeper">It’s time to go deeper</h3>
+<p>Bien, ces infos un temps soit peu basiques nous offrent déjà une première vision des vinyles dans ma collection. Et si l’on allait plus loin ?</p>
+
+<h4 id="hello-its-me-again">Hello, it’s me again</h4>
+<p>_Note: depuis l’écriture de cet article, Discogs semble avoir intégré une limitation au volume de calls par minute. Afin de créer <code class="highlighter-rouge">collection_2</code>, vous devez faire à <code class="highlighter-rouge">Sys.sleep()</code>. <a href="http://colinfay.me/rstats-api-calls-sys-sleep/">En savoir plus</a>.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collection_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lapply</span><span class="p">(</span><span class="n">as.list</span><span class="p">(</span><span class="n">collection</span><span class="o">$</span><span class="n">release_id</span><span class="p">),</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">){</span><span class="w">
+  </span><span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">httr</span><span class="o">::</span><span class="n">GET</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"https://api.discogs.com/releases/"</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="p">))</span><span class="w">
+  </span><span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rjson</span><span class="o">::</span><span class="n">fromJSON</span><span class="p">(</span><span class="n">rawToChar</span><span class="p">(</span><span class="n">url</span><span class="o">$</span><span class="n">content</span><span class="p">))</span><span class="w">
+  </span><span class="n">data.frame</span><span class="p">(</span><span class="n">release_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">label</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">name</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+             </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">title</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">artist_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">artist</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">name</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">styles</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+             </span><span class="n">genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">genre</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w">
+             </span><span class="n">average_note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">community</span><span class="o">$</span><span class="n">rating</span><span class="o">$</span><span class="n">average</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">votes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">community</span><span class="o">$</span><span class="n">rating</span><span class="o">$</span><span class="n">count</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">want</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">community</span><span class="o">$</span><span class="n">want</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">have</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">community</span><span class="o">$</span><span class="n">have</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">lowest_price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">lowest_price</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="o">$</span><span class="n">country</span><span class="w"> </span><span class="o">%||%</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span><span class="w">
+</span><span class="p">})</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">unique</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+<p>Ici, nous utilisons le release_id pour aller à la pêche aux informations pour toutes les entrées de la base.</p>
+
+<h4 id="les-genres-les-plus-représentés">Les genres les plus représentés</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">collection_2</span><span class="o">$</span><span class="n">genre</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">Var1</span><span class="p">,</span><span class="w"> </span><span class="n">Freq</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Freq</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Genre"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Genres les plus fréquents"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg"><img class="aligncenter size-full wp-image-1062" src="https://colinfay.github.io/wp-content/uploads/2016/08/genres-frequents.jpeg" alt="Genres les plus fréquents" width="800" height="400" /></a>OH GOD, quelle surprise ! Eh oui, presque la moitié de ma collection contient des vinyles de rock (tous styles confondus). Qui aurait pu s’en douter ?</p>
+<h4 id="pays-dorigine-des-vinyles">Pays d’origine des vinyles</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">collection_2</span><span class="o">$</span><span class="n">country</span><span class="p">),</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="m">10</span><span class="p">)),</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">Var1</span><span class="p">,</span><span class="w"> </span><span class="n">Freq</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Freq</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Pays d'origine"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Pays les plus fréquents"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine.jpeg"><img class="aligncenter size-large wp-image-1063" src="https://colinfay.github.io/wp-content/uploads/2016/08/pays-origine-1024x512.jpeg" alt="Pays d'origine des vinyles" width="809" height="405" /></a>Bon, une large partie des vinyles venus de France, ça se tient :)</p>
+<h4 id="notes-moyennes-des-vinyles">Notes moyennes des vinyles</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">collection_2</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average_note</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Note moyenne"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Notes moyennes des vinyles de la collection"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg"><img class="aligncenter wp-image-1073 size-full" src="https://colinfay.github.io/wp-content/uploads/2016/08/note-moyenne-vinyles-collection.jpeg" width="800" height="400" /></a></p>
+
+<p>D’après la communauté Discogs j’ai plutôt de bons goûts musicaux… Merci pour cet <em>ego boost</em> ! (Oui, je compte ignorer la présence de 10 vinyles notés 0… Après tout, on a tous les droits à ses petits guilty pleasure…)</p>
+<h4 id="money-money-money">Money Money Money</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">collection_2</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowest_price</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Prix le plus bas"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Fréquence"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Prix le plus bas des vinyles de la collection"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg"><img class="aligncenter size-full wp-image-1072" src="https://colinfay.github.io/wp-content/uploads/2016/08/densite-prix-bas.jpeg" alt="densite-prix-bas" width="800" height="400" /></a></p>
+
+<p>Bon… Ce n’est visiblement pas en vendant ma collection que je vais faire fortune. Cela dit, je ne comptais pas m’en séparer, cela tombe plutôt bien.</p>
+<h3 id="lets-finish">Let’s finish!</h3>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collection_complete</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span><span class="w"> </span><span class="n">collection_2</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"release_id"</span><span class="p">,</span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"year"</span><span class="p">,</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w"> </span><span class="s2">"artist_name"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+<h4 id="prix-des-vinyles-en-fonction-des-want">Prix des vinyles en fonction des “want”</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lm_want</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowest_price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">want</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collection_complete</span><span class="p">)</span><span class="w">
+</span><span class="n">summary</span><span class="p">(</span><span class="n">lm_want</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##Residuals:</span><span class="w">
+</span><span class="c1">##   Min     1Q Median     3Q    Max </span><span class="w">
+</span><span class="c1">##-8.043 -4.628 -2.224  2.179 49.608 </span><span class="w">
+
+</span><span class="c1">##Coefficients:</span><span class="w">
+</span><span class="c1">##            Estimate Std. Error t value Pr(&gt;|t|)    </span><span class="w">
+</span><span class="c1">##(Intercept) 6.715418   0.450582  14.904  &amp;lt; 2e-16 ***</span><span class="w">
+</span><span class="c1">##want        0.005004   0.001788   2.799  0.00546 ** </span><span class="w">
+</span><span class="c1">##---</span><span class="w">
+</span><span class="c1">##Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span><span class="w">
+
+</span><span class="c1">##Residual standard error: 7.306 on 301 degrees of freedom</span><span class="w">
+</span><span class="c1">##  (5 observations deleted due to missingness)</span><span class="w">
+</span><span class="c1">##Multiple R-squared:  0.02536,    Adjusted R-squared:  0.02213 </span><span class="w">
+</span><span class="c1">##F-statistic: 7.833 on 1 and 301 DF,  p-value: 0.005461</span><span class="w">
+
+</span></code></pre></div></div>
+<p>Ici, nous voyons que le coefficient de <em>want</em> est significatif, avec une probabilité critique de 0.005. Nous pouvons donc conclure que, pour cette discothèque, le volume de want est significativement lié à la variable prix.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">collection_complete</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowest_price</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">want</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lm"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Prix le plus bas"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Nombre de \"want\""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Prix et \"want\" des vinyles de la collection"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg"><img class="aligncenter size-full wp-image-1076" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-wants-vinyls-collection.jpeg" alt="Prix en fonction du nombre de want" width="800" height="400" /></a></p>
+
+<p>En clair : sur Discogs, il est possible d’entrer des vinyles dans une “liste d’envie”, labellisée “want” dans notre population. Ici, nous avons dessiné la régression linéaire du prix le plus bas en fonction du nombre de personnes ayant listé cette sortie dans leur liste d’envie. La tendance est légère, avec beaucoup de bruit lorsque nous nous rapprochons des prix les plus élevés.</p>
+<h4 id="prix-des-vinyles-en-fonction-des-notes">Prix des vinyles en fonction des notes</h4>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lm_note</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowest_price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">average_note</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collection_complete</span><span class="p">)</span><span class="w">
+</span><span class="n">lm_note</span><span class="o">$</span><span class="n">coefficients</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">##  (Intercept) average_note </span><span class="w">
+</span><span class="c1">##    -1.504767     2.207834</span><span class="w">
+</span></code></pre></div></div>
+<p>Ici, le coefficient étant de 2.2, nous ne pouvons pas lier la variable note à la variable prix. Visualisons les données pour afficher la dispersion.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">collection_complete</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lowest_price</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average_note</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#B79477"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Prix le plus bas"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Note moyenne"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"Prix et notes des vinyles de la collection"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p><a href="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg"><img class="aligncenter size-full wp-image-1080" src="https://colinfay.github.io/wp-content/uploads/2016/08/prix-et-note-vinyles-collection.jpeg" alt="Prix en fonction des notes" width="800" height="400" /></a></p>
+<h3 id="and-to-conclude">And to conclude…</h3>
+<p>La prochaine étape ? Faire un package pour accéder à l’API… et pourquoi pas ? Je mets ça sur ma to-do !</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-fr" class="page__taxonomy-item" rel="tag">r-blog-fr</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-08-31T00:00:00+02:00">August 31, 2016</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text=Data & Vinyles — Exploration d'une bibliothèque Discogs avec R http://localhost:4000/data-vinyles-bibliotheque-discogs-r/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/data-vinyles-bibliotheque-discogs-r/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/data-vinyles-bibliotheque-discogs-r/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/data-vinyles-bibliotheque-discogs-r/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/rpinterest-disponible-cran/" class="pagination--pager" title="rpinterest disponible sur le CRAN
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/data-vinyles-discogs-r/" class="pagination--pager" title="Data &amp; Vinyls — A discogs library exploration with R
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>

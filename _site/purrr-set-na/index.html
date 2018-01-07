@@ -1,0 +1,758 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>A Crazy Little Thing Called {purrr} - Part 3 : Setting NA - Colin FAY</title>
+
+
+
+
+<meta name="description" content="Ok, you’ve got the Queen reference by now.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="A Crazy Little Thing Called {purrr} - Part 3 : Setting NA">
+
+
+  <link rel="canonical" href="http://localhost:4000/purrr-set-na/">
+  <meta property="og:url" content="http://localhost:4000/purrr-set-na/">
+
+
+
+  <meta property="og:description" content="Ok, you’ve got the Queen reference by now.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="A Crazy Little Thing Called {purrr} - Part 3 : Setting NA">
+  <meta name="twitter:description" content="Ok, you’ve got the Queen reference by now.">
+  <meta name="twitter:url" content="http://localhost:4000/purrr-set-na/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-12-06T00:00:00+01:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">A Crazy Little Thing Called {purrr} - Part 3 : Setting NA</li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A Crazy Little Thing Called {purrr} - Part 3 : Setting NA">
+    <meta itemprop="description" content="Ok, you’ve got the Queen reference by now.">
+    <meta itemprop="datePublished" content="December 06, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">A Crazy Little Thing Called {purrr} - Part 3 : Setting NA
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Ok, you’ve got the Queen reference by now.</p>
+
+<!--more-->
+
+<p>I think I’ve never been that assiduous on my blog.</p>
+
+<blockquote>
+  <p>Note: this blogpost is inspired by a recent discussion on the {naniar} Github repo</p>
+</blockquote>
+
+<p>Here’s the one million dollar question: how can we replace some values with NAs in a data.frame? And of course, how can we do that with a “tidyverse” mindset: that is to say with something like “replace_to_na_at” or “replace_to_na_if”?</p>
+
+<p>In this blog post, I’ll show you how to create these functions with {purrr} :</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">replace_to_na_when</code> : takes the dataframe, and replace to NA everywhere the condition is met in the data.frame.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">replace_to_na_at</code> : replace at specific columns, where the condition is met.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">replace_to_na_if</code> : replace if the column meets the condition and where the value meets the second condition.</p>
+  </li>
+</ul>
+
+<p>As you know, data.frames are list of same-length vectors. Let’s decompose our process by starting with a simple question: how to change an element to NA under a certain condition in a vector.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">rlang</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>{purrr} has this amazing feature that allow to simply modify an element by creating a <code class="highlighter-rouge">~ val</code> mapper. So you can basically :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span><span class="w">
+</span><span class="n">map_chr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s2">"z"</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"z"</span><span class="w"> </span><span class="s2">"z"</span><span class="w"> </span><span class="s2">"z"</span><span class="w"> </span><span class="s2">"z"</span><span class="w"> </span><span class="s2">"z"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>So maybe we should?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map_chr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Yes, we should. But we’ve said we just want to change a value if a condition is met.</p>
+
+<p>So, with <code class="highlighter-rouge">modify_if()</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">c</span><span class="p">(</span><span class="n">modify_if</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="kc">NA</span><span class="p">),</span><span class="w"> </span><span class="n">recursive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">NA</span><span class="w">  </span><span class="s2">"b"</span><span class="w"> </span><span class="s2">"c"</span><span class="w"> </span><span class="s2">"d"</span><span class="w"> </span><span class="s2">"e"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Ok, seems to be good. But as you may be thinking, this can’t be that easy. If you’re wondering : “what if there are already a NA in the vector?”, that’s exacty where I’m going for:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">])</span><span class="w">
+</span><span class="nf">c</span><span class="p">(</span><span class="n">modify_if</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="kc">NA</span><span class="p">),</span><span class="w"> </span><span class="n">recursive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">Error</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">.x</span><span class="p">[</span><span class="n">sel</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">.x</span><span class="p">[</span><span class="n">sel</span><span class="p">],</span><span class="w"> </span><span class="n">.f</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> 
+  </span><span class="n">NAs</span><span class="w"> </span><span class="n">forbidden</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">indexed</span><span class="w"> </span><span class="n">affectations</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Yep, an error. So, we want to change the mapper, of course:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">])</span><span class="w">
+</span><span class="n">modify_if</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"a"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.x</span><span class="p">),</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">NA</span><span class="w">  </span><span class="kc">NA</span><span class="w">  </span><span class="s2">"b"</span><span class="w"> </span><span class="s2">"c"</span><span class="w"> </span><span class="s2">"d"</span><span class="w"> </span><span class="s2">"e"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>So here, if the condition is met, and if the value is not a NA, a NA is assigned. Sounds simple, right? Yet the thing is I don’t want my end function to ask for a “custom mapper + a <code class="highlighter-rouge">&amp; !is.na(.x)</code>”. Cause you know, error prone, and “anything that can be automated, should be automated. Do as little as possible by hand” <a href="http://r-pkgs.had.co.nz/intro.html">source</a> and all that.</p>
+
+<p>To sum up, I need a mapper composer that can take a user given mapper, and return this custom mapper with “<code class="highlighter-rouge">&amp; !is.na(.x)</code>” at the end of it. For this, I’ll use a little helper from {rlang}, <code class="highlighter-rouge">f_text()</code>, that extracts the right hand side of a formulat. Then, we’ll glue this, turn it into a formulation, then into a mapper.</p>
+
+<p>So here it is:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_mapper_na</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">.p</span><span class="p">){</span><span class="w">
+  </span><span class="n">glue</span><span class="o">::</span><span class="n">glue</span><span class="p">(</span><span class="s2">"~ ({f_text(.p)}) &amp; !is.na(.)"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">as.formula</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">as_mapper</span><span class="p">()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">create_mapper_na</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w">
+
+</span><span class="k">function</span><span class="w"> </span><span class="p">(</span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.</span><span class="m">.1</span><span class="p">,</span><span class="w"> </span><span class="n">.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.</span><span class="m">.2</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.</span><span class="m">.1</span><span class="p">)</span><span class="w"> 
+</span><span class="p">(</span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">)</span><span class="w">
+
+</span><span class="nf">class</span><span class="p">(</span><span class="n">create_mapper_na</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">))</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"function"</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>Yey 🎉 !!</p>
+
+<p>Now we need a <code class="highlighter-rouge">na_set()</code> that will take a predicate, and turn to NA if the <code class="highlighter-rouge">.p</code> condition is met.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">na_set</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">modify_if</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="w"> </span><span class="n">create_mapper_na</span><span class="p">(</span><span class="n">.p</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">reduce</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">small</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">airquality</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">slice</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w">
+  
+</span><span class="n">na_set</span><span class="p">(</span><span class="n">small</span><span class="o">$</span><span class="n">Ozone</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">41</span><span class="w"> </span><span class="m">36</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="kc">NA</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>Note bis: here’s another (cleaner) version proposed by Romain for na_set: <a href="https://gist.github.com/romainfrancois/c9406cc7b9776706dd1c11269c0d1965">napalm</a></p>
+</blockquote>
+
+<p>k, so now that’s quite easy: <code class="highlighter-rouge">replace_to_na_where</code> map over all the columns from a data.frame, and sets values to <code class="highlighter-rouge">NA</code> globally.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replace_to_na_when</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">map_df</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">na_set</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+
+</span><span class="n">replace_to_na_when</span><span class="p">(</span><span class="n">small</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w">  
+</span><span class="c1"># A tibble: 10 x 6</span><span class="w">
+   </span><span class="n">Ozone</span><span class="w"> </span><span class="n">Solar.R</span><span class="w">  </span><span class="n">Wind</span><span class="w">  </span><span class="n">Temp</span><span class="w"> </span><span class="n">Month</span><span class="w">   </span><span class="n">Day</span><span class="w">
+   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">lgl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">lgl</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">41</span><span class="w">     </span><span class="m">190</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">67</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">36</span><span class="w">     </span><span class="m">118</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">72</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">149</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">74</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">4</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">313</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">62</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">5</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">56</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">6</span><span class="w">    </span><span class="m">28</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">66</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">7</span><span class="w">    </span><span class="m">23</span><span class="w">     </span><span class="m">299</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">65</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">8</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">99</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">59</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">9</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">20.1</span><span class="w">    </span><span class="m">61</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+</span><span class="m">10</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">194</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">69</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="highlighter-rouge">replace_to_na_at</code> is just a wrapper around <code class="highlighter-rouge">modify_at</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replace_to_na_at</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">.at</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">modify_at</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">.at</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">na_set</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+
+</span><span class="n">replace_to_na_at</span><span class="p">(</span><span class="n">tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">small</span><span class="p">,</span><span class="w"> </span><span class="n">.at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Wind"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Ozone"</span><span class="p">),</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w"> 
+</span><span class="c1"># A tibble: 10 x 6</span><span class="w">
+   </span><span class="n">Ozone</span><span class="w"> </span><span class="n">Solar.R</span><span class="w">  </span><span class="n">Wind</span><span class="w">  </span><span class="n">Temp</span><span class="w"> </span><span class="n">Month</span><span class="w">   </span><span class="n">Day</span><span class="w">
+   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">41</span><span class="w">     </span><span class="m">190</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">67</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">36</span><span class="w">     </span><span class="m">118</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">72</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">2</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">149</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">74</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">3</span><span class="w">
+ </span><span class="m">4</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">313</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">62</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">4</span><span class="w">
+ </span><span class="m">5</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">56</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">5</span><span class="w">
+ </span><span class="m">6</span><span class="w">    </span><span class="m">28</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">66</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">6</span><span class="w">
+ </span><span class="m">7</span><span class="w">    </span><span class="m">23</span><span class="w">     </span><span class="m">299</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">65</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">7</span><span class="w">
+ </span><span class="m">8</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">99</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">59</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">8</span><span class="w">
+ </span><span class="m">9</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">19</span><span class="w">  </span><span class="m">20.1</span><span class="w">    </span><span class="m">61</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">9</span><span class="w">
+</span><span class="m">10</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">194</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">69</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">10</span><span class="w">
+</span></code></pre></div></div>
+
+<p>And <code class="highlighter-rouge">replace_to_na_if</code> a wrapper around <code class="highlighter-rouge">modify_if()</code>:</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replace_to_na_if</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">,</span><span class="w"> </span><span class="n">.pp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">modify_if</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span><span class="w"> </span><span class="n">.p</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">na_set</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">.pp</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+
+</span><span class="n">small</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">Day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">small</span><span class="o">$</span><span class="n">Day</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">replace_to_na_if</span><span class="p">(</span><span class="n">is.numeric</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w"> 
+
+</span><span class="c1"># A tibble: 10 x 6</span><span class="w">
+   </span><span class="n">Ozone</span><span class="w"> </span><span class="n">Solar.R</span><span class="w">  </span><span class="n">Wind</span><span class="w">  </span><span class="n">Temp</span><span class="w"> </span><span class="n">Month</span><span class="w">    </span><span class="n">Day</span><span class="w">
+   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">lgl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">fctr</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="m">41</span><span class="w">     </span><span class="m">190</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">67</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="m">36</span><span class="w">     </span><span class="m">118</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">72</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">2</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">149</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">74</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">3</span><span class="w">
+ </span><span class="m">4</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">313</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">62</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">4</span><span class="w">
+ </span><span class="m">5</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">56</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">5</span><span class="w">
+ </span><span class="m">6</span><span class="w">    </span><span class="m">28</span><span class="w">      </span><span class="kc">NA</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">66</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">6</span><span class="w">
+ </span><span class="m">7</span><span class="w">    </span><span class="m">23</span><span class="w">     </span><span class="m">299</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">65</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">7</span><span class="w">
+ </span><span class="m">8</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">99</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">59</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">8</span><span class="w">
+ </span><span class="m">9</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">20.1</span><span class="w">    </span><span class="m">61</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="m">9</span><span class="w">
+</span><span class="m">10</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">194</span><span class="w">    </span><span class="kc">NA</span><span class="w">    </span><span class="m">69</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">10</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Cool stuff is you can build complexe predicates for replacing to NA :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replace_to_na_when</span><span class="p">(</span><span class="n">small</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">.x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="c1"># A tibble: 10 x 6</span><span class="w">
+   </span><span class="n">Ozone</span><span class="w"> </span><span class="n">Solar.R</span><span class="w">  </span><span class="n">Wind</span><span class="w">  </span><span class="n">Temp</span><span class="w"> </span><span class="n">Month</span><span class="w">   </span><span class="n">Day</span><span class="w">
+   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">   </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">lgl</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="w">
+ </span><span class="m">1</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">   </span><span class="m">7.4</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">1</span><span class="w">
+ </span><span class="m">2</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">   </span><span class="m">8.0</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="kc">NA</span><span class="w">
+ </span><span class="m">3</span><span class="w">    </span><span class="m">12</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">12.6</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">3</span><span class="w">
+ </span><span class="m">4</span><span class="w">    </span><span class="m">18</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">11.5</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">4</span><span class="w">
+ </span><span class="m">5</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">14.3</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">5</span><span class="w">
+ </span><span class="m">6</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">14.9</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">6</span><span class="w">
+ </span><span class="m">7</span><span class="w">    </span><span class="m">23</span><span class="w">      </span><span class="kc">NA</span><span class="w">   </span><span class="m">8.6</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">7</span><span class="w">
+ </span><span class="m">8</span><span class="w">    </span><span class="m">19</span><span class="w">      </span><span class="kc">NA</span><span class="w">  </span><span class="m">13.8</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">8</span><span class="w">
+ </span><span class="m">9</span><span class="w">     </span><span class="m">8</span><span class="w">      </span><span class="m">19</span><span class="w">  </span><span class="m">20.1</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">     </span><span class="m">9</span><span class="w">
+</span><span class="m">10</span><span class="w">    </span><span class="kc">NA</span><span class="w">      </span><span class="kc">NA</span><span class="w">   </span><span class="m">8.6</span><span class="w">    </span><span class="kc">NA</span><span class="w">     </span><span class="m">5</span><span class="w">    </span><span class="m">10</span><span class="w">
+</span></code></pre></div></div>
+<blockquote>
+  <p>Note ter: as said by Romain on <a href="https://twitter.com/romain_francois/status/938764972003414021">twitter</a>, replacing to NA in a data.frame is more of a {dplyr} than a {purrr} job. Yet, the solution with {purrr} is more general, and can be used for all kinds of lists</p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#purrr" class="page__taxonomy-item" rel="tag">purrr</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-en" class="page__taxonomy-item" rel="tag">r-blog-en</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-12-06T00:00:00+01:00">December 06, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text=A Crazy Little Thing Called {purrr} - Part 3 : Setting NA http://localhost:4000/purrr-set-na/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/purrr-set-na/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/purrr-set-na/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/purrr-set-na/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/purrr-text-wrangling/" class="pagination--pager" title="A Crazy Little Thing Called {purrr} - Part 2 : Text Wrangling
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/purrr-mappers/" class="pagination--pager" title="A Crazy Little Thing Called {purrr} - Part 4: mappers
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,674 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.4.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>A Crazy Little Thing Called {purrr} - Part 1 : Web Mining  - Colin FAY</title>
+
+
+
+
+<meta name="description" content="Yes, this title is a Queen reference.">
+
+
+
+
+<meta name="author" content="colin_fay">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Colin FAY">
+<meta property="og:title" content="A Crazy Little Thing Called {purrr} - Part 1 : Web Mining">
+
+
+  <link rel="canonical" href="http://localhost:4000/purrr-web-mining/">
+  <meta property="og:url" content="http://localhost:4000/purrr-web-mining/">
+
+
+
+  <meta property="og:description" content="Yes, this title is a Queen reference.">
+
+
+
+  <meta name="twitter:site" content="@_colinfay">
+  <meta name="twitter:title" content="A Crazy Little Thing Called {purrr} - Part 1 : Web Mining">
+  <meta name="twitter:description" content="Yes, this title is a Queen reference.">
+  <meta name="twitter:url" content="http://localhost:4000/purrr-web-mining/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@colin_fay">
+  
+
+
+
+  
+
+  
+
+
+
+  <meta property="og:image" content="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-11-24T00:00:00+01:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/08/colin_prev.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Colin FAY",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/_ColinFay","https://www.linkedin.com/in/colinfay/"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Colin FAY Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/favicon.png">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Colin FAY</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/">Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/talks-publications/">Talks & Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="https://colinfay.github.io/open-source/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/categories/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://colinfay.me/r-manuals/">R manuals</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">A Crazy Little Thing Called {purrr} - Part 1 : Web Mining </li>
+      
+    
+  </ol>
+</nav>
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://avatars1.githubusercontent.com/u/17936236?v=3&s=460" alt="Colin FAY" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Colin FAY</h3>
+    
+      <p class="author__bio" itemprop="description">
+        Data Science & Social Media at ThinkR. Founder of Data Bzh and cofounder of the Breizh Data Club.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Rennes</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:contact@colinfay.me">
+            <meta itemprop="email" content="contact@colinfay.me" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/_colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/colinfay" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/ColinFay" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+<li>
+  <a href="http://www.thinkr.fr">
+    <i class="fa fa-bookmark" aria-hidden="true"></i> ThinkR
+  </a>
+</li>
+<li>
+  <a href="http://data-bzh.fr">
+    <i class="fa fa-map-marker" aria-hidden="true"></i> Data-Bzh
+  </a>
+</li>
+<li>
+  <a href="http://breizhdataclub.org/">
+    <i class="fa fa-tag" aria-hidden="true"></i> Breizh Data Club
+  </a>
+</li>
+<li>
+  <a href="http://www.rweekly.org">
+    <i class="fa fa-rss" aria-hidden="true"></i> RWeekly
+  </a>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A Crazy Little Thing Called {purrr} - Part 1 : Web Mining">
+    <meta itemprop="description" content="Yes, this title is a Queen reference.">
+    <meta itemprop="datePublished" content="November 24, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">A Crazy Little Thing Called {purrr} - Part 1 : Web Mining
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Yes, this title is a Queen reference.</p>
+
+<!--more-->
+
+<p>Yesterday, I presented a talk called “Le Text Mining expliqué à ma grand-mère” at the Breizh Data Club Meetup. As the title suggests (“Text Mining explained to my Grand Mother”), this talk was about explaining text mining to someone that doesn’t understand anything about data science. If you want to check the slides, they are <a href="https://github.com/ColinFay/conf/blob/master/2017-11-breizh-data-club/fay_colin_tm_explique_grand_mere.pdf">on this GitHub repo</a>.</p>
+
+<p>As I was searching for a “light” subject to do text-mining on, and something appealing for my grand-mother, I thought about mining Michel Sardou’s lyrics (if you don’t know him, he’s a famous french singer, who wrote quite a lot of cheesy songs, and was really popular around the 80’s - you should look for him on YouTube or Spotify if you want to hear more about him (but honestly, don’t do that)). As there are no available dataset with the lyrics, I needed to scrap the data from the web.</p>
+
+<p>But I’m not here to talk about what’s in the slides, but more to share some tricks to use {purrr} for doing web scraping.</p>
+
+<h2 id="scraping-the-web-with-purrr-and-rvest">Scraping the web with {purrr} and {rvest}</h2>
+
+<blockquote>
+  <p>Disclaimer: this post is neither an {rvest} nor a {stringr} tutorial. There’s plenty of available great tutorials out there, feel free to look for them if you’re not familiar with theses packages.</p>
+</blockquote>
+
+<p>So, the first step was to gather the data. I found <a href="http://paroles2chansons.lemonde.fr">this website</a> which seemed to be containing everything I needed.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">rvest</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">get_album_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">url</span><span class="p">){</span><span class="w">
+  </span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">".col-md-12"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">)</span><span class="w">
+    
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">url_album</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">get_album_list</span><span class="p">(</span><span class="s2">"http://paroles2chansons.lemonde.fr/paroles-michel-sardou/discographie.html"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>No {purrr} there, let’s move to the next function, which get all the infos from an album list :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_album_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">url</span><span class="p">){</span><span class="w">
+  </span><span class="n">page</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="w"> 
+  </span><span class="n">date</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">"small"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_text</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"Date de Sortie : "</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">lubridate</span><span class="o">::</span><span class="n">dmy</span><span class="p">()</span><span class="w">
+  </span><span class="n">song_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">".font-small"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_text</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">discard</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Plan de site"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Mention légale"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Chansons de mariage"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Chansons d'enterrement"</span><span class="w"> </span><span class="p">)</span><span class="w">
+  
+  </span><span class="n">url_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">".font-small"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_attr</span><span class="p">(</span><span class="s2">"href"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">discard</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"/plan-du-site.html"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"/mentions-legales.html"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"/paroles-chansons-de-messe-d-enterrement/"</span><span class="o">|</span><span class="w"> </span><span class="n">.x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"/paroles-chansons-de-messe-de-mariage/"</span><span class="p">)</span><span class="w">
+  
+  </span><span class="n">album_name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">".breadcrumb"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_text</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_extract</span><span class="p">(</span><span class="s2">"\t.*$"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w">
+  
+  </span><span class="n">tibble</span><span class="p">(</span><span class="n">chanson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">song_list</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url_list</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">album_name</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">)</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>When doing web mining, there are sometimes stuffs you want to discard: here, for example, every pages of the website has four links I don’t want to keep. For that, I used the <code class="highlighter-rouge">discard</code> function from {purrr}, which is a function that remove everything that matches the predicate it receives.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">albums_infos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">map_df</span><span class="p">(</span><span class="n">url_album</span><span class="p">,</span><span class="w"> </span><span class="n">get_album_info</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">grepl</span><span class="p">(</span><span class="s2">"sardou"</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here, a simple <code class="highlighter-rouge">map_df</code>, which iterates over the list of url, applies the function <code class="highlighter-rouge">get_album_info</code>, and always returns a data.frame. Out of security, I filtered the urls to be sure to match the name of the artist.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_lyrics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">){</span><span class="w">
+  </span><span class="n">page</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="w">
+  </span><span class="n">lyrics</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">".text-center"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_nodes</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">html_text</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"[\t+\r+\n+]"</span><span class="p">,</span><span class="w"> </span><span class="s2">" "</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"[ ]{2}"</span><span class="p">,</span><span class="w"> </span><span class="s2">" "</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"googletag.cmd.push\\(function\\(\\) \\{ googletag.display\\('container-middle-lyrics'\\)\\; \\}\\)\\;"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">stringr</span><span class="o">::</span><span class="n">str_replace_all</span><span class="p">(</span><span class="s2">"\\/\\* ringtone - Below Lyrics \\*\\/.*"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">discard</span><span class="p">(</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grepl</span><span class="p">(</span><span class="s2">"Corriger les paroles"</span><span class="p">,</span><span class="w"> </span><span class="n">.x</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">discard</span><span class="p">(</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grepl</span><span class="p">(</span><span class="s2">"Paroles2Chansons"</span><span class="p">,</span><span class="w"> </span><span class="n">.x</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">discard</span><span class="p">(</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">nchar</span><span class="p">(</span><span class="n">.x</span><span class="p">)</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> 
+  </span><span class="n">tibble</span><span class="p">(</span><span class="n">parole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lyrics</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">song</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">safe_lyr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">safely</span><span class="p">(</span><span class="n">get_lyrics</span><span class="p">)</span><span class="w">
+
+</span><span class="n">lyrics_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">map2</span><span class="p">(</span><span class="n">albums_infos</span><span class="o">$</span><span class="n">url</span><span class="p">,</span><span class="w"> 
+                     </span><span class="n">albums_infos</span><span class="o">$</span><span class="n">chanson</span><span class="p">,</span><span class="w"> 
+                     </span><span class="o">~</span><span class="w"> </span><span class="n">safe_lyr</span><span class="p">(</span><span class="n">.x</span><span class="p">,</span><span class="n">.y</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">map</span><span class="p">(</span><span class="s2">"result"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">compact</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">reduce</span><span class="p">(</span><span class="n">bind_rows</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="w"> </span><span class="n">grepl</span><span class="p">(</span><span class="s2">"Soumettre une chanson"</span><span class="p">,</span><span class="w"> </span><span class="n">parole</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This part is more interesting (in my humble opinion) and quite relevant for web mining. Nothing new in the <code class="highlighter-rouge">get_lyrics</code> function, but it turns out that <code class="highlighter-rouge">safely</code> can be an amazingly usefull tool for web scraping. What this function does is taking a function A, returning another function B which will run A and returns a list containing two element: <code class="highlighter-rouge">result</code> and <code class="highlighter-rouge">error</code>, one being <code class="highlighter-rouge">NULL</code> depending on the output of the function A.</p>
+
+<p>So the point is that <strong>this function always works</strong> 🎉. If you’ve been doing some bulk web scraping, you know how frustrating it can be when your iteration stops because one out of your 500 urls is a 404. So, safely is here to help you prevent that: even if you iterate over 500 urls which are 404, your process won’t stop: you’ll always get an answer.</p>
+
+<p>That’s what I’m doing here with <code class="highlighter-rouge">safe_lyr</code>. Once I get the results, I <code class="highlighter-rouge">map("result")</code> in order to keep only the result elements of the lists, and <code class="highlighter-rouge">compact()</code> to remove the <code class="highlighter-rouge">NULL</code> elements (i.e the url that returned a 404). As all my result elements are tibbles, I end with a <code class="highlighter-rouge">reduce(bind_rows)</code> [*], which iterates over the list binding two elements at a time.</p>
+
+<p>So here we are, let’s join everyting up in a big dataframe !</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">albums_infos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">albums_infos</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">left_join</span><span class="p">(</span><span class="n">lyrics_df</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">chanson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"song"</span><span class="p">))</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/ColinFay/colinfay.github.io/master/uploads/2017/11/sardou.gif" alt="" /></p>
+
+<p>[*] As stated in the comment section, <code class="highlighter-rouge">bind_rows()</code> can take a list of data.frames as argument: I chose here to use <code class="highlighter-rouge">reduce</code> as an example of how this function works, yet this will not be, in practice, the best way to bind a list of data.frames.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#purrr" class="page__taxonomy-item" rel="tag">purrr</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#r-blog-en" class="page__taxonomy-item" rel="tag">r-blog-en</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-11-24T00:00:00+01:00">November 24, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=_colinfay&text=A Crazy Little Thing Called {purrr} - Part 1 : Web Mining  http://localhost:4000/purrr-web-mining/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/purrr-web-mining/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/purrr-web-mining/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/purrr-web-mining/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/back-budapest/" class="pagination--pager" title="Back from Budapest
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/purrr-text-wrangling/" class="pagination--pager" title="A Crazy Little Thing Called {purrr} - Part 2 : Text Wrangling
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/_colinfay"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ColinFay"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Colin FAY. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65307055-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'http-colinfay-me';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>
