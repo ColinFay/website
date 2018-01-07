@@ -13,9 +13,10 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<div class="post">
+<div id="main" role="main">
+  {% include sidebar.html %}
 
-{% include sidebar.html %}
+<div class="post">
 
 <h1>Tag: {{ page.tag }}</h1>
 <ul>
@@ -27,3 +28,5 @@ layout: default
 </ul>
 </div>
 <hr>
+</div>
+
