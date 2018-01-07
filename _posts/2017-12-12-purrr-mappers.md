@@ -4,6 +4,8 @@ author: colin_fay
 post_date: 2017-12-12
 layout: single
 permalink: /purrr-mappers/
+tags:
+  - purrr
 categories : r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
@@ -65,10 +67,9 @@ The first thing that `map` (and other map\_\*) do is turning a the `~ .x
 map
 ```
 
-    ## function (.x, .f, ...) 
-    ## {
-    ##     .f <- as_mapper(.f, ...)
-    ##     .Call(map_impl, environment(), ".x", ".f", "list")
+    ## function(.x, .f, ...) {
+    ##   .f <- as_mapper(.f, ...)
+    ##   .Call(map_impl, environment(), ".x", ".f", "list")
     ## }
     ## <environment: namespace:purrr>
 
@@ -138,7 +139,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7ffa4f0b3e60>
+    ## <environment: 0x7fb2cb62a950>
 
 ``` r
 as_mapper("this")
@@ -146,7 +147,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7ffa4ea89d50>
+    ## <environment: 0x7fb2cd9fb158>
 
 or even another lambda function :
 
@@ -168,7 +169,7 @@ l <- list(rnorm(10),
 pmap_dbl(list(l, 20, TRUE), ~ mean(..1, ..2, ..3)) 
 ```
 
-    ## [1]  0.39731113 -0.02075159 -0.05206698
+    ## [1] -0.431030092  0.007889214 -0.051816152
 
 ## Using mapper inside {trycatchthis}
 
@@ -226,18 +227,14 @@ pimped_sum("1", 2)
 But that’s a lot of duplicated code, a lot of if if there are lot of
 checks to do, and not that much functions stating clearly what they do.
 
-So here comes {trycatchthis}:
+So here comes
+    {trycatchthis}:
 
 ``` r
 library(trycatchthis)
 ```
 
-    ## 
-    ## Attaching package: 'trycatchthis'
-
-    ## The following object is masked _by_ '.GlobalEnv':
-    ## 
-    ##     try_catch
+    ## Error in library(trycatchthis): there is no package called 'trycatchthis'
 
 ``` r
 pimped_sum <- function(x, y){
@@ -249,7 +246,7 @@ pimped_sum <- function(x, y){
 pimped_sum("1", 2)
 ```
 
-    ## Error: your args should be numeric
+    ## Error in stop_if_any(c(x, y), ~!is.numeric(.x), msg = "your args should be numeric"): impossible de trouver la fonction "stop_if_any"
 
 You can have a look at what {trycatchthis} does on the [GitHub
 repo](https://github.com/ColinFay/trycatchthis).
@@ -265,7 +262,7 @@ small_by_ten <- function(x){
 small_by_ten(11)
 ```
 
-    ## Error: x should be less than ten
+    ## Error in stop_if(x, ~.x > 10, msg = "x should be less than ten"): impossible de trouver la fonction "stop_if"
 
 So here, you can see that we are using a formula inside `stop_if`. How
 does if work ? The second argument is turned into a mapper, and then

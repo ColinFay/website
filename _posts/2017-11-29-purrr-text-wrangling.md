@@ -4,6 +4,8 @@ author: colin_fay
 post_date: 2017-11-29
 layout: single
 permalink: /purrr-text-wrangling/
+tags:
+  - purrr
 categories : r-blog-en
 excerpt_separator: <!--more-->
 ---

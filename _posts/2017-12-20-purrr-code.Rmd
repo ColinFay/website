@@ -4,6 +4,8 @@ author: colin_fay
 post_date: 2017-12-20
 layout: single
 permalink: /purrr-code-optim/
+tags:
+  - purrr
 categories : r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->

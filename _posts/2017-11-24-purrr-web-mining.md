@@ -4,6 +4,8 @@ author: colin_fay
 post_date: 2017-11-24
 layout: single
 permalink: /purrr-web-mining/
+tags:
+  - purrr
 categories : r-blog-en
 excerpt_separator: <!--more-->
 ---
