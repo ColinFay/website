@@ -15,11 +15,11 @@ I won’t talk about the Queen reference anymore.
 
 <!--more-->
 
-I’ve been working lately on a new package called {trycatchthis}, which
-is an attempt at making try catch and condition handling in R a little
-bit friendlier. If you have some time to spare, I’ll be glad if you can
-give me some feedbacks about it: positive, negative, PR, improvement
-suggestions <https://github.com/ColinFay/trycatchthis>… Feel free\!
+I’ve been working lately on a new package called {attempt}, which is an
+attempt at making try catch and condition handling in R a little bit
+friendlier. If you have some time to spare, I’ll be glad if you can give
+me some feedbacks about it: positive, negative, PR, improvement
+suggestions <https://github.com/ColinFay/attempt>… Feel free\!
 
 This package relies a lot on {purrr} mappers (and on {rlang} but I won’t
 be talking about {rlang} today… maybe in another series of posts). Today
@@ -139,7 +139,7 @@ as_mapper(1)
 
     ## function (x, ...) 
     ## pluck(x, list(1), .default = NULL)
-    ## <environment: 0x7fb2cb62a950>
+    ## <environment: 0x7fcae3543788>
 
 ``` r
 as_mapper("this")
@@ -147,7 +147,7 @@ as_mapper("this")
 
     ## function (x, ...) 
     ## pluck(x, list("this"), .default = NULL)
-    ## <environment: 0x7fb2cd9fb158>
+    ## <environment: 0x7fcae3280190>
 
 or even another lambda function :
 
@@ -169,13 +169,13 @@ l <- list(rnorm(10),
 pmap_dbl(list(l, 20, TRUE), ~ mean(..1, ..2, ..3)) 
 ```
 
-    ## [1] -0.431030092  0.007889214 -0.051816152
+    ## [1] 0.48879956 0.15248405 0.01861908
 
-## Using mapper inside {trycatchthis}
+## Using mapper inside {attempt}
 
 ### try\_catch
 
-These are also what allows {trycatchthis} to be flexible when building
+These are also what allows {attempt} to be flexible when building
 trycatch calls and condition handlers.
 
 As you may know, `tryCatch` takes four arguments :
@@ -187,10 +187,10 @@ As you may know, `tryCatch` takes four arguments :
 
 So if you’ve followed along, you now know that I can use mappers here as
 arguments of a `tryCatch` call. This is exactly what `try_catch`, from
-{trycatchthis}, does.
+{attempt}, does.
 
 Here’s a shorten example (and slightly different from the one in
-{trycatchthis} as `try_that` is built with {rlang} `lang`) :
+{attempt} as `try_that` is built with {rlang} `lang`) :
 
 ``` r
 try_catch <- function(expr, .e) {
@@ -227,14 +227,18 @@ pimped_sum("1", 2)
 But that’s a lot of duplicated code, a lot of if if there are lot of
 checks to do, and not that much functions stating clearly what they do.
 
-So here comes
-    {trycatchthis}:
+So here comes {attempt}:
 
 ``` r
-library(trycatchthis)
+library(attempt)
 ```
 
-    ## Error in library(trycatchthis): there is no package called 'trycatchthis'
+    ## 
+    ## Attaching package: 'attempt'
+
+    ## The following object is masked _by_ '.GlobalEnv':
+    ## 
+    ##     try_catch
 
 ``` r
 pimped_sum <- function(x, y){
@@ -246,10 +250,10 @@ pimped_sum <- function(x, y){
 pimped_sum("1", 2)
 ```
 
-    ## Error in stop_if_any(c(x, y), ~!is.numeric(.x), msg = "your args should be numeric"): impossible de trouver la fonction "stop_if_any"
+    ## Error: your args should be numeric
 
-You can have a look at what {trycatchthis} does on the [GitHub
-repo](https://github.com/ColinFay/trycatchthis).
+You can have a look at what {attempt} does on the [GitHub
+repo](https://github.com/ColinFay/attempt).
 
 ``` r
 # Simpler example
@@ -262,7 +266,7 @@ small_by_ten <- function(x){
 small_by_ten(11)
 ```
 
-    ## Error in stop_if(x, ~.x > 10, msg = "x should be less than ten"): impossible de trouver la fonction "stop_if"
+    ## Error: x should be less than ten
 
 So here, you can see that we are using a formula inside `stop_if`. How
 does if work ? The second argument is turned into a mapper, and then
