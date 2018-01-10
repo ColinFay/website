@@ -20,6 +20,10 @@ _Since 2017-05_
 
 [ThinkR](www.thinkr.fr)
 
++ R development 
++ Data Analysis
++ R Training 
++ Social Media
 
 ## Founder and editor in chief
 
