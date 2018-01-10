@@ -9,53 +9,52 @@ output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
 
-Because someone always asks: “and what about performance?”
+Some random (one could say useless) benchmarks on R, serious or for fun,
+and some advices to make your code run faster. <!--more-->
 
-<!--more-->
-
-There are two main things you can do to optimise code: writting shorter
+There are two main things you can do to optimise code: write shorter
 functions to avoid repeating yourself (maintainance-oriented
-optimisation), and finding how to make your R code run faster
+optimisation), and find how to make your R code run faster
 (usage-oriented optimisation).
 
-One way to make you R code run really faster is to turn to language like
-C++. But you know, [it’s not that
+One way to make you R code run really faster is to turn to languages
+like C++. But you know, [it’s not that
 easy](https://memegenerator.net/img/instances/500x/39604158/i-love-c-it-makes-people-cry.jpg),
 and before turning to that, you can still use some tricks to help your
 code run faster.
 
-I was working on {attempt} lately, a package that helps conditions
-handling, aims to be used inside other functions ([more on
-that](https://github.com/ColinFay/attempt)). As the attempt functions
-are to be used inside other function, I focused on trying to speed
-things up as much as I could, in order to keep the general UX
+I was working on {attempt} lately, a package that (I hope) makes
+conditions handling easier, and aims to be used inside other functions
+([more on that](https://github.com/ColinFay/attempt)). As the {attempt}
+functions are to be used inside other functions, I focused on trying to
+speed things up as much as I could, in order to keep the general UX
 attractive. And of course, I wanted to do that without having to go for
-C / C++ (well, mainly because I don’t know how to program in C). For
-this, I played a lot with {microbenchmark}, a package that allows to
-compare the time spent to run several R commands. In the end, these
-benchmarks allowed me to write faster functions. I won’t share them all
-here (because this is mainly one thousand lines of specific code), but I
-guess I can share some pieces of it.
+C / C++ (well, mainly because I don’t know how to program in C).
 
-So, here are some random (one could say useless) benchmarks about R,
-serious or for fun, and some advices to make your code run faster.
+For this, I played a lot with {microbenchmark}, a package that allows to
+compare the time spent to run several R commands, and in the end, I was
+glad to see that using these benchmarks allowed me to write faster
+functions (and sometimes, really faster). I won’t share them all here
+(because this is one thousand lines of code), but here are some pieces
+taken out of it.
+
+Because at the end of the day, someone always asks: “and what about
+performance?”
 
 ## return or stop as soon as possible
 
 Funny thing: as I started writing this post, I came accross [this
 blogpost](https://yihui.name/en/2018/01/stop-early/) by Yihui that
-states the exact same thing I was writting: focus on `return()` or
-`stop()` as soon as possible. Don’t make your code compute stuff you
-might never need in some cases, or compute realise useless tests. For
-example, if you have an if statement that will stop the function, test
-it first.
+states the exact same thing I was writing: focus on `return()` or
+`stop()` as soon as possible. Don’t make your code compute stuffs you
+might never need in some cases, or make useless tests. For example, if
+you have an if statement that will stop the function, test it first.
 
-> Note: the examples here are of course toy example.
-
-For example :
+> Note: the examples that follow are of course toy examples.
 
 ``` r
 library(microbenchmark)
+
 compute_first <- function(a){
   b <- log(a) * 10 
   c <- log(a) * 100
@@ -92,16 +91,18 @@ microbenchmark(compute_first(1), if_first(1), compute_first(0), if_first(0), tim
 ```
 
     ## Unit: nanoseconds
-    ##              expr min    lq   mean median    uq   max neval cld
-    ##  compute_first(1) 474 510.0 594.87  560.5 635.5  1503   100   b
-    ##       if_first(1) 233 254.5 319.29  278.0 344.0  1601   100  a 
-    ##  compute_first(0) 471 513.0 689.10  552.5 608.5 10739   100   b
-    ##       if_first(0) 471 510.0 566.42  541.0 600.0  1121   100   b
+    ##              expr min    lq   mean median    uq  max neval cld
+    ##  compute_first(1) 473 510.5 588.45  544.0 608.0 1580   100   b
+    ##       if_first(1) 236 250.0 318.03  266.5 315.0 2993   100  a 
+    ##  compute_first(0) 471 505.5 659.36  536.0 623.0 8869   100   b
+    ##       if_first(0) 471 505.0 576.13  529.5 600.5 1309   100   b
 
 As you can see, `compute_first` takes almost as much time to compute in
-both case. But you can save some time when using `if_first` : in the
-case a == 1, the function doesn’t compute `b`, `c` or `d`, so runs
-faster. Yes, it’s a matter of nanoseconds, but what if:
+both cases. But you can save some time when using `if_first` : in the
+case of `a == 1`, the function doesn’t compute `b`, `c` or `d`, so runs
+faster.
+
+Yes, it’s a matter of nanoseconds, but what if:
 
 ``` r
 sleep_first <- function(b){
@@ -135,25 +136,27 @@ microbenchmark(sleep_first(1), sleep_second(1), sleep_first(0), sleep_second(0),
 ```
 
     ## Unit: nanoseconds
-    ##             expr      min       lq        mean   median         uq
-    ##   sleep_first(1) 10037123 10454785 11622239.94 11991320 12674972.0
-    ##  sleep_second(1)      258     5288     8935.88     7872     9349.5
-    ##   sleep_first(0) 10044047 10590848 11542020.08 11574358 12675459.0
-    ##  sleep_second(0) 10039071 10382517 11461044.34 11409743 12636210.0
+    ##             expr      min       lq        mean     median       uq
+    ##   sleep_first(1) 10042022 10615753 11545262.42 11578319.0 12673020
+    ##  sleep_second(1)      594     5607     7494.75     7376.5     8338
+    ##   sleep_first(0) 10041663 10443558 11531655.29 11485839.5 12679463
+    ##  sleep_second(0) 10072008 10660272 11477697.63 11375085.5 12673500
     ##       max neval cld
-    ##  12690190   100   b
-    ##     96180   100  a 
-    ##  12704257   100   b
-    ##  12726656   100   b
+    ##  12775573   100   b
+    ##     59000   100  a 
+    ##  12848165   100   b
+    ##  12736441   100   b
 
-## Use importFrom, not `::`
+## Use `importFrom`, not `::`
 
 Yes, `::` is a function, so calling `pkg::function` is slower than
-attaching the package and then use the function. When creating a
-package, it’s better to use `@importFrom`, instead of just listing the
-package as dependency, and then using `::` inside your function.
+attaching the package and then use the function. That’s why \<hen
+creating a package, it’s better to use `@importFrom`. Do this instead of
+just listing the package as dependency, and then using `::` inside your
+functions.
 
-And that’s not specific, we get the same results with base:
+And that’s not specific to some cases, we get the same results with
+base:
 
 ``` r
 a <- NULL
@@ -166,21 +169,22 @@ microbenchmark(is.null(a),
 ```
 
     ## Unit: nanoseconds
-    ##              expr  min   lq     mean median   uq     max neval cld
-    ##        is.null(a)   79   99  144.057    110  135   36615 10000  a 
-    ##  base::is.null(a) 3532 3834 5013.332   4159 4759  278601 10000   b
-    ##          is.na(b)  105  129  174.649    140  165   11467 10000  a 
-    ##    base::is.na(b) 3580 3907 5218.029   4232 4819 1297422 10000   b
+    ##              expr  min   lq      mean median   uq     max neval cld
+    ##        is.null(a)   76  103  141.2799    115  132   25371 10000  a 
+    ##  base::is.null(a) 3671 4065 5160.2074   4337 4786  345280 10000   b
+    ##          is.na(b)  106  137  181.1913    148  176   37625 10000  a 
+    ##    base::is.na(b) 3721 4105 5475.4224   4381 4822 2596615 10000   b
 
-As a general rule of thumb, you should aim at doing as less function
+As a general rule of thumb, you should aim at making as less function
 calls as possible: calling one function takes time, so if can be
-avoided, avoid it. Here, for example, there’s a way to avoid calling
-`::`, so use it :)
+avoided, avoid it.
 
-## Does return() make the funcion slower?
+Here, for example, there’s a way to avoid calling `::`, so use it :)
 
-There’s a saying in the R ommunity that `return()` slows a little bit
-your code (that makes sens, return is a function call).
+## Does `return()` make the funcion slower?
+
+I’ve heard several times that `return()` slows your code a little bit
+(that makes sens, return is a function call).
 
 ``` r
 with_return <- function(x){
@@ -203,16 +207,16 @@ microbenchmark(with_return(3),
 ```
 
     ## Unit: nanoseconds
-    ##               expr min  lq     mean median  uq    max neval cld
-    ##     with_return(3) 223 236 345.0267    241 257 825418 10000   a
-    ##  without_return(3) 221 236 353.0534    240 247 944481 10000   a
+    ##               expr min  lq     mean median  uq     max neval cld
+    ##     with_return(3) 224 241 453.9917    263 394 1110423 10000   a
+    ##  without_return(3) 224 239 474.9781    261 392 1369807 10000   a
 
 Surprisingly, `return()` doesn’t slow your code. So use it\!
 
 ## Brackets make the code (a little bit) slower
 
-But way clearer. So keep it unless you want to win a bunch of
-nanoseconds :)
+But they make it way clearer. So keep it unless you want to win a bunch
+of nanoseconds :)
 
 ``` r
 microbenchmark(if(TRUE)"yay",
@@ -223,20 +227,20 @@ microbenchmark(if(TRUE)"yay",
 ```
 
     ## Unit: nanoseconds
-    ##                                         expr min lq    mean median  uq
-    ##                              if (TRUE) "yay"  38 50 51.3966     52  55
-    ##                      if (TRUE) {     "yay" }  75 87 91.8743     92  95
-    ##                  if (FALSE) "yay" else "nay"  39 54 56.3569     56  61
-    ##  if (FALSE) {     "yay" } else {     "nay" }  77 91 98.4189     96 101
-    ##   max neval  cld
-    ##   215 10000 a   
-    ##  8379 10000   c 
-    ##  1078 10000  b  
-    ##  8018 10000    d
+    ##                                         expr min  lq     mean median  uq
+    ##                              if (TRUE) "yay"  38  55  88.7599     81  99
+    ##                      if (TRUE) {     "yay" }  75  95 171.0706    152 181
+    ##                  if (FALSE) "yay" else "nay"  39  61 105.2843     90 105
+    ##  if (FALSE) {     "yay" } else {     "nay" }  77 100 187.1689    160 188
+    ##     max neval cld
+    ##   30012 10000  a 
+    ##   52953 10000   b
+    ##  100904 10000  a 
+    ##  223661 10000   b
 
 ## Assign as less as possible
 
-Yep, because assigning is a function (still, a matter of nanoseconds).
+Yep, because assigning is a function.
 
 ``` r
 with_assign <- function(a){
@@ -255,9 +259,9 @@ microbenchmark(with_assign(3),
 ```
 
     ## Unit: nanoseconds
-    ##               expr  min   lq     mean median     uq     max neval cld
-    ##     with_assign(3) 1097 1143 5171.114   1177 1218.0 3945914  1000   a
-    ##  without_assign(3)  714  751 3725.098    777  803.5 2916320  1000   a
+    ##               expr min  lq     mean median  uq     max neval cld
+    ##     with_assign(3) 440 463 2163.756    479 510 1666819  1000   a
+    ##  without_assign(3) 274 289 2273.333    299 307 1897253  1000   a
 
 ## What about the pipe ?
 
@@ -281,9 +285,9 @@ microbenchmark(with_pipe(3),
 ```
 
     ## Unit: nanoseconds
-    ##               expr   min    lq       mean   median       uq     max neval
-    ##       with_pipe(3) 94652 97425 131748.555 102394.5 147620.0 2265369  1000
-    ##  without_assign(3)   280   344    615.917    520.0    640.5   10454  1000
+    ##               expr   min      lq       mean  median       uq     max neval
+    ##       with_pipe(3) 94538 97644.5 115050.857 99866.0 111293.5 2589781  1000
+    ##  without_assign(3)   279   316.5    508.961   488.5    564.5    3220  1000
     ##  cld
     ##    b
     ##   a
@@ -293,7 +297,14 @@ You know, because `%>%` is a function.
 ## Conclusion
 
 These tests are just random tests I run, and I can’t say they cover all
-the technics you can use to speed up your code a little bit.
+the technics you can use to speed up your code a little bit. These are
+just some questions I can accross and wanted to share.
+
+At the end of the day, there are also methods (like the bracket one)
+that can help you save some nanoseconds. So don’t be afraid of not using
+them, and stay focus on what’s more important: write code that is easy
+to understand. Because a piece of code that is easy to understand is a
+piece of code that is easy to maintain\!
 
 If you want to read more about code optimisation for speed, Colin
 Gillespie and Robin Lovelace wrote a nice book about being more efficien

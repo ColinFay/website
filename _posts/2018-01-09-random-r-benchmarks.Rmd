@@ -8,28 +8,29 @@ categories: cat
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
-Because someone always asks: "and what about performance?"
 
+Some random (one could say useless) benchmarks on R, serious or for fun, and some advices to make your code run faster. 
 <!--more-->
 
-There are two main things you can do to optimise code: writting shorter functions to avoid repeating yourself (maintainance-oriented optimisation), and finding how to make your R code run faster (usage-oriented optimisation). 
+There are two main things you can do to optimise code: write shorter functions to avoid repeating yourself (maintainance-oriented optimisation), and find how to make your R code run faster (usage-oriented optimisation). 
 
-One way to make you R code run really faster is to turn to language like C++. But you know, [it's not that easy](https://memegenerator.net/img/instances/500x/39604158/i-love-c-it-makes-people-cry.jpg), and before turning to that, you can still use some tricks to help your code run faster. 
+One way to make you R code run really faster is to turn to languages like C++. But you know, [it's not that easy](https://memegenerator.net/img/instances/500x/39604158/i-love-c-it-makes-people-cry.jpg), and before turning to that, you can still use some tricks to help your code run faster. 
 
-I was working on {attempt} lately, a package that helps conditions handling, aims to be used inside other functions ([more on that](https://github.com/ColinFay/attempt)). As the attempt functions are to be used inside other function, I focused on trying to speed things up as much as I could, in order to keep the general UX attractive. And of course, I wanted to do that without having to go for C / C++ (well, mainly because I don't know how to program in C). For this, I played a lot with {microbenchmark}, a package that allows to compare the time spent to run several R commands. In the end, these benchmarks allowed me to write faster functions. I won't share them all here (because this is mainly one thousand lines of specific code), but I guess I can share some pieces of it.
+I was working on {attempt} lately, a package that (I hope) makes conditions handling easier, and aims to be used inside other functions ([more on that](https://github.com/ColinFay/attempt)). As the {attempt} functions are to be used inside other functions, I focused on trying to speed things up as much as I could, in order to keep the general UX attractive. And of course, I wanted to do that without having to go for C / C++ (well, mainly because I don't know how to program in C). 
 
-So, here are some random (one could say useless) benchmarks about R, serious or for fun, and some advices to make your code run faster. 
+For this, I played a lot with {microbenchmark}, a package that allows to compare the time spent to run several R commands, and in the end, I was glad to see that using these benchmarks allowed me to write faster functions (and sometimes, really faster). I won't share them all here (because this is one thousand lines of code), but here are some pieces taken out of it.
+
+Because at the end of the day, someone always asks: "and what about performance?"
 
 ## return or stop as soon as possible 
 
-Funny thing: as I started writing this post, I came accross [this blogpost](https://yihui.name/en/2018/01/stop-early/) by Yihui that states the exact same thing I was writting: focus on `return()` or `stop()` as soon as possible. Don't make your code compute stuff you might never need in some cases, or compute realise useless tests. For example, if you have an if statement that will stop the function, test it first.
+Funny thing: as I started writing this post, I came accross [this blogpost](https://yihui.name/en/2018/01/stop-early/) by Yihui that states the exact same thing I was writing: focus on `return()` or `stop()` as soon as possible. Don't make your code compute stuffs you might never need in some cases, or make useless tests. For example, if you have an if statement that will stop the function, test it first.
 
-> Note: the examples here are of course toy example. 
-
-For example : 
+> Note: the examples that follow are of course toy examples. 
 
 ```{r}
 library(microbenchmark)
+
 compute_first <- function(a){
   b <- log(a) * 10 
   c <- log(a) * 100
@@ -58,7 +59,9 @@ all.equal(compute_first(0), if_first(0))
 microbenchmark(compute_first(1), if_first(1), compute_first(0), if_first(0), times = 100)
 ```
 
-As you can see, `compute_first` takes almost as much time to compute in both case. But you can save some time when using `if_first` : in the case a == 1, the function doesn't compute `b`, `c` or `d`, so runs faster. Yes, it's a matter of nanoseconds, but what if: 
+As you can see, `compute_first` takes almost as much time to compute in both cases. But you can save some time when using `if_first` : in the case of `a == 1`, the function doesn't compute `b`, `c` or `d`, so runs faster. 
+
+Yes, it's a matter of nanoseconds, but what if: 
 
 ```{r}
 sleep_first <- function(b){
@@ -85,11 +88,11 @@ all.equal(sleep_first(0), sleep_second(0))
 microbenchmark(sleep_first(1), sleep_second(1), sleep_first(0), sleep_second(0), times = 100)
 ```
 
-## Use importFrom, not `::`
+## Use `importFrom`, not `::`
 
-Yes, `::` is a function, so calling `pkg::function` is slower than attaching the package and then use the function. When creating a package, it's better to use `@importFrom`, instead of just listing the package as dependency, and then using `::` inside your function. 
+Yes, `::` is a function, so calling `pkg::function` is slower than attaching the package and then use the function. That's why <hen creating a package, it's better to use `@importFrom`. Do this instead of just listing the package as dependency, and then using `::` inside your functions. 
 
-And that's not specific, we get the same results with base: 
+And that's not specific to some cases, we get the same results with base: 
 
 ```{r}
 a <- NULL
@@ -101,11 +104,13 @@ microbenchmark(is.null(a),
                times = 10000)
 ```
 
-As a general rule of thumb, you should aim at doing as less function calls as possible: calling one function takes time, so if can be avoided, avoid it. Here, for example, there's a way to avoid calling `::`, so use it :) 
+As a general rule of thumb, you should aim at making as less function calls as possible: calling one function takes time, so if can be avoided, avoid it. 
 
-## Does return() make the funcion slower?
+Here, for example, there's a way to avoid calling `::`, so use it :) 
 
-There's a saying in the R ommunity that `return()` slows a little bit your code (that makes sens, return is a function call). 
+## Does `return()` make the funcion slower?
+
+I've heard several times that `return()` slows your code a little bit (that makes sens, return is a function call). 
 
 ```{r}
 with_return <- function(x){
@@ -129,7 +134,7 @@ Surprisingly, `return()` doesn't slow your code. So use it!
 
 ## Brackets make the code (a little bit) slower 
 
-But way clearer. So keep it unless you want to win a bunch of nanoseconds :) 
+But they make it way clearer. So keep it unless you want to win a bunch of nanoseconds :) 
 
 ```{r}
 microbenchmark(if(TRUE)"yay",
@@ -141,7 +146,7 @@ microbenchmark(if(TRUE)"yay",
 
 ## Assign as less as possible 
 
-Yep, because assigning is a function (still, a matter of nanoseconds).
+Yep, because assigning is a function.
 
 ```{r}
 with_assign <- function(a){
@@ -183,6 +188,8 @@ You know, because `%>%` is a function.
 
 ## Conclusion 
 
-These tests are just random tests I run, and I can't say they cover all the technics you can use to speed up your code a little bit. 
+These tests are just random tests I run, and I can't say they cover all the technics you can use to speed up your code a little bit. These are just some questions I can accross and wanted to share. 
+
+At the end of the day, there are also methods (like the bracket one) that can help you save some nanoseconds. So don't be afraid of not using them, and stay focus on what's more important: write code that is easy to understand. Because a piece of code that is easy to understand is a piece of code that is easy to maintain!  
 
 If you want to read more about code optimisation for speed, Colin Gillespie and Robin Lovelace wrote a nice book about being more efficien with R, with a chapter focused on performance: [Efficient optimisation](https://csgillespie.github.io/efficientR/performance.html)
