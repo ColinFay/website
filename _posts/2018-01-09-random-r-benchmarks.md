@@ -12,13 +12,13 @@ excerpt_separator: <!--more-->
 Some random (one could say useless) benchmarks on R, serious or for fun,
 and some advices to make your code run faster. <!--more-->
 
-disclamer::on()
+`disclamer::on()`
 
 > As with all microbenchmarks, these won’t affect the performance of
 > most code, but can be important for special cases. [Advanced R -
 > Performance](http://adv-r.had.co.nz/Performance.html)
 
-disclamer::off()
+`disclamer::off()`
 
 There are two main things you can do to optimise your code: **write more
 and shorter functions** to avoid repeating yourself
@@ -99,10 +99,10 @@ microbenchmark(compute_first(1), if_first(1), compute_first(0), if_first(0), tim
 
     ## Unit: nanoseconds
     ##              expr min    lq   mean median    uq   max neval cld
-    ##  compute_first(1) 477 508.5 582.15  552.5 622.0  1506   100   b
-    ##       if_first(1) 239 253.0 297.87  268.0 319.5   944   100  a 
-    ##  compute_first(0) 477 508.5 567.08  530.0 579.0  2144   100   b
-    ##       if_first(0) 469 507.5 674.51  536.5 609.5 10721   100   b
+    ##  compute_first(1) 487 509.5 684.65  522.5 568.0 12556   100   b
+    ##       if_first(1) 238 257.0 291.21  265.5 298.0   779   100  a 
+    ##  compute_first(0) 483 509.0 569.97  540.5 586.0  1196   100   b
+    ##       if_first(0) 489 509.0 593.14  528.0 580.5  2657   100   b
 
 As you can see, `compute_first` takes almost as much time to compute in
 both cases. But you can save some time when using `if_first` : in the
@@ -143,16 +143,16 @@ microbenchmark(sleep_first(1), sleep_second(1), sleep_first(0), sleep_second(0),
 ```
 
     ## Unit: nanoseconds
-    ##             expr      min       lq        mean   median       uq      max
-    ##   sleep_first(1) 10057895 10458592 11292341.18 11445890 11900620 12715293
-    ##  sleep_second(1)      614     7142    13047.15     9715    11083   104009
-    ##   sleep_first(0) 10066216 10564611 11366164.93 11233610 12194644 12766798
-    ##  sleep_second(0) 10068423 10816960 11449664.24 11426334 11895042 12890171
-    ##  neval cld
-    ##    100   b
-    ##    100  a 
-    ##    100   b
-    ##    100   b
+    ##             expr      min       lq        mean     median       uq
+    ##   sleep_first(1) 10050575 10491052 11331793.64 11289640.0 12139226
+    ##  sleep_second(1)      309     1676     8646.22     7468.5     9717
+    ##   sleep_first(0) 10061303 10690055 11506264.50 11464036.0 12452736
+    ##  sleep_second(0) 10068596 10651320 11521164.44 11533203.5 12290622
+    ##       max neval cld
+    ##  12710034   100   b
+    ##     85780   100  a 
+    ##  14822220   100   b
+    ##  15501758   100   b
 
 ## Use `importFrom`, not `::`
 
@@ -175,11 +175,11 @@ microbenchmark(is.null(a),
 ```
 
     ## Unit: nanoseconds
-    ##              expr  min   lq      mean median   uq     max neval cld
-    ##        is.null(a)   77  100  129.3487    109  126   10284 10000  a 
-    ##  base::is.null(a) 3551 3863 5103.3706   4108 4890 1704572 10000   b
-    ##          is.na(b)  107  130  168.2192    141  160   13227 10000  a 
-    ##    base::is.na(b) 3621 3926 5041.4602   4167 4911  116871 10000   b
+    ##              expr  min     lq      mean median   uq     max neval cld
+    ##        is.null(a)   80  144.0  250.1765  204.0  229  102375 10000 a  
+    ##  base::is.null(a) 3670 6337.5 8280.9690 7444.0 8126  974538 10000  b 
+    ##          is.na(b)  108  186.0  285.7768  262.0  298   52941 10000 a  
+    ##    base::is.na(b) 3775 6469.0 9332.7668 7566.5 8274 3621082 10000   c
 
 As a general rule of thumb, you should aim at **making as less function
 calls as possible**: calling one function takes time, so if can be
@@ -214,8 +214,8 @@ microbenchmark(with_return(3),
 
     ## Unit: nanoseconds
     ##               expr min  lq     mean median  uq     max neval cld
-    ##     with_return(3) 223 236 399.0121    243 297 1101981 10000   a
-    ##  without_return(3) 223 237 398.6026    243 298 1162244 10000   a
+    ##     with_return(3) 227 248 521.5837    256 372 1713180 10000   a
+    ##  without_return(3) 228 247 521.8669    256 375 1677252 10000   a
 
 Surprisingly, `return()` doesn’t slow your code. So use it\!
 
@@ -234,15 +234,15 @@ microbenchmark(if(TRUE)"yay",
 
     ## Unit: nanoseconds
     ##                                         expr min lq     mean median  uq
-    ##                              if (TRUE) "yay"  38 48  62.2261     50  82
-    ##                      if (TRUE) {     "yay" }  76 82 111.5062     90 140
-    ##                  if (FALSE) "yay" else "nay"  40 51  70.0223     59  87
-    ##  if (FALSE) {     "yay" } else {     "nay" }  77 92 115.9435     96 145
+    ##                              if (TRUE) "yay"  38 50  55.7466     53  59
+    ##                      if (TRUE) {     "yay" }  75 88  98.6950     93  97
+    ##                  if (FALSE) "yay" else "nay"  39 54  59.8155     56  61
+    ##  if (FALSE) {     "yay" } else {     "nay" }  77 91 101.4289     96 101
     ##    max neval cld
-    ##    246 10000 a  
-    ##  11372 10000   c
-    ##  12173 10000  b 
-    ##   9414 10000   c
+    ##   9717 10000  a 
+    ##  10006 10000   b
+    ##  12510 10000  a 
+    ##   8601 10000   b
 
 ## Assign as less as possible
 
@@ -266,8 +266,8 @@ microbenchmark(with_assign(3),
 
     ## Unit: nanoseconds
     ##               expr min  lq     mean median    uq     max neval cld
-    ##     with_assign(3) 443 473 3308.021    497 558.5 2736185  1000   a
-    ##  without_assign(3) 278 298 2049.318    308 350.5 1695669  1000   a
+    ##     with_assign(3) 439 467 2733.461    488 535.5 2186584  1000   a
+    ##  without_assign(3) 276 297 1726.264    306 330.5 1376750  1000   a
 
 ## What about the pipe ?
 
@@ -291,12 +291,9 @@ microbenchmark(with_pipe(3),
 ```
 
     ## Unit: nanoseconds
-    ##               expr   min      lq       mean   median     uq     max neval
-    ##       with_pipe(3) 93377 97155.5 135586.571 102871.5 121397 2592019  1000
-    ##  without_assign(3)   280   332.0    674.453    520.0    672   11420  1000
-    ##  cld
-    ##    b
-    ##   a
+    ##               expr   min    lq      mean   median     uq     max neval cld
+    ##       with_pipe(3) 94948 99167 126867.31 103021.5 121308 2566817  1000   b
+    ##  without_assign(3)   278   318    594.12    514.5    622    9650  1000  a
 
 You know, because `%>%` is a function.
 
@@ -310,9 +307,17 @@ At the end of the day, there are also methods (like the bracket one)
 that can help you save some nanoseconds. So don’t be afraid of not using
 them, and stay focus on what’s more important: **write code that is easy
 to understand. Because a piece of code that is easy to understand is a
-piece of code that is easy to maintain\!**
+piece of code that is easy to maintain\!** And never forget:
+
+> It’s easy to get caught up in trying to remove all bottlenecks.
+> Don’t\! Your time is valuable and is better spent analysing your
+> data, not eliminating possible inefficiencies in your code. Be
+> pragmatic: don’t spend hours of your time to save seconds of computer
+> time. [Advanced R - Optimising
+> code](http://adv-r.had.co.nz/Performance.html)
 
 If you want to read more about code optimisation for speed, Colin
 Gillespie and Robin Lovelace wrote a nice book about being more efficien
 with R, with a chapter focused on performance: [Efficient
-optimisation](https://csgillespie.github.io/efficientR/performance.html)
+optimisation](https://csgillespie.github.io/efficientR/performance.html).
+See also [Advanced R - Performant code](http://adv-r.had.co.nz/).
