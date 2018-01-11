@@ -4,7 +4,7 @@ author: colin_fay
 post_date: 2018-01-09
 layout: single
 permalink: /random-r-benchmarks/
-categories: cat
+categories: r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
