@@ -12,6 +12,13 @@ excerpt_separator: <!--more-->
 Some random (one could say useless) benchmarks on R, serious or for fun, and some advices to make your code run faster. 
 <!--more-->
 
+disclamer::on() 
+
+> As with all microbenchmarks, these won’t affect the performance of most code, but can be important for special cases. 
+[Advanced R -  Performance](http://adv-r.had.co.nz/Performance.html)
+
+disclamer::off()
+
 There are two main things you can do to optimise your code: __write more and shorter functions__ to avoid repeating yourself (maintainance-oriented optimisation), and __find ways to make your R code run faster__ (usage-oriented optimisation). 
 
 One way to make you R code run really faster is to turn to languages like C++. But you know, [it's not that easy](https://memegenerator.net/img/instances/500x/39604158/i-love-c-it-makes-people-cry.jpg), and before turning to that, you can still use some tricks in plain R. 
@@ -188,7 +195,7 @@ You know, because `%>%` is a function.
 
 ## Conclusion 
 
-__These tests are just random tests I run__, and I can't say they cover all the technics you can use to speed up your code: rhese are just some questions I can accross and wanted to share. 
+__These tests are just random tests I run__, and I can't say they cover all the technics you can use to speed up your code: rhese are just some questions I can accross and wanted to share.
 
 At the end of the day, there are also methods (like the bracket one) that can help you save some nanoseconds. So don't be afraid of not using them, and stay focus on what's more important: __write code that is easy to understand. Because a piece of code that is easy to understand is a piece of code that is easy to maintain!__  
 
