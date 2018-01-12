@@ -7,16 +7,17 @@
    ========================================================================== */
 
 .breadcrumbs {
+  @include container;
   @include clearfix;
-  margin: 0 auto;
-  max-width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-left: 2em;
   padding-right: 2em;
   font-family: $sans-serif;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
+  -webkit-animation-delay: 0.30s;
+          animation-delay: 0.30s;
 
   @include breakpoint($large) {
     padding-left: 1em;
@@ -33,12 +34,11 @@
     font-size: $type-size-6;
 
     @include breakpoint($large) {
-      float: right;
-      width: span(10 of 12);
+      @include span(10 of 12 last);
     }
 
     @include breakpoint($x-large) {
-      padding-left: gutter(0.5 of 12);
+      @include prefix(0.5 of 12);
     }
   }
 
@@ -51,16 +51,16 @@
   }
 }
 
+
 /*
-     Post pagination navigation links
-     ========================================================================== */
+   Post pagination navigation links
+   ========================================================================== */
 
 .pagination {
+  @include full();
   @include clearfix();
-  float: left;
   margin-top: 1em;
   padding-top: 1em;
-  width: 100%;
 
   ul {
     margin: 0;
@@ -84,22 +84,21 @@
       line-height: 1.5;
       text-align: center;
       text-decoration: none;
-      color: $muted-text-color;
-      border: 1px solid mix(#000, $border-color, 25%);
+      color: mix(#fff, $gray, 25%);
+      border: 1px solid $light-gray;
       border-radius: 0;
 
       &:hover {
         color: $link-color-hover;
       }
 
-      &.current,
-      &.current.disabled {
+      &.current {
         color: #fff;
         background: $primary-color;
       }
 
       &.disabled {
-        color: rgba($muted-text-color, 0.5);
+        color: mix(#fff, $gray, 75%);
         pointer-events: none;
         cursor: not-allowed;
       }
@@ -133,12 +132,12 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    color: $muted-text-color;
-    border: 1px solid mix(#000, $border-color, 25%);
+    color: $link-color;
+    border: 1px solid $light-gray;
     border-radius: $border-radius;
 
     &:hover {
-      @include yiq-contrasted($muted-text-color);
+      color: $link-color-hover;
     }
 
     &:first-child {
@@ -153,7 +152,7 @@
     }
 
     &.disabled {
-      color: rgba($muted-text-color, 0.5);
+      color: mix(#fff, $gray, 75%);
       pointer-events: none;
       cursor: not-allowed;
     }
@@ -169,16 +168,17 @@
   border-top: 1px solid $border-color;
 }
 
+
 /*
-     Priority plus navigation
-     ========================================================================== */
+   Priority plus navigation
+   ========================================================================== */
 
 .greedy-nav {
   position: relative;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
-  align-items: center;
+        align-items: center;
   background: $background-color;
 
   a {
@@ -197,7 +197,7 @@
     }
   }
 
-  &__toggle {
+  button {
     padding: 0 0.5rem;
     align-self: stretch;
     border: 0;
@@ -211,14 +211,21 @@
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: end;
-    justify-content: flex-end;
+     justify-content: flex-end;
     -webkit-box-flex: 1;
-    flex: 1;
+                flex: 1;
+    padding-right: 2rem;
     overflow: hidden;
 
     li {
       -webkit-box-flex: 0;
-      flex: none;
+                  flex: none;
+
+      &:last-child {
+        a {
+          margin-right: 0;
+        }
+      }
     }
 
     a {
@@ -230,18 +237,18 @@
         left: 0;
         bottom: 0;
         height: 4px;
-        background: $primary-color;
+        background: mix(#fff, $primary-color, 50%);
         width: 100%;
         -webkit-transition: $global-transition;
         transition: $global-transition;
-        -webkit-transform: scaleX(0) translate3d(0, 0, 0);
-        transform: scaleX(0) translate3d(0, 0, 0); /* hide*/
+        -webkit-transform: scaleX(0) translate3d(0, 0 , 0);
+                transform: scaleX(0) translate3d(0, 0 , 0); /* hide*/
       }
 
       &:hover:before {
         -webkit-transform: scaleX(1);
-        -ms-transform: scaleX(1);
-        transform: scaleX(1); /* reveal*/
+                -ms-transform: scaleX(1);
+            transform: scaleX(1); /* reveal*/
       }
     }
   }
@@ -254,7 +261,7 @@
     padding: 5px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
-    background: $background-color;
+    background: #fff;
     box-shadow: 0 2px 4px 0 rgba(#000, 0.16), 0 2px 10px 0 rgba(#000, 0.12);
 
     &.hidden {
@@ -268,7 +275,7 @@
 
       &:hover {
         color: $masthead-link-color-hover;
-        background: $navicon-link-color-hover;
+        background: mix(#fff, $primary-color, 75%);
       }
     }
 
@@ -293,7 +300,7 @@
       width: 0;
       border-style: solid;
       border-width: 0 10px 10px;
-      border-color: $background-color transparent;
+      border-color: #fff transparent;
       display: block;
       z-index: 1;
     }
@@ -309,19 +316,10 @@
   }
 }
 
-.no-js {
-  .greedy-nav {
-    .visible-links {
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      overflow: visible;
-    }
-  }
-}
 
 /*
-     Navigation list
-     ========================================================================== */
+   Navigation list
+   ========================================================================== */
 
 .nav__list {
   margin-bottom: 1.5em;
@@ -332,6 +330,7 @@
   }
 
   @include breakpoint(max-width ($large - 1px)) {
+
     label {
       position: relative;
       display: inline-block;
@@ -348,7 +347,7 @@
 
       &:before,
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         right: 1em;
         top: 1.25em;
@@ -362,8 +361,8 @@
 
       &:after {
         -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
       }
 
       &:hover {
@@ -392,14 +391,14 @@
     /* on hover show expand*/
     label:hover:after {
       -webkit-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-      transform: rotate(90deg);
+              -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
     }
 
     input:checked + label:hover:after {
       -webkit-transform: rotate(0);
-      -ms-transform: rotate(0);
-      transform: rotate(0);
+              -ms-transform: rotate(0);
+          transform: rotate(0);
     }
 
     ul {
@@ -434,7 +433,14 @@
     margin-left: -0.5em;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    color: #fff;
     font-weight: bold;
+    background: $primary-color;
+    border-radius: $border-radius;
+
+    &:hover {
+      color: #fff;
+    }
   }
 
   @include breakpoint(max-width ($large - 1px)) {
@@ -446,8 +452,8 @@
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
     -webkit-transform: translate(0, 10%);
-    -ms-transform: translate(0, 10%);
-    transform: translate(0, 10%);
+            -ms-transform: translate(0, 10%);
+        transform: translate(0, 10%);
   }
 }
 
@@ -460,8 +466,8 @@
     opacity: 1;
     margin-top: 1em;
     -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
   }
 }
 
@@ -484,16 +490,17 @@
   border-bottom: 1px solid $border-color;
 }
 
+
 /*
-     Table of contents navigation
-     ========================================================================== */
+   Table of contents navigation
+   ========================================================================== */
 
 .toc {
   font-family: $sans-serif-narrow;
   color: $gray;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: $background-color;
+  background-color: #fff;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
@@ -517,14 +524,15 @@
   a {
     display: block;
     padding: 0.5rem 1rem;
-    color: $muted-text-color;
+    color: $gray;
     font-size: $type-size-7;
     font-weight: bold;
     line-height: 1.5;
     border-bottom: 1px solid $border-color;
 
     &:hover {
-      color: $text-color;
+      color: #000;
+      background: $lighter-gray;
     }
   }
 
@@ -535,7 +543,7 @@
   }
 
   li ul > li a {
-    padding-left: 1.75rem;
+    padding-left: 2rem;
     font-weight: normal;
   }
 

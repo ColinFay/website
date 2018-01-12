@@ -3,17 +3,15 @@
    ========================================================================== */
 
 #main {
+  @include container;
   @include clearfix;
-  margin-left: auto;
   margin-top: 2em;
-  margin-right: auto;
   padding-left: 1em;
   padding-right: 1em;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  max-width: 100%;
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
 
   @include breakpoint($x-large) {
     max-width: $x-large;
@@ -22,32 +20,18 @@
 
 .page {
   @include breakpoint($large) {
-    float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
-  }
-
-  @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
-    padding-right: $right-sidebar-width;
+    @include span(10 of 12 last);
+    @include prefix(0.5 of 12);
+    @include suffix(2 of 12);
   }
 
   .page__inner-wrap {
-    float: left;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-    clear: both;
+    @include full();
 
     .page__content,
     .page__meta,
     .page__share {
-      position: relative;
-      float: left;
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-      clear: both;
+      @include full();
     }
   }
 }
@@ -67,15 +51,14 @@
 }
 
 .page__content {
+
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
   }
 
-  p,
-  li,
-  dl {
-    font-size: 1em;
+  p, li, dl {
+    font-size: 0.8em;
   }
 
   /* paragraph indents */
@@ -91,7 +74,9 @@
     }
   }
 
-  a:not(.btn) {
+  a {
+    text-decoration: none;
+
     &:hover {
       text-decoration: underline;
 
@@ -128,10 +113,10 @@
   position: relative;
   margin-bottom: 2em;
   @include clearfix;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
+  -webkit-animation: intro 0.3s both;
+          animation: intro 0.3s both;
   -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s;
+          animation-delay: 0.25s;
 
   &--overlay {
     position: relative;
@@ -141,10 +126,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    -webkit-animation: $intro-transition;
-    animation: $intro-transition;
+    -webkit-animation: intro 0.3s both;
+            animation: intro 0.3s both;
     -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
+            animation-delay: 0.25s;
 
     a {
       color: #fff;
@@ -182,6 +167,9 @@
 }
 
 .page__hero-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   height: auto;
   -ms-interpolation-mode: bicubic;
@@ -241,13 +229,14 @@
   text-transform: uppercase;
 }
 
+
 /*
    Page meta
    ========================================================================== */
 
 .page__meta {
   margin-top: 2em;
-  color: $muted-text-color;
+  color: mix(#fff, $gray, 25%);
   font-family: $sans-serif;
   font-size: $type-size-6;
 
@@ -265,6 +254,7 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
 
 /*
    Page taxonomy
@@ -286,7 +276,7 @@
   margin-bottom: 8px;
   padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid mix(#000, $border-color, 25%);
+  border: 1px solid $light-gray;
   border-radius: $border-radius;
 
   &:hover {
@@ -295,16 +285,13 @@
   }
 }
 
+
 /*
    Comments
    ========================================================================== */
 
 .page__comments {
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-  clear: both;
+  @include full();
 }
 
 .page__comments-title {
@@ -317,6 +304,8 @@
 }
 
 .page__comments-form {
+  padding: 1em;
+  background: $lighter-gray;
   -webkit-transition: $global-transition;
   transition: $global-transition;
 
@@ -393,24 +382,20 @@
   }
 }
 
+
 /*
    Related
    ========================================================================== */
 
 .page__related {
-  @include clearfix();
-  float: left;
   margin-top: 2em;
   padding-top: 1em;
   border-top: 1px solid $border-color;
+  @include clearfix();
+  float: left;
 
   @include breakpoint($large) {
-    float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
-  }
-
-  @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
+    @include pre(2.5 of 12);
   }
 
   a {
