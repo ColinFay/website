@@ -53,9 +53,10 @@ So basically, if I put :
 #'
 ```
 
-The documentation goes:
+The documentation
+goes:
 
-![](img/dancing-banana-r-package.gif)
+![](https://github.com/ColinFay/colinfay.github.io/raw/master/_posts/img/dancing-banana-r-package.gif)
 
 I don’t know LaTeX, so I can’t perfectly explain how it works, but the
 code is pretty straightforward, so we can easily guess the `\if{html}`
@@ -81,4 +82,4 @@ off by changing to `autoplay=0` ;) ):
 #'
 ```
 
-![](img/rick-rolled.gif)
+![](https://github.com/ColinFay/colinfay.github.io/raw/master/_posts/img/rick-rolled.gif)
