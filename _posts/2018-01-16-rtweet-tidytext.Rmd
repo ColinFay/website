@@ -40,6 +40,8 @@ There was no issue with the old {rtweet} and {tidytext}. To verify this, let's g
 
 ```{r}
 library(devtools)
+remove.packages("rtweet")
+remove.packages("tidytext")
 install_version("rtweet", version = "0.4.0", repos = "http://cran.us.r-project.org", quiet = TRUE)
 install_version("tidytext", version = "0.1.5", repos = "http://cran.us.r-project.org", quiet = TRUE)
 packageVersion("rtweet")
@@ -58,7 +60,7 @@ So, no problem for doing this (as you can find in the slides):
 
 ```{r}
 rtweets04 %>% 
-  unnest_tokens(word, text) %>% 
+  unnest_tokens(word, hashtags) %>% 
   select(screen_name, word) %>%
   slice(1:5)
 ```
@@ -71,6 +73,7 @@ Let's simulate this behavior by updating to {rtweet} 0.6, while staying at {tidy
 
 ```{r}
 detach("package:rtweet", unload=TRUE)
+remove.packages("rtweet")
 install.packages("rtweet", repos = "http://cran.us.r-project.org", quiet = TRUE)
 packageVersion("rtweet")
 packageVersion("tidytext")
@@ -90,44 +93,43 @@ rtweets06 %>%
 
 This doesn't work because {rtweet} results now have list columns, which throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5.
 
-But everything is now back in order with the new {tidytext} version : 
+But everything is now back in order with the new {tidytext} version (at least for the text column). Let's be crazy and install the latest version from Github : 
 
 ```{r}
 detach("package:tidytext", unload=TRUE)
-install.packages("tidytext", repos = "http://cran.us.r-project.org", quiet = TRUE)
+remove.packages("tidytext")
+install.packages("tidytext")
 packageVersion("tidytext")
 ```
 
 
-```{r eval = FALSE}
+```{r}
+library(tidytext)
 rtweets06 %>% 
-  tidytext::unnest_tokens(word, text) %>% 
+  unnest_tokens(word, text) %>% 
   select(screen_name, word) %>%
   slice(1:5)
 ```
 
-```
-# A tibble: 5 x 2
-  screen_name      word
-        <chr>     <chr>
-1   CheezeViz        rt
-2   CheezeViz rbloggers
-3   CheezeViz         a
-4   CheezeViz     guide
-5   CheezeViz        to
+This no works because {tidytext} no longer checks if all the columns are atomic. Yet we got an issue if we move to the hashtags column : 
+
+```{r error = TRUE}
+rtweets06 %>% 
+  unnest_tokens(word, hashtag) %>% 
+  select(screen_name, word) %>%
+  slice(1:5)
 ```
 
-So, in conclusion: don't forget to update your packages!
 
-## Workaround
+## Workaround for hashtag column
 
-Here's a {purrr} workaround I used for a while, when the two versions were not in sync. I'm just putting it there just for the sake of sharing:
+So here's the workaround with {purrr} and {dplyr}: 
 
 ```{r eval = FALSE}
 library(purrr)
 rtweets06 %>%
-   modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " "))  %>%
-   tidytext::unnest_tokens(word, text) %>%
+  mutate(hashtags = map(hashtags, ~ simplify(.x) %>% paste(collapse = " ")) %>% as_vector) %>%
+  tidytext::unnest_tokens(word, hashtag) %>% 
   select(screen_name, word) %>%
   slice(1:5)
 ```
