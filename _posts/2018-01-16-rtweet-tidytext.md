@@ -25,10 +25,10 @@ couldn’t be reproduced.
 
 Spoiler: this is due to the behavior of {tidytext}, which doesn’t accept
 the output of the new {rtweet}. The problem is almost solved (well, it
-has shifted, as you’ll se below). I thought the answer to these comments
-and mails would also be the **perfect occasion for me to talk a little
-bit about how to return to previous versions of a package** (and also,
-to provide a little workaround about the current error thrown when
+has shifted, as you’ll see below). I thought the answer to these
+comments and mails would also be the **perfect occasion for me to talk a
+little bit about how to return to previous versions of a package** (and
+also, to provide a little workaround about the current error thrown when
 trying to mine the `hashtags` column of the {rtweet} output).
 
 ## New {rtweet} vs previous {tidytext}
@@ -47,10 +47,10 @@ if (any(!purrr::map_lgl(tbl, is.atomic))) {
 }
 ```
 
-### Getting back to previous version of packages
+### Getting back to a previous version of a package
 
-To examplify this {rtweet} and {tidytext} issue, **let’s go back to
-these versions of the packages**. For this, we’ll use the
+To examplify this {rtweet} and {tidytext} issue, **let’s go back in time
+to previous versions of theses packages**. For this, we’ll use the
 `install_version()` function from {devtools}:
 
 ``` r
@@ -148,8 +148,8 @@ $ bounding_box_coordinates       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 $ bounding_box_type              <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
 ```
 
-With these versions, there was no problem for doing this (as you can
-find in the slides):
+With these versions, you could simply do this (as you can find in the
+slides):
 
 ``` r
 rtweets04 %>% 
@@ -169,13 +169,13 @@ rtweets04 %>%
 ### {rtweet} 0.6
 
 For a while, there were an issue while trying to use the two packages
-together: {rtweet} 0.6 was released on 2017-11-16, and {tidytext} 0.1.6
-on 2018-01-07.
+together, as {rtweet} 0.6 was released on 2017-11-16, and {tidytext}
+0.1.6 on 2018-01-07. When these two versions were used together, if you
+tried to put the {rtweet} result into `unnest_tokens()`, you got an
+error.
 
-When these two versions were used together, if you tried to put the
-rtweet result into `unnest_tokens()`, you got an error. Let’s **simulate
-this behavior** by updating to {rtweet} 0.6, while staying at {tidytext}
-0.1.5.
+Let’s **simulate this behavior** by updating to {rtweet} 0.6, while
+staying at {tidytext} 0.1.5.
 
 ``` r
 detach("package:rtweet")
@@ -248,8 +248,8 @@ Error in unnest_tokens.data.frame(., word, text) :
 ```
 
 This doesn’t work because {rtweet} results now have list columns, which
-throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5, as
-the function checks if all the columns of the df are atomic.
+throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5.
+The function checks if all the columns of the df are atomic.
 
 The new {tidytext} version prevents this behavior, as you can pass a df
 containing list
@@ -296,7 +296,7 @@ rtweets06 %>%
 This now works because {tidytext} no longer checks if all the columns
 are atomic.
 
-Yet we’ve got an issue if we move to the hashtags column:
+Yet we’ve got an issue if we move to the `hashtag` column:
 
 ``` r
 rtweets06 %>% 
@@ -314,7 +314,7 @@ pass a list-column as input.
 
 ## Workaround for hashtag column
 
-So here’s the workaround:
+So, as promised, here’s the workaround:
 
 ``` r
 library(purrr)
