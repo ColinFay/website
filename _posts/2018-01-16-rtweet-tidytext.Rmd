@@ -45,15 +45,15 @@ packageVersion("rtweet")
 ```{r message = FALSE}
 library(rtweet)
 library(dplyr)
-tweets <- search_tweets("#RStats", n = 10)
-glimpse(tweets)
+rtweets04 <- search_tweets("#RStats", n = 10)
+glimpse(rtweets04)
 ```
 
 So, no problem for doing (as you can find in the slides): 
 
 ```{r}
 library(tidytext)
-tweets %>% 
+rtweets04 %>% 
   unnest_tokens(word, text) %>% 
   select(screen_name, word) %>%
   slice(1:5)
@@ -64,6 +64,7 @@ tweets %>%
 The issue occurs when we try to do the exact same thing with the new {rtweet}. Let's start by updating and checking we have the latest version. 
 
 ```{r}
+detach("package:rtweet", unload=TRUE)
 install.packages("rtweet", repos = "http://cran.us.r-project.org")
 packageVersion("rtweet")
 ```
@@ -72,12 +73,10 @@ So if I try to do the exact same thing:
 
 ```{r error=TRUE}
 library(rtweet)
-library(dplyr)
-library(tidytext)
 
-tweets <- search_tweets("#RStats", n = 10)
-glimpse(tweets)
-tweets %>% 
+rtweets06 <- search_tweets("#RStats", n = 10)
+glimpse(rtweets06)
+rtweets06 %>% 
   unnest_tokens(word, text) %>% 
   select(screen_name, word) %>%
   slice(1:5)
@@ -91,7 +90,7 @@ For hashtags count :
 
 ```{r}
 library(purrr)
-as_vector(tweets$hashtags) %>% 
+as_vector(rtweets06$hashtags) %>% 
    table() %>% 
    as.data.frame() %>% 
    arrange(Freq) %>% 
@@ -101,7 +100,7 @@ as_vector(tweets$hashtags) %>%
 For mining the `text` column: 
 
 ```{r}
-tweets %>% 
+rtweets06 %>% 
   discard(is.list) %>%
   unnest_tokens(word, text) %>%
   count(word, sort = TRUE) %>% 
@@ -111,7 +110,7 @@ tweets %>%
 But the better workaround is to turn the list columns to a vector, by combining the `modify_if` and the `simplify` functions from {purrr}: 
 
 ```{r}
-tweets %>% 
+rtweets06 %>% 
   modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " "))  %>%
   unnest_tokens(word, text) %>%
   count(word, sort = TRUE) %>% 
@@ -119,7 +118,7 @@ tweets %>%
 ```
 
 ```{r}
-tweets %>% 
+rtweets06 %>% 
   modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " ")) %>%
   unnest_tokens(word, hashtags) %>%
   count(word, sort = TRUE) %>% 
