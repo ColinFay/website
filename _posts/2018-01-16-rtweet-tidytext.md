@@ -9,7 +9,7 @@ output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
 
-On the importance of keeping your packages up to date.
+About keeping your packages up to date.
 
 <!--more-->
 
