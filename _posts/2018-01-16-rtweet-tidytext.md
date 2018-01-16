@@ -23,15 +23,19 @@ I’ve received recently some mails and comments asking why the code in :
 
 couldn’t be reproduced.
 
-Spoiler: this was due to the behavior of an old version of {tidytext}.
-As the new version is out, this problem is solved. But I thought I could
-use this as the perfect example to show how to go to previous version of
-a package :)
+Spoiler: this is due to the behavior of {tidytext} which doesn’t accept
+the output of the new {rtweet}. The problem is almost solved (well, it
+has shifted), but I thought these comments and mails were the perfect
+occasion for me to talk a little bit about how to return to previous
+version of a specific package.
+
+And also, to provide a little workaround about the current error thrown
+when trying to mine the `hashtags` column of the {rtweet} output.
 
 ## New {rtweet} vs previous {tidytext}
 
-Last update of {rtweet} ( published on CRAN on 2017-11-16, so after I
-published the blogposts / slides I just mentioned) comes with a new
+The update of {rtweet} waws published on CRAN on 2017-11-16, (so after I
+published the blogposts / slides I just mentioned). It comes with a new
 feature: list columns.
 
 Problem is: you can’t pass a data frame containing list-columns to
@@ -47,8 +51,8 @@ if (any(!purrr::map_lgl(tbl, is.atomic))) {
 
 ### Getting back to previous version of packages
 
-There was no issue with the old {rtweet} and {tidytext}. To verify this,
-let’s get back to previous versions of these two packages with the
+So, to examplify this {rtweet} and {tidytext} issue, let’s go back to
+these versions of the packages. For this, we’ll use the
 `install_version()` function from {devtools}:
 
 ``` r
@@ -146,7 +150,8 @@ $ bounding_box_coordinates       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N
 $ bounding_box_type              <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
 ```
 
-So, no problem for doing this (as you can find in the slides):
+With these versions, there was no problem for doing this (as you can
+find in the slides):
 
 ``` r
 rtweets04 %>% 
@@ -165,9 +170,10 @@ rtweets04 %>%
 
 ### {rtweet} 0.6
 
-For a while, there were an issue while trying to use these two packages
-({rtweet} 0.6 was released on 2017-11-16, and {tidytext} 0.1.6 on
-2018-01-07).
+For a while, there were an issue while trying to use the two packages
+together : {rtweet} 0.6 was released on 2017-11-16, and {tidytext} 0.1.6
+on 2018-01-07. When these two versions were used together, if you tried
+to put the rtweet result into `unnest_tokens()`, you got an error.
 
 Let’s simulate this behavior by updating to {rtweet} 0.6, while staying
 at {tidytext} 0.1.5.
@@ -243,12 +249,12 @@ Error in unnest_tokens.data.frame(., word, text) :
 ```
 
 This doesn’t work because {rtweet} results now have list columns, which
-throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5.
+throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5, as
+the function checks if all the columns of the df are atomic.
 
-But everything is now back in order with the new {tidytext} version (at
-least for the text column). Let’s be crazy and install the latest
-version from Github
-:
+The new {tidytext} version prevents this behavior, as you can pass a df
+containing list
+columns.
 
 ``` r
 # I'm restarting R from RStudio here, to avaid internal error -3 in R_decompress1 error
@@ -289,7 +295,9 @@ rtweets06 %>%
 ```
 
 This now works because {tidytext} no longer checks if all the columns
-are atomic. Yet we got an issue if we move to the hashtags column :
+are atomic.
+
+Yet we got an issue if we move to the hashtags column :
 
 ``` r
 rtweets06 %>% 
@@ -300,6 +308,10 @@ Error in check_input(x) :
   Input must be a character vector of any length or a list of character
   vectors, each of which has a length of 1.
 ```
+
+In fact, the problem has moved: the function now check at a lower level:
+you can indeed use a df containing list-columns, but it seems you can’t
+pass a list-column as input.
 
 ## Workaround for hashtag column
 
