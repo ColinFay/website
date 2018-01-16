@@ -8,21 +8,25 @@ categories: r-blog-en
 output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
-How to deal with {rwteet} v0.6.* and {tidytext}. Spoiler: you'll need some {purrr}. 
+On the importance of keeping your packages up to date.  
 
 <!--more-->
 
-Here's a complementary post explaining why you can't reproduce exactly reproduce the code found in: 
+I've received recently some mails and comments asking why the code in : 
 
-+ [Collecting tweets with R and {rtweet} ](http://colinfay.me/collect-rtweet/) - (__This post has been updated__)
++ [Collecting tweets with R and {rtweet} ](http://colinfay.me/collect-rtweet/)
 
 + [Visualising text data with ggplot2](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_text_data_ggplot2.pdf)
 
-## New {rtweet} vs {tidytext}
+couldn't be reproduced. 
 
-Last update of {rtweet} (last published on CRAN on 2017-11-16, so after I published the blogposts / slides I just mentioned) comes with a new feature: list columns. 
+Spoiler: this was due to the behavior of an old version of {tidytext}. As the new version is out, this problem is solved. But I thought I could use this as the perfect example to show how to go to previous version of a package :) 
 
-Problem is: you can't pass to `tidytext::unnest_tokens` a data frame containing list-columns. This is prevented by the third to fifth lines of `tidytext:::unnest_tokens.data.frame`:
+## New {rtweet} vs previous {tidytext}
+
+Last update of {rtweet} ( published on CRAN on 2017-11-16, so after I published the blogposts / slides I just mentioned) comes with a new feature: list columns. 
+
+Problem is: you can't pass a data frame containing list-columns to `tidytext::unnest_tokens`, in version 0.1.5 of tidytext. This was prevented by the third to fifth lines of `tidytext:::unnest_tokens.data.frame`:
 
 ```{r eval = FALSE} 
 if (any(!purrr::map_lgl(tbl, is.atomic))) {
@@ -30,29 +34,29 @@ if (any(!purrr::map_lgl(tbl, is.atomic))) {
 }
 ```
 
-### Getting back to {rtweet} 0.4
+### Getting back to previous version of packages
 
-This was not an issue with the old {rtweet}, as it didn't return a data frame with list-columns.
-
-To verify this, you can get the previous version of {rtweet} with the `install_version()` function from {devtools}: 
+There was no issue with the old {rtweet} and {tidytext}. To verify this, let's get back to previous versions of these two packages with the `install_version()` function from {devtools}:
 
 ```{r}
 library(devtools)
-install_version("rtweet", version = "0.4.0", repos = "http://cran.us.r-project.org")
+install_version("rtweet", version = "0.4.0", repos = "http://cran.us.r-project.org", quiet = TRUE)
+install_version("tidytext", version = "0.1.5", repos = "http://cran.us.r-project.org", quiet = TRUE)
 packageVersion("rtweet")
+packageVersion("tidytext")
 ```
 
 ```{r message = FALSE}
 library(rtweet)
 library(dplyr)
+library(tidytext)
 rtweets04 <- search_tweets("#RStats", n = 10)
 glimpse(rtweets04)
 ```
 
-So, no problem for doing (as you can find in the slides): 
+So, no problem for doing this (as you can find in the slides): 
 
 ```{r}
-library(tidytext)
 rtweets04 %>% 
   unnest_tokens(word, text) %>% 
   select(screen_name, word) %>%
@@ -61,19 +65,21 @@ rtweets04 %>%
 
 ### {rtweet} 0.6
 
-The issue occurs when we try to do the exact same thing with the new {rtweet}. Let's start by updating and checking we have the latest version. 
+For a while, there were an issue while trying to use these two packages ({rtweet} 0.6 was released on 2017-11-16, and {tidytext} 0.1.6 on 2018-01-07). 
+
+Let's simulate this behavior by updating to {rtweet} 0.6, while staying at {tidytext} 0.1.5.
 
 ```{r}
 detach("package:rtweet", unload=TRUE)
-install.packages("rtweet", repos = "http://cran.us.r-project.org")
+install.packages("rtweet", repos = "http://cran.us.r-project.org", quiet = TRUE)
 packageVersion("rtweet")
+packageVersion("tidytext")
 ```
 
 So if I try to do the exact same thing: 
 
 ```{r error=TRUE}
 library(rtweet)
-
 rtweets06 <- search_tweets("#RStats", n = 10)
 glimpse(rtweets06)
 rtweets06 %>% 
@@ -82,46 +88,58 @@ rtweets06 %>%
   slice(1:5)
 ```
 
-This doesn't work because {rtweet} results now have list columns, which throws an error when we call `unnest_tokens()`. 
+This doesn't work because {rtweet} results now have list columns, which throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5.
+
+But everything is now back in order with the new {tidytext} version : 
+
+```{r}
+detach("package:tidytext", unload=TRUE)
+install.packages("tidytext", repos = "http://cran.us.r-project.org", quiet = TRUE)
+packageVersion("tidytext")
+```
+
+
+```{r eval = FALSE}
+rtweets06 %>% 
+  tidytext::unnest_tokens(word, text) %>% 
+  select(screen_name, word) %>%
+  slice(1:5)
+```
+
+```
+# A tibble: 5 x 2
+  screen_name      word
+        <chr>     <chr>
+1   CheezeViz        rt
+2   CheezeViz rbloggers
+3   CheezeViz         a
+4   CheezeViz     guide
+5   CheezeViz        to
+```
+
+So, in conclusion: don't forget to update your packages!
 
 ## Workaround
 
-For hashtags count : 
+Here's a {purrr} workaround I used for a while, when the two versions were not in sync. I'm just putting it there just for the sake of sharing:
 
-```{r}
+```{r eval = FALSE}
 library(purrr)
-as_vector(rtweets06$hashtags) %>% 
-   table() %>% 
-   as.data.frame() %>% 
-   arrange(Freq) %>% 
-   top_n(5)
+rtweets06 %>%
+   modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " "))  %>%
+   tidytext::unnest_tokens(word, text) %>%
+  select(screen_name, word) %>%
+  slice(1:5)
 ```
 
-For mining the `text` column: 
-
-```{r}
-rtweets06 %>% 
-  discard(is.list) %>%
-  unnest_tokens(word, text) %>%
-  count(word, sort = TRUE) %>% 
-  top_n(5)
 ```
-
-But the better workaround is to turn the list columns to a vector, by combining the `modify_if` and the `simplify` functions from {purrr}: 
-
-```{r}
-rtweets06 %>% 
-  modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " "))  %>%
-  unnest_tokens(word, text) %>%
-  count(word, sort = TRUE) %>% 
-  top_n(5)
-```
-
-```{r}
-rtweets06 %>% 
-  modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " ")) %>%
-  unnest_tokens(word, hashtags) %>%
-  count(word, sort = TRUE) %>% 
-  top_n(5)
+# A tibble: 5 x 2
+  screen_name      word
+        <chr>     <chr>
+1   CheezeViz        rt
+2   CheezeViz rbloggers
+3   CheezeViz         a
+4   CheezeViz     guide
+5   CheezeViz        to
 ```
 
