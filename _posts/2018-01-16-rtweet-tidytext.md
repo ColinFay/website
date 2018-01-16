@@ -54,111 +54,114 @@ let’s get back to previous versions of these two packages with the
 ``` r
 library(devtools)
 install_version("rtweet", version = "0.4.0", repos = "http://cran.us.r-project.org", quiet = TRUE)
-```
+Downloading package from url: http://cran.us.r-project.org/src/contrib/Archive/rtweet/rtweet_0.4.0.tar.gz
+Installing rtweet
+'/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file --no-environ --no-save --no-restore --quiet CMD  \
+  INSTALL '/private/var/folders/lz/thnnmbpd1rz0h1tmyzgg0mh00000gn/T/RtmpPiXNRI/devtools766408992de/rtweet'  \
+  --library='/Library/Frameworks/R.framework/Versions/3.4/Resources/library' --install-tests 
 
-    ## Downloading package from url: http://cran.us.r-project.org/src/contrib/Archive/rtweet/rtweet_0.4.0.tar.gz
+* installing *source* package ‘rtweet’ ...
+** package ‘rtweet’ correctement décompressé et sommes MD5 vérifiées
+** R
+** inst
+** tests
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (rtweet)
 
-    ## Installing rtweet
-
-    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
-    ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-    ##   '/private/var/folders/lz/thnnmbpd1rz0h1tmyzgg0mh00000gn/T/RtmpoT2sg4/devtools74663c0dc0e8/rtweet'  \
-    ##   --library='/Library/Frameworks/R.framework/Versions/3.4/Resources/library'  \
-    ##   --install-tests
-
-    ## 
-
-``` r
 install_version("tidytext", version = "0.1.5", repos = "http://cran.us.r-project.org", quiet = TRUE)
-```
+Downloading package from url: http://cran.us.r-project.org/src/contrib/Archive/tidytext/tidytext_0.1.5.tar.gz
+Installing tidytext
+'/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file --no-environ --no-save --no-restore --quiet CMD  \
+  INSTALL '/private/var/folders/lz/thnnmbpd1rz0h1tmyzgg0mh00000gn/T/RtmpPiXNRI/devtools7664a041fa4/tidytext'  \
+  --library='/Library/Frameworks/R.framework/Versions/3.4/Resources/library' --install-tests 
 
-    ## Downloading package from url: http://cran.us.r-project.org/src/contrib/Archive/tidytext/tidytext_0.1.5.tar.gz
+* installing *source* package ‘tidytext’ ...
+** package ‘tidytext’ correctement décompressé et sommes MD5 vérifiées
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** tests
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (tidytext)
 
-    ## Installing tidytext
-
-    ## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
-    ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-    ##   '/private/var/folders/lz/thnnmbpd1rz0h1tmyzgg0mh00000gn/T/RtmpoT2sg4/devtools7466486fa8/tidytext'  \
-    ##   --library='/Library/Frameworks/R.framework/Versions/3.4/Resources/library'  \
-    ##   --install-tests
-
-    ## 
-
-``` r
 packageVersion("rtweet")
-```
-
-    ## [1] '0.4.0'
-
-``` r
+[1] ‘0.4.0’
 packageVersion("tidytext")
+[1] ‘0.1.5’
 ```
-
-    ## [1] '0.1.5'
 
 ``` r
-library(rtweet)
 library(dplyr)
-library(tidytext)
-rtweets04 <- search_tweets("#RStats", n = 10)
-glimpse(rtweets04)
+rtweets04 <- rtweet::search_tweets("#RStats", n = 10)
+Searching for tweets...
+Finished collecting tweets!
+ glimpse(rtweets04)
+Observations: 77
+Variables: 35
+$ screen_name                    <chr> "brian_leavell", "Pranesh___K", "OpenCageData", "haseebmahmud", "XihongLin"...
+$ user_id                        <chr> "770639488645300225", "1445945130", "1404653376", "15199563", "893499404728...
+$ created_at                     <dttm> 2018-01-16 12:51:36, 2018-01-16 12:51:16, 2018-01-16 12:50:56, 2018-01-16 ...
+$ status_id                      <chr> "953248371606736896", "953248285497573376", "953248203708694528", "95324813...
+$ text                           <chr> "RT @kateumbers: What to do if you have a compulsive data collating problem...
+$ retweet_count                  <int> 1, 2, 2, 43, 6, 12, 12, 12, 43, 43, 6, 43, 43, 2, 43, 43, 6, 43, 0, 43, 43,...
+$ favorite_count                 <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+$ is_quote_status                <lgl> TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, ...
+$ quote_status_id                <chr> "953004640118874112", NA, "953229496819306496", NA, NA, NA, NA, NA, NA, NA,...
+$ is_retweet                     <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRU...
+$ retweet_status_id              <chr> "953179356574113793", "952989197148749824", "953234288530608129", "95310176...
+$ in_reply_to_status_status_id   <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ in_reply_to_status_user_id     <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ in_reply_to_status_screen_name <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ lang                           <chr> "en", "en", "en", "en", "en", "en", "en", "en", "en", "en", "en", "en", "en...
+$ source                         <chr> "Twitter for Android", "Twitter Web Client", "Twitter Web Client", "Twitter...
+$ media_id                       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ media_url                      <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ media_url_expanded             <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ urls                           <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ urls_display                   <chr> NA, NA, NA, "buff.ly/2DyyumE", "rich-iannone.github.io/DiagrammeR/", "wp.me...
+$ urls_expanded                  <chr> NA, NA, NA, "https://buff.ly/2DyyumE", "http://rich-iannone.github.io/Diagr...
+$ mentions_screen_name           <chr> "kateumbers", "jasonbaik94", "ma_salmon dpprdan rOpenSci OpenCageData", "da...
+$ mentions_user_id               <chr> "322411475", "1888111382", "2865404679 828915258211303424 342250615 1404653...
+$ symbols                        <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ hashtags                       <chr> "r rstats meta ecology evolution data metaanalysis", "rstats", "rstats", "r...
+$ coordinates                    <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ place_id                       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ place_type                     <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ place_name                     <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ place_full_name                <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ country_code                   <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ country                        <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ bounding_box_coordinates       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+$ bounding_box_type              <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
 ```
-
-    ## Observations: 77
-    ## Variables: 35
-    ## $ screen_name                    <chr> "rstatsbot1234", "rstatsbot1234...
-    ## $ user_id                        <chr> "947752259038801920", "94775225...
-    ## $ created_at                     <dttm> 2018-01-16 11:30:08, 2018-01-1...
-    ## $ status_id                      <chr> "953227866375798784", "95322786...
-    ## $ text                           <chr> "RT @mdsumner: guide to GPU-acc...
-    ## $ retweet_count                  <int> 1, 1, 1, 2, 10, 1, 10, 5, 2, 20...
-    ## $ favorite_count                 <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0...
-    ## $ is_quote_status                <lgl> FALSE, FALSE, FALSE, FALSE, FAL...
-    ## $ quote_status_id                <chr> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ is_retweet                     <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, F...
-    ## $ retweet_status_id              <chr> "953220953269399552", "95322156...
-    ## $ in_reply_to_status_status_id   <chr> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ in_reply_to_status_user_id     <chr> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ in_reply_to_status_screen_name <chr> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ lang                           <chr> "en", "en", "es", "en", "en", "...
-    ## $ source                         <chr> "Rstats1234", "Rstats1234", "Rs...
-    ## $ media_id                       <chr> NA, NA, NA, "952943350264479744...
-    ## $ media_url                      <chr> NA, NA, NA, "http://pbs.twimg.c...
-    ## $ media_url_expanded             <chr> NA, NA, NA, "https://twitter.co...
-    ## $ urls                           <chr> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ urls_display                   <chr> "appsilondatascience.com/blog/r...
-    ## $ urls_expanded                  <chr> "https://appsilondatascience.co...
-    ## $ mentions_screen_name           <chr> "mdsumner", "_ColinFay WinVecto...
-    ## $ mentions_user_id               <chr> "103516223", "84618490 13249607...
-    ## $ symbols                        <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ hashtags                       <chr> "rstats", "RStats", "rstats", "...
-    ## $ coordinates                    <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ place_id                       <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ place_type                     <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ place_name                     <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ place_full_name                <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ country_code                   <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ country                        <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ bounding_box_coordinates       <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
-    ## $ bounding_box_type              <lgl> NA, NA, NA, NA, NA, NA, NA, NA,...
 
 So, no problem for doing this (as you can find in the slides):
 
 ``` r
 rtweets04 %>% 
-  unnest_tokens(word, text) %>% 
-  select(screen_name, word) %>%
-  slice(1:5)
+      tidytext::unnest_tokens(word, hashtags) %>% 
+      select(screen_name, word) %>%
+      slice(1:5)
+# A tibble: 5 x 2
+    screen_name      word
+          <chr>     <chr>
+1 brian_leavell         r
+2 brian_leavell    rstats
+3 brian_leavell      meta
+4 brian_leavell   ecology
+5 brian_leavell evolution
 ```
-
-    ## # A tibble: 5 x 2
-    ##     screen_name     word
-    ##           <chr>    <chr>
-    ## 1 rstatsbot1234       rt
-    ## 2 rstatsbot1234 mdsumner
-    ## 3 rstatsbot1234    guide
-    ## 4 rstatsbot1234       to
-    ## 5 rstatsbot1234      gpu
 
 ### {rtweet} 0.6
 
@@ -170,150 +173,155 @@ Let’s simulate this behavior by updating to {rtweet} 0.6, while staying
 at {tidytext} 0.1.5.
 
 ``` r
-detach("package:rtweet", unload=TRUE)
+detach("package:rtweet")
 install.packages("rtweet", repos = "http://cran.us.r-project.org", quiet = TRUE)
 packageVersion("rtweet")
-```
-
-    ## [1] '0.6.0'
-
-``` r
+[1] ‘0.6.0’
 packageVersion("tidytext")
+[1] ‘0.1.5’
 ```
-
-    ## [1] '0.1.5'
 
 So if I try to do the exact same thing:
 
 ``` r
 library(rtweet)
 rtweets06 <- search_tweets("#RStats", n = 10)
-```
+Searching for tweets...
+Finished collecting tweets!
+ glimpse(rtweets06)
+Observations: 9
+Variables: 42
+$ status_id              <chr> "953248371606736896", "953248285497573376", "953248203708694528", "9532481352031723...
+$ created_at             <dttm> 2018-01-16 12:51:36, 2018-01-16 12:51:16, 2018-01-16 12:50:56, 2018-01-16 12:50:40...
+$ user_id                <chr> "770639488645300225", "1445945130", "1404653376", "15199563", "893499404728053760",...
+$ screen_name            <chr> "brian_leavell", "Pranesh___K", "OpenCageData", "haseebmahmud", "XihongLin", "sello...
+$ text                   <chr> "RT @kateumbers: What to do if you have a compulsive data collating problem. #r #rs...
+$ source                 <chr> "Twitter for Android", "Twitter Web Client", "Twitter Web Client", "Twitter for iPh...
+$ reply_to_status_id     <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ reply_to_user_id       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ reply_to_screen_name   <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ is_quote               <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE
+$ is_retweet             <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
+$ favorite_count         <int> 0, 0, 0, 0, 0, 0, 0, 0, 0
+$ retweet_count          <int> 1, 2, 2, 43, 6, 12, 12, 12, 43
+$ hashtags               <list> [<"r", "rstats", "meta", "ecology", "evolution", "data", "metaanalysis">, "rstats"...
+$ symbols                <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ urls_url               <list> [NA, NA, NA, "buff.ly/2DyyumE", "rich-iannone.github.io/DiagrammeR/", "wp.me/pMm6L...
+$ urls_t.co              <list> [NA, NA, NA, "https://t.co/gpTEhFhfY5", "https://t.co/TZdttVMrTf", "https://t.co/4...
+$ urls_expanded_url      <list> [NA, NA, NA, "https://buff.ly/2DyyumE", "http://rich-iannone.github.io/DiagrammeR/...
+$ media_url              <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ media_t.co             <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ media_expanded_url     <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ media_type             <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ ext_media_url          <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ ext_media_t.co         <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ ext_media_expanded_url <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA]
+$ ext_media_type         <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ mentions_user_id       <list> ["322411475", "1888111382", <"2865404679", "828915258211303424", "342250615", "140...
+$ mentions_screen_name   <list> ["kateumbers", "jasonbaik94", <"ma_salmon", "dpprdan", "rOpenSci", "OpenCageData">...
+$ lang                   <chr> "en", "en", "en", "en", "en", "en", "en", "en", "en"
+$ quoted_status_id       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ quoted_text            <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ retweet_status_id      <chr> "953179356574113793", "952989197148749824", "953234288530608129", "9531017606960619...
+$ retweet_text           <chr> "What to do if you have a compulsive data collating problem. #r #rstats #meta #ecol...
+$ place_url              <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ place_name             <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ place_full_name        <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ place_type             <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ country                <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ country_code           <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA
+$ geo_coords             <list> [<NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <...
+$ coords_coords          <list> [<NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <NA, NA>, <...
+$ bbox_coords            <list> [<NA, NA, NA, NA, NA, NA, NA, NA>, <NA, NA, NA, NA, NA, NA, NA, NA>, <NA, NA, NA, ...
 
-    ## Searching for tweets...
-
-    ## Finished collecting tweets!
-
-``` r
-glimpse(rtweets06)
-```
-
-    ## Observations: 10
-    ## Variables: 42
-    ## $ status_id              <chr> "953227866375798784", "9532278621227089...
-    ## $ created_at             <dttm> 2018-01-16 11:30:08, 2018-01-16 11:30:...
-    ## $ user_id                <chr> "947752259038801920", "9477522590388019...
-    ## $ screen_name            <chr> "rstatsbot1234", "rstatsbot1234", "rsta...
-    ## $ text                   <chr> "RT @mdsumner: guide to GPU-accelerated...
-    ## $ source                 <chr> "Rstats1234", "Rstats1234", "Rstats1234...
-    ## $ reply_to_status_id     <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ reply_to_user_id       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ reply_to_screen_name   <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ is_quote               <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALS...
-    ## $ is_retweet             <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TR...
-    ## $ favorite_count         <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    ## $ retweet_count          <int> 1, 1, 1, 2, 10, 1, 10, 5, 2, 20
-    ## $ hashtags               <list> ["rstats", "RStats", "rstats", <"R", "...
-    ## $ symbols                <list> [NA, NA, NA, NA, NA, NA, NA, NA, NA, NA]
-    ## $ urls_url               <list> ["appsilondatascience.com/blog/rstats/...
-    ## $ urls_t.co              <list> ["https://t.co/mpulM1UJjq", "https://t...
-    ## $ urls_expanded_url      <list> ["https://appsilondatascience.com/blog...
-    ## $ media_url              <list> [NA, NA, NA, "http://pbs.twimg.com/med...
-    ## $ media_t.co             <list> [NA, NA, NA, "https://t.co/ChU84PAXSc"...
-    ## $ media_expanded_url     <list> [NA, NA, NA, "https://twitter.com/Data...
-    ## $ media_type             <list> [NA, NA, NA, "photo", NA, NA, NA, NA, ...
-    ## $ ext_media_url          <list> [NA, NA, NA, "http://pbs.twimg.com/med...
-    ## $ ext_media_t.co         <list> [NA, NA, NA, "https://t.co/ChU84PAXSc"...
-    ## $ ext_media_expanded_url <list> [NA, NA, NA, "https://twitter.com/Data...
-    ## $ ext_media_type         <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ mentions_user_id       <list> ["103516223", <"84618490", "1324960710...
-    ## $ mentions_screen_name   <list> ["mdsumner", <"_ColinFay", "WinVectorL...
-    ## $ lang                   <chr> "en", "en", "es", "en", "en", "en", "en...
-    ## $ quoted_status_id       <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ quoted_text            <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ retweet_status_id      <chr> "953220953269399552", "9532215626767114...
-    ## $ retweet_text           <chr> "guide to GPU-accelerated ship recognit...
-    ## $ place_url              <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ place_name             <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ place_full_name        <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ place_type             <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ country                <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ country_code           <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
-    ## $ geo_coords             <list> [<NA, NA>, <NA, NA>, <NA, NA>, <NA, NA...
-    ## $ coords_coords          <list> [<NA, NA>, <NA, NA>, <NA, NA>, <NA, NA...
-    ## $ bbox_coords            <list> [<NA, NA, NA, NA, NA, NA, NA, NA>, <NA...
-
-``` r
 rtweets06 %>% 
-  unnest_tokens(word, text) %>% 
-  select(screen_name, word) %>%
-  slice(1:5)
+    tidytext::unnest_tokens(word, text) %>% 
+    select(screen_name, word) %>%
+    slice(1:5)
+Error in unnest_tokens.data.frame(., word, text) : 
+  unnest_tokens expects all columns of input to be atomic vectors (not lists)
 ```
-
-    ## Error in unnest_tokens.data.frame(., word, text): unnest_tokens expects all columns of input to be atomic vectors (not lists)
 
 This doesn’t work because {rtweet} results now have list columns, which
 throws an error when we call `unnest_tokens()` from {tidytext} 0.1.5.
 
-But everything is now back in order with the new {tidytext} version :
+But everything is now back in order with the new {tidytext} version (at
+least for the text column). Let’s be crazy and install the latest
+version from Github
+:
 
 ``` r
-detach("package:tidytext", unload=TRUE)
+# I'm restarting R from RStudio here, to avaid internal error -3 in R_decompress1 error
+.rs.restartR()
+NULL
+
+Restarting R session...
+
 install.packages("tidytext", repos = "http://cran.us.r-project.org", quiet = TRUE)
-```
 
-    ## 
-    ##   There is a binary version available but the source version is
-    ##   later:
-    ##          binary source needs_compilation
-    ## tidytext  0.1.5  0.1.6             FALSE
+  There is a binary version available but the source version is later:
+         binary source needs_compilation
+tidytext  0.1.5  0.1.6             FALSE
 
-    ## installing the source package 'tidytext'
+installing the source package ‘tidytext’
 
-``` r
+ 
 packageVersion("tidytext")
-```
+[1] ‘0.1.6’
 
-    ## [1] '0.1.6'
+library(tidytext)
+library(dplyr)
+```
 
 ``` r
 rtweets06 %>% 
-  tidytext::unnest_tokens(word, text) %>% 
-  select(screen_name, word) %>%
-  slice(1:5)
+      unnest_tokens(word, text) %>% 
+      select(screen_name, word) %>%
+      slice(1:5)
+# A tibble: 5 x 2
+    screen_name       word
+          <chr>      <chr>
+1 brian_leavell         rt
+2 brian_leavell kateumbers
+3 brian_leavell       what
+4 brian_leavell         to
+5 brian_leavell         do
 ```
 
-    # A tibble: 5 x 2
-      screen_name      word
-            <chr>     <chr>
-    1   CheezeViz        rt
-    2   CheezeViz rbloggers
-    3   CheezeViz         a
-    4   CheezeViz     guide
-    5   CheezeViz        to
+This now works because {tidytext} no longer checks if all the columns
+are atomic. Yet we got an issue if we move to the hashtags column :
 
-So, in conclusion: don’t forget to update your packages\!
+``` r
+rtweets06 %>% 
+      unnest_tokens(word, hashtag) %>% 
+      select(screen_name, word) %>%
+      slice(1:5)
+Error in check_input(x) : 
+  Input must be a character vector of any length or a list of character
+  vectors, each of which has a length of 1.
+```
 
-## Workaround
+## Workaround for hashtag column
 
-Here’s a {purrr} workaround I used for a while, when the two versions
-were not in sync. I’m just putting it there just for the sake of
-sharing:
+So here’s the workaround:
 
 ``` r
 library(purrr)
-rtweets06 %>%
-   modify_if(is.list, ~ simplify(.x) %>% paste(collapse = " "))  %>%
-   tidytext::unnest_tokens(word, text) %>%
-  select(screen_name, word) %>%
-  slice(1:5)
+as_vector(rtweets06$hashtags) %>% 
+      table() %>% 
+      as.data.frame() %>% 
+      arrange(Freq) %>% 
+      top_n(5)
+Selecting by Freq
+              . Freq
+1          data    1
+2       ecology    1
+3     evolution    1
+4          meta    1
+5  metaanalysis    1
+6             r    1
+7       dataviz    2
+8       ggplot2    2
+9   DataScience    3
+10       rstats    9
 ```
-
-    # A tibble: 5 x 2
-      screen_name      word
-            <chr>     <chr>
-    1   CheezeViz        rt
-    2   CheezeViz rbloggers
-    3   CheezeViz         a
-    4   CheezeViz     guide
-    5   CheezeViz        to
