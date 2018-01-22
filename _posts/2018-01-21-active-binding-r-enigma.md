@@ -229,7 +229,32 @@ x
 
     ## [1] 3
 
-Sadly, these two solutions don’t answer the three questions in one shot.
+  - By [Julien Navarre](https://twitter.com/navarre_julien)
+
+<!-- end list -->
+
+``` r
+x <- structure(0L, class = "x")
+print.x <- function(x) print(as.integer(x <<- x + 1L ))
+x
+```
+
+    ## [1] 1
+
+``` r
+x
+```
+
+    ## [1] 2
+
+``` r
+x
+```
+
+    ## [1] 3
+
+Sadly, these three solutions don’t answer the three questions in one
+shot.
 
 ## One answer to rule them all
 
