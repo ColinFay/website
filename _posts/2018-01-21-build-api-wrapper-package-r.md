@@ -64,7 +64,7 @@ devtools”.
   - Open a new R Script, save it into `/data_raw` as “devstuffs”, or any
     other name. Copy and paste into this script:
 
-> NB: everything with ’your-\*’ should be replaced
+<!-- end list -->
 
 ``` r
 library(devtools)
@@ -75,30 +75,31 @@ library(desc)
 unlink("DESCRIPTION")
 # Create and clean desc
 my_desc <- description$new("!new")
-my_desc$set("Package", "foo")
+
+# Set your package name
+my_desc$set("Package", "yourpackage")
+
+#Set your name
+my_desc$set("Authors@R", "person('Colin', 'Fay', email = 'contact@colinfay.me', role = c('cre', 'aut'))")
+
+# Remove some author fields
 my_desc$del("Maintainer")
-my_desc$del("Authors@R")
 
 # Set the version
 my_desc$set_version("0.0.0.9000")
-# Your name
-my_desc$add_author(given = "your-first-name", family = "your-last-name", email = "your@email.com",
-                   role = "cre")
-#Your name again
-my_desc$add_role(given = "your-first-name", family = "your-last-name", email = "your@email.com",
-                 role = "aut")
+
 # The title of your package
 my_desc$set(Title = "My Supper API Wrapper")
 # The description of your package
 my_desc$set(Description = "A long description of this super package I'm working on.")
-# The urls 
+# The urls
 my_desc$set("URL", "http://this")
 my_desc$set("BugReports", "http://that")
 # Save everyting
 my_desc$write(file = "DESCRIPTION")
 
 # If you want to use the MIT licence, code of conduct, and lifecycle badge
-use_mit_license(name = "your-name")
+use_mit_license(name = "Colin FAY")
 use_code_of_conduct()
 use_lifecycle_badge("Experimental")
 use_news_md()
@@ -190,7 +191,7 @@ httr::GET(url = base_url, query = list(q = "Yeaye"))
 ```
 
     ## Response [https://api-adresse.data.gouv.fr/search/?q=Yeaye]
-    ##   Date: 2018-02-04 18:58
+    ##   Date: 2018-02-04 20:09
     ##   Status: 200
     ##   Content-Type: application/json; charset=utf-8
     ##   Size: 574 B
@@ -280,6 +281,12 @@ reverse_search_ban <- function(lat = NULL, lon = NULL){
 > Note: you’ll need to change the arguments and documentation for your
 > specific API (obviously).
 
+If ever you want to a part of this roxygen filling programmatically, you
+should check the excellent [{sinew}
+package](https://github.com/metrumresearchgroup/sinew) by Jonathan Sidi.
+
+## Step 6 : Roxygenise
+
 Now, run in your console :
 
 ``` r
@@ -287,6 +294,8 @@ roxygen2::roxygenise()
 ```
 
 And that’s it\! You’ve got a working package :)
+
+## Step 7 : build your package
 
 You can test that everything is ok with:
 
