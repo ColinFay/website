@@ -192,7 +192,7 @@ httr::GET(url = base_url, query = list(q = "Yeaye"))
 ```
 
     ## Response [https://api-adresse.data.gouv.fr/search/?q=Yeaye]
-    ##   Date: 2018-02-04 20:17
+    ##   Date: 2018-02-04 21:40
     ##   Status: 200
     ##   Content-Type: application/json; charset=utf-8
     ##   Size: 574 B
@@ -204,11 +204,17 @@ In the API we have chosen, there are 4 entry points: search, reverse,
 and their counterparts with csv. These counterparts work by POSTing a
 csv to the API, so let’s forget them for now.
 
-The search entrypoint can take 8 parameters: + `q`: text search +
-`limit`: maximum number of results to return + `autocomplete`:
-autocompletion + `lat`: latitude + `lon`: longitude + `type`: type of
-elements to return (housenumber, street,place, municipality) +
-`postcode`: Postal code + `citycode`: INSEE code
+The search entrypoint can take 8 parameters:
+
+  - `q`: text search
+  - `limit`: maximum number of results to return
+  - `autocomplete`: autocompletion
+  - `lat`: latitude
+  - `lon`: longitude
+  - `type`: type of elements to return (housenumber, street,place,
+    municipality)
+  - `postcode`: Postal code
+  - `citycode`: INSEE code
 
 These are the elements which will be passed as a list in the `query`
 parameter from `httr::GET`.

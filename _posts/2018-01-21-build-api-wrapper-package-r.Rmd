@@ -172,6 +172,7 @@ As you can see, the status is 200. Which is a good sign: no error from the API.
 In the API we have chosen, there are 4 entry points: search, reverse, and their counterparts with csv. These counterparts work by POSTing a csv to the API, so let's forget them for now. 
 
 The search entrypoint can take 8 parameters: 
+
 + `q`: text search
 + `limit`: maximum number of results to return 
 + `autocomplete`: autocompletion
