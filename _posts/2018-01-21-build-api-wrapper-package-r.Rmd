@@ -128,7 +128,7 @@ This is the case for <https://adresse.data.gouv.fr/api/>. We've got the base url
 
 Here, the base url is everything before the `?`, and the parameters are the key-value pairs after the .
 
-![](img/api.png) 
+![](https://github.com/ColinFay/colinfay.github.io/raw/master/_posts/img/api.png) 
 
 ## Step 4: utils 
 

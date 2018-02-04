@@ -145,9 +145,10 @@ base url: `http 'https://api-adresse.data.gouv.fr/search/?q=8 bd du
 port'`, and search parameters.
 
 Here, the base url is everything before the `?`, and the parameters are
-the key-value pairs after the .
+the key-value pairs after the
+.
 
-![](img/api.png)
+![](https://github.com/ColinFay/colinfay.github.io/raw/master/_posts/img/api.png)
 
 ## Step 4: utils
 
@@ -191,7 +192,7 @@ httr::GET(url = base_url, query = list(q = "Yeaye"))
 ```
 
     ## Response [https://api-adresse.data.gouv.fr/search/?q=Yeaye]
-    ##   Date: 2018-02-04 20:09
+    ##   Date: 2018-02-04 20:17
     ##   Status: 200
     ##   Content-Type: application/json; charset=utf-8
     ##   Size: 574 B
