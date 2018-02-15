@@ -1,5 +1,5 @@
 ---
-title: "Explain me R environments like I’m five"
+title: "Explain R environments like I’m five"
 author: colin_fay
 post_date: 2018-02-15
 layout: single
