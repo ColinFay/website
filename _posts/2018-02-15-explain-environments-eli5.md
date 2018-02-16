@@ -17,7 +17,7 @@ daughter.
 <!--more-->
 
 > Side note: no, my daughter is not five, and she’s not named Alice. And
-> she doesn’t speak english either ¯\\*(ツ)*/¯).
+> she doesn’t speak english either ¯\\*(ツ)*/¯.
 
 “Daddy, I’ve seen you reading this book with a weird chapter named
 ‘Environments in R’. What does it mean?”
@@ -159,4 +159,4 @@ You have another “explain me like I’m five” for R environments? Feel
 free to share it in the comments, or to reach me on Twitter :)
 
 > Ps: this blogpost is inspired by this really cool
-> [\#explainmelikeimfive](https://dev.to/sforce/explain-webhooks-to-me-like-im-five-dli)
+> [\#explainmelikeimfive](https://dev.to/ben/explain-websockets-like-im-five)
