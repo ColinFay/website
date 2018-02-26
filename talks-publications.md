@@ -7,6 +7,8 @@ ___
 
 ## Talks
 
+__2018-01-24__ — ["R, vous avez dit R ?"](https://github.com/ThinkR-open/meetup-r), Breizh Data Club Meetup. 
+
 __2017-11-23__ — ["Le Text-Mining expliqué à ma grand-mère"](https://github.com/ColinFay/conf/blob/master/2017-11-breizh-data-club/fay_colin_tm_explique_grand_mere.pdf), Breizh Data Club Meetup. 
 
 __2017-11-16__ — ["A Gentle Introduction to Network Visualisation"](https://github.com/ColinFay/conf/blob/master/2017-11-budapest/fay_colin_visualise_network.pdf), BudapestBI. 
@@ -32,6 +34,10 @@ __2013-05-29__ — "Théorie des jeux, un modèle possible pour les sciences du 
 ***
 
 ## Publications 
+
+### Book review 
+
+“Text Mining with R: A Tidy Approach”. Journal of Statistical Software, Vol 83, 10.18637/jss.v083.b01. [link](https://www.jstatsoft.org/article/view/v083b01)
 
 ### As a contributor
 
