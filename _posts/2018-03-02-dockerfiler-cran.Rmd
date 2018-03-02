@@ -9,7 +9,7 @@ output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
 
-{dockerfiler} is a package that comes with a simple, object orienteted API for Dockerfile creation, straight from your R session. Now on CRAN.
+{dockerfiler} is a package that comes with a simple, object oriented API for Dockerfile creation, straight from your R session. Now on CRAN.
 
  <!--more-->
  
