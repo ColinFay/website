@@ -1,5 +1,5 @@
 ---
-title: "dockerfiler is on CRAN"
+title: "dockerfiler is now on CRAN"
 author: colin_fay
 post_date: 2018-03-02
 layout: single
@@ -9,13 +9,10 @@ output: jekyllthat::jekylldown
 excerpt_separator: <!--more-->
 ---
 
-{dockerfiler}, a package for easy Dockerfile creation from R is now on
-CRAN.
+{dockerfiler} is a package that comes with a simple, object orienteted
+API for Dockerfile creation, straight from your R session. Now on CRAN.
 
 <!--more-->
-
-{dockerfiler} is a package that comes with a simple, object orienteted,
-API for Dockerfile creation, straight from your R session.
 
 ## Installation
 
